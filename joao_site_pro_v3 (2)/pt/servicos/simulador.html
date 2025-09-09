@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simulador de custo (beta)</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+<script src="../../assets/config.js"></script>
+<script defer src="../../assets/main.js"></script>
+</head><body>
+<header><div class="container"><nav>
+  <div class="brand"><a href="../index.html" data-text="brand">Sua Marca</a></div>
+  <div class="menu"><a href="../solucoes.html">Soluções</a></div>
+</nav></div></header>
+<main class="section"><div class="container">
+  <h1>Simulador de custo (beta)</h1>
+  
+<p>Estimativa de <strong>custo total</strong> (simplificada). Informe valores e veja um intervalo.</p>
+<div class="card">
+  <label>Valor FOB (US$): <input id="fob" type="number" step="0.01"></label><br>
+  <label>Frete + Seguro (US$): <input id="frete" type="number" step="0.01"></label><br>
+  <label>Alíquota II (%): <input id="ii" type="number" step="0.01" value="12"></label><br>
+  <label>ICMS (% estimado): <input id="icms" type="number" step="0.01" value="18"></label><br>
+  <button class="cta primary" onclick="simular()">Simular</button>
+  <div id="res" style="margin-top:10px"></div>
+</div>
+<script>
+function simular(){
+  var fob=+document.getElementById('fob').value||0;
+  var frete=+document.getElementById('frete').value||0;
+  var ii=+document.getElementById('ii').value||0;
+  var icms=+document.getElementById('icms').value||0;
+  var va=fob+frete;
+  var ii_val=va*(ii/100);
+  var base_icms=va+ii_val; // simplificado
+  var icms_val=base_icms*(icms/100);
+  var total=va+ii_val+icms_val;
+  document.getElementById('res').innerHTML = "<p><strong>Estimativa:</strong> US$ "+ total.toFixed(2) + " (simplificado)</p><p><em>Para cálculo oficial por NCM/UF, fale conosco.</em></p>";
+}
+</script>
+
+  <div style="margin-top:16px">
+    <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
+    <a class="cta" href="../solucoes.html">Ver todas as soluções</a>
+  </div>
+</div></main>
+<footer class="footer"><div class="container">© <span data-text="brand">Sua Marca</span></div></footer>
+<a class="wp-float" data-contact="whatsapp">WhatsApp</a>
+</body></html>

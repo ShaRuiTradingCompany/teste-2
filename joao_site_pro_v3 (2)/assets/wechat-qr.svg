@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640">
+  <rect width="100%" height="100%" fill="#fff"/>
+  <rect x="20" y="20" width="600" height="600" fill="none" stroke="#000" stroke-width="6"/>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Arial,Helvetica,sans-serif" font-size="20">
+    Substitua por seu QR do WeChat: assets/wechat-qr.svg
+  </text>
+</svg>
