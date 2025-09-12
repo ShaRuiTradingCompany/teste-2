@@ -95,26 +95,30 @@
     </div>
   </section>
 
-  <!-- SEÇÃO "SOBRE" (VÍDEO INSTITUCIONAL) -->
-  <section class="section" id="sobre">
-    <div class="container">
-      <div class="card">
-        <video controls preload="metadata" playsinline
-               poster="/assets/company-poster.jpg"
-               class="about-video">
-          <source src="/assets/company.mp4?v=3" type="video/mp4">
-        </video>
-        <!-- debug provisório: remova depois -->
-        <p style="font-size:12px;opacity:.6">
-          Debug: <a href="/assets/company.mp4?v=3" target="_blank">abrir company.mp4</a>
-        </p>
-      </div>
+ <section class="section" id="sobre">
+  <div class="container">
+    <div class="card">
+      <video controls preload="metadata" playsinline
+             poster="/assets/company-poster.jpg"
+             class="about-video">
+        <!-- 720p para telas pequenas -->
+        <source src="/assets/company_web_720p.mp4?v=5" type="video/mp4" media="(max-width: 768px)">
+        <!-- 1080p padrão -->
+        <source src="/assets/company.mp4?v=5" type="video/mp4">
+      </video>
 
-      <h2 style="margin-top:14px">Sobre</h2>
-      <p>Estamos em Ganzhou (China), conectando sua empresa a fornecedores confiáveis.
-         Integramos engenharia, qualidade e finanças para reduzir risco e custo total.</p>
+      <!-- debug (remova depois) -->
+      <p style="font-size:12px;opacity:.6">
+        Debug: <a href="/assets/company.mp4?v=5" target="_blank">abrir company.mp4</a> ·
+        <a href="/assets/company_web_720p.mp4?v=5" target="_blank">abrir 720p</a>
+      </p>
     </div>
-  </section>
+
+    <h2 style="margin-top:14px">Sobre</h2>
+    <p>Estamos em Ganzhou (China), conectando sua empresa a fornecedores confiáveis.
+       Integramos engenharia, qualidade e finanças para reduzir risco e custo total.</p>
+  </div>
+</section>
 
   <!-- SERVIÇOS -->
   <section id="servicos" class="section">
