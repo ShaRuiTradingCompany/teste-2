@@ -1,132 +1,162 @@
 <!doctype html>
 <html lang="es" dir="ltr">
-<head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Importe desde China con seguridad: estamos dentro de la fábrica.</title>
-<meta name="description" content="Abastecimiento validado, inspección en origen y costo total claro.">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Importar desde China con seguridad — estamos dentro de la fábrica.</title>
+  <meta name="description" content="Abastecimiento validado, auditorías en origen y costo total previsible.">
 
-<link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
-<link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
-<link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
-<link rel="alternate" href="https://seusite.com/ar/" hreflang="ar" />
-<link rel="alternate" href="https://seusite.com/pt/" hreflang="x-default" />
+  <!-- Redirección por idioma (1er acceso) -->
+  <script>
+  (function(){
+    const SUPP=['pt','en','es','ar'], KEY='langChosen';
+    try{
+      const saved=localStorage.getItem(KEY);
+      if(!saved){
+        const list=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en']).map(x=>(x||'').toLowerCase());
+        let pref='en';
+        for(const l of list){ if(l.startsWith('pt')){pref='pt';break}
+                              if(l.startsWith('es')){pref='es';break}
+                              if(l.startsWith('ar')){pref='ar';break}
+                              if(l.startsWith('en')){pref='en';break}}
+        localStorage.setItem(KEY,pref);
+        const seg=(location.pathname.split('/')[1]||'').toLowerCase();
+        if(!SUPP.includes(seg) || seg!==pref){ location.replace('/'+pref+'/index.html'); }
+      }
+    }catch(e){}
+  })();
+  </script>
 
-<link rel="canonical" href="https://seusite.com/es/" />
-<link rel="stylesheet" href="../assets/styles.css">
-<script src="../assets/config.js"></script>
-<script defer src="../assets/main.js"></script>
+  <!-- SEO -->
+  <link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
+  <link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
+  <link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
+  <link rel="alternate" href="https://seusite.com/ar/" hreflang="ar" />
+  <link rel="alternate" href="https://seusite.com/es/" hreflang="x-default" />
+  <link rel="canonical" href="https://seusite.com/es/" />
 
-<!-- GA4 (substitua G-XXXXXXX pelo seu ID) -->
-<!--
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXX');
-</script>
--->
-
-
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Organization",
- "name":"Sua Marca",
- "url":"https://seusite.com/es/",
- "logo":"https://seusite.com/logo.png",
- "description":"Sourcing, auditoria na origem e gestão de importações da China para o Brasil.",
- "address": {
-   "@type":"PostalAddress",
-   "addressCountry":"CN",
-   "addressLocality":"Ganzhou",
-   "addressRegion":"Jiangxi"
- },
- "contactPoint":[{
-   "@type":"ContactPoint",
-   "contactType":"sales",
-   "telephone":"+55XXXXXXXXXX",
-   "areaServed":["BR","PT","ES","AE","SA"],
-   "availableLanguage":["pt","en","es","ar"]
- }]
-}
-</script>
-
+  <!-- Assets -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/video_hero.css?v=3">
+  <script src="/assets/config.js"></script>
+  <script defer src="/assets/main.js"></script>
 </head>
+
 <body>
-<header><div class="container">
-  <nav>
-    <div class="brand"><a href="index.html" data-text="brand">Sua Marca</a></div>
-    <div class="menu">
-      <a href="solucoes.html">Soluciones</a>
-      <a href="#servicos">Servicios</a>
-      <a href="#setores">Sectores</a>
-      <a href="#processo">Proceso</a>
-      <a href="#materiais">Materiales</a>
-      <a href="#sobre">Sobre nosotros</a>
-      <a href="#contato">Contacto</a>
-    </div>
-    <div class="lang"><a class="" href="../pt/index.html">PT</a> <a class="" href="../en/index.html">EN</a> <a class="active" href="index.html">ES</a> <a class="" href="../ar/index.html">AR</a></div>
-  </nav>
-</div></header>
+<header>
+  <div class="container">
+    <nav>
+      <div class="brand">
+        <a href="index.html" class="brand-logo" aria-label="Sha Rui Trading Company">
+          <span class="brand-top">SHA RUI</span>
+          <span class="brand-sub">TRADING COMPANY</span>
+        </a>
+      </div>
+
+      <div class="menu">
+        <a href="#services">Servicios</a>
+        <a href="#sectors">Sectores</a>
+        <a href="#process">Proceso</a>
+        <a href="#materials">Materiales</a>
+        <a href="#about">Sobre nosotros</a>
+        <a href="#contact">Contacto</a>
+      </div>
+
+      <div class="lang" id="lang">
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Seleccionar idioma">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.27a15.6 15.6 0 00-.9-5.02A8.02 8.02 0 0119.93 11zM12 4c.9 0 2.3 1.97 2.9 6H9.1c.6-4.03 2-6 2.9-6zM7.24 5.98A15.6 15.6 0 006.34 11H3.07a8.02 8.02 0 014.17-5.02zM4.07 13h3.27c.22 1.77.66 3.52 1.33 5.02A8.02 8.02 0 014.07 13zM12 20c-.9 0-2.3-1.97-2.9-6h5.8c-.6 4.03-2 6-2.9 6zm4.76-1.98A15.6 15.6 0 0017.66 13h3.27a8.02 8.02 0 01-4.17 5.02z"></path></svg>
+        </button>
+        <ul class="lang-menu" id="langMenu">
+          <li><a href="/pt/index.html">Português (PT)</a></li>
+          <li><a href="/en/index.html">English (EN)</a></li>
+          <li><a href="/es/index.html">Español (ES)</a></li>
+          <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
 
 <main>
- <link rel="stylesheet" href="/assets/styles.css">
-<link rel="stylesheet" href="/assets/video_hero.css?v=3">
-<script src="/assets/config.js"></script>
-<script defer src="/assets/main.js"></script>
+  <!-- HERO con video -->
+  <section class="hero-video-wrap">
+    <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
+      <source src="/assets/company_web_720p.mp4?v=8" type="video/mp4" media="(max-width: 768px)">
+      <source src="/assets/company.mp4?v=8" type="video/mp4">
+    </video>
 
+    <div class="hero-overlay"></div>
 
-  <section id="servicos" class="section">
+    <div class="hero-bar">
+      <button class="hero-btn" id="heroPlayPause" aria-label="Reproducir/Pausar" title="Reproducir/Pausar">▶︎</button>
+      <button class="hero-btn" id="heroMute" aria-label="Sonido" title="Sonido">🔇</button>
+      <a class="hero-cta" data-contact="whatsapp">WhatsApp</a>
+      <a class="hero-cta" href="#contact">Agendar</a>
+    </div>
+
+    <div class="hero-content hidden">
+      <h1 class="hero-title">Operamos dentro de la fábrica en Ganzhou</h1>
+      <p class="hero-sub">Auditoría 48h • QC Live • Spec‑Lock &amp; AQL • Costo total previsible</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2>Sobre nosotros</h2>
+      <p>Estamos en Ganzhou (China), conectando su empresa con proveedores confiables. Integramos ingeniería, calidad y finanzas para reducir riesgo y costo total.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
     <div class="container">
       <h2>Servicios</h2>
       <div class="grid">
-        <a class="card" href="solucoes.html"><h3>Todos os serviços & diferenciais</h3><p>Auditoria 48h, QC Live, Spec‑Lock, AQL, Simulador, DG/Baterias, Componentes e mais.</p></a>
+        <a class="card" href="#services">
+          <h3>Todos los servicios y diferenciales</h3>
+          <p>Auditoría 48h, QC Live, Spec‑Lock, AQL, Simulador, DG/Baterías, Componentes y más.</p>
+        </a>
       </div>
     </div>
   </section>
 
-  <section id="setores" class="section">
+  <!-- SECTORS -->
+  <section id="sectors" class="section">
     <div class="container">
       <h2>Sectores</h2>
       <div class="grid">
-        <a class="card" href="clusters/ree-imas-ganzhou.html"><h3>Ímãs & Terras Raras — Ganzhou</h3><p>Especialização onde o produto nasce.</p></a>
-        <a class="card" href="clusters/moveis-nankang.html"><h3>Móveis — Nankang</h3><p>Capacidade, acabamento e prazos do maior polo moveleiro.</p></a>
-        <div class="card"><h3>Outros setores</h3><p>Fale conosco no WhatsApp sobre sua categoria.</p></div>
+        <div class="card"><h3>Imanes &amp; Tierras Raras — Ganzhou</h3><p>Especialización donde nace el producto.</p></div>
+        <div class="card"><h3>Muebles — Nankang</h3><p>Capacidad, acabado y plazos del mayor polo mueblero.</p></div>
+        <div class="card"><h3>Otros sectores</h3><p>Hable con nosotros por WhatsApp sobre su categoría.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="processo" class="section">
+  <!-- PROCESS -->
+  <section id="process" class="section">
     <div class="container">
       <h2>Proceso</h2>
-      <ol>
-        <li>Brief</li><li>Sourcing</li><li>Amostras</li><li>Negociação & Incoterm</li><li>QC</li><li>Embarque & Desembaraço</li>
-      </ol>
+      <ol><li>Brief</li><li>Sourcing</li><li>Muestras</li><li>Negociación &amp; Incoterm</li><li>QC</li><li>Embarque &amp; Despacho</li></ol>
     </div>
   </section>
 
-  <section id="materiais" class="section">
+  <!-- MATERIALS -->
+  <section id="materials" class="section">
     <div class="container">
       <h2>Materiales</h2>
       <div class="grid">
-        <a class="card" href="materiais/checklist.html"><h3>Checklist de Pré‑Importação</h3><p>O que alinhar antes de comprar.</p></a>
-        <a class="card" href="materiais/relatorio-amostra.html"><h3>Amostra de Relatório</h3><p>Veja como entregamos o Sprint.</p></a>
+        <a class="card" href="/pt/materiais/checklist.html"><h3>Checklist de Pre‑Importación</h3><p>Qué alinear antes de comprar.</p></a>
+        <a class="card" href="/pt/materiais/relatorio-amostra.html"><h3>Ejemplo de Informe</h3><p>Vea cómo entregamos el Sprint.</p></a>
       </div>
     </div>
   </section>
 
-  <section id="sobre" class="section">
-    <div class="container">
-      <h2>Sobre nosotros</h2>
-      <p>Con base en Ganzhou (China), conectamos su empresa con proveedores verificados. Ingeniería, calidad y finanzas para reducir riesgo y costo final.</p>
-    </div>
-  </section>
-
-  <section id="contato" class="section">
+  <!-- CONTACT -->
+  <section id="contact" class="section">
     <div class="container">
       <h2>Contacto</h2>
-      <p>Converse pelo WhatsApp, envie e‑mail, adicione no WeChat ou agende:</p>
+      <p>Hable por WhatsApp, envíe un e‑mail, agregue en WeChat o agende:</p>
       <div style="margin:16px 0">
         <a class="cta primary" data-contact="whatsapp">Hablar por WhatsApp</a>
         <a class="cta" data-contact="email">Enviar e‑mail</a>
@@ -137,22 +167,25 @@
   </section>
 </main>
 
-<footer class="footer"><div class="container">
-  <div>© <span data-text="brand">Sua Marca</span> — Importação China ↔ Brasil</div>
-  <div class="contact-row" style="margin-top:8px">
-    <a class="badge" data-contact="facebook">Facebook</a>
-    <a class="badge" data-contact="instagram">Instagram</a>
-    <a class="badge" data-contact="tiktok">TikTok</a>
+<footer class="footer">
+  <div class="container">
+    <div>© <span data-text="brand">ShaRui Trading Company</span> — Operaciones de importación China ↔ Brasil</div>
+    <div class="contact-row" style="margin-top:8px">
+      <a class="badge" data-contact="facebook">Facebook</a>
+      <a class="badge" data-contact="instagram">Instagram</a>
+      <a class="badge" data-contact="tiktok">TikTok</a>
+    </div>
   </div>
-</div></footer>
+</footer>
 
 <div id="qr-modal" class="modal" onclick="closeQR()">
   <div class="modal-card" onclick="event.stopPropagation()">
     <h3>WeChat QR</h3>
-    <img src="../assets/wechat-qr.svg" alt="WeChat QR">
-    <div><button class="cta modal-close" onclick="closeQR()">Fechar</button></div>
+    <img src="/assets/wechat-qr.svg" alt="WeChat QR">
+    <div><button class="cta modal-close" onclick="closeQR()">Cerrar</button></div>
   </div>
 </div>
 
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
-</body></html>
+</body>
+</html>
