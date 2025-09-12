@@ -73,24 +73,37 @@
 <main>
   <!-- HERO COM O SEU VÍDEO -->
   <section class="hero-video-wrap">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg">
-      <!-- 720p em telas pequenas -->
-      <source src="/assets/company_web_720p.mp4?v=7" type="video/mp4" media="(max-width: 768px)">
-      <!-- 1080p padrão -->
-      <source src="/assets/company.mp4?v=7" type="video/mp4">
-    </video>
+  <!-- VÍDEO DO HERO (sem loop; o JS controlará tocar 2x) -->
+  <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
+    <!-- 720p em telas pequenas -->
+    <source src="/assets/company_web_720p.mp4?v=8" type="video/mp4" media="(max-width: 768px)">
+    <!-- 1080p padrão -->
+    <source src="/assets/company.mp4?v=8" type="video/mp4">
+  </video>
 
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">Operamos do chão de fábrica em Ganzhou</h1>
-      <p class="hero-sub">Auditoria 48h • QC Live • Spec‑Lock &amp; AQL • Custo total previsível</p>
-      <div class="hero-ctas">
-        <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
-        <a class="cta" href="#contato">Agendar diagnóstico</a>
-      </div>
-      <p class="badge-min">Sem valor mínimo — amostras e pilotos bem‑vindos.</p>
+  <!-- overlay escuro para dar contraste -->
+  <div class="hero-overlay"></div>
+
+  <!-- BARRA DE CONTROLES (estilo "Dubai Trade") -->
+  <div class="hero-bar">
+    <button class="hero-btn" id="heroPlayPause" aria-label="Reproduzir/Pausar" title="Reproduzir/Pausar">▶︎</button>
+    <button class="hero-btn" id="heroMute" aria-label="Som" title="Som">🔇</button>
+    <a class="hero-cta" data-contact="whatsapp">WhatsApp</a>
+    <a class="hero-cta" href="#contato">Agendar</a>
+  </div>
+
+  <!-- BLOCO DE TEXTO DO HERO (OCULTO) -->
+  <div class="hero-content hidden">
+    <h1 class="hero-title">Operamos do chão de fábrica em Ganzhou</h1>
+    <p class="hero-sub">Auditoria 48h • QC Live • Spec‑Lock &amp; AQL • Custo total previsível</p>
+    <div class="hero-ctas">
+      <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
+      <a class="cta" href="#contato">Agendar diagnóstico</a>
     </div>
-  </section>
+    <p class="badge-min">Sem valor mínimo — amostras e pilotos bem‑vindos.</p>
+  </div>
+</section>
+
 
   <!-- SOBRE (sem player; apenas texto) -->
   <section class="section" id="sobre">
