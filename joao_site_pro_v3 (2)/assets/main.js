@@ -73,3 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
     btnMute.textContent = video.muted ? '🔇' : '🔊';
   });
 });
+// ===== Menu de Idiomas (globo) =====
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = document.querySelector('.lang');
+  const toggle = document.getElementById('langToggle');
+  if (!lang || !toggle) return;
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    lang.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', lang.classList.contains('open') ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!lang.contains(e.target)) {
+      lang.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
