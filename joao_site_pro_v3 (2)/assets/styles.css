@@ -45,3 +45,40 @@ box-shadow:0 12px 36px rgba(0,0,0,.45)}.modal-card img{max-width:100%;height:aut
 /* logical spacing keep RTL friendly */
 .section,nav,.hero,.footer{padding-inline:20px}
 video_hero.css
+/* ---- Marca em duas linhas ---- */
+.brand-logo{
+  display:inline-flex; flex-direction:column; line-height:1; text-decoration:none; color:#fff;
+}
+.brand-top{
+  font-weight:800; text-transform:uppercase; letter-spacing:.04em;
+  font-size:clamp(18px,2.4vw,28px);
+}
+.brand-sub{
+  font-weight:700; text-transform:uppercase; letter-spacing:.18em;
+  font-size:clamp(9px,1.1vw,12px); opacity:.85; margin-top:2px;
+}
+
+/* ---- Globo / menu de idiomas ---- */
+.lang{ position:relative; display:flex; align-items:center; }
+.lang-toggle{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06); cursor:pointer;
+}
+.lang-toggle:hover{ background:rgba(255,255,255,.12); }
+.lang-toggle svg{ width:18px; height:18px; fill:#fff; opacity:.9; }
+
+.lang-menu{
+  position:absolute; right:0; top:120%; z-index:10;
+  display:none; min-width:200px; padding:8px 0;
+  background:rgba(13,18,27,.96);
+  border:1px solid rgba(255,255,255,.12); border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+.lang.open .lang-menu{ display:block; }
+.lang-menu li{ list-style:none; }
+.lang-menu a{
+  display:block; padding:10px 14px; color:#fff; text-decoration:none; font-size:14px;
+}
+.lang-menu a:hover{ background:rgba(255,255,255,.08); }
