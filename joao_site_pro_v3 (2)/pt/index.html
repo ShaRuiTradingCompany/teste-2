@@ -6,7 +6,7 @@
   <title>Importar da China com segurança — estamos dentro da fábrica.</title>
   <meta name="description" content="Sourcing validado, auditoria na origem e custo total previsível.">
 
-  <!-- SEO / hreflang -->
+  <!-- SEO / hreflang (ajuste os domínios quando tiver o definitivo) -->
   <link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
   <link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
   <link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
@@ -14,31 +14,16 @@
   <link rel="alternate" href="https://seusite.com/pt/" hreflang="x-default" />
   <link rel="canonical" href="https://seusite.com/pt/" />
 
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="../assets/styles.css">
-  <!-- Se você manteve o CSS do herói em arquivo separado, descomente a linha abaixo -->
-  <!-- <link rel="stylesheet" href="../assets/video_hero.css?v=2"> -->
-  <!-- Se instalou o efeito de fundo por seção (bg-stage), descomente a linha abaixo -->
-  <!-- <link rel="stylesheet" href="../assets/bg-scroll.css?v=1"> -->
+  <!-- CSS e scripts (caminhos absolutos) -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <!-- <link rel="stylesheet" href="/assets/video_hero.css?v=2"> -->
+  <!-- <link rel="stylesheet" href="/assets/bg-scroll.css?v=1"> -->
 
-  <!-- Scripts -->
-  <script src="../assets/config.js"></script>
-  <script defer src="../assets/main.js"></script>
-  <!-- Se instalou o efeito de fundo por seção (bg-stage), descomente a linha abaixo -->
-  <!-- <script defer src="../assets/bg-scroll.js?v=1"></script> -->
+  <script src="/assets/config.js"></script>
+  <script defer src="/assets/main.js"></script>
+  <!-- <script defer src="/assets/bg-scroll.js?v=1"></script> -->
 
-  <!-- GA4 (substitua G-XXXXXXX pelo seu ID) -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script>
-  -->
-
-  <!-- Schema.org -->
+  <!-- Schema.org (ajuste quando tiver domínio/logotipo finais) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -68,14 +53,6 @@
 <header>
   <div class="container">
     <nav>
-      <!-- Troque pelo seu logo se quiser:
-      <div class="brand">
-        <a href="index.html">
-          <img src="../assets/logo.svg" alt="ShaRui Trading Company" class="logo">
-          <span class="sr-only">ShaRui Trading Company</span>
-        </a>
-      </div>
-      -->
       <div class="brand"><a href="index.html" data-text="brand">ShaRui Trading Company</a></div>
 
       <div class="menu">
@@ -101,11 +78,10 @@
 <main>
   <!-- HERO COM VÍDEO DE FUNDO -->
   <section class="hero-video-wrap">
-<video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/hero-poster.jpg">
-  <source src="/assets/hero.webm?v=3" type="video/webm">
-  <source src="/assets/hero.mp4?v=3" type="video/mp4">
-</video>
-
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/hero-poster.jpg">
+      <source src="/assets/hero.webm?v=3" type="video/webm">
+      <source src="/assets/hero.mp4?v=3" type="video/mp4">
+    </video>
 
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -124,15 +100,19 @@
     <div class="container">
       <div class="card">
         <video controls preload="metadata" playsinline
-               poster="../assets/company-poster.jpg"
+               poster="/assets/company-poster.jpg"
                class="about-video">
-          <source src="../assets/company.mp4?v=1" type="video/mp4">
+          <source src="/assets/company.mp4?v=3" type="video/mp4">
         </video>
+        <!-- debug provisório: remova depois -->
+        <p style="font-size:12px;opacity:.6">
+          Debug: <a href="/assets/company.mp4?v=3" target="_blank">abrir company.mp4</a>
+        </p>
       </div>
 
-      <!-- Texto opcional abaixo do vídeo -->
       <h2 style="margin-top:14px">Sobre</h2>
-      <p>Estamos em Ganzhou (China), conectando sua empresa a fornecedores confiáveis. Integramos engenharia, qualidade e finanças para reduzir risco e custo total.</p>
+      <p>Estamos em Ganzhou (China), conectando sua empresa a fornecedores confiáveis.
+         Integramos engenharia, qualidade e finanças para reduzir risco e custo total.</p>
     </div>
   </section>
 
@@ -232,7 +212,7 @@
 <div id="qr-modal" class="modal" onclick="closeQR()">
   <div class="modal-card" onclick="event.stopPropagation()">
     <h3>WeChat QR</h3>
-    <img src="../assets/wechat-qr.svg" alt="WeChat QR">
+    <img src="/assets/wechat-qr.svg" alt="WeChat QR">
     <div><button class="cta modal-close" onclick="closeQR()">Fechar</button></div>
   </div>
 </div>
@@ -241,18 +221,3 @@
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
 </body>
 </html>
-<section class="section" id="sobre">
-  <div class="container">
-    <div class="card">
-      <video controls preload="metadata" playsinline
-             poster="/assets/company-poster.jpg"
-             class="about-video">
-        <source src="/assets/company.mp4?v=2" type="video/mp4">
-      </video>
-      <!-- debug provisório: remova depois -->
-      <p style="font-size:12px;opacity:.6">
-        Debug: <a href="/assets/company.mp4" target="_blank">abrir company.mp4</a>
-      </p>
-    </div>
-  </div>
-</section>
