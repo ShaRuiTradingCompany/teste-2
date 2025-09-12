@@ -1,21 +1,17 @@
-/* ====== HERO (vídeo de fundo) ====== */
+/* ===== HERO ===== */
 .hero-video-wrap{
   position: relative;
-  height: clamp(540px, 78vh, 820px);   /* igual ao “demo” — ajuste aqui se quiser mais/menos alto */
+  height: clamp(540px, 78vh, 820px);
   overflow: hidden;
 }
-
-/* o vídeo cobre toda a área do herói, sem deformar */
 .hero-video{
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;                   /* preenche mantendo proporção */
-  object-position: center 40%;         /* ajuste o “enquadramento” vertical (0% topo, 100% base) */
+  object-fit: cover;
+  object-position: center 40%; /* ajuste fino do enquadramento */
 }
-
-/* leve degrade para dar contraste ao texto */
 .hero-overlay{
   position: absolute;
   inset: 0;
@@ -25,35 +21,56 @@
     linear-gradient(180deg, rgba(5,10,20,.25), rgba(5,10,20,.72));
 }
 
-/* título e CTAs do herói */
-.hero-content{
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 118px 24px 140px;           /* top / sides / bottom */
-}
+/* Esconde o texto grande do hero (“as letras”) */
+.hidden{ display:none !important; }
 
-.hero-title{
-  font-size: clamp(32px, 6.2vw, 64px);
-  line-height: 1.05;
-  margin: 0 0 8px;
+/* ===== Barra de controles (“faixa”) ===== */
+.hero-bar{
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(10,15,25,.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  padding: 8px 12px;
 }
-
-.hero-sub{
-  font-size: clamp(14px, 1.7vw, 18px);
-  margin: 0 0 18px;
-  opacity: .95;
+.hero-btn{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 16px;
+  line-height: 1;
+  padding: 8px 12px;
+  cursor: pointer;
 }
-
-.hero-ctas .cta{ margin-right: 12px; }
+.hero-btn:hover{ background: rgba(255,255,255,.15); }
+.hero-cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.08);
+  border-radius: 999px;
+  padding: 8px 14px;
+}
+.hero-cta:hover{ background: rgba(255,255,255,.15); }
 
 @media (max-width: 1024px){
   .hero-video-wrap{ height: clamp(480px, 70vh, 760px); }
-  .hero-content{ padding: 96px 20px 120px; }
 }
-
 @media (max-width: 640px){
   .hero-video-wrap{ height: clamp(420px, 64vh, 640px); }
-  .hero-content{ padding: 84px 16px 96px; }
+  .hero-cta{ display:none; } /* em telas pequenas, deixa só Play/Som na faixa */
 }
