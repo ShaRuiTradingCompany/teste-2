@@ -50,7 +50,15 @@
 <header>
   <div class="container">
     <nav>
-      <div class="brand"><a href="index.html" data-text="brand">ShaRui Trading Company</a></div>
+      <!-- LOGO / MARCA (duas linhas) -->
+      <div class="brand">
+        <a href="index.html" class="brand-logo" aria-label="Sha Rui Trading Company">
+          <span class="brand-top">SHA RUI</span>
+          <span class="brand-sub">TRADING COMPANY</span>
+        </a>
+      </div>
+
+      <!-- MENU -->
       <div class="menu">
         <a href="solucoes.html">Soluções</a>
         <a href="#servicos">Serviços</a>
@@ -60,15 +68,26 @@
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
       </div>
-      <div class="lang">
-        <a class="active" href="index.html">PT</a>
-        <a href="../en/index.html">EN</a>
-        <a href="../es/index.html">ES</a>
-        <a href="../ar/index.html">AR</a>
+
+      <!-- GLOBO DE IDIOMAS -->
+      <div class="lang" id="lang">
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">
+          <!-- ícone globo -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.27a15.6 15.6 0 00-.9-5.02A8.02 8.02 0 0119.93 11zM12 4c.9 0 2.3 1.97 2.9 6H9.1c.6-4.03 2-6 2.9-6zM7.24 5.98A15.6 15.6 0 006.34 11H3.07a8.02 8.02 0 014.17-5.02zM4.07 13h3.27c.22 1.77.66 3.52 1.33 5.02A8.02 8.02 0 014.07 13zM12 20c-.9 0-2.3-1.97-2.9-6h5.8c-.6 4.03-2 6-2.9 6zm4.76-1.98A15.6 15.6 0 0017.66 13h3.27a8.02 8.02 0 01-4.17 5.02z"></path>
+          </svg>
+        </button>
+        <ul class="lang-menu" id="langMenu">
+          <li><a href="/pt/index.html">Português (PT)</a></li>
+          <li><a href="/en/index.html">English (EN)</a></li>
+          <li><a href="/es/index.html">Español (ES)</a></li>
+          <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
+        </ul>
       </div>
     </nav>
   </div>
 </header>
+
 
 <main>
   <!-- HERO COM O SEU VÍDEO -->
