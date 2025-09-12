@@ -1,158 +1,206 @@
 <!doctype html>
 <html lang="en" dir="ltr">
-<head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Import safely from China — we are on the factory floor.</title>
-<meta name="description" content="Validated sourcing, on‑site inspections, and a clear landed cost.">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Import from China safely — we are on the factory floor.</title>
+  <meta name="description" content="Validated sourcing, on‑site audits and predictable total landed cost.">
 
-<link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
-<link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
-<link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
-<link rel="alternate" href="https://seusite.com/ar/" hreflang="ar" />
-<link rel="alternate" href="https://seusite.com/pt/" hreflang="x-default" />
+  <!-- hreflang (ajuste o domínio definitivo depois) -->
+  <link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
+  <link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
+  <link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
+  <link rel="alternate" href="https://seusite.com/ar/" hreflang="ar" />
+  <link rel="alternate" href="https://seusite.com/en/" hreflang="x-default" />
+  <link rel="canonical" href="https://seusite.com/en/" />
 
-<link rel="canonical" href="https://seusite.com/en/" />
-<link rel="stylesheet" href="../assets/styles.css">
-<script src="../assets/config.js"></script>
-<script defer src="../assets/main.js"></script>
-
-<!-- GA4 (substitua G-XXXXXXX pelo seu ID) -->
-<!--
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXX');
-</script>
--->
-
-
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Organization",
- "name":"Sua Marca",
- "url":"https://seusite.com/en/",
- "logo":"https://seusite.com/logo.png",
- "description":"Sourcing, auditoria na origem e gestão de importações da China para o Brasil.",
- "address": {
-   "@type":"PostalAddress",
-   "addressCountry":"CN",
-   "addressLocality":"Ganzhou",
-   "addressRegion":"Jiangxi"
- },
- "contactPoint":[{
-   "@type":"ContactPoint",
-   "contactType":"sales",
-   "telephone":"+55XXXXXXXXXX",
-   "areaServed":["BR","PT","ES","AE","SA"],
-   "availableLanguage":["pt","en","es","ar"]
- }]
-}
-</script>
-
+  <!-- CSS / JS (caminhos absolutos para funcionar em qualquer idioma) -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/video_hero.css?v=3">
+  <script src="/assets/config.js"></script>
+  <script defer src="/assets/main.js"></script>
 </head>
+
 <body>
-<header><div class="container">
-  <nav>
-    <div class="brand"><a href="index.html" data-text="brand">Sua Marca</a></div>
-    <div class="menu">
-      <a href="solucoes.html">Solutions</a>
-      <a href="#servicos">Services</a>
-      <a href="#setores">Industries</a>
-      <a href="#processo">Process</a>
-      <a href="#materiais">Resources</a>
-      <a href="#sobre">About</a>
-      <a href="#contato">Contact</a>
-    </div>
-    <div class="lang"><a class="" href="../pt/index.html">PT</a> <a class="active" href="index.html">EN</a> <a class="" href="../es/index.html">ES</a> <a class="" href="../ar/index.html">AR</a></div>
-  </nav>
-</div></header>
+<header>
+  <div class="container">
+    <nav>
+      <!-- Brand stacked -->
+      <div class="brand">
+        <a href="index.html" class="brand-logo" aria-label="Sha Rui Trading Company">
+          <span class="brand-top">SHA RUI</span>
+          <span class="brand-sub">TRADING COMPANY</span>
+        </a>
+      </div>
+
+      <!-- Menu -->
+      <div class="menu">
+        <a href="solutions.html">Solutions</a>
+        <a href="#services">Services</a>
+        <a href="#sectors">Sectors</a>
+        <a href="#process">Process</a>
+        <a href="#materials">Materials</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <!-- Language globe -->
+      <div class="lang" id="lang">
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Select language">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.27a15.6 15.6 0 00-.9-5.02A8.02 8.02 0 0119.93 11zM12 4c.9 0 2.3 1.97 2.9 6H9.1c.6-4.03 2-6 2.9-6zM7.24 5.98A15.6 15.6 0 006.34 11H3.07a8.02 8.02 0 014.17-5.02zM4.07 13h3.27c.22 1.77.66 3.52 1.33 5.02A8.02 8.02 0 014.07 13zM12 20c-.9 0-2.3-1.97-2.9-6h5.8c-.6 4.03-2 6-2.9 6zm4.76-1.98A15.6 15.6 0 0017.66 13h3.27a8.02 8.02 0 01-4.17 5.02z"></path>
+          </svg>
+        </button>
+        <ul class="lang-menu" id="langMenu">
+          <li><a href="/pt/index.html">Português (PT)</a></li>
+          <li><a href="/en/index.html">English (EN)</a></li>
+          <li><a href="/es/index.html">Español (ES)</a></li>
+          <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
 
 <main>
- <link rel="stylesheet" href="/assets/styles.css">
-<link rel="stylesheet" href="/assets/video_hero.css?v=3">
-<script src="/assets/config.js"></script>
-<script defer src="/assets/main.js"></script>
+  <!-- HERO with your video + control bar (same as PT) -->
+  <section class="hero-video-wrap">
+    <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
+      <source src="/assets/company_web_720p.mp4?v=8" type="video/mp4" media="(max-width: 768px)">
+      <source src="/assets/company.mp4?v=8" type="video/mp4">
+    </video>
 
+    <div class="hero-overlay"></div>
 
-  <section id="servicos" class="section">
+    <!-- control bar -->
+    <div class="hero-bar">
+      <button class="hero-btn" id="heroPlayPause" aria-label="Play/Pause" title="Play/Pause">▶︎</button>
+      <button class="hero-btn" id="heroMute" aria-label="Sound" title="Sound">🔇</button>
+      <a class="hero-cta" data-contact="whatsapp">WhatsApp</a>
+      <a class="hero-cta" href="#contact">Schedule</a>
+    </div>
+
+    <!-- keep the text hidden; remove .hidden if you want headings -->
+    <div class="hero-content hidden">
+      <h1 class="hero-title">We operate on the factory floor in Ganzhou</h1>
+      <p class="hero-sub">48h Audit • QC Live • Spec‑Lock &amp; AQL • Predictable total cost</p>
+      <div class="hero-ctas">
+        <a class="cta primary" data-contact="whatsapp">Talk on WhatsApp</a>
+        <a class="cta" href="#contact">Book a diagnostic</a>
+      </div>
+      <p class="badge-min">No minimum order — samples and pilots welcome.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT (text only) -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2>About</h2>
+      <p>We are based in Ganzhou (China), connecting your company with reliable suppliers. We integrate engineering, quality and finance to reduce risk and total landed cost.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
     <div class="container">
       <h2>Services</h2>
       <div class="grid">
-        <a class="card" href="solucoes.html"><h3>Todos os serviços & diferenciais</h3><p>Auditoria 48h, QC Live, Spec‑Lock, AQL, Simulador, DG/Baterias, Componentes e mais.</p></a>
+        <a class="card" href="#services">
+          <h3>All services &amp; differentiators</h3>
+          <p>48h Audit, QC Live, Spec‑Lock, AQL, Simulator, DG/Batteries, Components and more.</p>
+        </a>
       </div>
     </div>
   </section>
 
-  <section id="setores" class="section">
+  <!-- SECTORS -->
+  <section id="sectors" class="section">
     <div class="container">
-      <h2>Industries</h2>
+      <h2>Sectors</h2>
       <div class="grid">
-        <a class="card" href="clusters/ree-imas-ganzhou.html"><h3>Ímãs & Terras Raras — Ganzhou</h3><p>Especialização onde o produto nasce.</p></a>
-        <a class="card" href="clusters/moveis-nankang.html"><h3>Móveis — Nankang</h3><p>Capacidade, acabamento e prazos do maior polo moveleiro.</p></a>
-        <div class="card"><h3>Outros setores</h3><p>Fale conosco no WhatsApp sobre sua categoria.</p></div>
+        <div class="card">
+          <h3>Magnets &amp; Rare Earths — Ganzhou</h3>
+          <p>Specialization where the product is born.</p>
+        </div>
+        <div class="card">
+          <h3>Furniture — Nankang</h3>
+          <p>Capacity, finishing and lead times from the largest furniture hub.</p>
+        </div>
+        <div class="card">
+          <h3>Other sectors</h3>
+          <p>Talk to us on WhatsApp about your category.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="processo" class="section">
+  <!-- PROCESS -->
+  <section id="process" class="section">
     <div class="container">
       <h2>Process</h2>
       <ol>
-        <li>Brief</li><li>Sourcing</li><li>Amostras</li><li>Negociação & Incoterm</li><li>QC</li><li>Embarque & Desembaraço</li>
+        <li>Brief</li>
+        <li>Sourcing</li>
+        <li>Samples</li>
+        <li>Negotiation &amp; Incoterm</li>
+        <li>QC</li>
+        <li>Shipment &amp; Customs clearance</li>
       </ol>
     </div>
   </section>
 
-  <section id="materiais" class="section">
+  <!-- MATERIALS -->
+  <section id="materials" class="section">
     <div class="container">
-      <h2>Resources</h2>
+      <h2>Materials</h2>
       <div class="grid">
-        <a class="card" href="materiais/checklist.html"><h3>Checklist de Pré‑Importação</h3><p>O que alinhar antes de comprar.</p></a>
-        <a class="card" href="materiais/relatorio-amostra.html"><h3>Amostra de Relatório</h3><p>Veja como entregamos o Sprint.</p></a>
+        <a class="card" href="/pt/materiais/checklist.html">
+          <h3>Pre‑Import Checklist</h3>
+          <p>What to align before buying.</p>
+        </a>
+        <a class="card" href="/pt/materiais/relatorio-amostra.html">
+          <h3>Sample Report</h3>
+          <p>See how we deliver the Sprint.</p>
+        </a>
       </div>
     </div>
   </section>
 
-  <section id="sobre" class="section">
-    <div class="container">
-      <h2>About</h2>
-      <p>Based in Ganzhou (China), we connect your company to vetted suppliers. We blend engineering, quality and finance to reduce risk and landed cost.</p>
-    </div>
-  </section>
-
-  <section id="contato" class="section">
+  <!-- CONTACT -->
+  <section id="contact" class="section">
     <div class="container">
       <h2>Contact</h2>
-      <p>Converse pelo WhatsApp, envie e‑mail, adicione no WeChat ou agende:</p>
+      <p>Talk on WhatsApp, send an e‑mail, add us on WeChat or schedule:</p>
       <div style="margin:16px 0">
-        <a class="cta primary" data-contact="whatsapp">Chat on WhatsApp</a>
-        <a class="cta" data-contact="email">Enviar e‑mail</a>
-        <a class="cta" onclick="openQR()">WeChat — Ver QR</a>
+        <a class="cta primary" data-contact="whatsapp">Talk on WhatsApp</a>
+        <a class="cta" data-contact="email">Send e‑mail</a>
+        <a class="cta" onclick="openQR()">WeChat — Show QR</a>
       </div>
       <iframe id="calendly-embed" class="iframe-wrap" src="about:blank" frameborder="0"></iframe>
     </div>
   </section>
 </main>
 
-<footer class="footer"><div class="container">
-  <div>© <span data-text="brand">Sua Marca</span> — Importação China ↔ Brasil</div>
-  <div class="contact-row" style="margin-top:8px">
-    <a class="badge" data-contact="facebook">Facebook</a>
-    <a class="badge" data-contact="instagram">Instagram</a>
-    <a class="badge" data-contact="tiktok">TikTok</a>
+<footer class="footer">
+  <div class="container">
+    <div>© <span data-text="brand">ShaRui Trading Company</span> — China ↔ Brazil import operations</div>
+    <div class="contact-row" style="margin-top:8px">
+      <a class="badge" data-contact="facebook">Facebook</a>
+      <a class="badge" data-contact="instagram">Instagram</a>
+      <a class="badge" data-contact="tiktok">TikTok</a>
+    </div>
   </div>
-</div></footer>
+</footer>
 
+<!-- WeChat Modal -->
 <div id="qr-modal" class="modal" onclick="closeQR()">
   <div class="modal-card" onclick="event.stopPropagation()">
     <h3>WeChat QR</h3>
-    <img src="../assets/wechat-qr.svg" alt="WeChat QR">
-    <div><button class="cta modal-close" onclick="closeQR()">Fechar</button></div>
+    <img src="/assets/wechat-qr.svg" alt="WeChat QR">
+    <div><button class="cta modal-close" onclick="closeQR()">Close</button></div>
   </div>
 </div>
 
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
-</body></html>
+</body>
+</html>
