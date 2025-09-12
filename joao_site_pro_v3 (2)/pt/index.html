@@ -101,10 +101,11 @@
 <main>
   <!-- HERO COM VÍDEO DE FUNDO -->
   <section class="hero-video-wrap">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="../assets/hero-poster.jpg">
-      <source src="../assets/hero.webm?v=3" type="video/webm">
-      <source src="../assets/hero.mp4?v=3" type="video/mp4">
-    </video>
+<video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/hero-poster.jpg">
+  <source src="/assets/hero.webm?v=3" type="video/webm">
+  <source src="/assets/hero.mp4?v=3" type="video/mp4">
+</video>
+
 
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -240,3 +241,18 @@
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
 </body>
 </html>
+<section class="section" id="sobre">
+  <div class="container">
+    <div class="card">
+      <video controls preload="metadata" playsinline
+             poster="/assets/company-poster.jpg"
+             class="about-video">
+        <source src="/assets/company.mp4?v=2" type="video/mp4">
+      </video>
+      <!-- debug provisório: remova depois -->
+      <p style="font-size:12px;opacity:.6">
+        Debug: <a href="/assets/company.mp4" target="_blank">abrir company.mp4</a>
+      </p>
+    </div>
+  </div>
+</section>
