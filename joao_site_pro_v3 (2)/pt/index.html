@@ -3,10 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Importar da China com segurança — estamos dentro da fábrica.</title>
-  <meta name="description" content="Sourcing validado, auditoria na origem e custo total previsível.">
+  <title>ShaRui Trading Company — Estamos dentro da fábrica em Ganzhou</title>
+  <meta name="description" content="Sourcing por clusters, auditoria 48h (SLA), QC Live com AQL e custo total previsível. Sem valor mínimo — amostras e projetos piloto bem-vindos.">
 
-  <!-- SEO / hreflang (ajuste domínios quando tiver o definitivo) -->
+  <!-- Redireciona no 1º acesso conforme idioma -->
+  <script>
+  (function(){
+    const SUPP=['pt','en','es','ar'], KEY='langChosen';
+    try{
+      const saved=localStorage.getItem(KEY);
+      if(!saved){
+        const list=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en']).map(x=>(x||'').toLowerCase());
+        let pref='en';
+        for(const l of list){ if(l.startsWith('pt')){pref='pt';break}
+                              if(l.startsWith('es')){pref='es';break}
+                              if(l.startsWith('ar')){pref='ar';break}
+                              if(l.startsWith('en')){pref='en';break}}
+        localStorage.setItem(KEY,pref);
+        const seg=(location.pathname.split('/')[1]||'').toLowerCase();
+        if(!SUPP.includes(seg) || seg!==pref){ location.replace('/'+pref+'/index.html'); }
+      }
+    }catch(e){}
+  })();
+  </script>
+
+  <!-- hreflang (ajuste o domínio definitivo depois) -->
   <link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
   <link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
   <link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
@@ -14,13 +35,13 @@
   <link rel="alternate" href="https://seusite.com/pt/" hreflang="x-default" />
   <link rel="canonical" href="https://seusite.com/pt/" />
 
-  <!-- CSS / JS (caminhos absolutos para evitar erro de pasta) -->
+  <!-- CSS / JS -->
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/video_hero.css?v=3">
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Schema.org (ajuste quando tiver domínio/logotipo finais) -->
+  <!-- Schema.org básico -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -28,37 +49,47 @@
     "name":"ShaRui Trading Company",
     "url":"https://seusite.com/pt/",
     "logo":"https://seusite.com/logo.png",
-    "description":"Sourcing, auditoria na origem e gestão de importações da China para o Brasil.",
-    "address": {
-      "@type":"PostalAddress",
-      "addressCountry":"CN",
-      "addressLocality":"Ganzhou",
-      "addressRegion":"Jiangxi"
-    },
-    "contactPoint":[{
-      "@type":"ContactPoint",
-      "contactType":"sales",
-      "telephone":"+55XXXXXXXXXX",
-      "areaServed":["BR","PT","ES","AE","SA"],
-      "availableLanguage":["pt","en","es","ar"]
-    }]
+    "description":"Sourcing por clusters, auditoria 48h (SLA), QC Live e custo total previsível. Sem valor mínimo.",
+    "address":{"@type":"PostalAddress","addressCountry":"CN","addressLocality":"Ganzhou","addressRegion":"Jiangxi"},
+    "contactPoint":[{"@type":"ContactPoint","contactType":"sales","areaServed":["BR","PT","ES","AE","SA"],"availableLanguage":["pt","en","es","ar"]}]
   }
   </script>
+
+  <!-- Estilos locais mínimos para as novas seções (reaproveita suas classes base) -->
+  <style>
+    .pill {display:inline-block;padding:6px 10px;border:1px solid rgba(255,255,255,.18);
+           border-radius:999px;background:rgba(255,255,255,.06);font-size:13px;margin:4px 6px 0 0;}
+    .callout {background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+              border-radius:12px;padding:16px;margin-top:12px}
+    .qc-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .qc-card {background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px}
+    .qc-head {display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .qc-badge {font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18)}
+    .ok {background:rgba(46,204,113,.18)}
+    .fail {background:rgba(231,76,60,.18)}
+    .mini {font-size:12px;opacity:.8}
+    .map-wrap {border-radius:12px;border:1px solid rgba(255,255,255,.12);overflow:hidden}
+    .map-img {width:100%;display:block;opacity:.95}
+    .kpis {display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px}
+    .kpi {background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px}
+    .kpi b{font-size:20px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+  </style>
 </head>
 
 <body>
 <header>
   <div class="container">
     <nav>
-      <!-- LOGO / MARCA (duas linhas) -->
+      <!-- Marca empilhada -->
       <div class="brand">
-        <a href="index.html" class="brand-logo" aria-label="Sha Rui Trading Company">
+        <a href="index.html" class="brand-logo" aria-label="ShaRui Trading Company">
           <span class="brand-top">SHA RUI</span>
           <span class="brand-sub">TRADING COMPANY</span>
         </a>
       </div>
 
-      <!-- MENU -->
+      <!-- Menu -->
       <div class="menu">
         <a href="solucoes.html">Soluções</a>
         <a href="#servicos">Serviços</a>
@@ -67,15 +98,13 @@
         <a href="#materiais">Materiais</a>
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
+        <a href="marketplace.html"><b>Marketplace</b></a>
       </div>
 
-      <!-- GLOBO DE IDIOMAS -->
+      <!-- Globo de idiomas -->
       <div class="lang" id="lang">
         <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">
-          <!-- ícone globo -->
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.27a15.6 15.6 0 00-.9-5.02A8.02 8.02 0 0119.93 11zM12 4c.9 0 2.3 1.97 2.9 6H9.1c.6-4.03 2-6 2.9-6zM7.24 5.98A15.6 15.6 0 006.34 11H3.07a8.02 8.02 0 014.17-5.02zM4.07 13h3.27c.22 1.77.66 3.52 1.33 5.02A8.02 8.02 0 014.07 13zM12 20c-.9 0-2.3-1.97-2.9-6h5.8c-.6 4.03-2 6-2.9 6zm4.76-1.98A15.6 15.6 0 0017.66 13h3.27a8.02 8.02 0 01-4.17 5.02z"></path>
-          </svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.27a15.6 15.6 0 00-.9-5.02A8.02 8.02 0 0119.93 11zM12 4c.9 0 2.3 1.97 2.9 6H9.1c.6-4.03 2-6 2.9-6zM7.24 5.98A15.6 15.6 0 006.34 11H3.07a8.02 8.02 0 014.17-5.02zM4.07 13h3.27c.22 1.77.66 3.52 1.33 5.02A8.02 8.02 0 014.07 13zM12 20c-.9 0-2.3-1.97-2.9-6h5.8c-.6 4.03-2 6-2.9 6zm4.76-1.98A15.6 15.6 0 0017.66 13h3.27a8.02 8.02 0 01-4.17 5.02z"></path></svg>
         </button>
         <ul class="lang-menu" id="langMenu">
           <li><a href="/pt/index.html">Português (PT)</a></li>
@@ -88,128 +117,178 @@
   </div>
 </header>
 
-
 <main>
-  <!-- HERO COM O SEU VÍDEO -->
+  <!-- HERO com vídeo e barra de controles -->
   <section class="hero-video-wrap">
-  <!-- VÍDEO DO HERO (sem loop; o JS controlará tocar 2x) -->
-  <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
-    <!-- 720p em telas pequenas -->
-    <source src="/assets/company_web_720p.mp4?v=8" type="video/mp4" media="(max-width: 768px)">
-    <!-- 1080p padrão -->
-    <source src="/assets/company.mp4?v=8" type="video/mp4">
-  </video>
+    <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
+      <source src="/assets/company_web_720p.mp4?v=17" type="video/mp4" media="(max-width: 768px)">
+      <source src="/assets/company.mp4?v=17" type="video/mp4">
+    </video>
 
-  <!-- overlay escuro para dar contraste -->
-  <div class="hero-overlay"></div>
+    <div class="hero-overlay"></div>
 
-  <!-- BARRA DE CONTROLES (estilo "Dubai Trade") -->
-  <div class="hero-bar">
-    <button class="hero-btn" id="heroPlayPause" aria-label="Reproduzir/Pausar" title="Reproduzir/Pausar">▶︎</button>
-    <button class="hero-btn" id="heroMute" aria-label="Som" title="Som">🔇</button>
-    <a class="hero-cta" data-contact="whatsapp">WhatsApp</a>
-    <a class="hero-cta" href="#contato">Agendar</a>
-  </div>
-
-  <!-- BLOCO DE TEXTO DO HERO (OCULTO) -->
-  <div class="hero-content hidden">
-    <h1 class="hero-title">Operamos do chão de fábrica em Ganzhou</h1>
-    <p class="hero-sub">Auditoria 48h • QC Live • Spec‑Lock &amp; AQL • Custo total previsível</p>
-    <div class="hero-ctas">
-      <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
-      <a class="cta" href="#contato">Agendar diagnóstico</a>
+    <!-- Barra estilo “Dubai” -->
+    <div class="hero-bar">
+      <button class="hero-btn" id="heroPlayPause" aria-label="Reproduzir/Pausar" title="Reproduzir/Pausar">▶︎</button>
+      <button class="hero-btn" id="heroMute" aria-label="Som" title="Som">🔇</button>
+      <a class="hero-cta" data-contact="whatsapp">WhatsApp</a>
+      <a class="hero-cta" href="#contato">Agendar</a>
     </div>
-    <p class="badge-min">Sem valor mínimo — amostras e pilotos bem‑vindos.</p>
-  </div>
-</section>
 
+    <!-- Texto do hero (oculto para layout mais tech/clean) -->
+    <div class="hero-content hidden">
+      <h1 class="hero-title">Operamos do chão de fábrica em Ganzhou</h1>
+      <p class="hero-sub">Auditoria 48h • QC Live • Spec‑Lock &amp; AQL • Custo total previsível</p>
+      <div class="hero-ctas">
+        <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
+        <a class="cta" href="#contato">Agendar diagnóstico</a>
+      </div>
+      <p class="badge-min">Sem valor mínimo — amostras e pilotos bem‑vindos.</p>
+    </div>
+  </section>
 
-  <!-- SOBRE (sem player; apenas texto) -->
+  <!-- Proposta clara + diferenciais -->
   <section class="section" id="sobre">
     <div class="container">
-      <h2>Sobre</h2>
-      <p>Estamos em Ganzhou (China), conectando sua empresa a fornecedores confiáveis.
-         Integramos engenharia, qualidade e finanças para reduzir risco e custo total.</p>
-    </div>
-  </section>
+      <h2>Estamos dentro da fábrica — e trazemos previsibilidade ao seu CIF</h2>
+      <p>Com base em <b>clusters</b> (Ganzhou — ímãs/REE; Nankang — móveis), combinamos engenharia, qualidade e finanças para reduzir risco e custo total. <span class="pill">Sem valor mínimo</span> <span class="pill">Amostras & pilotos</span> <span class="pill">Auditoria 48h (SLA)</span></p>
 
-  <!-- SERVIÇOS -->
-  <section id="servicos" class="section">
-    <div class="container">
-      <h2>Serviços</h2>
-      <div class="grid">
-        <a class="card" href="solucoes.html">
-          <h3>Todos os serviços &amp; diferenciais</h3>
-          <p>Auditoria 48h, QC Live, Spec‑Lock, AQL, Simulador, DG/Baterias, Componentes e mais.</p>
-        </a>
+      <div class="kpis">
+        <div class="kpi"><b>48h</b><br>SLA de auditoria com check‑in na fábrica</div>
+        <div class="kpi"><b>AQL</b><br>Inspeção com critérios e amostragem ANSI/ASQ</div>
+        <div class="kpi"><b>Spec‑Lock</b><br>Especificação PT‑ZH com tolerâncias & embalagem</div>
+        <div class="kpi"><b>CIF claro</b><br>Simulação de custo total antes do pedido</div>
       </div>
-    </div>
-  </section>
 
-  <!-- SETORES -->
-  <section id="setores" class="section">
-    <div class="container">
-      <h2>Setores</h2>
-      <div class="grid">
-        <a class="card" href="clusters/ree-imas-ganzhou.html">
-          <h3>Ímãs &amp; Terras Raras — Ganzhou</h3>
-          <p>Especialização onde o produto nasce.</p>
-        </a>
-        <a class="card" href="clusters/moveis-nankang.html">
-          <h3>Móveis — Nankang</h3>
-          <p>Capacidade, acabamento e prazos do maior polo moveleiro.</p>
-        </a>
-        <div class="card">
-          <h3>Outros setores</h3>
-          <p>Fale conosco no WhatsApp sobre sua categoria.</p>
+      <div class="callout">
+        <b>Como nos diferenciamos</b>
+        <ul>
+          <li><b>QC Live</b> — feed público (atraso 72h) com cards de inspeção.</li>
+          <li><b>Spec‑Lock PT‑ZH</b> — documento bilíngue com fotos, tolerâncias, ISTA/drop, etiqueta e HS sugerido.</li>
+          <li><b>Simulador 1‑min</b> — CIF + impostos estimados em 60s (export PDF).</li>
+          <li><b>Mapa de Clusters</b> — atuamos onde o produto nasce (capacidade, prazos, sazonalidade).</li>
+        </ul>
+        <div class="cta-row">
+          <a class="cta" href="#qclive">Ver QC Live</a>
+          <a class="cta" href="#speclock">Gerar Spec‑Lock</a>
+          <a class="cta" href="#simulador">Simular CIF</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESSO -->
-  <section id="processo" class="section">
+  <!-- Serviços / Diferenciais -->
+  <section id="servicos" class="section">
     <div class="container">
-      <h2>Processo</h2>
-      <ol>
-        <li>Brief</li>
-        <li>Sourcing</li>
-        <li>Amostras</li>
-        <li>Negociação &amp; Incoterm</li>
-        <li>QC</li>
-        <li>Embarque &amp; Desembaraço</li>
-      </ol>
+      <h2>Serviços & diferenciais</h2>
+      <div class="grid">
+        <a class="card" href="solucoes.html#sourcing"><h3>Sourcing por cluster</h3><p>Fornecedor certo em polos como Ganzhou (REE/ímãs) e Nankang (móveis).</p></a>
+        <a class="card" href="#speclock"><h3>Spec‑Lock PT‑ZH</h3><p>Especificação bilíngue com tolerâncias, embalagem e etiqueta.</p></a>
+        <a class="card" href="#qclive"><h3>QC Live • AQL</h3><p>Inspeção com AQL e cards públicos (72h delay) para confiança.</p></a>
+        <a class="card" href="#simulador"><h3>Simulador 1‑min</h3><p>CIF + impostos estimados e export PDF para decisão.</p></a>
+        <a class="card" href="solucoes.html#desembaraco"><h3>Desembaraço & impostos</h3><p>Planejamento e previsibilidade do custo total.</p></a>
+        <a class="card" href="solucoes.html#dangerous"><h3>DG / Baterias / Componentes</h3><p>Manuseio e requisitos específicos sem sustos.</p></a>
+      </div>
     </div>
   </section>
 
-  <!-- MATERIAIS -->
+  <!-- Setores / Clusters -->
+  <section id="setores" class="section">
+    <div class="container">
+      <h2>Clusters onde atuamos</h2>
+      <div class="grid">
+        <a class="card" href="clusters/ree-imas-ganzhou.html"><h3>Ímãs & Terras Raras — Ganzhou</h3><p>Especialização em origem: matéria‑prima, cadeia local e prazos.</p></a>
+        <a class="card" href="clusters/moveis-nankang.html"><h3>Móveis — Nankang</h3><p>Capacidade, acabamento e lead time do maior polo moveleiro.</p></a>
+        <div class="card"><h3>Outros setores</h3><p>Conte seu projeto no WhatsApp — mapeamos o polo certo.</p></div>
+      </div>
+
+      <div class="map-wrap" style="margin-top:14px">
+        <img class="map-img" src="/assets/mapa-clusters.svg" alt="Mapa de clusters na China (Ganzhou / Nankang / ... )">
+      </div>
+    </div>
+  </section>
+
+  <!-- Processo -->
+  <section id="processo" class="section">
+    <div class="container">
+      <h2>Processo em 10 passos</h2>
+      <ol>
+        <li>Brief & RADAR</li>
+        <li>Busca de fornecedores (cluster)</li>
+        <li>Simulação de custo total</li>
+        <li>Auditoria de fábrica (48h SLA)</li>
+        <li>Amostras & validação</li>
+        <li>Spec‑Lock PT‑ZH & contrato</li>
+        <li>Produção & QC Live (AQL)</li>
+        <li>Embalagem & conformidade</li>
+        <li>Frete (FCL/LCL/Aéreo) & seguros</li>
+        <li>Desembaraço & entrega</li>
+      </ol>
+      <div class="callout">
+        <b>SLA 48h — Auditoria</b><br>
+        Recebendo o brief, confirmamos o <i>check‑in</i> na fábrica em até <b>48h</b>. <a class="cta" href="sla.html">Entenda o SLA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QC Live (cards públicos) -->
+  <section id="qclive" class="section">
+    <div class="container">
+      <h2>QC Live (atraso 72h)</h2>
+      <p class="mini">Cards com dados anonimizados de inspeções recentes (AQL, amostragem e resultado). Conteúdo publicado com atraso para proteção de informação.</p>
+      <div class="qc-grid" id="qcGrid"><!-- Cards inseridos via script abaixo --></div>
+      <p class="mini">Critérios AQL: Críticas/Maiores/Menores conforme ANSI/ASQ Z1.4.</p>
+    </div>
+  </section>
+
+  <!-- Spec-Lock PT-ZH -->
+  <section id="speclock" class="section">
+    <div class="container">
+      <h2>Spec‑Lock PT‑ZH</h2>
+      <p>Documento bilíngue com fotos, tolerâncias, embalagem (ISTA/drop), etiqueta, inspeção AQL prevista e HS sugerido. Evite retrabalhos e ganhe previsibilidade.</p>
+      <div class="cta-row">
+        <a class="cta primary" href="https://tally.so/r/SEU_FORM_SPECLOCK" target="_blank" rel="noopener">Gerar Spec‑Lock</a>
+        <a class="cta" href="/pt/materiais/relatorio-amostra.html">Ver amostra</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simulador 1-min -->
+  <section id="simulador" class="section">
+    <div class="container">
+      <h2>Simulador 1‑min (CIF + impostos)</h2>
+      <p>Estime custo total antes do pedido. Valores indicativos — validação final na proposta.</p>
+      <div class="iframe-wrap" style="height:520px">
+        <!-- Publique sua planilha (ou app) e troque a URL abaixo -->
+        <iframe src="about:blank" loading="lazy" title="Simulador CIF"></iframe>
+      </div>
+      <p class="mini">Dica: publique sua planilha Google em “Arquivo → Publicar na web” e cole o link no <code>src</code> acima.</p>
+    </div>
+  </section>
+
+  <!-- Materiais -->
   <section id="materiais" class="section">
     <div class="container">
       <h2>Materiais</h2>
       <div class="grid">
-        <a class="card" href="materiais/checklist.html">
-          <h3>Checklist de Pré‑Importação</h3>
-          <p>O que alinhar antes de comprar.</p>
-        </a>
-        <a class="card" href="materiais/relatorio-amostra.html">
-          <h3>Amostra de Relatório</h3>
-          <p>Veja como entregamos o Sprint.</p>
-        </a>
+        <a class="card" href="materiais/checklist.html"><h3>Checklist de Pré‑Importação</h3><p>O que alinhar antes de comprar.</p></a>
+        <a class="card" href="materiais/relatorio-amostra.html"><h3>Amostra de Relatório</h3><p>Como entregamos seu Sprint.</p></a>
       </div>
     </div>
   </section>
 
-  <!-- CONTATO -->
+  <!-- Contato -->
   <section id="contato" class="section">
     <div class="container">
       <h2>Contato</h2>
-      <p>Converse pelo WhatsApp, envie e‑mail, adicione no WeChat ou agende:</p>
-      <div style="margin:16px 0">
-        <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
+      <p>Fale no WhatsApp, envie e‑mail, adicione no WeChat ou agende:</p>
+      <div class="cta-row">
+        <a class="cta primary" data-contact="whatsapp">WhatsApp</a>
         <a class="cta" data-contact="email">Enviar e‑mail</a>
         <a class="cta" onclick="openQR()">WeChat — Ver QR</a>
+        <a class="cta" href="marketplace.html">Marketplace</a>
       </div>
-      <iframe id="calendly-embed" class="iframe-wrap" src="about:blank" frameborder="0"></iframe>
+      <iframe id="calendly-embed" class="iframe-wrap" src="about:blank" frameborder="0" title="Agendamento"></iframe>
     </div>
   </section>
 </main>
@@ -236,6 +315,34 @@
 
 <!-- Botão flutuante WhatsApp -->
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
+
+<!-- Demo simples do QC Live (substitua por dados reais quando quiser) -->
+<script>
+(function(){
+  const feed = (window.QC_FEED || [
+    {data:'2025-09-10', cluster:'Ganzhou • Ímãs', aql:'G1.5', crit:0, maj:1, min:3, status:'APROVADO'},
+    {data:'2025-09-09', cluster:'Nankang • Móveis', aql:'G2.5', crit:0, maj:2, min:5, status:'APROVADO c/ ressalva'},
+    {data:'2025-09-08', cluster:'Eletrônicos • DG', aql:'G1.0', crit:1, maj:2, min:7, status:'REPROVADO'}
+  ]);
+  const grid = document.getElementById('qcGrid');
+  if(!grid) return;
+  grid.innerHTML = feed.map(item=>{
+    const ok = /APROVADO/.test(item.status);
+    return `
+      <div class="qc-card">
+        <div class="qc-head">
+          <b>${item.cluster}</b>
+          <span class="qc-badge ${ok?'ok':'fail'}">${item.status}</span>
+        </div>
+        <div class="mini">Data: ${item.data} • AQL: ${item.aql}</div>
+        <div class="mini">Falhas — Críticas: <b>${item.crit}</b> • Maiores: <b>${item.maj}</b> • Menores: <b>${item.min}</b></div>
+      </div>
+    `;
+  }).join('');
+})();
+</script>
+
 </body>
 </html>
+
 
