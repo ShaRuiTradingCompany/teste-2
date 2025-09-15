@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ShaRui Trading Company — Estamos dentro da fábrica em Ganzhou</title>
+  <title>ShaRui Trading Company — Escritório em Ganzhou, visitamos fábricas em toda a China</title>
   <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra com fotos e vídeos e preço estimado antes do pedido. Ficha técnica em português e chinês. Sem valor mínimo.">
 
   <!-- Fonte estilo Comexport -->
@@ -18,75 +18,77 @@
 
   <!-- Estilos complementares -->
   <style>
-    :root { --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    body { font-family: var(--font-sans); }
+    :root{
+      --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --accent: #66e0c2; /* cor destaque elegante (pode ajustar depois) */
+    }
+    body{font-family:var(--font-sans)}
 
-    /* ===== Header totalmente transparente sobre o vídeo ===== */
+    /* ===== Header 100% transparente sobre o vídeo ===== */
     .site-header{position:fixed; top:0; left:0; right:0; z-index:1000; background:transparent; border:none;}
     .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
-    .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.45);}
+    .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{color:#fff; text-shadow:none;}
     nav .menu{display:flex; gap:16px; align-items:center}
-    nav .menu a{opacity:.95}
+    nav .menu a{opacity:.98}
     nav .menu a:hover{opacity:1}
 
     /* Marca empilhada e alinhada (TRADING abaixo de SHA RUI, alinhado à esquerda) */
     .brand-logo{display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;}
     .brand-logo .brand-top{display:block; font-weight:700; letter-spacing:.6px}
-    .brand-logo .brand-sub{display:block; font-size:12px; opacity:.9; margin-top:-2px; letter-spacing:.8px; padding-left:0}
+    .brand-logo .brand-sub{display:block; font-size:12px; opacity:.92; margin-top:-2px; letter-spacing:.8px; padding-left:0}
 
-    /* Vídeo mais claro */
-    .hero-video{filter: brightness(1.32) contrast(1.08) saturate(1.06);}
-    .hero-video-wrap{min-height:68vh}
-    .hero-overlay{background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.18));}
+    /* ===== HERO maior e mais claro ===== */
+    .hero-video-wrap{min-height:90vh} /* altura maior do vídeo */
+    .hero-video{filter:brightness(1.34) contrast(1.08) saturate(1.06);}
+    .hero-overlay{background:none !important;} /* sem “fosco” */
 
-    /* Banda abaixo do vídeo (com foto de fundo) */
+    /* ===== Banda abaixo do vídeo (com foto) ===== */
     .after-hero{min-height:60vh; display:flex; align-items:center; position:relative;
       background-image:url('/assets/bg-after-hero.jpg'); background-size:cover; background-position:center;}
     .after-hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));}
     .after-hero > .container{position:relative; z-index:1;}
     .hero-box{max-width:1100px; width:100%; margin:0 auto; background:rgba(0,0,0,.26);
       border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px;}
-    .hero-title{font-size:34px; margin:0 0 8px; text-align:center}
+    .hero-title{font-size:34px; margin:0 0 8px; text-align:center; color:var(--accent);}
     .hero-sub{font-size:18px; opacity:.95; margin:0 0 14px; text-align:center}
-    .hero-ctas{display:none} /* removido: sem botões nessa faixa */
+    .hero-ctas{display:none} /* sem botões nesta faixa */
 
-    /* Cards/KPIs centralizados em 2 colunas */
-    .kpi-bar{display:grid; grid-template-columns:repeat(2,minmax(320px,1fr)); gap:12px; margin-top:14px}
-    .kpi{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:16px; text-align:center}
+    /* Benefícios centralizados (2 colunas amplas) */
+    .kpi-bar{display:grid; grid-template-columns:repeat(2,minmax(340px,1fr)); gap:14px; margin-top:16px}
+    .kpi{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:18px; text-align:center}
     .kpi h4{margin:0 0 6px; font-size:18px}
-    .kpi p{margin:0; opacity:.95; line-height:1.4}
-    @media(max-width:920px){ .kpi-bar{grid-template-columns:1fr} .hero-title{font-size:26px} }
+    .kpi p{margin:0; opacity:.98; line-height:1.45}
+    @media(max-width:960px){ .kpi-bar{grid-template-columns:1fr} .hero-title{font-size:26px} }
 
-    /* Seções com imagem de fundo */
-    .section h2{ text-align:center; margin:0 0 6px; letter-spacing:.2px }
-    .section .lead{ text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px }
+    /* ===== Seções com imagem de fundo ===== */
+    .section h2{text-align:center; margin:0 0 6px; letter-spacing:.2px}
+    .section .lead{text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px}
     .bg-cover{position:relative; background-size:cover; background-position:center; background-attachment:fixed;}
     .bg-cover::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));}
     .bg-cover > .container{position:relative; z-index:1;}
-
-    .bg-quem{background-image:url('/assets/bg-quem.jpg'); min-height:80vh; display:flex; align-items:center;}
+    .bg-quem{background-image:url('/assets/bg-quem.jpg'); min-height:85vh; display:flex; align-items:center;}
     .bg-diferenciais{background-image:url('/assets/bg-diferenciais.jpg');}
     .bg-plataforma{background-image:url('/assets/bg-plataforma.jpg');}
     .bg-ebooks{background-image:url('/assets/bg-ebooks.jpg');}
 
-    /* Grades e cards base */
+    /* Grades/cards */
     .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
     @media(max-width:1100px){ .grid4{grid-template-columns:repeat(2,1fr)} }
     @media(max-width:720px){ .grid4{grid-template-columns:1fr} }
     .card-min{background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px}
 
-    /* E‑books: blocos grandes com hover (contorno + movimento) */
+    /* E‑books: blocos grandes com hover (contorno + movimento), texto branco */
     .ebooks-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
     @media(max-width:1024px){ .ebooks-grid{grid-template-columns:1fr} }
-    .ebook-tile{display:block; position:relative; min-height:340px; border-radius:14px; overflow:hidden;
+    .ebook-tile{display:block; position:relative; min-height:360px; border-radius:14px; overflow:hidden;
       border:2px solid rgba(255,255,255,.18); background:#0b0e10; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
     .ebook-tile .ph{position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.9);}
     .ebook-tile::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.6));}
-    .ebook-tile .label{position:absolute; left:16px; bottom:14px; right:16px; z-index:1; font-weight:600; font-size:18px}
-    .ebook-tile:hover, .ebook-tile:focus-visible{transform: translateY(-4px) scale(1.015); border-color: rgba(255,255,255,.6);
+    .ebook-tile .label{position:absolute; left:16px; bottom:14px; right:16px; z-index:1; font-weight:700; font-size:19px; color:#fff;}
+    .ebook-tile:hover, .ebook-tile:focus-visible{transform: translateY(-4px) scale(1.015); border-color: rgba(255,255,255,.65);
       box-shadow:0 10px 26px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.22) inset; outline:none;}
 
-    /* Calendly modal */
+    /* Modal Calendly */
     .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:2000;}
     .modal.open{display:flex}
     .modal-card{background:#0b0e10; border:1px solid rgba(255,255,255,.16); border-radius:12px; width:min(940px,92vw); height:min(80vh,720px); overflow:hidden; display:flex; flex-direction:column;}
@@ -129,7 +131,7 @@
 </header>
 
 <main>
-  <!-- HERO com vídeo (menu por cima) -->
+  <!-- HERO com vídeo (menu por cima, 90vh) -->
   <section class="hero-video-wrap">
     <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
       <source src="/assets/company_web_720p.mp4?v=17" type="video/mp4" media="(max-width: 768px)">
@@ -138,11 +140,11 @@
     <div class="hero-overlay"></div>
   </section>
 
-  <!-- FAIXA ABAIXO DO VÍDEO (com foto de fundo) -->
+  <!-- FAIXA ABAIXO DO VÍDEO (com foto) -->
   <section class="after-hero section">
     <div class="container">
       <div class="hero-box">
-        <h1 class="hero-title">Estamos dentro da fábrica em Ganzhou</h1>
+        <h1 class="hero-title">Escritório em Ganzhou — visitamos todas as fábricas da China</h1>
         <p class="hero-sub">
           Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos • <b>Preço estimado antes do pedido</b>
         </p>
@@ -150,7 +152,7 @@
         <div class="kpi-bar">
           <div class="kpi">
             <h4>Fornecedor certo, lugar certo</h4>
-            <p>Escritório em <b>Ganzhou</b>, presença na <b>Canton Fair</b> e <b>visitas a qualquer fábrica na China</b> para validar produção e prazos.</p>
+            <p>Atuamos nos polos de origem. Presença na <b>Canton Fair</b> e <b>visitas a qualquer fábrica na China</b> para validar produção e prazos.</p>
           </div>
           <div class="kpi">
             <h4>Inspeção com prova</h4>
@@ -158,11 +160,15 @@
           </div>
           <div class="kpi">
             <h4>Ficha técnica em PT‑ZH</h4>
-            <p>Desenho, materiais, medidas, tolerâncias, <b>embalagem e etiqueta</b> (em português e chinês), tudo combinado e assinado.</p>
+            <p>Desenho, materiais, medidas, tolerâncias, <b>embalagem e etiqueta</b> (português e chinês), tudo combinado e assinado.</p>
           </div>
           <div class="kpi">
             <h4>Preço no Brasil</h4>
             <p>Estimativa transparente de <b>impostos e despesas</b> antes do pedido, para decidir com segurança.</p>
+          </div>
+          <div class="kpi">
+            <h4>Negociação local com nativos</h4>
+            <p>Temos <b>funcionários chineses</b> que negociam diretamente com as fábricas para buscar <b>melhores condições</b> para você.</p>
           </div>
         </div>
       </div>
@@ -175,12 +181,15 @@
       <h2>Quem somos</h2>
       <p class="lead">
         <b>Escritório em Ganzhou</b>. Participação ativa na <b>Canton Fair</b>. Conectamos sua empresa a fábricas confiáveis na China.
-        Engenharia, qualidade e finanças alinhadas para reduzir risco e custo total.
+        Integramos engenharia, qualidade e finanças para reduzir risco e custo total — com presença dentro da fábrica.
+      </p>
+      <p class="lead" style="opacity:.85">
+        Fazemos a ponte cultural e técnica: especificação clara, inspeção por amostra com registro visual e acompanhamento até a entrega no Brasil.
       </p>
     </div>
   </section>
 
-  <!-- DIFERENCIAIS (com imagem de fundo) -->
+  <!-- DIFERENCIAIS (com imagem) -->
   <section id="diferenciais" class="section bg-cover bg-diferenciais">
     <div class="container">
       <h2>Diferenciais que fazem a importação andar</h2>
@@ -199,14 +208,14 @@
           <p>Mostramos a amostragem, os testes e a aprovação/reprovação — sem surpresa na entrega.</p>
         </div>
         <div class="card-min">
-          <h3>Preço estimado antes do pedido</h3>
-          <p>Antes de fechar, você já enxerga o custo estimado no Brasil (impostos e despesas).</p>
+          <h3>Negociação com nativos</h3>
+          <p>Equipe local chinesa para negociar condições comerciais melhores diretamente com a fábrica.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PLATAFORMA (com imagem de fundo) — sem CTAs extras -->
+  <!-- PLATAFORMA (sem CTAs extras) -->
   <section id="plataforma" class="section bg-cover bg-plataforma">
     <div class="container">
       <h2>Plataforma do Cliente</h2>
@@ -223,9 +232,9 @@
   <!-- E‑BOOKS -->
   <section id="ebooks" class="section bg-cover bg-ebooks">
     <div class="container">
-      <!-- Se não for verídico, troque “30 anos” por um texto fiel -->
-      <h2>3 e‑books gratuitos de quem está há mais de 30 anos no ramo</h2>
-      <p class="lead">Aprenda o essencial, sem complicação — do planejamento ao desembaraço.</p>
+      <h2>Do planejamento ao desembaraço</h2>
+      <!-- Se "30 anos" não for verídico, ajuste este texto para refletir a realidade -->
+      <p class="lead">3 e‑books gratuitos de quem está há mais de 30 anos no mercado</p>
 
       <div class="ebooks-grid">
         <a class="ebook-tile" href="#" title="Em breve">
@@ -270,7 +279,7 @@
   </div>
 </div>
 
-<!-- WhatsApp flutuante (fica disponível no site todo, fora da faixa do hero) -->
+<!-- WhatsApp flutuante (global) -->
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
 
 <!-- Script: abrir/fechar Calendly -->
