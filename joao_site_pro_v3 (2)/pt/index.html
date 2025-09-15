@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>ShaRui Trading Company — Estamos dentro da fábrica em Ganzhou</title>
-  <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra (padrão internacional) com fotos e vídeos e preço estimado antes do pedido. Ficha técnica em português e chinês. Sem valor mínimo.">
+  <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra com fotos e vídeos e preço estimado antes do pedido. Ficha técnica em português e chinês. Sem valor mínimo.">
 
   <!-- Fonte estilo Comexport -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,121 +21,158 @@
     :root { --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     body { font-family: var(--font-sans); }
 
-    /* Vídeo mais claro */
-    .hero-video { filter: brightness(1.18) contrast(1.06) saturate(1.05); }
-
-    /* Títulos centralizados */
-    .section h2 { text-align:center; margin:0 0 6px; letter-spacing:.2px }
-    .section .lead { text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px }
+    /* ===== Header transparente sobre o vídeo ===== */
+    .site-header{position:fixed; top:0; left:0; right:0; z-index:1000;
+      background:transparent; transition:background .25s ease, border-color .25s ease; border-bottom:1px solid transparent;}
+    .site-header.nav-solid{background:rgba(8,10,12,.55); backdrop-filter: blur(8px); border-bottom-color: rgba(255,255,255,.15);}
+    .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.45);}
+    .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
 
     /* Marca empilhada e alinhada */
-    .brand-logo { display:inline-flex; flex-direction:column; align-items:flex-start; }
-    .brand-logo .brand-top { display:block; font-weight:700; letter-spacing:.6px }
-    .brand-logo .brand-sub { display:block; font-size:12px; opacity:.88; margin-top:-2px; letter-spacing:.8px; padding-left:2px }
+    .brand-logo{display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;}
+    .brand-logo .brand-top{display:block; font-weight:700; letter-spacing:.6px}
+    .brand-logo .brand-sub{display:block; font-size:12px; opacity:.88; margin-top:-2px; letter-spacing:.8px; padding-left:0}
 
-    /* Banda abaixo do vídeo (metade da tela) */
-    .after-hero { min-height:50vh; display:flex; align-items:center; }
-    .hero-box { max-width:1100px; width:100%; margin:0 auto; background:linear-gradient( to bottom, rgba(0,0,0,.10), rgba(0,0,0,.28) );
-                border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px; }
-    .hero-title { font-size:34px; margin:0 0 6px; text-align:center }
-    .hero-sub { font-size:18px; opacity:.95; margin:0 0 14px; text-align:center }
-    .hero-ctas { display:flex; gap:10px; justify-content:center; flex-wrap:wrap }
-    .kpi-bar { display:grid; grid-template-columns:repeat(4,minmax(160px,1fr)); gap:10px; margin-top:14px }
-    .kpi { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:12px; text-align:center }
-    .kpi b { font-size:18px; display:block }
-    .kpi .mini { font-size:12px; opacity:.85; display:block; margin-top:4px }
+    /* MENU */
+    nav .menu{display:flex; gap:16px; align-items:center}
+    nav .menu a{opacity:.95}
+    nav .menu a:hover{opacity:1}
+
+    /* Vídeo mais claro */
+    .hero-video{filter: brightness(1.26) contrast(1.08) saturate(1.06);}
+
+    /* HERO altura */
+    .hero-video-wrap{min-height:68vh}
+
+    /* Banda abaixo do vídeo (agora com foto de fundo) */
+    .after-hero{min-height:60vh; display:flex; align-items:center; position:relative;
+      background-image:url('/assets/bg-after-hero.jpg'); background-size:cover; background-position:center;}
+    .after-hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));}
+    .after-hero > .container{position:relative; z-index:1;}
+    .hero-box{max-width:1100px; width:100%; margin:0 auto; background:rgba(0,0,0,.26);
+      border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px;}
+    .hero-title{font-size:34px; margin:0 0 8px; text-align:center}
+    .hero-sub{font-size:18px; opacity:.95; margin:0 0 14px; text-align:center}
+    .hero-ctas{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+    .kpi-bar{display:grid; grid-template-columns:repeat(4,minmax(160px,1fr)); gap:10px; margin-top:14px}
+    .kpi{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:12px; text-align:center}
+    .kpi b{font-size:18px; display:block}
+    .kpi .mini{font-size:12px; opacity:.85; display:block; margin-top:4px}
     @media(max-width:900px){ .kpi-bar{grid-template-columns:repeat(2,1fr)} .hero-title{font-size:26px} }
 
+    /* Seções com imagem de fundo */
+    .section h2{ text-align:center; margin:0 0 6px; letter-spacing:.2px }
+    .section .lead{ text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px }
+    .bg-cover{position:relative; background-size:cover; background-position:center; background-attachment:fixed;}
+    .bg-cover::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));}
+    .bg-cover > .container{position:relative; z-index:1;}
+
+    .bg-quem{background-image:url('/assets/bg-quem.jpg'); min-height:70vh; display:flex; align-items:center;}
+    .bg-diferenciais{background-image:url('/assets/bg-diferenciais.jpg');}
+    .bg-plataforma{background-image:url('/assets/bg-plataforma.jpg');}
+    .bg-ebooks{background-image:url('/assets/bg-ebooks.jpg');}
+
     /* Grades e cards */
-    .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px }
+    .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
     @media(max-width:900px){ .grid4{grid-template-columns:repeat(2,1fr)} }
-    .card-min { background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px }
+    .card-min{background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px}
 
-    /* Seções com imagem de fundo + overlay */
-    .bg-cover { position:relative; background-size:cover; background-position:center; background-attachment:fixed; }
-    .bg-cover::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)); }
-    .bg-cover > .container { position:relative; z-index:1; }
+    /* Ebooks grandes */
+    .ebooks-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    @media(max-width:1024px){ .ebooks-grid{grid-template-columns:1fr} }
+    .ebook-tile{display:block; position:relative; min-height:320px; border-radius:14px; overflow:hidden;
+      border:1px solid rgba(255,255,255,.16); background:#0b0e10;}
+    .ebook-tile .ph{position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.9);}
+    .ebook-tile::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.6));}
+    .ebook-tile .label{position:absolute; left:16px; bottom:14px; right:16px; z-index:1; font-weight:600; font-size:18px}
 
-    .bg-quem          { background-image:url('/assets/bg-quem.jpg'); }
-    .bg-diferenciais  { background-image:url('/assets/bg-diferenciais.jpg'); }
-    .bg-plataforma    { background-image:url('/assets/bg-plataforma.jpg'); }
+    /* Calendly modal */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:2000;}
+    .modal.open{display:flex}
+    .modal-card{background:#0b0e10; border:1px solid rgba(255,255,255,.16); border-radius:12px; width:min(940px,92vw); height:min(80vh,720px); overflow:hidden; display:flex; flex-direction:column;}
+    .modal-head{display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.12)}
+    .modal-body{flex:1; min-height:0}
+    .modal-body iframe{width:100%; height:100%; border:0}
+    .btn-close{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:6px 10px; cursor:pointer}
   </style>
 </head>
 
 <body>
-<header>
-  <div class="container">
+<!-- HEADER transparente -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav-wrap">
+    <div class="brand">
+      <a href="index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+        <span class="brand-top">SHA RUI</span>
+        <span class="brand-sub">TRADING COMPANY</span>
+      </a>
+    </div>
     <nav>
-      <div class="brand">
-        <a href="index.html" class="brand-logo" aria-label="ShaRui Trading Company">
-          <span class="brand-top">SHA RUI</span>
-          <span class="brand-sub">TRADING COMPANY</span>
-        </a>
-      </div>
       <div class="menu">
         <a href="#quem-somos">Quem somos</a>
         <a href="#diferenciais">Diferenciais</a>
         <a href="#plataforma">Plataforma</a>
-        <a href="#contato">Contato</a>
+        <a href="#" onclick="openCalendly();return false;">Contato</a>
         <a href="marketplace.html"><b>Marketplace</b></a>
       </div>
-      <div class="lang" id="lang">
-        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
-        <ul class="lang-menu" id="langMenu">
-          <li><a href="/pt/index.html">Português (PT)</a></li>
-          <li><a href="/en/index.html">English (EN)</a></li>
-          <li><a href="/es/index.html">Español (ES)</a></li>
-          <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
-        </ul>
-      </div>
     </nav>
+    <div class="lang" id="lang">
+      <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
+      <ul class="lang-menu" id="langMenu">
+        <li><a href="/pt/index.html">Português (PT)</a></li>
+        <li><a href="/en/index.html">English (EN)</a></li>
+        <li><a href="/es/index.html">Español (ES)</a></li>
+        <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
+      </ul>
+    </div>
   </div>
 </header>
 
 <main>
-  <!-- HERO APENAS COM O VÍDEO (sem faixa por cima) -->
-  <section class="hero-video-wrap" style="min-height:64vh">
+  <!-- HERO com vídeo (menu por cima) -->
+  <section class="hero-video-wrap">
     <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
       <source src="/assets/company_web_720p.mp4?v=17" type="video/mp4" media="(max-width: 768px)">
       <source src="/assets/company.mp4?v=17" type="video/mp4">
     </video>
-    <!-- mantemos a overlay leve do seu CSS base -->
-    <div class="hero-overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.15));"></div>
+    <div class="hero-overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.18));"></div>
   </section>
 
-  <!-- FAIXA ABAIXO DO VÍDEO (metade da tela) -->
+  <!-- FAIXA ABAIXO DO VÍDEO (com foto de fundo) -->
   <section class="after-hero section">
     <div class="container">
       <div class="hero-box">
         <h1 class="hero-title">Estamos dentro da fábrica em Ganzhou</h1>
-        <p class="hero-sub">Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos • <b>Preço estimado antes do pedido</b></p>
+        <p class="hero-sub">
+          Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos • <b>Preço estimado antes do pedido</b>
+        </p>
         <div class="hero-ctas">
           <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
-          <a class="cta" href="#plataforma">Ver Plataforma do Cliente</a>
+          <a class="cta" href="#" onclick="openCalendly();return false;">Agendar</a>
         </div>
         <div class="kpi-bar">
           <div class="kpi">
-            <b>48h</b>Visita confirmada à fábrica
-            <span class="mini">SLA de check‑in após briefing</span>
+            <b>Fornecedor certo, lugar certo</b>
+            Estamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e <b>visitamos qualquer fábrica na China</b> para validar produção e prazos.
           </div>
           <div class="kpi">
-            <b>Inspeção por amostra</b>Padrão internacional
-            <span class="mini">Fotos, vídeos e decisão final</span>
+            <b>Inspeção com prova</b>
+            Mostramos amostragem, testes, fotos e vídeos antes da decisão final.
           </div>
           <div class="kpi">
-            <b>Ficha PT‑ZH</b>Especificação travada
-            <span class="mini">Português e chinês: material, medidas, embalagem e etiqueta</span>
+            <b>Ficha técnica PT‑ZH</b>
+            Desenho, materiais, medidas, tolerâncias, embalagem e etiqueta (em português e chinês), tudo combinado e assinado.
           </div>
           <div class="kpi">
-            <b>Preço no Brasil</b>Estimado e transparente
-            <span class="mini">Impostos e despesas previstos antes do pedido</span>
+            <b>Preço no Brasil</b>
+            Estimativa transparente de impostos e despesas antes do pedido.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUEM SOMOS (com imagem de fundo) -->
+  <!-- QUEM SOMOS (faixa mais alta, com foto) -->
   <section id="quem-somos" class="section bg-cover bg-quem">
     <div class="container">
       <h2>Quem somos</h2>
@@ -143,15 +180,15 @@
     </div>
   </section>
 
-  <!-- DIFERENCIAIS (com imagem de fundo) -->
+  <!-- DIFERENCIAIS -->
   <section id="diferenciais" class="section bg-cover bg-diferenciais">
     <div class="container">
       <h2>Diferenciais que fazem a importação andar</h2>
       <p class="lead">Menos tentativa e erro — mais previsibilidade e controle.</p>
       <div class="grid4">
         <div class="card-min">
-          <h3>Fornecedor certo no lugar certo (estamos em Ganzhou)</h3>
-          <p>Buscamos nos polos de origem. Participamos da <b>Canton Fair</b> e <b>visitamos qualquer fábrica na China</b> para validar produção e prazos.</p>
+          <h3>Fornecedor certo no lugar certo</h3>
+          <p>Buscamos nos polos de origem. Estamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e <b>visitamos qualquer fábrica na China</b>.</p>
         </div>
         <div class="card-min">
           <h3>Ficha técnica em português e chinês</h3>
@@ -169,7 +206,7 @@
     </div>
   </section>
 
-  <!-- PLATAFORMA (com imagem de fundo) -->
+  <!-- PLATAFORMA -->
   <section id="plataforma" class="section bg-cover bg-plataforma">
     <div class="container">
       <h2>Plataforma do Cliente</h2>
@@ -181,24 +218,32 @@
         <div class="card-min"><h3>Documentos</h3><p>Invoice, packing list, conhecimento de embarque e laudos.</p></div>
       </div>
       <div class="hero-ctas" style="margin-top:12px">
-        <a class="cta primary" href="https://glideapps.com/" target="_blank" rel="noopener">Quero a versão mobile</a>
-        <a class="cta" href="https://www.softr.io/" target="_blank" rel="noopener">Quero a versão web</a>
+        <a class="cta primary" href="#" onclick="openCalendly();return false;">Agendar agora</a>
+        <a class="cta" href="marketplace.html">Marketplace</a>
       </div>
     </div>
   </section>
 
-  <!-- CONTATO -->
-  <section id="contato" class="section">
+  <!-- E‑BOOKS (no lugar da antiga seção Contato) -->
+  <section id="ebooks" class="section bg-cover bg-ebooks">
     <div class="container">
-      <h2>Contato</h2>
-      <p class="lead">WhatsApp, e‑mail, WeChat ou agende um horário.</p>
-      <div class="hero-ctas">
-        <a class="cta primary" data-contact="whatsapp">WhatsApp</a>
-        <a class="cta" data-contact="email">Enviar e‑mail</a>
-        <a class="cta" onclick="openQR()">WeChat — Ver QR</a>
-        <a class="cta" href="marketplace.html">Marketplace</a>
+      <h2>3 e‑books para começar com o pé direito</h2>
+      <p class="lead">Aprenda o essencial, sem complicação — do planejamento ao desembaraço.</p>
+
+      <div class="ebooks-grid">
+        <a class="ebook-tile" href="#" title="Em breve">
+          <span class="ph" style="background-image:url('/assets/ebook1.jpg')"></span>
+          <span class="label">Importação em 10 passos (2025)</span>
+        </a>
+        <a class="ebook-tile" href="#" title="Em breve">
+          <span class="ph" style="background-image:url('/assets/ebook2.jpg')"></span>
+          <span class="label">Impostos na Importação — guia prático</span>
+        </a>
+        <a class="ebook-tile" href="#" title="Em breve">
+          <span class="ph" style="background-image:url('/assets/ebook3.jpg')"></span>
+          <span class="label">Qualidade sem drama: inspeção com prova</span>
+        </a>
       </div>
-      <iframe id="calendly-embed" class="iframe-wrap" src="about:blank" frameborder="0" title="Agendamento"></iframe>
     </div>
   </section>
 </main>
@@ -214,15 +259,44 @@
   </div>
 </footer>
 
-<!-- Modal WeChat -->
-<div id="qr-modal" class="modal" onclick="closeQR()">
+<!-- Modal Calendly -->
+<div id="calendly-modal" class="modal" onclick="closeCalendly()">
   <div class="modal-card" onclick="event.stopPropagation()">
-    <h3>WeChat QR</h3>
-    <img src="/assets/wechat-qr.svg" alt="WeChat QR">
-    <div><button class="cta modal-close" onclick="closeQR()">Fechar</button></div>
+    <div class="modal-head">
+      <strong>Agendar conversa</strong>
+      <button class="btn-close" onclick="closeCalendly()">Fechar</button>
+    </div>
+    <div class="modal-body">
+      <!-- TROQUE PELO SEU LINK DO CALENDLY -->
+      <iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe>
+    </div>
   </div>
 </div>
 
+<!-- WhatsApp flutuante -->
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
+
+<!-- Script: header sólido ao rolar + Calendly -->
+<script>
+  // Header muda ao rolar
+  (function(){
+    const hd = document.getElementById('siteHeader');
+    function onScroll(){ if(window.scrollY > 60) hd.classList.add('nav-solid'); else hd.classList.remove('nav-solid'); }
+    document.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // Calendly modal
+  const CAL_URL = "https://calendly.com/seuusuario/30min?hide_landing_page_details=1&hide_gdpr_banner=1";
+  function openCalendly(){
+    const m = document.getElementById('calendly-modal');
+    const f = document.getElementById('calendly-frame');
+    if(f.src === "about:blank") f.src = CAL_URL;
+    m.classList.add('open');
+  }
+  function closeCalendly(){
+    document.getElementById('calendly-modal').classList.remove('open');
+  }
+</script>
 </body>
 </html>
