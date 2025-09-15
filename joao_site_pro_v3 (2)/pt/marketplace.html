@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Marketplace — ShaRui Trading Company</title>
+  <meta name="description" content="Lotes prontos, excedentes e projetos piloto diretamente dos clusters onde atuamos.">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/config.js"></script>
+  <script defer src="/assets/main.js"></script>
+  <style>
+    .mp-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+    .mp-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px}
+    .mp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .price{font-weight:700}
+    .meta{font-size:12px;opacity:.8}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <div class="brand">
+        <a href="index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+          <span class="brand-top">SHA RUI</span>
+          <span class="brand-sub">TRADING COMPANY</span>
+        </a>
+      </div>
+      <div class="menu">
+        <a href="solucoes.html">Soluções</a>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#setores">Setores</a>
+        <a href="index.html#processo">Processo</a>
+        <a href="index.html#materiais">Materiais</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#contato">Contato</a>
+        <a class="active" href="marketplace.html"><b>Marketplace</b></a>
+      </div>
+      <div class="lang" id="lang">
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
+        <ul class="lang-menu" id="langMenu">
+          <li><a href="/pt/marketplace.html">Português (PT)</a></li>
+          <li><a href="/en/index.html">English (EN)</a></li>
+          <li><a href="/es/index.html">Español (ES)</a></li>
+          <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <h1>Marketplace</h1>
+      <p>Seleção de <b>lotes prontos</b>, <b>excedentes de produção</b> e <b>projetos piloto</b> diretamente dos clusters onde atuamos. Consulte disponibilidade e condições.</p>
+
+      <div class="mp-filters">
+        <select><option>Todos os clusters</option><option>Ganzhou — Ímãs/REE</option><option>Nankang — Móveis</option></select>
+        <select><option>Categoria</option><option>Componentes</option><option>Acabados</option><option>Matéria‑prima</option></select>
+        <select><option>MOQ</option><option>Sem mínimo</option><option>≤ 500 un</option><option>≤ 1.000 un</option></select>
+        <a class="cta" data-contact="whatsapp">Publicar lote</a>
+      </div>
+
+      <div class="mp-grid">
+        <div class="mp-card">
+          <h3>Ímãs NdFeB N35 (disco) — lote piloto</h3>
+          <div class="meta">Cluster: Ganzhou • MOQ: sem mínimo</div>
+          <p>Conjunto de amostras certificadas para validação de projeto. Embalagem export‑ready.</p>
+          <div class="price">Sob consulta</div>
+          <div class="cta-row"><a class="cta" data-contact="whatsapp">Quero negociar</a></div>
+        </div>
+        <div class="mp-card">
+          <h3>Cadeiras de jantar — acabamento PU</h3>
+          <div class="meta">Cluster: Nankang • MOQ: 200 un</div>
+          <p>Lote de oportunidade por ajuste de mix. Amostras disponíveis em 7 dias.</p>
+          <div class="price">Sob consulta</div>
+          <div class="cta-row"><a class="cta" data-contact="whatsapp">Quero negociar</a></div>
+        </div>
+        <div class="mp-card">
+          <h3>Drivers LED 24V — IP67</h3>
+          <div class="meta">Cluster: Eletrônicos • MOQ: 300 un</div>
+          <p>Excedente de produção com garantia de fábrica. Teste 100% burn‑in.</p>
+          <div class="price">Sob consulta</div>
+          <div class="cta-row"><a class="cta" data-contact="whatsapp">Quero negociar</a></div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:16px">
+        <b>Como funciona</b>
+        <ol>
+          <li>Você solicita o lote → alinhamos Spec‑Lock e AQL.</li>
+          <li>Auditamos o lote (QC Live) e travamos prazos/preços.</li>
+          <li>Frete + desembaraço → entrega no seu endereço.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div>© <span data-text="brand">ShaRui Trading Company</span> — Importação China ↔ Brasil</div>
+  </div>
+</footer>
+
+<a class="wp-float" data-contact="whatsapp">WhatsApp</a>
+</body>
+</html>
