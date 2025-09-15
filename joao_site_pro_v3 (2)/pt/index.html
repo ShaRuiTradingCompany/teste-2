@@ -21,30 +21,25 @@
     :root { --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     body { font-family: var(--font-sans); }
 
-    /* ===== Header transparente sobre o vídeo ===== */
-    .site-header{position:fixed; top:0; left:0; right:0; z-index:1000;
-      background:transparent; transition:background .25s ease, border-color .25s ease; border-bottom:1px solid transparent;}
-    .site-header.nav-solid{background:rgba(8,10,12,.55); backdrop-filter: blur(8px); border-bottom-color: rgba(255,255,255,.15);}
-    .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.45);}
+    /* ===== Header totalmente transparente sobre o vídeo ===== */
+    .site-header{position:fixed; top:0; left:0; right:0; z-index:1000; background:transparent; border:none;}
     .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
-
-    /* Marca empilhada e alinhada */
-    .brand-logo{display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;}
-    .brand-logo .brand-top{display:block; font-weight:700; letter-spacing:.6px}
-    .brand-logo .brand-sub{display:block; font-size:12px; opacity:.88; margin-top:-2px; letter-spacing:.8px; padding-left:0}
-
-    /* MENU */
+    .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.45);}
     nav .menu{display:flex; gap:16px; align-items:center}
     nav .menu a{opacity:.95}
     nav .menu a:hover{opacity:1}
 
+    /* Marca empilhada e alinhada (TRADING abaixo de SHA RUI, alinhado à esquerda) */
+    .brand-logo{display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;}
+    .brand-logo .brand-top{display:block; font-weight:700; letter-spacing:.6px}
+    .brand-logo .brand-sub{display:block; font-size:12px; opacity:.9; margin-top:-2px; letter-spacing:.8px; padding-left:0}
+
     /* Vídeo mais claro */
-    .hero-video{filter: brightness(1.26) contrast(1.08) saturate(1.06);}
-
-    /* HERO altura */
+    .hero-video{filter: brightness(1.32) contrast(1.08) saturate(1.06);}
     .hero-video-wrap{min-height:68vh}
+    .hero-overlay{background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.18));}
 
-    /* Banda abaixo do vídeo (agora com foto de fundo) */
+    /* Banda abaixo do vídeo (com foto de fundo) */
     .after-hero{min-height:60vh; display:flex; align-items:center; position:relative;
       background-image:url('/assets/bg-after-hero.jpg'); background-size:cover; background-position:center;}
     .after-hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));}
@@ -53,12 +48,14 @@
       border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px;}
     .hero-title{font-size:34px; margin:0 0 8px; text-align:center}
     .hero-sub{font-size:18px; opacity:.95; margin:0 0 14px; text-align:center}
-    .hero-ctas{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
-    .kpi-bar{display:grid; grid-template-columns:repeat(4,minmax(160px,1fr)); gap:10px; margin-top:14px}
-    .kpi{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:12px; text-align:center}
-    .kpi b{font-size:18px; display:block}
-    .kpi .mini{font-size:12px; opacity:.85; display:block; margin-top:4px}
-    @media(max-width:900px){ .kpi-bar{grid-template-columns:repeat(2,1fr)} .hero-title{font-size:26px} }
+    .hero-ctas{display:none} /* removido: sem botões nessa faixa */
+
+    /* Cards/KPIs centralizados em 2 colunas */
+    .kpi-bar{display:grid; grid-template-columns:repeat(2,minmax(320px,1fr)); gap:12px; margin-top:14px}
+    .kpi{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:16px; text-align:center}
+    .kpi h4{margin:0 0 6px; font-size:18px}
+    .kpi p{margin:0; opacity:.95; line-height:1.4}
+    @media(max-width:920px){ .kpi-bar{grid-template-columns:1fr} .hero-title{font-size:26px} }
 
     /* Seções com imagem de fundo */
     .section h2{ text-align:center; margin:0 0 6px; letter-spacing:.2px }
@@ -67,24 +64,27 @@
     .bg-cover::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));}
     .bg-cover > .container{position:relative; z-index:1;}
 
-    .bg-quem{background-image:url('/assets/bg-quem.jpg'); min-height:70vh; display:flex; align-items:center;}
+    .bg-quem{background-image:url('/assets/bg-quem.jpg'); min-height:80vh; display:flex; align-items:center;}
     .bg-diferenciais{background-image:url('/assets/bg-diferenciais.jpg');}
     .bg-plataforma{background-image:url('/assets/bg-plataforma.jpg');}
     .bg-ebooks{background-image:url('/assets/bg-ebooks.jpg');}
 
-    /* Grades e cards */
+    /* Grades e cards base */
     .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
-    @media(max-width:900px){ .grid4{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:1100px){ .grid4{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:720px){ .grid4{grid-template-columns:1fr} }
     .card-min{background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px}
 
-    /* Ebooks grandes */
+    /* E‑books: blocos grandes com hover (contorno + movimento) */
     .ebooks-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
     @media(max-width:1024px){ .ebooks-grid{grid-template-columns:1fr} }
-    .ebook-tile{display:block; position:relative; min-height:320px; border-radius:14px; overflow:hidden;
-      border:1px solid rgba(255,255,255,.16); background:#0b0e10;}
+    .ebook-tile{display:block; position:relative; min-height:340px; border-radius:14px; overflow:hidden;
+      border:2px solid rgba(255,255,255,.18); background:#0b0e10; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
     .ebook-tile .ph{position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.9);}
     .ebook-tile::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.6));}
     .ebook-tile .label{position:absolute; left:16px; bottom:14px; right:16px; z-index:1; font-weight:600; font-size:18px}
+    .ebook-tile:hover, .ebook-tile:focus-visible{transform: translateY(-4px) scale(1.015); border-color: rgba(255,255,255,.6);
+      box-shadow:0 10px 26px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.22) inset; outline:none;}
 
     /* Calendly modal */
     .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:2000;}
@@ -135,7 +135,7 @@
       <source src="/assets/company_web_720p.mp4?v=17" type="video/mp4" media="(max-width: 768px)">
       <source src="/assets/company.mp4?v=17" type="video/mp4">
     </video>
-    <div class="hero-overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.18));"></div>
+    <div class="hero-overlay"></div>
   </section>
 
   <!-- FAIXA ABAIXO DO VÍDEO (com foto de fundo) -->
@@ -146,41 +146,41 @@
         <p class="hero-sub">
           Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos • <b>Preço estimado antes do pedido</b>
         </p>
-        <div class="hero-ctas">
-          <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
-          <a class="cta" href="#" onclick="openCalendly();return false;">Agendar</a>
-        </div>
+
         <div class="kpi-bar">
           <div class="kpi">
-            <b>Fornecedor certo, lugar certo</b>
-            Estamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e <b>visitamos qualquer fábrica na China</b> para validar produção e prazos.
+            <h4>Fornecedor certo, lugar certo</h4>
+            <p>Escritório em <b>Ganzhou</b>, presença na <b>Canton Fair</b> e <b>visitas a qualquer fábrica na China</b> para validar produção e prazos.</p>
           </div>
           <div class="kpi">
-            <b>Inspeção com prova</b>
-            Mostramos amostragem, testes, fotos e vídeos antes da decisão final.
+            <h4>Inspeção com prova</h4>
+            <p>Amostragem e testes com <b>fotos e vídeos</b> antes da decisão final — sem surpresa na entrega.</p>
           </div>
           <div class="kpi">
-            <b>Ficha técnica PT‑ZH</b>
-            Desenho, materiais, medidas, tolerâncias, embalagem e etiqueta (em português e chinês), tudo combinado e assinado.
+            <h4>Ficha técnica em PT‑ZH</h4>
+            <p>Desenho, materiais, medidas, tolerâncias, <b>embalagem e etiqueta</b> (em português e chinês), tudo combinado e assinado.</p>
           </div>
           <div class="kpi">
-            <b>Preço no Brasil</b>
-            Estimativa transparente de impostos e despesas antes do pedido.
+            <h4>Preço no Brasil</h4>
+            <p>Estimativa transparente de <b>impostos e despesas</b> antes do pedido, para decidir com segurança.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUEM SOMOS (faixa mais alta, com foto) -->
+  <!-- QUEM SOMOS (faixa alta com foto) -->
   <section id="quem-somos" class="section bg-cover bg-quem">
     <div class="container">
       <h2>Quem somos</h2>
-      <p class="lead">Base em <b>Ganzhou</b>, conectamos sua empresa a fábricas confiáveis na China. Engenharia, qualidade e finanças alinhadas para reduzir risco e custo total.</p>
+      <p class="lead">
+        <b>Escritório em Ganzhou</b>. Participação ativa na <b>Canton Fair</b>. Conectamos sua empresa a fábricas confiáveis na China.
+        Engenharia, qualidade e finanças alinhadas para reduzir risco e custo total.
+      </p>
     </div>
   </section>
 
-  <!-- DIFERENCIAIS -->
+  <!-- DIFERENCIAIS (com imagem de fundo) -->
   <section id="diferenciais" class="section bg-cover bg-diferenciais">
     <div class="container">
       <h2>Diferenciais que fazem a importação andar</h2>
@@ -206,7 +206,7 @@
     </div>
   </section>
 
-  <!-- PLATAFORMA -->
+  <!-- PLATAFORMA (com imagem de fundo) — sem CTAs extras -->
   <section id="plataforma" class="section bg-cover bg-plataforma">
     <div class="container">
       <h2>Plataforma do Cliente</h2>
@@ -217,17 +217,14 @@
         <div class="card-min"><h3>Inspeções</h3><p>Fotos e vídeos da inspeção por amostra e decisão final.</p></div>
         <div class="card-min"><h3>Documentos</h3><p>Invoice, packing list, conhecimento de embarque e laudos.</p></div>
       </div>
-      <div class="hero-ctas" style="margin-top:12px">
-        <a class="cta primary" href="#" onclick="openCalendly();return false;">Agendar agora</a>
-        <a class="cta" href="marketplace.html">Marketplace</a>
-      </div>
     </div>
   </section>
 
-  <!-- E‑BOOKS (no lugar da antiga seção Contato) -->
+  <!-- E‑BOOKS -->
   <section id="ebooks" class="section bg-cover bg-ebooks">
     <div class="container">
-      <h2>3 e‑books para começar com o pé direito</h2>
+      <!-- Se não for verídico, troque “30 anos” por um texto fiel -->
+      <h2>3 e‑books gratuitos de quem está há mais de 30 anos no ramo</h2>
       <p class="lead">Aprenda o essencial, sem complicação — do planejamento ao desembaraço.</p>
 
       <div class="ebooks-grid">
@@ -273,20 +270,11 @@
   </div>
 </div>
 
-<!-- WhatsApp flutuante -->
+<!-- WhatsApp flutuante (fica disponível no site todo, fora da faixa do hero) -->
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
 
-<!-- Script: header sólido ao rolar + Calendly -->
+<!-- Script: abrir/fechar Calendly -->
 <script>
-  // Header muda ao rolar
-  (function(){
-    const hd = document.getElementById('siteHeader');
-    function onScroll(){ if(window.scrollY > 60) hd.classList.add('nav-solid'); else hd.classList.remove('nav-solid'); }
-    document.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-  })();
-
-  // Calendly modal
   const CAL_URL = "https://calendly.com/seuusuario/30min?hide_landing_page_details=1&hide_gdpr_banner=1";
   function openCalendly(){
     const m = document.getElementById('calendly-modal');
@@ -294,9 +282,7 @@
     if(f.src === "about:blank") f.src = CAL_URL;
     m.classList.add('open');
   }
-  function closeCalendly(){
-    document.getElementById('calendly-modal').classList.remove('open');
-  }
+  function closeCalendly(){ document.getElementById('calendly-modal').classList.remove('open'); }
 </script>
 </body>
 </html>
