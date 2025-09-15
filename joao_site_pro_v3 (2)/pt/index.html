@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>ShaRui Trading Company — Estamos dentro da fábrica em Ganzhou</title>
-  <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra (padrão internacional) com fotos e vídeos e preço entregue no Brasil (estimado) antes do pedido. Sem valor mínimo.">
+  <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra (padrão internacional) com fotos e vídeos e preço estimado antes do pedido. Ficha técnica em português e chinês. Sem valor mínimo.">
 
   <!-- Fonte estilo Comexport -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,27 +16,35 @@
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Estilo extra para layout, centralização e fundos com imagem -->
+  <!-- Estilos complementares -->
   <style>
     :root { --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     body { font-family: var(--font-sans); }
 
-    /* Centralização padrão das seções */
+    /* Vídeo mais claro */
+    .hero-video { filter: brightness(1.18) contrast(1.06) saturate(1.05); }
+
+    /* Títulos centralizados */
     .section h2 { text-align:center; margin:0 0 6px; letter-spacing:.2px }
     .section .lead { text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px }
 
-    /* HERO: faixa rebaixada */
-    .hero-intro { position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; padding:0 16px 7vh; pointer-events:none; }
-    .hero-box { max-width:980px; width:100%; background:linear-gradient( to bottom, rgba(0,0,0,.35), rgba(0,0,0,.65) );
-                border:1px solid rgba(255,255,255,.15); backdrop-filter: blur(6px); border-radius:16px; padding:24px 18px; pointer-events:auto; }
-    .hero-title { font-size:36px; margin:0 0 6px; text-align:center }
-    .hero-sub { font-size:18px; opacity:.95; margin:0 0 12px; text-align:center }
-    .hero-ctas { display:flex; gap:10px; justify-content:center; flex-wrap:wrap }
+    /* Marca empilhada e alinhada */
+    .brand-logo { display:inline-flex; flex-direction:column; align-items:flex-start; }
+    .brand-logo .brand-top { display:block; font-weight:700; letter-spacing:.6px }
+    .brand-logo .brand-sub { display:block; font-size:12px; opacity:.88; margin-top:-2px; letter-spacing:.8px; padding-left:2px }
 
-    .kpi-bar { display:grid; grid-template-columns:repeat(4,minmax(140px,1fr)); gap:8px; margin-top:12px }
-    .kpi { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px; text-align:center }
+    /* Banda abaixo do vídeo (metade da tela) */
+    .after-hero { min-height:50vh; display:flex; align-items:center; }
+    .hero-box { max-width:1100px; width:100%; margin:0 auto; background:linear-gradient( to bottom, rgba(0,0,0,.10), rgba(0,0,0,.28) );
+                border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px; }
+    .hero-title { font-size:34px; margin:0 0 6px; text-align:center }
+    .hero-sub { font-size:18px; opacity:.95; margin:0 0 14px; text-align:center }
+    .hero-ctas { display:flex; gap:10px; justify-content:center; flex-wrap:wrap }
+    .kpi-bar { display:grid; grid-template-columns:repeat(4,minmax(160px,1fr)); gap:10px; margin-top:14px }
+    .kpi { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:12px; text-align:center }
     .kpi b { font-size:18px; display:block }
-    @media(max-width:760px){ .kpi-bar{grid-template-columns:repeat(2,1fr)} .hero-title{font-size:26px} }
+    .kpi .mini { font-size:12px; opacity:.85; display:block; margin-top:4px }
+    @media(max-width:900px){ .kpi-bar{grid-template-columns:repeat(2,1fr)} .hero-title{font-size:26px} }
 
     /* Grades e cards */
     .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px }
@@ -48,12 +56,9 @@
     .bg-cover::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)); }
     .bg-cover > .container { position:relative; z-index:1; }
 
-    .bg-diferenciais { background-image:url('/assets/bg-diferenciais.jpg'); }
-    .bg-plataforma   { background-image:url('/assets/bg-plataforma.jpg'); }
-
-    /* Menu e título da marca empilhado */
-    .brand-logo .brand-top { display:block; font-weight:700; letter-spacing:.6px }
-    .brand-logo .brand-sub { display:block; font-size:12px; opacity:.85; margin-top:-2px; letter-spacing:.8px }
+    .bg-quem          { background-image:url('/assets/bg-quem.jpg'); }
+    .bg-diferenciais  { background-image:url('/assets/bg-diferenciais.jpg'); }
+    .bg-plataforma    { background-image:url('/assets/bg-plataforma.jpg'); }
   </style>
 </head>
 
@@ -68,7 +73,7 @@
         </a>
       </div>
       <div class="menu">
-        <a href="solucoes.html">Soluções</a>
+        <a href="#quem-somos">Quem somos</a>
         <a href="#diferenciais">Diferenciais</a>
         <a href="#plataforma">Plataforma</a>
         <a href="#contato">Contato</a>
@@ -88,62 +93,87 @@
 </header>
 
 <main>
-  <!-- HERO com vídeo e faixa rebaixada -->
-  <section class="hero-video-wrap">
+  <!-- HERO APENAS COM O VÍDEO (sem faixa por cima) -->
+  <section class="hero-video-wrap" style="min-height:64vh">
     <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
       <source src="/assets/company_web_720p.mp4?v=17" type="video/mp4" media="(max-width: 768px)">
       <source src="/assets/company.mp4?v=17" type="video/mp4">
     </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-intro">
+    <!-- mantemos a overlay leve do seu CSS base -->
+    <div class="hero-overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.15));"></div>
+  </section>
+
+  <!-- FAIXA ABAIXO DO VÍDEO (metade da tela) -->
+  <section class="after-hero section">
+    <div class="container">
       <div class="hero-box">
         <h1 class="hero-title">Estamos dentro da fábrica em Ganzhou</h1>
-        <p class="hero-sub">Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos • Preço entregue no Brasil (estimado) antes do pedido</p>
+        <p class="hero-sub">Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos • <b>Preço estimado antes do pedido</b></p>
         <div class="hero-ctas">
           <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
           <a class="cta" href="#plataforma">Ver Plataforma do Cliente</a>
         </div>
         <div class="kpi-bar">
-          <div class="kpi"><b>48h</b>Visita confirmada à fábrica</div>
-          <div class="kpi"><b>Inspeção por amostra</b>Padrão internacional</div>
-          <div class="kpi"><b>Ficha PT‑ZH</b>Especificação travada</div>
-          <div class="kpi"><b>Preço no Brasil</b>Estimado e transparente</div>
+          <div class="kpi">
+            <b>48h</b>Visita confirmada à fábrica
+            <span class="mini">SLA de check‑in após briefing</span>
+          </div>
+          <div class="kpi">
+            <b>Inspeção por amostra</b>Padrão internacional
+            <span class="mini">Fotos, vídeos e decisão final</span>
+          </div>
+          <div class="kpi">
+            <b>Ficha PT‑ZH</b>Especificação travada
+            <span class="mini">Português e chinês: material, medidas, embalagem e etiqueta</span>
+          </div>
+          <div class="kpi">
+            <b>Preço no Brasil</b>Estimado e transparente
+            <span class="mini">Impostos e despesas previstos antes do pedido</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DIFERENCIAIS com imagem de fundo -->
+  <!-- QUEM SOMOS (com imagem de fundo) -->
+  <section id="quem-somos" class="section bg-cover bg-quem">
+    <div class="container">
+      <h2>Quem somos</h2>
+      <p class="lead">Base em <b>Ganzhou</b>, conectamos sua empresa a fábricas confiáveis na China. Engenharia, qualidade e finanças alinhadas para reduzir risco e custo total.</p>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS (com imagem de fundo) -->
   <section id="diferenciais" class="section bg-cover bg-diferenciais">
     <div class="container">
       <h2>Diferenciais que fazem a importação andar</h2>
       <p class="lead">Menos tentativa e erro — mais previsibilidade e controle.</p>
       <div class="grid4">
         <div class="card-min">
-          <h3>Fornecedor certo no lugar certo</h3>
-          <p>Buscamos nos polos de origem (ex.: Ganzhou — ímãs/terras raras; Nankang — móveis).</p>
+          <h3>Fornecedor certo no lugar certo (estamos em Ganzhou)</h3>
+          <p>Buscamos nos polos de origem. Participamos da <b>Canton Fair</b> e <b>visitamos qualquer fábrica na China</b> para validar produção e prazos.</p>
         </div>
         <div class="card-min">
           <h3>Ficha técnica em português e chinês</h3>
-          <p>Foto/desenho, materiais, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</p>
+          <p>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</p>
         </div>
         <div class="card-min">
           <h3>Inspeção com fotos e vídeos</h3>
           <p>Mostramos a amostragem, os testes e a aprovação/reprovação — sem surpresa na entrega.</p>
         </div>
         <div class="card-min">
-          <h3>Preço entregue no Brasil (estimado)</h3>
-          <p>Antes do pedido você já enxerga o custo estimado com impostos e despesas logísticas.</p>
+          <h3>Preço estimado antes do pedido</h3>
+          <p>Antes de fechar, você já enxerga o custo estimado no Brasil (impostos e despesas).</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PLATAFORMA com imagem de fundo -->
+  <!-- PLATAFORMA (com imagem de fundo) -->
   <section id="plataforma" class="section bg-cover bg-plataforma">
     <div class="container">
       <h2>Plataforma do Cliente</h2>
-      <p class="lead">Acompanhe a sua carga, documentos e custos — tudo em um só lugar.</p>
+      <p class="lead">Acompanhe sua carga, documentos e custos — tudo em um só lugar.</p>
       <div class="grid4">
         <div class="card-min"><h3>Linha do tempo</h3><p>Do pedido à entrega, com prazos e confirmação de cada etapa.</p></div>
         <div class="card-min"><h3>Custos claros</h3><p>Resumo com preço estimado no Brasil e impostos previstos.</p></div>
