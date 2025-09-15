@@ -3,40 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ShaRui Trading Company — Sourcing por Clusters, QC Live e Custo Total Previsível</title>
-  <meta name="description" content="Estamos dentro da fábrica em Ganzhou. Auditoria 48h (SLA), QC Live com AQL, Spec‑Lock PT‑ZH e Simulador de CIF. Sem valor mínimo — amostras e pilotos.">
+  <title>ShaRui Trading Company — Estamos dentro da fábrica em Ganzhou</title>
+  <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra (padrão internacional) com fotos e vídeos e preço entregue no Brasil (estimado) antes do pedido. Sem valor mínimo.">
 
-  <!-- hreflang/canonical: ajuste para seu domínio final -->
-  <link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
-  <link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
-  <link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
-  <link rel="alternate" href="https://seusite.com/ar/" hreflang="ar" />
-  <link rel="alternate" href="https://seusite.com/pt/" hreflang="x-default" />
-  <link rel="canonical" href="https://seusite.com/pt/" />
+  <!-- Fonte estilo Comexport -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS/JS base do seu projeto -->
+  <!-- CSS/JS base -->
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/video_hero.css?v=3">
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Micro CSS local para a hero “estilo Comexport” -->
+  <!-- Estilo extra para layout, centralização e fundos com imagem -->
   <style>
-    .hero-intro{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 16px}
-    .hero-box{max-width:980px;background:linear-gradient( to bottom, rgba(0,0,0,.45), rgba(0,0,0,.45) );border:1px solid rgba(255,255,255,.15);backdrop-filter: blur(6px);border-radius:16px;padding:28px 22px}
-    .hero-title{font-size:36px;margin:0 0 10px}
-    .hero-sub{font-size:18px;opacity:.95;margin:0 0 14px}
-    .hero-ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    .kpi-bar{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:8px;margin-top:14px}
-    .kpi{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px}
-    .kpi b{font-size:18px;display:block}
-    @media(max-width:760px){.kpi-bar{grid-template-columns:repeat(2,1fr)} .hero-title{font-size:26px}}
-    /* cards de diferenciais */
-    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    @media(max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}}
-    .card-min{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px}
-    .ebooks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    @media(max-width:900px){.ebooks-grid{grid-template-columns:1fr}}
+    :root { --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    body { font-family: var(--font-sans); }
+
+    /* Centralização padrão das seções */
+    .section h2 { text-align:center; margin:0 0 6px; letter-spacing:.2px }
+    .section .lead { text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px }
+
+    /* HERO: faixa rebaixada */
+    .hero-intro { position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; padding:0 16px 7vh; pointer-events:none; }
+    .hero-box { max-width:980px; width:100%; background:linear-gradient( to bottom, rgba(0,0,0,.35), rgba(0,0,0,.65) );
+                border:1px solid rgba(255,255,255,.15); backdrop-filter: blur(6px); border-radius:16px; padding:24px 18px; pointer-events:auto; }
+    .hero-title { font-size:36px; margin:0 0 6px; text-align:center }
+    .hero-sub { font-size:18px; opacity:.95; margin:0 0 12px; text-align:center }
+    .hero-ctas { display:flex; gap:10px; justify-content:center; flex-wrap:wrap }
+
+    .kpi-bar { display:grid; grid-template-columns:repeat(4,minmax(140px,1fr)); gap:8px; margin-top:12px }
+    .kpi { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px; text-align:center }
+    .kpi b { font-size:18px; display:block }
+    @media(max-width:760px){ .kpi-bar{grid-template-columns:repeat(2,1fr)} .hero-title{font-size:26px} }
+
+    /* Grades e cards */
+    .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px }
+    @media(max-width:900px){ .grid4{grid-template-columns:repeat(2,1fr)} }
+    .card-min { background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px }
+
+    /* Seções com imagem de fundo + overlay */
+    .bg-cover { position:relative; background-size:cover; background-position:center; background-attachment:fixed; }
+    .bg-cover::before { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)); }
+    .bg-cover > .container { position:relative; z-index:1; }
+
+    .bg-diferenciais { background-image:url('/assets/bg-diferenciais.jpg'); }
+    .bg-plataforma   { background-image:url('/assets/bg-plataforma.jpg'); }
+
+    /* Menu e título da marca empilhado */
+    .brand-logo .brand-top { display:block; font-weight:700; letter-spacing:.6px }
+    .brand-logo .brand-sub { display:block; font-size:12px; opacity:.85; margin-top:-2px; letter-spacing:.8px }
   </style>
 </head>
 
@@ -53,7 +70,6 @@
       <div class="menu">
         <a href="solucoes.html">Soluções</a>
         <a href="#diferenciais">Diferenciais</a>
-        <a href="#ebooks">E‑books</a>
         <a href="#plataforma">Plataforma</a>
         <a href="#contato">Contato</a>
         <a href="marketplace.html"><b>Marketplace</b></a>
@@ -72,94 +88,81 @@
 </header>
 
 <main>
-  <!-- HERO com vídeo + claims e KPIs “estilo Comexport” -->
+  <!-- HERO com vídeo e faixa rebaixada -->
   <section class="hero-video-wrap">
     <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
       <source src="/assets/company_web_720p.mp4?v=17" type="video/mp4" media="(max-width: 768px)">
       <source src="/assets/company.mp4?v=17" type="video/mp4">
     </video>
-
     <div class="hero-overlay"></div>
     <div class="hero-intro">
       <div class="hero-box">
         <h1 class="hero-title">Estamos dentro da fábrica em Ganzhou</h1>
-        <p class="hero-sub">Sourcing por clusters • Auditoria 48h (SLA) • QC Live com AQL • Spec‑Lock PT‑ZH • Custo total previsível</p>
+        <p class="hero-sub">Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos • Preço entregue no Brasil (estimado) antes do pedido</p>
         <div class="hero-ctas">
           <a class="cta primary" data-contact="whatsapp">Falar no WhatsApp</a>
           <a class="cta" href="#plataforma">Ver Plataforma do Cliente</a>
         </div>
         <div class="kpi-bar">
-          <div class="kpi"><b>48h</b>Auditoria com check‑in confirmado</div>
-          <div class="kpi"><b>AQL</b>Inspeção com critérios e amostragem</div>
-          <div class="kpi"><b>Spec‑Lock</b>Especificação PT‑ZH travada</div>
-          <div class="kpi"><b>CIF claro</b>Simulador antes do pedido</div>
+          <div class="kpi"><b>48h</b>Visita confirmada à fábrica</div>
+          <div class="kpi"><b>Inspeção por amostra</b>Padrão internacional</div>
+          <div class="kpi"><b>Ficha PT‑ZH</b>Especificação travada</div>
+          <div class="kpi"><b>Preço no Brasil</b>Estimado e transparente</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Diferenciais (quatro blocos como a Comexport faz) -->
-  <section id="diferenciais" class="section">
+  <!-- DIFERENCIAIS com imagem de fundo -->
+  <section id="diferenciais" class="section bg-cover bg-diferenciais">
     <div class="container">
-      <h2>Diferenciais que movem resultado</h2>
+      <h2>Diferenciais que fazem a importação andar</h2>
+      <p class="lead">Menos tentativa e erro — mais previsibilidade e controle.</p>
       <div class="grid4">
-        <div class="card-min"><h3>Sourcing por Clusters</h3><p>Onde o produto nasce: Ganzhou (REE/ímãs), Nankang (móveis) e demais polos.</p></div>
-        <div class="card-min"><h3>Spec‑Lock PT‑ZH</h3><p>Desenho, tolerâncias, embalagem (ISTA/drop), etiqueta e testes — bilíngue.</p></div>
-        <div class="card-min"><h3>QC Live • AQL</h3><p>Cards com inspeções (fotos/vídeos) e decisão: aprovado/reprovado.</p></div>
-        <div class="card-min"><h3>Simulador 1‑min</h3><p>CIF + impostos estimados e PDF para decisão interna.</p></div>
+        <div class="card-min">
+          <h3>Fornecedor certo no lugar certo</h3>
+          <p>Buscamos nos polos de origem (ex.: Ganzhou — ímãs/terras raras; Nankang — móveis).</p>
+        </div>
+        <div class="card-min">
+          <h3>Ficha técnica em português e chinês</h3>
+          <p>Foto/desenho, materiais, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</p>
+        </div>
+        <div class="card-min">
+          <h3>Inspeção com fotos e vídeos</h3>
+          <p>Mostramos a amostragem, os testes e a aprovação/reprovação — sem surpresa na entrega.</p>
+        </div>
+        <div class="card-min">
+          <h3>Preço entregue no Brasil (estimado)</h3>
+          <p>Antes do pedido você já enxerga o custo estimado com impostos e despesas logísticas.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- E‑books (3 itens) -->
-  <section id="ebooks" class="section">
+  <!-- PLATAFORMA com imagem de fundo -->
+  <section id="plataforma" class="section bg-cover bg-plataforma">
     <div class="container">
-      <h2>E‑books gratuitos (sem enrolação)</h2>
-      <div class="ebooks-grid">
-        <div class="card">
-          <h3>Importação em 10 Passos (2025)</h3>
-          <p>Do briefing ao desembaraço, com checklists práticos e modelos.</p>
-          <a class="cta" href="/assets/ebooks/guia-10-passos-2025.pdf" target="_blank">Baixar e‑book</a>
-        </div>
-        <div class="card">
-          <h3>Impostos na Importação (2025)</h3>
-          <p>Base de cálculo, cascata de tributos e estudos de caso visuais.</p>
-          <a class="cta" href="/assets/ebooks/guia-impostos-2025.pdf" target="_blank">Baixar e‑book</a>
-        </div>
-        <div class="card">
-          <h3>Qualidade sem Drama</h3>
-          <p>Spec‑Lock + QC Live + AQL para evitar retrabalho e devolução.</p>
-          <a class="cta" href="/assets/ebooks/qualidade-sem-drama.pdf" target="_blank">Baixar e‑book</a>
-        </div>
+      <h2>Plataforma do Cliente</h2>
+      <p class="lead">Acompanhe a sua carga, documentos e custos — tudo em um só lugar.</p>
+      <div class="grid4">
+        <div class="card-min"><h3>Linha do tempo</h3><p>Do pedido à entrega, com prazos e confirmação de cada etapa.</p></div>
+        <div class="card-min"><h3>Custos claros</h3><p>Resumo com preço estimado no Brasil e impostos previstos.</p></div>
+        <div class="card-min"><h3>Inspeções</h3><p>Fotos e vídeos da inspeção por amostra e decisão final.</p></div>
+        <div class="card-min"><h3>Documentos</h3><p>Invoice, packing list, conhecimento de embarque e laudos.</p></div>
+      </div>
+      <div class="hero-ctas" style="margin-top:12px">
+        <a class="cta primary" href="https://glideapps.com/" target="_blank" rel="noopener">Quero a versão mobile</a>
+        <a class="cta" href="https://www.softr.io/" target="_blank" rel="noopener">Quero a versão web</a>
       </div>
     </div>
   </section>
 
-  <!-- Plataforma do Cliente (sua resposta ao CMS deles) -->
-  <section id="plataforma" class="section">
-    <div class="container">
-      <h2>Plataforma do Cliente (MVP)</h2>
-      <p>Portal unificado para acompanhar <b>custos</b>, <b>status da carga</b>, <b>QC Live</b> e <b>documentos</b> — com login e perfis por área.</p>
-      <div class="grid">
-        <div class="card"><h3>Rastreamento por Marcos</h3><p>Cotação → Pedido → Produção → QC → Embarque → Desembaraço → Entrega.</p></div>
-        <div class="card"><h3>Custos & CIF</h3><p>Resumo financeiro do Simulador 1‑min e proposta em PDF.</p></div>
-        <div class="card"><h3>QC Live + AQL</h3><p>Cards com fotos/vídeos, amostragem e decisão.</p></div>
-        <div class="card"><h3>Documentos</h3><p>Invoice, PL, BL/AWB, laudos QC, NF e histórico de mudanças.</p></div>
-      </div>
-      <div class="cta-row" style="margin-top:12px">
-        <a class="cta primary" href="https://glideapps.com/" target="_blank" rel="noopener">Quero versão mobile (Glide)</a>
-        <a class="cta" href="https://www.softr.io/" target="_blank" rel="noopener">Quero versão web (Softr)</a>
-      </div>
-      <p class="mini" style="margin-top:8px">Observação: a Comexport apresenta um CMS em nuvem com dashboard, custos detalhados, follow‑up, mapa de navegação, permissionamento, acesso a IMPs/NF/Invoice/Status/SLAs e controle em tempo real — você terá a mesma visão no “Portal ShaRui” (com QC Live integrado). :contentReference[oaicite:4]{index=4}</p>
-    </div>
-  </section>
-
-  <!-- Contato -->
+  <!-- CONTATO -->
   <section id="contato" class="section">
     <div class="container">
       <h2>Contato</h2>
-      <p>WhatsApp, e‑mail, WeChat ou agende:</p>
-      <div class="cta-row">
+      <p class="lead">WhatsApp, e‑mail, WeChat ou agende um horário.</p>
+      <div class="hero-ctas">
         <a class="cta primary" data-contact="whatsapp">WhatsApp</a>
         <a class="cta" data-contact="email">Enviar e‑mail</a>
         <a class="cta" onclick="openQR()">WeChat — Ver QR</a>
@@ -193,4 +196,3 @@
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
 </body>
 </html>
-
