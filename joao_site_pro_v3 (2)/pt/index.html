@@ -122,6 +122,22 @@
   margin-left: auto;
   margin-right: auto;
 }
+/* --- Deixar uma seção em tela cheia --- */
+.full-screen{
+  min-height: 100vh;           /* ocupa a altura toda da janela */
+  display: flex;               /* centraliza verticalmente o conteúdo */
+  align-items: center;
+  padding: clamp(56px, 6vh, 80px) 0; /* respiro vertical */
+}
+
+/* garante que o container ocupe a largura normalmente */
+.full-screen > .container{ width: 100%; }
+
+/* Em telas menores, pode reduzir um pouco a altura pra caber melhor */
+@media (max-width: 768px){
+  .full-screen{ min-height: 92vh; }
+}
+
   </style>
 </head>
 
@@ -186,7 +202,7 @@
 
 
   <!-- (2) DIFERENCIAIS -->
-  <section id="diferenciais" class="section bg-cover bg-diferenciais">
+  <<section id="diferenciais" class="section bg-cover bg-diferenciais full-screen">
     <div class="container">
       <h2>Diferenciais que fazem a importação andar</h2>
       <p class="lead">Menos tentativa e erro — mais previsibilidade e controle.</p>
