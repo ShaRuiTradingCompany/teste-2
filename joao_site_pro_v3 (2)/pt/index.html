@@ -110,6 +110,18 @@
     .modal-body{flex:1; min-height:0}
     .modal-body iframe{width:100%; height:100%; border:0}
     .btn-close{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:6px 10px; cursor:pointer}
+ /* ---- Ajuste de tipografia específico do "Quem somos" ---- */
+#quem-somos h2{
+  font-size: clamp(34px, 5vw, 60px);   /* título maior */
+  letter-spacing: .2px;
+}
+#quem-somos .lead{
+  font-size: clamp(18px, 2.2vw, 22px); /* texto maior */
+  line-height: 1.55;
+  max-width: 1100px;                   /* um pouco mais largo */
+  margin-left: auto;
+  margin-right: auto;
+}
   </style>
 </head>
 
