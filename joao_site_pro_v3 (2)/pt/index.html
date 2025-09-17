@@ -3,139 +3,228 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ShaRui Trading Company — Importação China ↔ Brasil</title>
-  <meta name="description" content="Operamos do chão de fábrica em Ganzhou. Sourcing validado, inspeção por amostra com fotos e vídeos, ficha técnica PT‑ZH e custo total previsível.">
+  <title>ShaRui Trading Company — Escritório em Ganzhou, visitamos fábricas em toda a China</title>
+  <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra com fotos e vídeos e preço estimado antes do pedido. Ficha técnica em português e chinês. Sem valor mínimo.">
 
-  <!-- CSS / JS do projeto -->
-  <link rel="stylesheet" href="../assets/styles.css">
-  <script src="../assets/config.js"></script>
-  <script defer src="../assets/main.js"></script>
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- SEO básico -->
-  <link rel="canonical" href="https://seusite.com/pt/">
-  <link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br">
-  <link rel="alternate" href="https://seusite.com/en/" hreflang="en">
-  <link rel="alternate" href="https://seusite.com/es/" hreflang="es">
-  <link rel="alternate" href="https://seusite.com/ar/" hreflang="ar">
-  <link rel="alternate" href="https://seusite.com/pt/" hreflang="x-default">
+  <!-- CSS/JS base -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/video_hero.css?v=3">
+  <script src="/assets/config.js"></script>
+  <script defer src="/assets/main.js"></script>
+
+  <!-- Estilos complementares -->
+  <style>
+    :root{
+      --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --accent: #66e0c2; /* cor destaque */
+    }
+    body{font-family:var(--font-sans)}
+
+    /* ===== Header 100% transparente sobre o vídeo ===== */
+    .site-header{position:fixed; top:0; left:0; right:0; z-index:1000; background:transparent; border:none;}
+    .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
+    .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{color:#fff; text-shadow:none;}
+    nav .menu{display:flex; gap:16px; align-items:center}
+    nav .menu a{opacity:.98}
+    nav .menu a:hover{opacity:1}
+
+    /* Marca empilhada e alinhada (TRADING abaixo de SHA RUI, alinhado à esquerda) */
+    .brand-logo{display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;}
+    .brand-logo .brand-top{display:block; font-weight:700; letter-spacing:.6px}
+    .brand-logo .brand-sub{display:block; font-size:12px; opacity:.92; margin-top:-2px; letter-spacing:.8px; padding-left:0}
+
+    /* ===== HERO tela cheia (100vh) ===== */
+    .hero-video-wrap{
+      position:relative; height:100vh; min-height:100vh; overflow:hidden;
+    }
+    .hero-video{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      filter:brightness(1.34) contrast(1.08) saturate(1.06);
+    }
+    .hero-overlay{display:none !important;} /* sem fosco */
+
+    /* ===== Banda abaixo do vídeo (com foto) ===== */
+    .after-hero{
+      min-height:60vh; display:flex; align-items:center; position:relative;
+      background-image:url('/assets/bg-after-hero.jpg'); background-size:cover; background-position:center;
+    }
+    .after-hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));}
+    .after-hero > .container{position:relative; z-index:1;}
+    .hero-box{
+      max-width:1100px; width:100%; margin:0 auto; background:rgba(0,0,0,.26);
+      border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px;
+    }
+    .hero-title{font-size:34px; margin:0 0 8px; text-align:center; color:var(--accent);}
+    .hero-sub{font-size:18px; opacity:.95; margin:0 0 14px; text-align:center}
+    .hero-ctas{display:none} /* sem botões nesta faixa */
+
+    /* Benefícios centralizados (3 colunas no desktop, 2 no médio, 1 no móvel) */
+    .kpi-bar{display:grid; grid-template-columns:repeat(3,minmax(260px,1fr)); gap:14px; margin-top:16px}
+    @media(max-width:1200px){ .kpi-bar{grid-template-columns:repeat(2,minmax(260px,1fr))} }
+    @media(max-width:760px){ .kpi-bar{grid-template-columns:1fr} }
+    .kpi{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:18px; text-align:center}
+    .kpi h4{margin:0 0 6px; font-size:18px}
+    .kpi p{margin:0; opacity:.98; line-height:1.45}
+
+    /* ===== Seções com imagem de fundo ===== */
+    .section h2{text-align:center; margin:0 0 6px; letter-spacing:.2px}
+    .section .lead{text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px}
+    .bg-cover{position:relative; background-size:cover; background-position:center; background-attachment:fixed;}
+    .bg-cover::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));}
+    .bg-cover > .container{position:relative; z-index:1;}
+    .bg-quem{background-image:url('/assets/bg-quem.jpg'); min-height:85vh; display:flex; align-items:center;}
+    .bg-diferenciais{background-image:url('/assets/bg-diferenciais.jpg');}
+    .bg-plataforma{background-image:url('/assets/bg-plataforma.jpg');}
+    .bg-ebooks{background-image:url('/assets/bg-ebooks.jpg');}
+
+    /* Grids/cards */
+    .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+    @media(max-width:1100px){ .grid4{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:720px){ .grid4{grid-template-columns:1fr} }
+    .grid6{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    @media(max-width:1100px){ .grid6{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:720px){ .grid6{grid-template-columns:1fr} }
+    .card-min{background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px}
+
+    /* E‑books: blocos grandes com hover (contorno + movimento), texto branco */
+    .ebooks-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    @media(max-width:1024px){ .ebooks-grid{grid-template-columns:1fr} }
+    .ebook-tile{display:block; position:relative; min-height:360px; border-radius:14px; overflow:hidden;
+      border:2px solid rgba(255,255,255,.18); background:#0b0e10; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
+    .ebook-tile .ph{position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.9);}
+    .ebook-tile::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.6));}
+    .ebook-tile .label{position:absolute; left:16px; bottom:14px; right:16px; z-index:1; font-weight:700; font-size:19px; color:#fff;}
+    .ebook-tile:hover, .ebook-tile:focus-visible{transform: translateY(-4px) scale(1.015); border-color: rgba(255,255,255,.65);
+      box-shadow:0 10px 26px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.22) inset; outline:none;}
+
+    /* Modal Calendly */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:2000;}
+    .modal.open{display:flex}
+    .modal-card{background:#0b0e10; border:1px solid rgba(255,255,255,.16); border-radius:12px; width:min(940px,92vw); height:min(80vh,720px); overflow:hidden; display:flex; flex-direction:column;}
+    .modal-head{display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.12)}
+    .modal-body{flex:1; min-height:0}
+    .modal-body iframe{width:100%; height:100%; border:0}
+    .btn-close{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:6px 10px; cursor:pointer}
+  </style>
 </head>
 
 <body>
-<header>
-  <div class="container">
+<!-- HEADER transparente -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav-wrap">
+    <div class="brand">
+      <a href="index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+        <span class="brand-top">SHA RUI</span>
+        <span class="brand-sub">TRADING COMPANY</span>
+      </a>
+    </div>
     <nav>
-      <!-- Marca em duas linhas -->
-      <div class="brand">
-        <a href="index.html" class="brand-logo">
-          <span class="brand-top">SHA RUI</span>
-          <span class="brand-sub">TRADING COMPANY</span>
-        </a>
-      </div>
-
-      <!-- Menu -->
       <div class="menu">
-        <a href="#quem">Quem somos</a>
+        <a href="#quem-somos">Quem somos</a>
         <a href="#diferenciais">Diferenciais</a>
-        <a href="#escritorio">Escritório em Ganzhou</a>
-        <a href="#plataforma">Plataforma do cliente</a>
-        <a href="#ebooks">E‑books</a>
-      </div>
-
-      <!-- Idiomas (seu globo/menu atual continua funcionando) -->
-      <div class="lang">
-        <button class="lang-toggle" aria-label="Selecionar idioma" onclick="document.querySelector('.lang').classList.toggle('open')">
-          <!-- ícone globo -->
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-            <path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm7.93 9h-3.12a15.9 15.9 0 00-.9-5.08A8.02 8.02 0 0119.93 11ZM12 4c.87 0 2.33 1.98 2.9 6H9.1c.57-4.02 2.03-6 2.9-6Zm-3.91 1.92A15.9 15.9 0 007.19 11H4.07a8.02 8.02 0 014.02-5.08ZM4.07 13h3.12c.2 1.87.7 3.67 1.48 5.08A8.02 8.02 0 014.07 13ZM12 20c-.87 0-2.33-1.98-2.9-6h5.8c-.57 4.02-2.03 6-2.9 6Zm3.91-1.92A15.9 15.9 0 0016.81 13h3.12a8.02 8.02 0 01-4.02 5.08Z"/>
-          </svg>
-        </button>
-        <ul class="lang-menu">
-          <li><a href="index.html">Português (PT)</a></li>
-          <li><a href="../en/index.html">English (EN)</a></li>
-          <li><a href="../es/index.html">Español (ES)</a></li>
-          <li><a href="../ar/index.html">العربية (AR)</a></li>
-        </ul>
+        <a href="#plataforma">Plataforma</a>
+        <a href="#" onclick="openCalendly();return false;">Contato</a>
+        <a href="marketplace.html"><b>Marketplace</b></a>
       </div>
     </nav>
+    <div class="lang" id="lang">
+      <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
+      <ul class="lang-menu" id="langMenu">
+        <li><a href="/pt/index.html">Português (PT)</a></li>
+        <li><a href="/en/index.html">English (EN)</a></li>
+        <li><a href="/es/index.html">Español (ES)</a></li>
+        <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
+      </ul>
+    </div>
   </div>
 </header>
 
 <main>
-
-  <!-- ====== HERO / VÍDEO (sem mudanças) ====== -->
+  <!-- HERO com vídeo tela inteira -->
   <section class="hero-video-wrap">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata"
-           poster="/assets/hero-poster.jpg">
-      <source src="/assets/hero.webm?v=3" type="video/webm">
-      <source src="/assets/hero.mp4?v=3" type="video/mp4">
+    <!-- (Quando quiser mais qualidade, troque por um MP4 1080p/alto bitrate mantendo +faststart) -->
+    <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
+      <source src="/assets/company_web_720p.mp4?v=17" type="video/mp4" media="(max-width: 768px)">
+      <source src="/assets/company.mp4?v=17" type="video/mp4">
     </video>
-
-    <div class="hero-overlay"></div>
-    <div class="hero-content container">
-      <h1 class="hero-title">Operamos do chão de fábrica em Ganzhou</h1>
-      <p class="hero-sub">Auditoria 48h • QC Live • Spec‑Lock &amp; AQL • Custo total previsível</p>
-    </div>
   </section>
 
-  <!-- ====== 1) QUEM SOMOS ====== -->
-  <section id="quem" class="section full who">
-    <div class="who-bg"></div>
-    <div class="who-inner">
-      <div class="container">
-        <h2>Quem somos</h2>
-        <p class="who-lead">
-          <strong>Escritório em Ganzhou.</strong> Participação ativa na <strong>Canton Fair</strong>.
-          Conectamos sua empresa a fábricas confiáveis na China. Integramos engenharia, qualidade e finanças
-          para reduzir risco e custo total — com presença dentro da fábrica.
+  <!-- FAIXA ABAIXO DO VÍDEO (com foto) -->
+  <section class="after-hero section">
+    <div class="container">
+      <div class="hero-box">
+        <h1 class="hero-title">Escritório em Ganzhou — visitamos todas as fábricas da China</h1>
+        <p class="hero-sub">
+          Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos • <b>Preço estimado antes do pedido</b>
         </p>
 
-        <div class="who-grid">
-          <div class="who-col">
-            <p>
-              Trabalhamos por <strong>clusters</strong> (polos de origem) para garantir capacidade,
-              lead time e acabamento onde o produto nasce. Fazemos a ponte cultural e técnica:
-              especificação clara, <strong>inspeção por amostra com registro visual</strong> e
-              acompanhamento até a entrega no Brasil.
-            </p>
-            <p>
-              Mais previsibilidade, menos retrabalho: ficha técnica PT‑ZH, validação de fornecedor,
-              negociação com nativos e <strong>preço estimado no Brasil</strong> antes do pedido.
-            </p>
+        <div class="kpi-bar">
+          <div class="kpi">
+            <h4>Fornecedor certo, lugar certo</h4>
+            <p>Atuamos nos polos de origem. Presença na <b>Canton Fair</b> e <b>visitas a qualquer fábrica na China</b> para validar produção e prazos.</p>
           </div>
-          <div class="who-photo"><!-- espaço reservado para foto opcional --></div>
+          <div class="kpi">
+            <h4>Inspeção com prova</h4>
+            <p>Amostragem e testes com <b>fotos e vídeos</b> antes da decisão final — sem surpresa na entrega.</p>
+          </div>
+          <div class="kpi">
+            <h4>Ficha técnica em PT‑ZH</h4>
+            <p>Desenho, materiais, medidas, tolerâncias, <b>embalagem e etiqueta</b> (português e chinês), tudo combinado e assinado.</p>
+          </div>
+          <div class="kpi">
+            <h4>Preço no Brasil</h4>
+            <p>Estimativa transparente de <b>impostos e despesas</b> antes do pedido, para decidir com segurança.</p>
+          </div>
+          <div class="kpi">
+            <h4>Negociação local com nativos</h4>
+            <p>Temos <b>funcionários chineses</b> que negociam diretamente com as fábricas para buscar <b>melhores condições</b>.</p>
+          </div>
+          <div class="kpi">
+            <h4>Não importa o tamanho do investimento</h4>
+            <p><b>Sem valor mínimo</b>: começe com amostras e pilotos. Quando fizer sentido, <b>compartilhe contêiner</b> para otimizar o frete.</p>
+          </div>
         </div>
-
-        <ul class="who-stats">
-          <li>Canton Fair • visitas a qualquer fábrica</li>
-          <li>Equipe local chinesa</li>
-          <li>Spec‑Lock &amp; AQL</li>
-          <li>Auditoria 48h</li>
-        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ====== 2) DIFERENCIAIS ====== -->
-  <section id="diferenciais" class="section full" style="position:relative;">
-    <div style="position:absolute;inset:0;background:url('/assets/bg-diferenciais.jpg') center/cover no-repeat;filter:brightness(.55) saturate(1.05);z-index:0"></div>
-    <div class="container" style="position:relative;z-index:1">
-      <h2 style="text-align:center">Diferenciais que fazem a importação andar</h2>
-      <p style="text-align:center;opacity:.85;margin:6px 0 26px">Menos tentativa e erro — mais previsibilidade e controle.</p>
+  <!-- QUEM SOMOS (faixa alta com foto) -->
+  <section id="quem-somos" class="section bg-cover bg-quem">
+    <div class="container">
+      <h2>Quem somos</h2>
+      <p class="lead">
+        <b>Escritório em Ganzhou</b>. Participação ativa na <b>Canton Fair</b>. Conectamos sua empresa a fábricas confiáveis na China.
+        Integramos engenharia, qualidade e finanças para reduzir risco e custo total — com presença dentro da fábrica.
+      </p>
+      <p class="lead" style="opacity:.85">
+        Fazemos a ponte cultural e técnica: especificação clara, inspeção por amostra com registro visual e acompanhamento até a entrega no Brasil.
+      </p>
+    </div>
+  </section>
 
-      <div class="grid">
-        <div class="card">
+  <!-- DIFERENCIAIS (com imagem) -->
+  <section id="diferenciais" class="section bg-cover bg-diferenciais">
+    <div class="container">
+      <h2>Diferenciais que fazem a importação andar</h2>
+      <p class="lead">Menos tentativa e erro — mais previsibilidade e controle.</p>
+      <div class="grid4">
+        <div class="card-min">
           <h3>Fornecedor certo no lugar certo</h3>
-          <p>Buscamos nos polos de origem. Estamos em <strong>Ganzhou</strong>, participamos da <strong>Canton Fair</strong> e visitamos <strong>qualquer fábrica na China</strong>.</p>
+          <p>Buscamos nos polos de origem. Estamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e <b>visitamos qualquer fábrica na China</b>.</p>
         </div>
-        <div class="card">
+        <div class="card-min">
           <h3>Ficha técnica em português e chinês</h3>
           <p>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</p>
         </div>
-        <div class="card">
+        <div class="card-min">
           <h3>Inspeção com fotos e vídeos</h3>
           <p>Mostramos a amostragem, os testes e a aprovação/reprovação — sem surpresa na entrega.</p>
         </div>
-        <div class="card">
+        <div class="card-min">
           <h3>Negociação com nativos</h3>
           <p>Equipe local chinesa para negociar condições comerciais melhores diretamente com a fábrica.</p>
         </div>
@@ -143,105 +232,63 @@
     </div>
   </section>
 
-  <!-- ====== 3) ESCRITÓRIO EM GANZHOU ====== -->
-  <section id="escritorio" class="section full" style="position:relative;">
-    <div style="position:absolute;inset:0;background:url('/assets/bg-after-hero.jpg') center/cover no-repeat;filter:brightness(.55) saturate(1.05);z-index:0"></div>
-    <div class="container" style="position:relative;z-index:1">
-      <h2 style="text-align:center">Escritório em Ganzhou — visitamos todas as fábricas da China</h2>
-      <p style="text-align:center;opacity:.9;margin:8px 0 26px">
-        Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos •
-        <strong>Preço estimado antes do pedido</strong>
-      </p>
+  <!-- PLATAFORMA (benefícios em evidência + acompanhamento de carga) -->
+  <section id="plataforma" class="section bg-cover bg-plataforma">
+    <div class="container">
+      <h2>Plataforma do Cliente</h2>
+      <p class="lead">Acompanhe sua carga, documentos e custos — tudo em um só lugar.</p>
 
-      <div class="grid">
-        <div class="card">
-          <h3>Fornecedor certo, lugar certo</h3>
-          <p>Atuamos nos polos de origem. Presença na <strong>Canton Fair</strong> e <strong>visitas a qualquer fábrica na China</strong> para validar produção e prazos.</p>
-        </div>
-        <div class="card">
-          <h3>Inspeção com prova</h3>
-          <p>Amostragem e testes com <strong>fotos e vídeos</strong> antes da decisão final — sem surpresa na entrega.</p>
-        </div>
-        <div class="card">
-          <h3>Ficha técnica em PT‑ZH</h3>
-          <p>Desenho, materiais, medidas, tolerâncias, <strong>embalagem e etiqueta</strong> (português e chinês), tudo combinado e assinado.</p>
-        </div>
-        <div class="card">
-          <h3>Preço no Brasil</h3>
-          <p>Estimativa transparente de <strong>impostos e despesas</strong> antes do pedido, para decidir com segurança.</p>
-        </div>
-        <div class="card">
-          <h3>Negociação local com nativos</h3>
-          <p>Temos <strong>funcionários chineses</strong> que negociam diretamente com as fábricas para buscar <strong>melhores condições</strong>.</p>
-        </div>
-        <div class="card">
-          <h3>Não importa o tamanho do investimento</h3>
-          <p><strong>Sem valor mínimo</strong>: comece com amostras e pilotos. Quando fizer sentido, <strong>compartilhe contêiner</strong> para otimizar o frete.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== 4) PLATAFORMA DO CLIENTE ====== -->
-  <section id="plataforma" class="section full" style="position:relative;">
-    <div style="position:absolute;inset:0;background:url('/assets/bg-plataforma.jpg') center/cover no-repeat;filter:brightness(.55) saturate(1.05);z-index:0"></div>
-    <div class="container" style="position:relative;z-index:1">
-      <h2 style="text-align:center">Plataforma do Cliente</h2>
-      <p style="text-align:center;opacity:.9;margin:8px 0 26px">Acompanhe sua carga, documentos e custos — tudo em um só lugar.</p>
-
-      <div class="grid">
-        <div class="card">
+      <div class="grid6">
+        <div class="card-min">
           <h3>Acompanhamento de carga</h3>
-          <p>Check‑points por etapa e <strong>mapa</strong> quando disponível (marítimo, aéreo e rodoviário).</p>
+          <p>Check‑points por etapa e <b>mapa</b> quando disponível (marítimo, aéreo e rodoviário).</p>
         </div>
-        <div class="card">
+        <div class="card-min">
           <h3>Linha do tempo</h3>
           <p>Do pedido à entrega, com responsáveis, prazos e confirmação de cada etapa.</p>
         </div>
-        <div class="card">
+        <div class="card-min">
           <h3>Custos detalhados</h3>
-          <p><strong>Preço no Brasil (estimado)</strong>, impostos e despesas com memória de cálculo — transparência total.</p>
+          <p><b>Preço no Brasil (estimado)</b>, impostos e despesas com memória de cálculo — transparência total.</p>
         </div>
-        <div class="card">
+        <div class="card-min">
           <h3>Documentos</h3>
           <p>Invoice, Packing List, BL/AWB, laudos de inspeção, relatórios e histórico de versões.</p>
         </div>
-        <div class="card">
-          <h3>Alertas &amp; prazos</h3>
-          <p>Lembretes de embarque/desembaraço e <strong>SLA de 48h</strong> para visita à fábrica.</p>
+        <div class="card-min">
+          <h3>Alertas & prazos</h3>
+          <p>Lembretes de embarque/desembaraço e <b>SLA de 48h</b> para visita à fábrica.</p>
         </div>
-        <div class="card">
-          <h3>Acessos &amp; histórico</h3>
+        <div class="card-min">
+          <h3>Acessos & histórico</h3>
           <p>Perfis por área (Compras, Financeiro, Diretoria), permissões e trilha de auditoria.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====== 5) DO PLANEJAMENTO AO DESEMBARAÇO (E‑BOOKS) ====== -->
-  <section id="ebooks" class="section full" style="position:relative;">
-    <div style="position:absolute;inset:0;background:url('/assets/bg-ebooks.jpg') center/cover no-repeat;filter:brightness(.55) saturate(1.05);z-index:0"></div>
-    <div class="container" style="position:relative;z-index:1">
-      <h2 style="text-align:center">Do planejamento ao desembaraço</h2>
-      <p style="text-align:center;opacity:.9;margin:8px 0 26px">3 e‑books gratuitos de quem está há mais de 30 anos no mercado</p>
+  <!-- E‑BOOKS -->
+  <section id="ebooks" class="section bg-cover bg-ebooks">
+    <div class="container">
+      <h2>Do planejamento ao desembaraço</h2>
+      <p class="lead">3 e‑books gratuitos de quem está há mais de 30 anos no mercado</p>
 
-      <div class="grid">
-        <a class="card" href="#" aria-label="Baixar e-book Importação em 10 passos">
-          <h3>Importação em 10 passos (2025)</h3>
-          <p>Do briefing ao desembaraço — direto ao ponto, sem complicação.</p>
+      <div class="ebooks-grid">
+        <a class="ebook-tile" href="#" title="Em breve">
+          <span class="ph" style="background-image:url('/assets/ebook1.jpg')"></span>
+          <span class="label">Importação em 10 passos (2025)</span>
         </a>
-        <a class="card" href="#" aria-label="Baixar e-book Impostos na Importação">
-          <h3>Impostos na Importação — guia prático</h3>
-          <p>Como estimar tributos, despesas e custo total antes do pedido.</p>
+        <a class="ebook-tile" href="#" title="Em breve">
+          <span class="ph" style="background-image:url('/assets/ebook2.jpg')"></span>
+          <span class="label">Impostos na Importação — guia prático</span>
         </a>
-        <a class="card" href="#" aria-label="Baixar e-book Qualidade sem drama">
-          <h3>Qualidade sem drama: inspeção com prova</h3>
-          <p>Spec‑Lock, AQL e registro visual — sem surpresa na entrega.</p>
+        <a class="ebook-tile" href="#" title="Em breve">
+          <span class="ph" style="background-image:url('/assets/ebook3.jpg')"></span>
+          <span class="label">Qualidade sem drama: inspeção com prova</span>
         </a>
       </div>
     </div>
   </section>
-
 </main>
 
 <footer class="footer">
@@ -255,15 +302,33 @@
   </div>
 </footer>
 
-<!-- Modal do QR WeChat (seu JS já controla open/close) -->
-<div id="qr-modal" class="modal" onclick="closeQR()">
+<!-- Modal Calendly -->
+<div id="calendly-modal" class="modal" onclick="closeCalendly()">
   <div class="modal-card" onclick="event.stopPropagation()">
-    <h3>WeChat QR</h3>
-    <img src="/assets/wechat-qr.svg" alt="WeChat QR">
-    <div><button class="cta modal-close" onclick="closeQR()">Fechar</button></div>
+    <div class="modal-head">
+      <strong>Agendar conversa</strong>
+      <button class="btn-close" onclick="closeCalendly()">Fechar</button>
+    </div>
+    <div class="modal-body">
+      <!-- TROQUE PELO SEU LINK DO CALENDLY -->
+      <iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe>
+    </div>
   </div>
 </div>
 
+<!-- WhatsApp flutuante (global) -->
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
+
+<!-- Script: abrir/fechar Calendly -->
+<script>
+  const CAL_URL = "https://calendly.com/seuusuario/30min?hide_landing_page_details=1&hide_gdpr_banner=1";
+  function openCalendly(){
+    const m = document.getElementById('calendly-modal');
+    const f = document.getElementById('calendly-frame');
+    if(f.src === "about:blank") f.src = CAL_URL;
+    m.classList.add('open');
+  }
+  function closeCalendly(){ document.getElementById('calendly-modal').classList.remove('open'); }
+</script>
 </body>
 </html>
