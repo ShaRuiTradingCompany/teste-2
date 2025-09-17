@@ -107,3 +107,76 @@ video_hero.css
   font-size:clamp(9px,1.1vw,12px);
   opacity:.85;
 }
+/* Seção em tela cheia (100vh) */
+.section.full{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* QUEM SOMOS */
+.section.who{
+  color: #e9eef6;
+  padding: clamp(48px, 6vw, 88px) 0;
+}
+.section.who .who-bg{
+  position: absolute; inset: 0;
+  background: #0b1222 url("/assets/bg-quem.jpg") center/cover no-repeat;
+  /* ajuste de leitura sobre a foto */
+  filter: brightness(.55) saturate(1.08);
+  z-index: 0;
+}
+.section.who .who-inner{ position: relative; z-index: 1; width: 100%; }
+
+.section.who h2{
+  margin: 0 0 10px;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.12;
+  color: #fff;
+  text-align: center;
+}
+.section.who .who-lead{
+  max-width: 980px;
+  margin: 6px auto 28px;
+  text-align: center;
+  font-size: clamp(16px, 2vw, 19px);
+  color: #dbe6ff;
+}
+
+.who-grid{
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;  /* texto + espaço para foto (opcional) */
+  gap: clamp(16px, 3vw, 36px);
+  align-items: start;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.who-col p{ margin: 0 0 12px; color: #e7ecff; }
+
+.who-photo{
+  /* se quiser exibir uma imagem aqui, ative a linha abaixo com uma imagem institucional */
+  /* background: url("/assets/quem-foto.jpg") center/cover no-repeat; */
+  border-radius: 12px;
+  min-height: 300px;
+  backdrop-filter: blur(0.5px);
+  opacity: .95;
+}
+
+.who-stats{
+  display: flex; flex-wrap: wrap; gap: 10px;
+  list-style: none; padding: 0; margin: 24px auto 0;
+  max-width: 1120px;
+}
+.who-stats li{
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.08);
+  border-radius: 999px; padding: 8px 14px;
+  font-size: 14px; color: #f2f6ff;
+}
+
+/* Responsivo */
+@media (max-width: 980px){
+  .who-grid{ grid-template-columns: 1fr; }
+  .who-photo{ display: none; } /* se quiser ocultar a coluna extra no mobile */
+}
