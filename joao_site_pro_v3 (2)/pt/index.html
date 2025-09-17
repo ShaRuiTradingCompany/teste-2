@@ -47,7 +47,7 @@
     }
     .hero-overlay{display:none !important;} /* sem fosco */
 
-    /* ===== Banda abaixo do vídeo (com foto) ===== */
+    /* ===== Banda “Escritório em Ganzhou” (com foto) ===== */
     .after-hero{
       min-height:60vh; display:flex; align-items:center; position:relative;
       background-image:url('/assets/bg-after-hero.jpg'); background-size:cover; background-position:center;
@@ -58,7 +58,8 @@
       max-width:1100px; width:100%; margin:0 auto; background:rgba(0,0,0,.26);
       border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px;
     }
-    .hero-title{font-size:34px; margin:0 0 8px; text-align:center; color:var(--accent);}
+    /* >>> ALTERAÇÃO: título branco (antes usava var(--accent) verde) */
+    .hero-title{font-size:34px; margin:0 0 8px; text-align:center; color:#fff;}
     .hero-sub{font-size:18px; opacity:.95; margin:0 0 14px; text-align:center}
     .hero-ctas{display:none} /* sem botões nesta faixa */
 
@@ -109,18 +110,6 @@
     .modal-body{flex:1; min-height:0}
     .modal-body iframe{width:100%; height:100%; border:0}
     .btn-close{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:6px 10px; cursor:pointer}
- /* ---- Ajuste de tipografia específico do "Quem somos" ---- */
-#quem-somos h2{
-  font-size: clamp(34px, 5vw, 60px);   /* título maior */
-  letter-spacing: .2px;
-}
-#quem-somos .lead{
-  font-size: clamp(18px, 2.2vw, 22px); /* texto maior */
-  line-height: 1.55;
-  max-width: 1100px;                   /* um pouco mais largo */
-  margin-left: auto;
-  margin-right: auto;
-}
   </style>
 </head>
 
@@ -156,7 +145,7 @@
 </header>
 
 <main>
-  <!-- HERO com vídeo tela inteira (mantido) -->
+  <!-- HERO com vídeo tela inteira -->
   <section class="hero-video-wrap">
     <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
       <source src="/assets/company_web_720p.mp4?v=17" type="video/mp4" media="(max-width: 768px)">
@@ -164,32 +153,53 @@
     </video>
   </section>
 
-  <!-- AGORA vem "QUEM SOMOS" logo após o vídeo -->
+  <!-- (1) QUEM SOMOS -->
   <section id="quem-somos" class="section bg-cover bg-quem">
     <div class="container">
       <h2>Quem somos</h2>
       <p class="lead">
-        <b>Temos 30 anos de experiência em comércio internacional.</b>
-        Base em <b>Ganzhou (China)</b> e participação ativa na <b>Canton Fair</b>.
-        Conectamos sua empresa a fábricas confiáveis, atuando por <b>clusters setoriais</b>
-        e com presença dentro das linhas de produção.
+        <b>Escritório em Ganzhou</b>. Participação ativa na <b>Canton Fair</b>. Conectamos sua empresa a fábricas confiáveis na China.
+        Integramos engenharia, qualidade e finanças para reduzir risco e custo total — com presença dentro da fábrica.
       </p>
       <p class="lead" style="opacity:.85">
-        Integramos engenharia, qualidade e finanças para reduzir risco e custo total.
-        Fazemos a ponte cultural e técnica: especificação clara, <b>inspeção por amostra com registro visual</b>
-        e acompanhamento até a entrega no Brasil — <b>prova de qualidade</b>.
+        Fazemos a ponte cultural e técnica: especificação clara, inspeção por amostra com registro visual e acompanhamento até a entrega no Brasil.
       </p>
     </div>
   </section>
 
-  <!-- EM SEGUIDA vem "ESCRITÓRIO EM GANZHOU" (faixa com foto e KPIs) -->
+  <!-- (2) DIFERENCIAIS -->
+  <section id="diferenciais" class="section bg-cover bg-diferenciais">
+    <div class="container">
+      <h2>Diferenciais que fazem a importação andar</h2>
+      <p class="lead">Menos tentativa e erro — mais previsibilidade e controle.</p>
+      <div class="grid4">
+        <div class="card-min">
+          <h3>Fornecedor certo no lugar certo</h3>
+          <p>Buscamos nos polos de origem. Estamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e <b>visitamos qualquer fábrica na China</b>.</p>
+        </div>
+        <div class="card-min">
+          <h3>Ficha técnica em português e chinês</h3>
+          <p>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</p>
+        </div>
+        <div class="card-min">
+          <h3>Inspeção com fotos e vídeos</h3>
+          <p>Mostramos a amostragem, os testes e a aprovação/reprovação — sem surpresa na entrega.</p>
+        </div>
+        <div class="card-min">
+          <h3>Negociação com nativos</h3>
+          <p>Equipe local chinesa para negociar condições comerciais melhores diretamente com a fábrica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (3) ESCRITÓRIO EM GANZHOU (faixa que antes ficava logo após o vídeo) -->
   <section class="after-hero section">
     <div class="container">
       <div class="hero-box">
         <h1 class="hero-title">Escritório em Ganzhou — visitamos todas as fábricas da China</h1>
         <p class="hero-sub">
-          Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos •
-          <b>Preço estimado antes do pedido</b>
+          Visita à fábrica em até 48h • Inspeção por amostra (padrão internacional) com fotos e vídeos • <b>Preço estimado antes do pedido</b>
         </p>
 
         <div class="kpi-bar">
@@ -222,33 +232,7 @@
     </div>
   </section>
 
-  <!-- DIFERENCIAIS (com imagem) -->
-  <section id="diferenciais" class="section bg-cover bg-diferenciais">
-    <div class="container">
-      <h2>Diferenciais que fazem a importação andar</h2>
-      <p class="lead">Menos tentativa e erro — mais previsibilidade e controle.</p>
-      <div class="grid4">
-        <div class="card-min">
-          <h3>Fornecedor certo no lugar certo</h3>
-          <p>Buscamos nos polos de origem. Estamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e <b>visitamos qualquer fábrica na China</b>.</p>
-        </div>
-        <div class="card-min">
-          <h3>Ficha técnica em português e chinês</h3>
-          <p>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</p>
-        </div>
-        <div class="card-min">
-          <h3>Inspeção com fotos e vídeos</h3>
-          <p>Mostramos a amostragem, os testes e a aprovação/reprovação — sem surpresa na entrega.</p>
-        </div>
-        <div class="card-min">
-          <h3>Negociação com nativos</h3>
-          <p>Equipe local chinesa para negociar condições comerciais melhores diretamente com a fábrica.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLATAFORMA (benefícios em evidência + acompanhamento de carga) -->
+  <!-- PLATAFORMA -->
   <section id="plataforma" class="section bg-cover bg-plataforma">
     <div class="container">
       <h2>Plataforma do Cliente</h2>
