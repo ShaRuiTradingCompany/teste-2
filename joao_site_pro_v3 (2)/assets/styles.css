@@ -463,3 +463,43 @@ video_hero.css
 /* títulos maiores aqui para reforçar a hierarquia */
 #diferenciais h2{font-size:clamp(28px,4.8vw,46px)}
 #diferenciais .lead{font-size:clamp(15px,2.2vw,20px)}
+/* ——— 1) Container um pouco mais largo no site todo ——— */
+.container{
+  max-width: 1240px; /* era 1120px */
+}
+
+/* ——— 2) QUEM SOMOS: foto mais larga e preenchendo a área ——— */
+/* Grid da seção (foto ~50% + texto ~50%) */
+#quem-somos .qs-grid{
+  display: grid;
+  grid-template-columns: minmax(560px, 50%) 1fr;
+  gap: clamp(18px, 3vw, 36px);
+  align-items: center;
+}
+
+/* Moldura da foto */
+#quem-somos .qs-photo{
+  width: 100%;
+  aspect-ratio: 16 / 10;           /* mais horizontal para “alargar” */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+
+/* A imagem preenche todo o quadro */
+#quem-somos .qs-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                /* ocupa 100% sem faixas */
+  object-position: 50% 45%;         /* ajuste fino do enquadramento */
+}
+
+/* Responsivo: empilha no mobile */
+@media (max-width: 980px){
+  #quem-somos .qs-grid{
+    grid-template-columns: 1fr;
+  }
+  #quem-somos .qs-photo{
+    aspect-ratio: 16 / 11;          /* um pouco mais alto no mobile */
+  }
+}
