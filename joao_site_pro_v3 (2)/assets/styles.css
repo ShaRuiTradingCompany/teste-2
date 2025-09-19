@@ -509,5 +509,24 @@ video_hero.css
   #quem-somos .who-photo,
   #quem-somos .who-copy{ transform: none; }
 }
+/* === Slide-in da direita para a esquerda (foto + texto) === */
+#quem-somos .slide-in-right{
+  opacity: 0;
+  transform: translateX(48px);          /* começa um pouco à direita */
+  will-change: transform, opacity;
+}
+
+#quem-somos .slide-in-right.in{
+  opacity: 1;
+  transform: translateX(0);              /* posição final */
+}
+
+/* Transições separadas para ficar mais suave */
+#quem-somos .qs-photo.slide-in-right{
+  transition: transform .80s cubic-bezier(.2,.6,.2,1), opacity .80s;
+}
+#quem-somos .qs-text.slide-in-right{
+  transition: transform .90s cubic-bezier(.2,.6,.2,1), opacity .90s;
+}
 
 
