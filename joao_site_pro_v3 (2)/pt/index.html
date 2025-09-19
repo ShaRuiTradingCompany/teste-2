@@ -137,6 +137,50 @@
 @media (max-width: 768px){
   .full-screen{ min-height: 92vh; }
 }
+/* ===== Quem somos: layout em duas colunas ===== */
+.who-split { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); }
+.who-flex{
+  display:grid;
+  grid-template-columns: 1.05fr 0.95fr; /* foto | texto */
+  gap: clamp(18px, 4vw, 36px);
+  align-items:center;
+}
+@media (max-width: 960px){ .who-flex{ grid-template-columns: 1fr; } }
+
+/* Foto do sócio */
+.who-figure{ margin:0; }
+.who-figure img{
+  width:100%; height:auto; display:block; border-radius:14px;
+  box-shadow: 0 18px 48px rgba(0,0,0,.35);
+}
+.who-figure figcaption{
+  text-align:center; font-size:14px; opacity:.75; margin-top:8px;
+}
+
+/* Títulos e textos */
+.who-split h2{
+  text-align:left;           /* mantém seu estilo atual */
+  font-size: clamp(28px, 4.4vw, 44px);
+  margin: 0 0 8px;
+}
+.who-split .lead{
+  font-size: clamp(16px, 2.1vw, 20px);
+  margin: 8px 0 10px;
+  min-height: 2.4em;         /* reserva espaço enquanto digita */
+}
+
+/* Animação de entrada (foto e parágrafos) */
+.reveal{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible{ opacity:1; transform:none; }
+
+/* Efeito “digitando” */
+.type-target{
+  position:relative;
+  border-right: 2px solid rgba(231,236,243,.85); /* cursor */
+  white-space: normal;
+  overflow: hidden;
+}
+.type-target.done{ border-right-color: transparent; }
 
   </style>
 </head>
@@ -182,18 +226,31 @@
   </section>
 
   <!-- (1) QUEM SOMOS -->
- <!-- QUEM SOMOS (faixa alta com foto) -->
-<!-- QUEM SOMOS (foto + texto com reveal) -->
-<section id="quem-somos" class="section clean">
-  <div class="container who-split">
-    <!-- foto do sócio (envie o arquivo para /assets/socio.jpg) -->
-    <div class="who-photo reveal"><img src="/assets/socio.jpg" alt="Sócio da ShaRui"></div>
+<section id="quem-somos" class="section who-split">
+  <div class="container who-flex">
+    <!-- Coluna da FOTO -->
+    <div class="who-col photo reveal">
+      <figure class="who-figure">
+        <img src="/assets/socio.jpg" alt="Sócio fundador — ShaRui Trading Company" loading="lazy">
+        <figcaption>Nome do Sócio — Fundador</figcaption>
+      </figure>
+    </div>
 
-    <!-- texto -->
-    <div class="who-copy reveal" style="transition-delay:.15s">
-      <h2 style="margin:0 0 8px">Quem somos</h2>
-      <p><b>Temos 30 anos de experiência</b> em comércio internacional. Atuamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e visitamos fábricas em toda a China.</p>
-      <p>Integramos engenharia, qualidade e finanças para reduzir risco e custo total, com presença no chão de fábrica. Fazemos a ponte cultural e técnica: especificação clara, inspeção por amostra com registro visual e acompanhamento até a entrega no Brasil.</p>
+    <!-- Coluna do TEXTO -->
+    <div class="who-col text">
+      <h2 class="reveal">Quem somos</h2>
+
+      <!-- Esta linha será escrita “ao vivo” -->
+      <p class="lead type-target" data-text="Temos 30 anos de experiência em comércio internacional — presença em Ganzhou, participação na Canton Fair e operação dentro das fábricas.">
+      </p>
+
+      <!-- Estas entram com fade-in -->
+      <p class="reveal" style="opacity:.9">
+        Conectamos sua empresa a fornecedores confiáveis, trabalhando por clusters e com equipe local chinesa para negociar condições melhores diretamente com a fábrica.
+      </p>
+      <p class="reveal" style="opacity:.8">
+        Pontes cultural e técnica: especificação clara, inspeção por amostra com registro visual e acompanhamento até a entrega no Brasil — previsibilidade e controle de ponta a ponta.
+      </p>
     </div>
   </div>
 </section>
@@ -323,6 +380,44 @@
     m.classList.add('open');
   }
   function closeCalendly(){ document.getElementById('calendly-modal').classList.remove('open'); }
+</script>
+  <script>
+/* Observa quando os elementos entram na tela */
+(function(){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el = e.target;
+
+      /* Mostra com fade/slide */
+      if(el.classList.contains('reveal')){
+        el.classList.add('visible');
+      }
+
+      /* Dispara o “digitando” uma única vez */
+      if(el.classList.contains('type-target') && !el.classList.contains('done')){
+        typeLine(el, el.dataset.text || el.textContent || '', 18); // velocidade (ms por caractere)
+      }
+
+      io.unobserve(el); // não observar mais depois de animar
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.reveal, .type-target').forEach(el=> io.observe(el));
+
+  function typeLine(el, text, speed){
+    el.textContent = '';
+    let i = 0;
+    (function tick(){
+      el.textContent += text.charAt(i++);
+      if(i <= text.length){
+        setTimeout(tick, speed);
+      }else{
+        el.classList.add('done'); // some o cursor
+      }
+    })();
+  }
+})();
 </script>
 </body>
 </html>
