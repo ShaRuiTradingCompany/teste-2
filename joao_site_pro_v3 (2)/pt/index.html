@@ -350,5 +350,29 @@
 
   document.querySelectorAll('#quem-somos .typewrite').forEach(el => ioType.observe(el));
 </script>
+  <script>
+/* Ativa o slide-in quando a seção entrar na viewport */
+(function(){
+  const section = document.getElementById('quem-somos');
+  if(!section) return;
+
+  const items = section.querySelectorAll('.slide-in-right');
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e)=>{
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      /* respeita o pequeno atraso definido no data-delay */
+      const d = el.getAttribute('data-delay') || '0s';
+      el.style.transitionDelay = d;
+      el.classList.add('in');
+      io.unobserve(el);
+    });
+  }, { threshold: 0.25 });
+
+  items.forEach(el => io.observe(el));
+})();
+</script>
+
 </body>
 </html>
