@@ -92,3 +92,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+/* ==== Reveal simples (foto + texto Quem somos) ==== */
+(function(){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, {threshold:.18});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+
+/* ==== Sequência de balões em Diferenciais ==== */
+(function(){
+  const list = document.querySelectorAll('#diferenciais .pill');
+  if(!list.length) return;
+  const kick = ()=>{
+    list.forEach((pill, i)=> setTimeout(()=> pill.classList.add('in'), i*170));
+  };
+  const guard = new IntersectionObserver((entries)=>{
+    if(entries.some(e=>e.isIntersecting)){ kick(); guard.disconnect(); }
+  }, {rootMargin:'-20% 0px -20% 0px'});
+  guard.observe(document.querySelector('#diferenciais'));
+})();
