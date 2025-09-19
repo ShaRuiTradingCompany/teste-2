@@ -456,5 +456,51 @@
   }
 })();
 </script>
+<script>
+  // Dispara animação quando "Quem somos" entra na tela
+  (function () {
+    const section = document.getElementById('quem-somos');
+    if (!section) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          // 1) Foto: de .reveal-start -> .reveal-in
+          const img = section.querySelector('.about-photo.reveal-start');
+          if (img) img.classList.add('reveal-in');
+
+          // 2) Texto: digitação em tempo real, mas com quebra de linha normal
+          section.querySelectorAll('.type-live').forEach((el, idx) => {
+            typeParagraph(el, idx * 300); // pequeno atraso entre os parágrafos
+          });
+
+          io.unobserve(section);
+        }
+      });
+    }, { threshold: 0.45 });
+
+    io.observe(section);
+
+    // Digita preservando layout natural (sem width limitada)
+    function typeParagraph(el, delay = 0) {
+      const full = el.textContent.trim(); // pega o texto original
+      el.textContent = '';                 // limpa para começar a digitar
+      let i = 0;
+
+      setTimeout(function step() {
+        // adiciona 1 caractere (quebra de linha e palavras fluem normalmente)
+        el.textContent += full.charAt(i);
+        i++;
+        if (i <= full.length) {
+          // pausas um pouco maiores em pontos e vírgulas deixam natural
+          const ch = full.charAt(i - 1);
+          const base = 16;                     // velocidade base (ms)
+          const extra = ch === '.' ? 140 : ch === ',' ? 80 : 0;
+          setTimeout(step, base + extra);
+        }
+      }, delay);
+    }
+  })();
+</script>
 </body>
 </html>
