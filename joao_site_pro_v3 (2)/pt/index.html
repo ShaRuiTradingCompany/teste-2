@@ -16,15 +16,15 @@
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Estilos complementares -->
+  <!-- Estilos complementares (mantidos) -->
   <style>
     :root{
       --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      --accent: #66e0c2; /* cor destaque */
+      --accent: #66e0c2;
     }
     body{font-family:var(--font-sans)}
 
-    /* ===== Header 100% transparente sobre o vídeo ===== */
+    /* Header transparente sobre o vídeo */
     .site-header{position:fixed; top:0; left:0; right:0; z-index:1000; background:transparent; border:none;}
     .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
     .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{color:#fff; text-shadow:none;}
@@ -32,38 +32,24 @@
     nav .menu a{opacity:.98}
     nav .menu a:hover{opacity:1}
 
-    /* Marca empilhada e alinhada (TRADING abaixo de SHA RUI, alinhado à esquerda) */
+    /* Marca empilhada */
     .brand-logo{display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;}
     .brand-logo .brand-top{display:block; font-weight:700; letter-spacing:.6px}
     .brand-logo .brand-sub{display:block; font-size:12px; opacity:.92; margin-top:-2px; letter-spacing:.8px; padding-left:0}
 
-    /* ===== HERO tela cheia (100vh) ===== */
-    .hero-video-wrap{
-      position:relative; height:100vh; min-height:100vh; overflow:hidden;
-    }
-    .hero-video{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-      filter:brightness(1.34) contrast(1.08) saturate(1.06);
-    }
-    .hero-overlay{display:none !important;} /* sem fosco */
+    /* HERO tela cheia (vídeo) */
+    .hero-video-wrap{position:relative; height:100vh; min-height:100vh; overflow:hidden;}
+    .hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(1.34) contrast(1.08) saturate(1.06);}
+    .hero-overlay{display:none !important;}
 
-    /* ===== Banda “Escritório em Ganzhou” (com foto) ===== */
-    .after-hero{
-      min-height:60vh; display:flex; align-items:center; position:relative;
-      background-image:url('/assets/bg-after-hero.jpg'); background-size:cover; background-position:center;
-    }
+    /* Faixa logo abaixo do vídeo */
+    .after-hero{min-height:60vh; display:flex; align-items:center; position:relative; background-image:url('/assets/bg-after-hero.jpg'); background-size:cover; background-position:center;}
     .after-hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));}
     .after-hero > .container{position:relative; z-index:1;}
-    .hero-box{
-      max-width:1100px; width:100%; margin:0 auto; background:rgba(0,0,0,.26);
-      border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px;
-    }
-    /* >>> ALTERAÇÃO: título branco (antes usava var(--accent) verde) */
+    .hero-box{max-width:1100px; width:100%; margin:0 auto; background:rgba(0,0,0,.26); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px;}
     .hero-title{font-size:34px; margin:0 0 8px; text-align:center; color:#fff;}
     .hero-sub{font-size:18px; opacity:.95; margin:0 0 14px; text-align:center}
-    .hero-ctas{display:none} /* sem botões nesta faixa */
-
-    /* Benefícios centralizados (3 colunas no desktop, 2 no médio, 1 no móvel) */
+    .hero-ctas{display:none}
     .kpi-bar{display:grid; grid-template-columns:repeat(3,minmax(260px,1fr)); gap:14px; margin-top:16px}
     @media(max-width:1200px){ .kpi-bar{grid-template-columns:repeat(2,minmax(260px,1fr))} }
     @media(max-width:760px){ .kpi-bar{grid-template-columns:1fr} }
@@ -71,7 +57,7 @@
     .kpi h4{margin:0 0 6px; font-size:18px}
     .kpi p{margin:0; opacity:.98; line-height:1.45}
 
-    /* ===== Seções com imagem de fundo ===== */
+    /* Seções com imagem de fundo */
     .section h2{text-align:center; margin:0 0 6px; letter-spacing:.2px}
     .section .lead{text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px}
     .bg-cover{position:relative; background-size:cover; background-position:center; background-attachment:fixed;}
@@ -82,7 +68,7 @@
     .bg-plataforma{background-image:url('/assets/bg-plataforma.jpg');}
     .bg-ebooks{background-image:url('/assets/bg-ebooks.jpg');}
 
-    /* Grids/cards */
+    /* Grids/cards (+ ebooks) – mantidos */
     .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
     @media(max-width:1100px){ .grid4{grid-template-columns:repeat(2,1fr)} }
     @media(max-width:720px){ .grid4{grid-template-columns:1fr} }
@@ -90,19 +76,15 @@
     @media(max-width:1100px){ .grid6{grid-template-columns:repeat(2,1fr)} }
     @media(max-width:720px){ .grid6{grid-template-columns:1fr} }
     .card-min{background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px}
-
-    /* E‑books: blocos grandes com hover (contorno + movimento), texto branco */
     .ebooks-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
     @media(max-width:1024px){ .ebooks-grid{grid-template-columns:1fr} }
-    .ebook-tile{display:block; position:relative; min-height:360px; border-radius:14px; overflow:hidden;
-      border:2px solid rgba(255,255,255,.18); background:#0b0e10; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
+    .ebook-tile{display:block; position:relative; min-height:360px; border-radius:14px; overflow:hidden; border:2px solid rgba(255,255,255,.18); background:#0b0e10; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
     .ebook-tile .ph{position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.9);}
     .ebook-tile::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.6));}
     .ebook-tile .label{position:absolute; left:16px; bottom:14px; right:16px; z-index:1; font-weight:700; font-size:19px; color:#fff;}
-    .ebook-tile:hover, .ebook-tile:focus-visible{transform: translateY(-4px) scale(1.015); border-color: rgba(255,255,255,.65);
-      box-shadow:0 10px 26px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.22) inset; outline:none;}
+    .ebook-tile:hover, .ebook-tile:focus-visible{transform: translateY(-4px) scale(1.015); border-color: rgba(255,255,255,.65); box-shadow:0 10px 26px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.22) inset; outline:none;}
 
-    /* Modal Calendly */
+    /* Modal Calendly – mantido */
     .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:2000;}
     .modal.open{display:flex}
     .modal-card{background:#0b0e10; border:1px solid rgba(255,255,255,.16); border-radius:12px; width:min(940px,92vw); height:min(80vh,720px); overflow:hidden; display:flex; flex-direction:column;}
@@ -110,129 +92,6 @@
     .modal-body{flex:1; min-height:0}
     .modal-body iframe{width:100%; height:100%; border:0}
     .btn-close{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:6px 10px; cursor:pointer}
- /* ---- Ajuste de tipografia específico do "Quem somos" ---- */
-#quem-somos h2{
-  font-size: clamp(34px, 5vw, 60px);   /* título maior */
-  letter-spacing: .2px;
-}
-#quem-somos .lead{
-  font-size: clamp(18px, 2.2vw, 22px); /* texto maior */
-  line-height: 1.55;
-  max-width: 1100px;                   /* um pouco mais largo */
-  margin-left: auto;
-  margin-right: auto;
-}
-/* --- Deixar uma seção em tela cheia --- */
-.full-screen{
-  min-height: 100vh;           /* ocupa a altura toda da janela */
-  display: flex;               /* centraliza verticalmente o conteúdo */
-  align-items: center;
-  padding: clamp(56px, 6vh, 80px) 0; /* respiro vertical */
-}
-
-/* garante que o container ocupe a largura normalmente */
-.full-screen > .container{ width: 100%; }
-
-/* Em telas menores, pode reduzir um pouco a altura pra caber melhor */
-@media (max-width: 768px){
-  .full-screen{ min-height: 92vh; }
-}
-/* ===== Quem somos: layout em duas colunas ===== */
-.who-split { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); }
-.who-flex{
-  display:grid;
-  grid-template-columns: 1.05fr 0.95fr; /* foto | texto */
-  gap: clamp(18px, 4vw, 36px);
-  align-items:center;
-}
-@media (max-width: 960px){ .who-flex{ grid-template-columns: 1fr; } }
-
-/* Foto do sócio */
-.who-figure{ margin:0; }
-.who-figure img{
-  width:100%; height:auto; display:block; border-radius:14px;
-  box-shadow: 0 18px 48px rgba(0,0,0,.35);
-}
-.who-figure figcaption{
-  text-align:center; font-size:14px; opacity:.75; margin-top:8px;
-}
-
-/* Títulos e textos */
-.who-split h2{
-  text-align:left;           /* mantém seu estilo atual */
-  font-size: clamp(28px, 4.4vw, 44px);
-  margin: 0 0 8px;
-}
-.who-split .lead{
-  font-size: clamp(16px, 2.1vw, 20px);
-  margin: 8px 0 10px;
-  min-height: 2.4em;         /* reserva espaço enquanto digita */
-}
-
-/* Animação de entrada (foto e parágrafos) */
-.reveal{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.visible{ opacity:1; transform:none; }
-
-/* Efeito “digitando” */
-.type-target{
-  position:relative;
-  border-right: 2px solid rgba(231,236,243,.85); /* cursor */
-  white-space: normal;
-  overflow: hidden;
-}
-.type-target.done{ border-right-color: transparent; }
-/* ===== Quem somos: duas colunas com animação ===== */
-.who-two { padding: clamp(56px, 6vw, 96px) 0; }
-
-.who-grid{
-  display:grid;
-  grid-template-columns: minmax(280px, 440px) 1fr;
-  gap: clamp(20px, 4vw, 44px);
-  align-items:center;
-}
-
-.who-photo{
-  aspect-ratio: 3 / 4;            /* mantém proporção */
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 18px 50px rgba(0,0,0,.35);
-  background: #0b0e10;
-}
-.who-photo img{
-  width: 100%; height: 100%;
-  object-fit: cover;               /* evita “braço gigante” */
-  transform: scale(1.04);
-  transition: transform .7s ease;
-}
-.who-photo.in img{ transform: scale(1); }
-
-.who-text h2{
-  text-align:left;                 /* dentro da coluna de texto */
-  font-size: clamp(28px, 4.5vw, 44px);
-  margin: 0 0 8px;
-}
-.who-text .lead{
-  font-size: clamp(16px, 2.1vw, 19px);
-  line-height: 1.75;
-  margin: 8px 0;
-}
-
-/* Animação de revelação */
-.reveal{ opacity:0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.in{ opacity:1; transform: translateY(0); }
-
-/* Parágrafos com digitação precisam aparecer ocupando a largura toda */
-.typewrite{
-  display:block;
-  min-height: 2.5em; /* evita “saltar” a altura enquanto digita */
-}
-.typewrite.delay{ margin-top: 8px; }
-
-/* Responsivo */
-@media (max-width: 940px){
-  .who-grid{ grid-template-columns: 1fr; }
-  .who-text h2{ text-align:center; }
-}
   </style>
 </head>
 
@@ -276,83 +135,59 @@
     </video>
   </section>
 
-  <!-- (1) QUEM SOMOS -->
-<section id="quem-somos" class="section clean">
-  <div class="container who-split">
-    <!-- foto do sócio (envie o arquivo para /assets/socio.jpg) -->
-    <div class="who-photo reveal"><img src="/assets/socio.jpg" alt="Sócio da ShaRui"></div>
-
-    <!-- texto -->
-    <div class="who-copy reveal" style="transition-delay:.15s">
-      <h2 style="margin:0 0 8px">Quem somos</h2>
-      <p><b>Temos 30 anos de experiência</b> em comércio internacional. Atuamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e visitamos fábricas em toda a China.</p>
-      <p>Integramos engenharia, qualidade e finanças para reduzir risco e custo total, com presença no chão de fábrica. Fazemos a ponte cultural e técnica: especificação clara, inspeção por amostra com registro visual e acompanhamento até a entrega no Brasil.</p>
-    </div>
-  </div>
-</section>
-  
-<!-- DIFERENCIAIS (balões que aparecem em sequência) -->
-<section id="diferenciais" class="section diffs clean">
-  <div class="container">
-    <h2 style="margin-bottom:6px">Nossos Diferenciais</h2>
-    <p class="lead" style="margin-bottom:14px">MAIS PREVISIBILIDADE E CONTROLE</p>
-
-    <div class="pill-head"><b>O que torna a ShaRui</b> diferente</div>
-
-    <div class="pill-grid" id="diff-list">
-      <div class="pill"> <b>Fornecedor certo no lugar certo.</b> Buscamos nos polos de origem. Estamos em <b>Ganzhou</b>, no coração da <b>Canton Fair</b> e visitamos qualquer fábrica na China. </div>
-      <div class="pill"> <b>Ficha técnica em português e chinês.</b> Foto, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado. </div>
-      <div class="pill"> <b>Inspeção com fotos e vídeos.</b> Inspeção da amostragem, testes e a aprovação ou reprovação — sem surpresa na entrega. </div>
-      <div class="pill"> <b>Negociação com nativos.</b> Equipe local chinesa para negociar condições comerciais melhores diretamente com a fábrica. </div>
-      <div class="pill"> <b>Preço no Brasil.</b> Estimativa transparente de impostos e despesas antes do pedido, para decidir com segurança. </div>
-      <div class="pill"> <b>Não importa o tamanho do investimento.</b> Sem valor mínimo: comece com amostras e pilotos. Quando fizer sentido, compartilhe contêiner para otimizar o frete. </div>
-      <div class="pill"> <b>Estamos em Ganzhou.</b> Visita à fábrica em até 48 horas, inspeção por amostra e preço estimado antes do pedido. </div>
-    </div>
-  </div>
-</section>
-
-<!-- PLATAFORMA DO CLIENTE (arrastar horizontal / scroll-snap) -->
-<section id="plataforma" class="section clean">
-  <div class="container">
-    <h2 style="text-align:center; margin-bottom:6px">Plataforma do Cliente</h2>
-    <p class="lead" style="text-align:center; margin-bottom:14px">Acompanhe tudo em um só lugar — arraste lateralmente</p>
-
-    <div class="snap-wrap">
-      <div class="snap-track">
-        <article class="snap-card">
-          <h3>Acompanhamento de carga</h3>
-          <p>Check‑points por etapa e <b>mapa</b> quando disponível (marítimo, aéreo e rodoviário).</p>
-        </article>
-
-        <article class="snap-card">
-          <h3>Linha do tempo</h3>
-          <p>Do pedido à entrega, com responsáveis, prazos e confirmações por etapa.</p>
-        </article>
-
-        <article class="snap-card">
-          <h3>Custos detalhados</h3>
-          <p><b>Preço no Brasil (estimado)</b>, impostos e despesas com memória de cálculo.</p>
-        </article>
-
-        <article class="snap-card">
-          <h3>Documentos</h3>
-          <p>Invoice, Packing List, BL/AWB, laudos, relatórios e histórico de versões.</p>
-        </article>
-
-        <article class="snap-card">
-          <h3>Alertas & prazos</h3>
-          <p>Lembretes de embarque/desembaraço e <b>SLA 48h</b> para visita à fábrica.</p>
-        </article>
-
-        <article class="snap-card">
-          <h3>Acessos & histórico</h3>
-          <p>Perfis por área (Compras, Financeiro, Diretoria), permissões e trilha de auditoria.</p>
-        </article>
+  <!-- (1) QUEM SOMOS – duas colunas -->
+  <section id="quem-somos" class="section clean">
+    <div class="container who-split">
+      <div class="who-photo reveal">
+        <img src="/assets/socio.jpg" alt="Sócio da ShaRui">
       </div>
-      <div class="drag-hint">Arraste →</div>
+      <div class="who-copy reveal" style="transition-delay:.15s">
+        <h2 style="margin:0 0 8px">Quem somos</h2>
+        <p><b>Temos 30 anos de experiência</b> em comércio internacional. Atuamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e visitamos fábricas em toda a China.</p>
+        <p>Integramos engenharia, qualidade e finanças para reduzir risco e custo total, com presença no chão de fábrica. Fazemos a ponte cultural e técnica: especificação clara, inspeção por amostra com registro visual e acompanhamento até a entrega no Brasil.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- DIFERENCIAIS (balões) -->
+  <section id="diferenciais" class="section diffs clean">
+    <div class="container">
+      <h2 style="margin-bottom:6px">Nossos Diferenciais</h2>
+      <p class="lead" style="margin-bottom:14px">MAIS PREVISIBILIDADE E CONTROLE</p>
+
+      <div class="pill-head"><b>O que torna a ShaRui</b> diferente</div>
+
+      <div class="pill-grid" id="diff-list">
+        <div class="pill"><b>Fornecedor certo no lugar certo.</b> Buscamos nos polos de origem. Estamos em <b>Ganzhou</b>, no coração da <b>Canton Fair</b> e visitamos qualquer fábrica na China.</div>
+        <div class="pill"><b>Ficha técnica em português e chinês.</b> Foto, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</div>
+        <div class="pill"><b>Inspeção com fotos e vídeos.</b> Inspeção da amostragem, testes e a aprovação ou reprovação — sem surpresa na entrega.</div>
+        <div class="pill"><b>Negociação com nativos.</b> Equipe local chinesa para negociar condições comerciais melhores diretamente com a fábrica.</div>
+        <div class="pill"><b>Preço no Brasil.</b> Estimativa transparente de impostos e despesas antes do pedido, para decidir com segurança.</div>
+        <div class="pill"><b>Não importa o tamanho do investimento.</b> Sem valor mínimo: comece com amostras e pilotos. Quando fizer sentido, compartilhe contêiner.</div>
+        <div class="pill"><b>Estamos em Ganzhou.</b> Visita à fábrica em até 48h, inspeção por amostra e preço estimado antes do pedido.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATAFORMA (scroll horizontal) -->
+  <section id="plataforma" class="section clean">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:6px">Plataforma do Cliente</h2>
+      <p class="lead" style="text-align:center; margin-bottom:14px">Acompanhe tudo em um só lugar — arraste lateralmente</p>
+
+      <div class="snap-wrap">
+        <div class="snap-track">
+          <article class="snap-card"><h3>Acompanhamento de carga</h3><p>Check‑points por etapa e <b>mapa</b> quando disponível (marítimo, aéreo e rodoviário).</p></article>
+          <article class="snap-card"><h3>Linha do tempo</h3><p>Do pedido à entrega, com responsáveis, prazos e confirmações por etapa.</p></article>
+          <article class="snap-card"><h3>Custos detalhados</h3><p><b>Preço no Brasil (estimado)</b>, impostos e despesas com memória de cálculo.</p></article>
+          <article class="snap-card"><h3>Documentos</h3><p>Invoice, Packing List, BL/AWB, laudos, relatórios e histórico de versões.</p></article>
+          <article class="snap-card"><h3>Alertas & prazos</h3><p>Lembretes de embarque/desembaraço e <b>SLA 48h</b> para visita à fábrica.</p></article>
+          <article class="snap-card"><h3>Acessos & histórico</h3><p>Perfis por área (Compras, Financeiro, Diretoria), permissões e trilha de auditoria.</p></article>
+        </div>
+        <div class="drag-hint">Arraste →</div>
+      </div>
+    </div>
+  </section>
 
   <!-- E‑BOOKS -->
   <section id="ebooks" class="section bg-cover bg-ebooks">
@@ -361,18 +196,9 @@
       <p class="lead">3 e‑books gratuitos de quem está há mais de 30 anos no mercado</p>
 
       <div class="ebooks-grid">
-        <a class="ebook-tile" href="#" title="Em breve">
-          <span class="ph" style="background-image:url('/assets/ebook1.jpg')"></span>
-          <span class="label">Importação em 10 passos (2025)</span>
-        </a>
-        <a class="ebook-tile" href="#" title="Em breve">
-          <span class="ph" style="background-image:url('/assets/ebook2.jpg')"></span>
-          <span class="label">Impostos na Importação — guia prático</span>
-        </a>
-        <a class="ebook-tile" href="#" title="Em breve">
-          <span class="ph" style="background-image:url('/assets/ebook3.jpg')"></span>
-          <span class="label">Qualidade sem drama: inspeção com prova</span>
-        </a>
+        <a class="ebook-tile" href="#"><span class="ph" style="background-image:url('/assets/ebook1.jpg')"></span><span class="label">Importação em 10 passos (2025)</span></a>
+        <a class="ebook-tile" href="#"><span class="ph" style="background-image:url('/assets/ebook2.jpg')"></span><span class="label">Impostos na Importação — guia prático</span></a>
+        <a class="ebook-tile" href="#"><span class="ph" style="background-image:url('/assets/ebook3.jpg')"></span><span class="label">Qualidade sem drama: inspeção com prova</span></a>
       </div>
     </div>
   </section>
@@ -396,17 +222,14 @@
       <strong>Agendar conversa</strong>
       <button class="btn-close" onclick="closeCalendly()">Fechar</button>
     </div>
-    <div class="modal-body">
-      <!-- TROQUE PELO SEU LINK DO CALENDLY -->
-      <iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe>
-    </div>
+    <div class="modal-body"><iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe></div>
   </div>
 </div>
 
-<!-- WhatsApp flutuante (global) -->
+<!-- WhatsApp flutuante -->
 <a class="wp-float" data-contact="whatsapp">WhatsApp</a>
 
-<!-- Script: abrir/fechar Calendly -->
+<!-- Script Calendly -->
 <script>
   const CAL_URL = "https://calendly.com/seuusuario/30min?hide_landing_page_details=1&hide_gdpr_banner=1";
   function openCalendly(){
@@ -417,25 +240,20 @@
   }
   function closeCalendly(){ document.getElementById('calendly-modal').classList.remove('open'); }
 </script>
-  <script>
+
+<!-- Scripts de revelação/digitação (mantidos) -->
+<script>
 /* Observa quando os elementos entram na tela */
 (function(){
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(!e.isIntersecting) return;
       const el = e.target;
-
-      /* Mostra com fade/slide */
-      if(el.classList.contains('reveal')){
-        el.classList.add('visible');
-      }
-
-      /* Dispara o “digitando” uma única vez */
+      if(el.classList.contains('reveal')) el.classList.add('visible');
       if(el.classList.contains('type-target') && !el.classList.contains('done')){
-        typeLine(el, el.dataset.text || el.textContent || '', 18); // velocidade (ms por caractere)
+        typeLine(el, el.dataset.text || el.textContent || '', 18);
       }
-
-      io.unobserve(el); // não observar mais depois de animar
+      io.unobserve(el);
     });
   }, { threshold: 0.3 });
 
@@ -446,15 +264,13 @@
     let i = 0;
     (function tick(){
       el.textContent += text.charAt(i++);
-      if(i <= text.length){
-        setTimeout(tick, speed);
-      }else{
-        el.classList.add('done'); // some o cursor
-      }
+      if(i <= text.length){ setTimeout(tick, speed); }
+      else{ el.classList.add('done'); }
     })();
   }
 })();
 </script>
+
 <script>
   // Dispara animação quando "Quem somos" entra na tela
   (function () {
@@ -464,15 +280,11 @@
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
-          // 1) Foto: de .reveal-start -> .reveal-in
           const img = section.querySelector('.about-photo.reveal-start');
           if (img) img.classList.add('reveal-in');
-
-          // 2) Texto: digitação em tempo real, mas com quebra de linha normal
           section.querySelectorAll('.type-live').forEach((el, idx) => {
-            typeParagraph(el, idx * 300); // pequeno atraso entre os parágrafos
+            typeParagraph(el, idx * 300);
           });
-
           io.unobserve(section);
         }
       });
@@ -480,20 +292,16 @@
 
     io.observe(section);
 
-    // Digita preservando layout natural (sem width limitada)
     function typeParagraph(el, delay = 0) {
-      const full = el.textContent.trim(); // pega o texto original
-      el.textContent = '';                 // limpa para começar a digitar
+      const full = el.textContent.trim();
+      el.textContent = '';
       let i = 0;
-
       setTimeout(function step() {
-        // adiciona 1 caractere (quebra de linha e palavras fluem normalmente)
         el.textContent += full.charAt(i);
         i++;
         if (i <= full.length) {
-          // pausas um pouco maiores em pontos e vírgulas deixam natural
           const ch = full.charAt(i - 1);
-          const base = 16;                     // velocidade base (ms)
+          const base = 16;
           const extra = ch === '.' ? 140 : ch === ',' ? 80 : 0;
           setTimeout(step, base + extra);
         }
@@ -501,6 +309,7 @@
     }
   })();
 </script>
+
 <script>
   // Revelação suave ao entrar na tela
   const ioReveal = new IntersectionObserver((entries)=>{
@@ -529,7 +338,6 @@
     entries.forEach(e=>{
       if(e.isIntersecting){
         const p = e.target;
-        // pequena espera para o título revelar antes
         const extra = p.classList.contains('delay') ? 400 : 120;
         setTimeout(()=> typeText(p), extra);
         ioType.unobserve(p);
