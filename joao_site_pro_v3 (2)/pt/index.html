@@ -168,72 +168,90 @@
 <!-- DIFERENCIAIS – radar com logo central e nós sequenciais -->
 <section id="diferenciais" class="section diffs-radial">
   <div class="container">
-
     <h2 class="dif-title">Nossos Diferenciais</h2>
-    <p class="dif-sub">MAIS PREVISIBILIDADE E CONTROLE</p>
+    <p class="dif-sub">Mais previsibilidade e controle</p>
 
-    <div class="radial-stage" aria-label="Diferenciais da ShaRui em disposição radial">
-      <!-- Núcleo com o logotipo -->
-      <div class="core" aria-hidden="true">
-        <!-- Coloque o seu arquivo em /assets/logo-sharui.jpg (ou .png) -->
-        <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company">
+    <div class="radial-stage" id="radialDif">
+      <!-- Núcleo com o logo -->
+      <div class="core">
+        <!-- troque o caminho da imagem do logo, se precisar -->
+        <img src="/assets/logo-sharui.png" alt="ShaRui Trading Company">
       </div>
 
-      <!-- Nós (aparecem em sequência da direita para a esquerda) -->
-      <!-- Dica: deixe como está. A ordem do data-step define a sequência -->
-      <div class="node right" style="--a: 0deg;"   data-step="1">
+      <!-- Cada .node é um ponto na circunferência
+           --a = ângulo em graus (use "deg")
+           .left  = balão abre para a esquerda
+           .right = balão abre para a direita -->
+
+      <!-- 1 -->
+      <div class="node left" style="--a: 345deg;">
         <span class="dot"></span>
-        <div class="bubble"><b>Fornecedor certo, lugar certo</b>
-          <small>Buscamos nos polos de origem. Estamos em Ganzhou e visitamos qualquer fábrica na China.</small>
+        <div class="bubble">
+          <b>Preço no Brasil</b>
+          Estimativa transparente de impostos e despesas antes do pedido.
         </div>
       </div>
 
-      <div class="node right" style="--a: 315deg;" data-step="2">
+      <!-- 2 -->
+      <div class="node left" style="--a: 20deg;">
         <span class="dot"></span>
-        <div class="bubble"><b>Ficha técnica PT‑ZH</b>
-          <small>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — combinado e assinado.</small>
+        <div class="bubble">
+          <b>Visita à fábrica em até 48h</b>
+          Com registro visual (fotos e vídeos) e relatório.
         </div>
       </div>
 
-      <div class="node right" style="--a: 270deg;" data-step="3">
+      <!-- 3 -->
+      <div class="node left" style="--a: 55deg;">
         <span class="dot"></span>
-        <div class="bubble"><b>Inspeção com fotos e vídeos</b>
-          <small>Mostramos amostragem, testes e aprovação/reprovação — sem surpresa na entrega.</small>
+        <div class="bubble">
+          <b>Negociação com nativos</b>
+          Equipe local chinesa negocia direto na fábrica por melhores condições.
         </div>
       </div>
 
-      <div class="node right" style="--a: 225deg;" data-step="4">
+      <!-- 4 -->
+      <div class="node right" style="--a: 95deg;">
         <span class="dot"></span>
-        <div class="bubble"><b>Negociação com nativos</b>
-          <small>Equipe local chinesa negocia direto na fábrica por melhores condições.</small>
+        <div class="bubble">
+          <b>Inspeção com fotos e vídeos</b>
+          Amostragem, testes e aprovação/reprovação — sem surpresa na entrega.
         </div>
       </div>
 
-      <div class="node left"  style="--a: 180deg;" data-step="5">
+      <!-- 5 -->
+      <div class="node right" style="--a: 135deg;">
         <span class="dot"></span>
-        <div class="bubble"><b>Preço no Brasil</b>
-          <small>Estimativa transparente de impostos e despesas antes do pedido.</small>
+        <div class="bubble">
+          <b>Ficha técnica PT‑ZH</b>
+          Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — combinado e assinado.
         </div>
       </div>
 
-      <div class="node left"  style="--a: 135deg;" data-step="6">
+      <!-- 6 -->
+      <div class="node right" style="--a: 200deg;">
         <span class="dot"></span>
-        <div class="bubble"><b>Sem valor mínimo</b>
-          <small>Comece por amostras/pilotos; quando fizer sentido, compartilhe contêiner.</small>
+        <div class="bubble">
+          <b>Fornecedor certo, lugar certo</b>
+          Estamos em Ganzhou e visitamos qualquer fábrica na China.
         </div>
       </div>
 
-      <div class="node left"  style="--a: 90deg;"  data-step="7">
+      <!-- 7 -->
+      <div class="node right" style="--a: 245deg;">
         <span class="dot"></span>
-        <div class="bubble"><b>Visita à fábrica em até 48h</b>
-          <small>Com registro visual (fotos e vídeos) e relatório.</small>
+        <div class="bubble">
+          <b>Menos risco e custo total</b>
+          Integração engenharia + qualidade + finanças — presença dentro da fábrica.
         </div>
       </div>
 
-      <div class="node left"  style="--a: 45deg;"  data-step="8">
+      <!-- 8 -->
+      <div class="node left" style="--a: 300deg;">
         <span class="dot"></span>
-        <div class="bubble"><b>Menos risco e custo total</b>
-          <small>Integração engenharia + qualidade + finanças — presença dentro da fábrica.</small>
+        <div class="bubble">
+          <b>Sem valor mínimo</b>
+          Comece por amostras/pilotos; quando fizer sentido, compartilhe contêiner.
         </div>
       </div>
     </div>
@@ -303,6 +321,17 @@
 
 <!-- Script Calendly -->
 <script>
+  <script>
+  // Revela os nós um por um
+  (function () {
+    const nodes = [...document.querySelectorAll('#radialDif .node')];
+    // ordem de entrada; altere se quiser outra sequência
+    nodes.forEach((n, i) => {
+      setTimeout(() => n.classList.add('on'), 250 + i * 420);
+    });
+  })();
+</script>
+
   const CAL_URL = "https://calendly.com/seuusuario/30min?hide_landing_page_details=1&hide_gdpr_banner=1";
   function openCalendly(){
     const m = document.getElementById('calendly-modal');
