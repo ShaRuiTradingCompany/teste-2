@@ -129,11 +129,19 @@
 <main>
   <!-- HERO com vídeo tela inteira -->
   <section class="hero-video-wrap">
-    <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
-      <source src="/assets/company_web_720p.mp4?v=17" type="video/mp4" media="(max-width: 768px)">
-      <source src="/assets/company.mp4?v=17" type="video/mp4">
-    </video>
-  </section>
+  <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
+    <!-- Mobile até 768px -->
+    <source
+      src="https://res.cloudinary.com/dqlirwz5x/video/upload/f_mp4,vc_h264,q_auto:good,ac_none,w_1280,h_720,c_fill,g_auto/company-hero.mp4"
+      media="(max-width: 768px)"
+      type="video/mp4">
+
+    <!-- Desktop -->
+    <source
+      src="https://res.cloudinary.com/dqlirwz5x/video/upload/f_mp4,vc_h264,q_auto:good,ac_none,w_1920,h_1080,c_fill,g_auto/company-hero.mp4"
+      type="video/mp4">
+  </video>
+</section>
 
 <!-- (1) QUEM SOMOS -->
 <section id="quem-somos" class="section clean">
