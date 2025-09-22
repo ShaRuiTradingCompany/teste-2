@@ -145,7 +145,27 @@
     Seu navegador não suporta vídeo HTML5.
   </video>
 </section>
-
+<!-- FAIXA DE TRANSIÇÃO (entre o vídeo e a 1ª seção) -->
+<section class="brand-marquee" aria-label="Transição de seção">
+  <div class="marquee">
+    <div class="track">
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+    </div>
+    <div class="track" aria-hidden="true">
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+      <span>SHARUI TRADING COMPANY •</span>
+    </div>
+  </div>
+</section>
 
 <!-- (1) QUEM SOMOS -->
 <section id="quem-somos" class="section clean">
@@ -250,24 +270,71 @@
 
 
   <!-- PLATAFORMA (scroll horizontal) -->
-  <section id="plataforma" class="section clean">
-    <div class="container">
-      <h2 style="text-align:center; margin-bottom:6px">Plataforma do Cliente</h2>
-      <p class="lead" style="text-align:center; margin-bottom:14px">Acompanhe tudo em um só lugar — arraste lateralmente</p>
+ <!-- PLATAFORMA DO CLIENTE — tablet com slides -->
+<section id="plataforma" class="section platform full">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:6px">Plataforma do Cliente</h2>
+    <p class="lead" style="text-align:center;margin-bottom:16px">Acompanhe tudo em um só lugar</p>
 
-      <div class="snap-wrap">
-        <div class="snap-track">
-          <article class="snap-card"><h3>Acompanhamento de carga</h3><p>Check‑points por etapa e <b>mapa</b> quando disponível (marítimo, aéreo e rodoviário).</p></article>
-          <article class="snap-card"><h3>Linha do tempo</h3><p>Do pedido à entrega, com responsáveis, prazos e confirmações por etapa.</p></article>
-          <article class="snap-card"><h3>Custos detalhados</h3><p><b>Preço no Brasil (estimado)</b>, impostos e despesas com memória de cálculo.</p></article>
-          <article class="snap-card"><h3>Documentos</h3><p>Invoice, Packing List, BL/AWB, laudos, relatórios e histórico de versões.</p></article>
-          <article class="snap-card"><h3>Alertas & prazos</h3><p>Lembretes de embarque/desembaraço e <b>SLA 48h</b> para visita à fábrica.</p></article>
-          <article class="snap-card"><h3>Acessos & histórico</h3><p>Perfis por área (Compras, Financeiro, Diretoria), permissões e trilha de auditoria.</p></article>
+    <div class="tablet" aria-label="Prévia da plataforma">
+      <div class="bezel"></div>
+
+      <!-- Tela do tablet (slides) -->
+      <div class="slides" id="platSlides">
+        <!-- Troque as imagens nas variáveis --bg (você pode usar /assets/plat1.jpg etc. ou sua URL do Cloudinary) -->
+        <div class="slide active" style="--bg:url('/assets/plat1.jpg')">
+          <div class="balloon">
+            <h3>Acompanhamento de carga</h3>
+            <p>Check‑points por etapa e <b>mapa</b> quando disponível (marítimo, aéreo e rodoviário).</p>
+          </div>
         </div>
-        <div class="drag-hint">Arraste →</div>
+
+        <div class="slide" style="--bg:url('/assets/plat2.jpg')">
+          <div class="balloon">
+            <h3>Linha do tempo</h3>
+            <p>Do pedido à entrega, com responsáveis, prazos e <b>confirmações</b> por etapa.</p>
+          </div>
+        </div>
+
+        <div class="slide" style="--bg:url('/assets/plat3.jpg')">
+          <div class="balloon">
+            <h3>Custos detalhados</h3>
+            <p><b>Preço no Brasil (estimado)</b>, impostos e despesas com memória de cálculo.</p>
+          </div>
+        </div>
+
+        <div class="slide" style="--bg:url('/assets/plat4.jpg')">
+          <div class="balloon">
+            <h3>Documentos</h3>
+            <p>Invoice, Packing List, BL/AWB, laudos de inspeção, relatórios e <b>histórico de versões</b>.</p>
+          </div>
+        </div>
+
+        <div class="slide" style="--bg:url('/assets/plat5.jpg')">
+          <div class="balloon">
+            <h3>Alertas &amp; prazos</h3>
+            <p>Lembretes de embarque/desembaraço e <b>SLA de 48h</b> para visita à fábrica.</p>
+          </div>
+        </div>
+
+        <div class="slide" style="--bg:url('/assets/plat6.jpg')">
+          <div class="balloon">
+            <h3>Acessos &amp; histórico</h3>
+            <p>Perfis por área (Compras, Financeiro, Diretoria), <b>permissões</b> e trilha de auditoria.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+
+    <!-- Controles -->
+    <div class="plat-controls">
+      <button class="nav prev" aria-label="Anterior">‹</button>
+      <div class="dots" aria-label="Indicador de páginas"></div>
+      <button class="nav next" aria-label="Próximo">›</button>
+    </div>
+    <div class="plat-hint">Passe o mouse para pausar • Toque/Use as setas para controlar</div>
+  </div>
+</section>
 
   <!-- E‑BOOKS -->
   <section id="ebooks" class="section bg-cover bg-ebooks">
