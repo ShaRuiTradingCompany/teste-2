@@ -165,24 +165,61 @@
 </section>
 
   <!-- DIFERENCIAIS (balões) -->
-  <section id="diferenciais" class="section diffs clean">
-    <div class="container">
-      <h2 style="margin-bottom:6px">Nossos Diferenciais</h2>
-      <p class="lead" style="margin-bottom:14px">MAIS PREVISIBILIDADE E CONTROLE</p>
+ <!-- DIFERENCIAIS (radial com traços partindo do logo) -->
+<section id="diferenciais" class="section diff-radial">
+  <div class="container">
+    <h2 class="diff-title">Nossos Diferenciais</h2>
+    <p class="diff-sub">MAIS PREVISIBILIDADE E CONTROLE</p>
 
-      <div class="pill-head"><b>O que torna a ShaRui</b> diferente</div>
+    <div class="radial">
+      <!-- anel pontilhado ao fundo -->
+      <div class="ring"></div>
 
-      <div class="pill-grid" id="diff-list">
-        <div class="pill"><b>Fornecedor certo no lugar certo.</b> Buscamos nos polos de origem. Estamos em <b>Ganzhou</b>, no coração da <b>Canton Fair</b> e visitamos qualquer fábrica na China.</div>
-        <div class="pill"><b>Ficha técnica em português e chinês.</b> Foto, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</div>
-        <div class="pill"><b>Inspeção com fotos e vídeos.</b> Inspeção da amostragem, testes e a aprovação ou reprovação — sem surpresa na entrega.</div>
-        <div class="pill"><b>Negociação com nativos.</b> Equipe local chinesa para negociar condições comerciais melhores diretamente com a fábrica.</div>
-        <div class="pill"><b>Preço no Brasil.</b> Estimativa transparente de impostos e despesas antes do pedido, para decidir com segurança.</div>
-        <div class="pill"><b>Não importa o tamanho do investimento.</b> Sem valor mínimo: comece com amostras e pilotos. Quando fizer sentido, compartilhe contêiner.</div>
-        <div class="pill"><b>Estamos em Ganzhou.</b> Visita à fábrica em até 48h, inspeção por amostra e preço estimado antes do pedido.</div>
+      <!-- núcleo com o logo/nome -->
+      <div class="core">
+        <!-- Se tiver logo em SVG/PNG, troque o src abaixo -->
+        <img class="core-logo" src="/assets/logo.svg" alt="ShaRui Trading Company" />
+        <!-- fallback em texto (deixe se quiser mostrar junto ou remova o <img> acima) -->
+        <div class="core-brand">
+          <span class="core-top">SHA RUI</span>
+          <span class="core-sub">TRADING COMPANY</span>
+        </div>
       </div>
+
+      <!-- raios (spokes): cada um gira com base em --i -->
+      <ul class="spokes">
+        <li class="spoke" style="--i:0">
+          <span class="dash"></span>
+          <span class="label">Fornecedor certo no lugar certo</span>
+        </li>
+        <li class="spoke" style="--i:1">
+          <span class="dash"></span>
+          <span class="label">Ficha técnica em português e chinês</span>
+        </li>
+        <li class="spoke" style="--i:2">
+          <span class="dash"></span>
+          <span class="label">Inspeção com fotos e vídeos</span>
+        </li>
+        <li class="spoke" style="--i:3">
+          <span class="dash"></span>
+          <span class="label">Negociação com nativos</span>
+        </li>
+        <li class="spoke" style="--i:4">
+          <span class="dash"></span>
+          <span class="label">Preço no Brasil (estimado)</span>
+        </li>
+        <li class="spoke" style="--i:5">
+          <span class="dash"></span>
+          <span class="label">Sem valor mínimo (pilotos & amostras)</span>
+        </li>
+        <li class="spoke" style="--i:6">
+          <span class="dash"></span>
+          <span class="label">Estamos em Ganzhou – visita em até 48h</span>
+        </li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- PLATAFORMA (scroll horizontal) -->
   <section id="plataforma" class="section clean">
