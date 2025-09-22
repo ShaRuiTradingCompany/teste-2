@@ -187,7 +187,7 @@ p{ margin:10px 0 }
 /* === QUEM SOMOS — foto 50% sem corte e alinhada à esquerda === */
 #quem-somos .who-split{ 
   display:grid;
-  grid-template-columns: 1fr 1fr;  /* 40% | 60%
+  grid-template-columns: 1fr 1fr;  /* 10% | 90%
   gap: clamp(18px,3vw,36px);
   align-items:center;
 }
