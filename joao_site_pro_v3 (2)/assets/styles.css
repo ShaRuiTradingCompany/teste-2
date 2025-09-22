@@ -619,5 +619,24 @@ p{ margin:10px 0 }
   #diferenciais .node::before{ display:none }
   #diferenciais .bubble{ position:relative; left:auto; right:auto; transform:none; width:100% }
 }
+/* ===== DIFERENCIAIS – remover tracejados e bolinhas, mantendo posições ===== */
+.radial-stage .node::before,
+.radial-stage .dot{
+  display: none !important;   /* esconde linha pontilhada e o ponto azul */
+}
+
+/* mantém os offsets originais dos balões (não muda a posição) */
+.radial-stage .node.right .bubble{
+  left: 18px;  transform: translateY(-50%) translateX(8px) scale(.96);
+}
+.radial-stage .node.left .bubble{
+  right: 18px; transform: translateY(-50%) translateX(-8px) scale(.96);
+  text-align: right;
+}
+
+/* continua a lógica de 'acender' só o balão, sem linha/ponto */
+.radial-stage .node.on .bubble{
+  opacity: 1; transform: translateY(-50%) scale(1);
+}
 
 
