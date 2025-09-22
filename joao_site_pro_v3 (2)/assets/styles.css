@@ -506,5 +506,118 @@ p{ margin:10px 0 }
   .radial-stage .node::before{ display:none }
   .radial-stage .bubble{ position:relative; left:auto; right:auto; transform:none; width:100% }
 }
+/* ===== DIFERENCIAIS – radial com logo e balões ===== */
+#diferenciais.diffs-radial{
+  background:
+    radial-gradient(820px 560px at 50% 20%, rgba(255,255,255,.07), transparent 60%),
+    linear-gradient(180deg,#214a83,#183a69 55%, #17335f);
+  padding-block: clamp(44px,6vh,72px);
+}
+
+#diferenciais .dif-title{ text-align:center; font-size:clamp(28px,4.8vw,46px); margin:0 0 6px }
+#diferenciais .dif-sub  { text-align:center; font-size:clamp(15px,2.2vw,20px); opacity:.9; margin:0 0 18px }
+
+#diferenciais .radial-stage{
+  /* RAIO do círculo (ajuste aqui se quiser mais/menos compacto) */
+  --R: clamp(210px, 27vh, 280px);
+  /* diâmetro do núcleo (logo) */
+  --CENTER: clamp(200px, 22vh, 260px);
+  /* largura dos balões */
+  --BUBBLE-W: clamp(260px, 30vw, 380px);
+  --line: 2px dashed rgba(255,255,255,.35);
+  --bubble-bg: rgba(255,255,255,.12);
+  --bubble-bd: rgba(255,255,255,.22);
+
+  position: relative;
+  min-height: clamp(560px, 88vh, 720px);
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+/* Núcleo (logo) */
+#diferenciais .core{
+  position:absolute; left:50%; top:50%;
+  width:var(--CENTER); height:var(--CENTER);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 10px 32px rgba(0,0,0,.35), inset 0 0 40px rgba(255,255,255,.06);
+  display:grid; place-items:center; overflow:hidden;
+  z-index: 1;
+}
+#diferenciais .core img{ width:85%; height:85%; object-fit:contain; filter:drop-shadow(0 2px 8px rgba(0,0,0,.35)) }
+
+/* Nó na circunferência */
+#diferenciais .node{
+  position:absolute; left:50%; top:50%;
+  transform:
+    rotate(var(--a))
+    translateX(var(--R))
+    rotate(calc(var(--a) * -1));
+  transform-origin:center;
+  z-index: 2;
+}
+
+/* Linha tracejada do núcleo até o ponto */
+#diferenciais .node::before{
+  content:"";
+  position:absolute; inset-block-start:50%; inset-inline-end: 100%;
+  width: var(--R); height:0;
+  border-top: var(--line);
+  transform-origin: right center;
+  transform: scaleX(0);
+  transition: transform .55s ease .05s;
+}
+
+/* Ponto */
+#diferenciais .dot{
+  width:14px; height:14px; border-radius:50%;
+  background: linear-gradient(180deg, #66e0c2, #22b3e5);
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:0 0 0 3px rgba(34,179,229,.18), 0 10px 20px rgba(0,0,0,.35);
+  display:block;
+  transform: scale(0);
+  transition: transform .25s ease-out .05s;
+}
+
+/* Balão */
+#diferenciais .bubble{
+  position:absolute; top:50%;
+  width: var(--BUBBLE-W);
+  padding:14px 16px;
+  border-radius:14px;
+  background: var(--bubble-bg);
+  border:1px solid var(--bubble-bd);
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+  color:#eaf1ff;
+  opacity:0; transform: translateY(-50%) scale(.96);
+  transition: opacity .25s ease-out, transform .25s ease-out;
+  font-size: clamp(15px, 1.22vw, 19px); /* fonte um pouco maior */
+  line-height: 1.45;
+}
+#diferenciais .bubble b{ display:block; font-weight:800; margin-bottom:4px }
+#diferenciais .bubble small{ display:block; opacity:.95 }
+
+/* Encaixe do balão conforme o lado */
+#diferenciais .node.right .bubble{ left:18px;  transform: translateY(-50%) translateX(8px)  scale(.96); text-align:left }
+#diferenciais .node.left  .bubble{ right:18px; transform: translateY(-50%) translateX(-8px) scale(.96); text-align:right }
+
+/* Estado “ligado” (JS adiciona .on) */
+#diferenciais .node.on::before{ transform: scaleX(1) }
+#diferenciais .node.on .dot{ transform: scale(1) }
+#diferenciais .node.on .bubble{ opacity:1; transform: translateY(-50%) scale(1) }
+
+/* Mobile: vira lista vertical */
+@media (max-width: 880px){
+  #diferenciais .radial-stage{ min-height:auto; padding: 10px 0 6px }
+  #diferenciais .core{ position:relative; inset:auto; transform:none; margin:0 auto 18px }
+  #diferenciais .node{
+    position:relative; left:auto; top:auto; transform:none; margin:10px 0 16px;
+  }
+  #diferenciais .node::before{ display:none }
+  #diferenciais .bubble{ position:relative; left:auto; right:auto; transform:none; width:100% }
+}
 
 
