@@ -345,5 +345,30 @@ p{ margin:10px 0 }
   #quem-somos .who-split{ grid-template-columns: 1fr; }
   #quem-somos .who-photo{ aspect-ratio: auto; min-height: 56vw; }
 }
+/* QUEM SOMOS – foto inteira (sem corte) */
+#quem-somos .who-split{
+  display:grid;
+  grid-template-columns: 1fr 1fr;   /* 50% foto | 50% texto */
+  gap: clamp(18px,3vw,36px);
+  align-items:center;
+}
+
+#quem-somos .who-photo{
+  width:100%;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 18px 48px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.12);
+  /* remova a razão fixa para não “achatar” */
+  aspect-ratio:auto;
+}
+
+#quem-somos .who-photo img{
+  display:block;
+  width:100%;
+  height:auto;                /* mantém a proporção original */
+  object-fit:contain;         /* mostra tudo, sem cortar */
+  object-position:center;     /* centraliza a imagem */
+}
 
 
