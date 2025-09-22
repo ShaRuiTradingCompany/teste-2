@@ -185,9 +185,9 @@ p{ margin:10px 0 }
    ========================= */
 .footer{ padding:28px 0; color:#c2c9d6; border-top:1px solid var(--stroke) }
 /* === QUEM SOMOS — foto 50% sem corte e alinhada à esquerda === */
-#quem-somos .who-split{
+#quem-somos .who-split{ 
   display:grid;
-  grid-template-columns: 1fr 1fr;  
+  grid-template-columns: 1fr 1fr;  /* 50% | 50%
   gap: clamp(18px,3vw,36px);
   align-items:center;
 }
