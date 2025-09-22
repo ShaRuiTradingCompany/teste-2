@@ -392,5 +392,119 @@ p{ margin:10px 0 }
   .diffs-radar .node .label{ font-size:14px }
   .diffs-radar .node .tip{ max-width:220px }
 }
+/* ===== DIFERENCIAIS – Radial com logo central ===== */
+.diffs-radial{
+  /* Fundo azul mais claro para contrastar com o tema */
+  background:
+    radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,.07), transparent 60%),
+    linear-gradient(180deg,#214a83,#183a69 55%, #17335f);
+  padding-block: clamp(48px, 6vh, 72px);
+}
+
+.dif-title{ text-align:center; font-size:clamp(28px,4.8vw,46px); margin:0 0 6px }
+.dif-sub{   text-align:center; font-size:clamp(15px,2.2vw,20px); opacity:.9; margin:0 0 18px }
+
+.radial-stage{
+  --R: clamp(180px, 32vh, 320px);     /* RAIO do círculo (menor para caber numa tela) */
+  --CENTER: clamp(120px, 20vh, 180px);/* diâmetro do núcleo (logo) */
+  --BUBBLE-W: clamp(230px, 28vw, 360px);
+  --line: 2px dashed rgba(255,255,255,.35);
+  --bubble-bg: rgba(255,255,255,.10);
+  --bubble-bd: rgba(255,255,255,.20);
+
+  position: relative;
+  min-height: clamp(520px, 84vh, 760px); /* cabe em uma tela */
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+/* Núcleo com o logotipo */
+.radial-stage .core{
+  position:absolute; left:50%; top:50%;
+  width:var(--CENTER); height:var(--CENTER);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 10px 32px rgba(0,0,0,.35), inset 0 0 40px rgba(255,255,255,.06);
+  display:grid; place-items:center;
+  overflow:hidden;
+}
+.radial-stage .core img{
+  width:85%; height:85%; object-fit:contain; filter:drop-shadow(0 2px 8px rgba(0,0,0,.35));
+}
+
+/* Nó posicionado na circunferência */
+.radial-stage .node{
+  position:absolute; left:50%; top:50%;
+  transform:
+    rotate(var(--a))               /* gira o braço até o ângulo */
+    translateX(var(--R))           /* empurra até a borda do círculo */
+    rotate(calc(var(--a) * -1));   /* volta a orientação para ficar “reta” */
+  transform-origin:center;
+  transition: transform .7s cubic-bezier(.2,.6,.2,1);
+}
+
+/* Linha tracejada do núcleo até o ponto */
+.radial-stage .node::before{
+  content:"";
+  position:absolute; inset-block-start:50%;
+  inset-inline-end: 100%;          /* começa atrás do ponto, em direção ao núcleo */
+  width: var(--R); height:0;
+  border-top: var(--line);
+  transform-origin: right center;
+  transform: scaleX(0);
+  transition: transform .6s ease .05s;
+}
+
+/* Pontinho do raio */
+.radial-stage .dot{
+  width:14px; height:14px; border-radius:50%;
+  background: linear-gradient(180deg, #66e0c2, #22b3e5);
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:0 0 0 3px rgba(34,179,229,.18), 0 10px 20px rgba(0,0,0,.35);
+  display:block;
+  transform: scale(0);
+  transition: transform .28s ease-out;
+}
+
+/* Balão do texto */
+.radial-stage .bubble{
+  position:absolute; top:50%;
+  width: var(--BUBBLE-W);
+  padding:14px 16px;
+  border-radius:14px;
+  background: var(--bubble-bg);
+  border:1px solid var(--bubble-bd);
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+  color:#eaf1ff;
+  opacity:0; transform: translateY(-50%) scale(.96);
+  transition: opacity .28s ease-out, transform .28s ease-out;
+  font-size: clamp(14px, 1.18vw, 18px); /* >>> fonte maior nos balões */
+  line-height: 1.45;
+}
+.radial-stage .bubble b{ display:block; font-weight:800; margin-bottom:4px }
+.radial-stage .bubble small{ display:block; opacity:.92 }
+
+/* Alinhamento dos balões conforme o lado */
+.radial-stage .node.right .bubble{ left: 18px;  transform: translateY(-50%) translateX(8px)  scale(.96); }
+.radial-stage .node.left  .bubble{ right:18px;  transform: translateY(-50%) translateX(-8px) scale(.96); text-align:right }
+
+/* Quando o nó acende (JS adiciona .on) */
+.radial-stage .node.on::before{ transform: scaleX(1) }
+.radial-stage .node.on .dot{ transform: scale(1) }
+.radial-stage .node.on .bubble{ opacity:1; transform: translateY(-50%) scale(1) }
+
+/* Responsivo: empilhar em lista no mobile */
+@media (max-width: 880px){
+  .radial-stage{ min-height: auto; padding: 10px 0 6px }
+  .radial-stage .core{ position:relative; inset:auto; transform:none; margin:0 auto 18px }
+  .radial-stage .node{
+    position:relative; left:auto; top:auto; transform:none; margin:10px 0 16px;
+  }
+  .radial-stage .node::before{ display:none }
+  .radial-stage .bubble{ position:relative; left:auto; right:auto; transform:none; width:100% }
+}
 
 
