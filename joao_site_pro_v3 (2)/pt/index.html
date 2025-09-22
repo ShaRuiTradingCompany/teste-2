@@ -422,6 +422,21 @@
   items.forEach(el => io.observe(el));
 })();
 </script>
+<script>
+  (function(){
+    const sec = document.querySelector('#diferenciais.diff-radial');
+    if(!sec) return;
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          sec.classList.add('play');
+          io.unobserve(sec);
+        }
+      });
+    }, {threshold:.35});
+    io.observe(sec);
+  })();
+</script>
 
 </body>
 </html>
