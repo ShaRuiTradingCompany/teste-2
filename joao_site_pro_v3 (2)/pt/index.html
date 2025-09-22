@@ -450,3 +450,45 @@
 
 </body>
 </html>
+<script>
+(function(){
+  const radar = document.getElementById('radarShaRui');
+  if(!radar) return;
+
+  // 1) Posiciona os nós e define lado (esquerda/direita)
+  const nodes = Array.from(radar.querySelectorAll('.node'));
+
+  // Ordena por ângulo ASC para começar da direita (0°) e ir anti-horário (direita → esquerda)
+  nodes.sort((a,b)=> (+a.dataset.angle) - (+b.dataset.angle));
+
+  nodes.forEach((n, i)=>{
+    const angle = +n.dataset.angle;                // graus
+    n.style.setProperty('--a', angle + 'deg');     // usado no CSS
+    n.style.setProperty('--delay', (i * 0.55) + 's');       // atraso do nó
+    n.style.setProperty('--tipDelay', (i * 0.55 + 0.30) + 's'); // atraso do balão
+    // marca nós do lado esquerdo para inverter label/tip
+    const a = ((angle % 360) + 360) % 360;
+    if(a > 90 && a < 270) n.classList.add('left');
+  });
+
+  // 2) Dispara a sequência quando o radar entra na tela
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        radar.classList.add('on');
+        io.disconnect();
+      }
+    });
+  }, {threshold:.35});
+  io.observe(radar);
+
+  // 3) Acessibilidade: abrir/fechar balão no foco/toque
+  nodes.forEach(n=>{
+    const tip = n.querySelector('.tip');
+    n.addEventListener('mouseenter', ()=> tip.style.opacity = '1');
+    n.addEventListener('mouseleave', ()=> tip.style.opacity = '');
+    n.addEventListener('focusin',   ()=> tip.style.opacity = '1');
+    n.addEventListener('focusout',  ()=> tip.style.opacity = '');
+  });
+})();
+</script>
