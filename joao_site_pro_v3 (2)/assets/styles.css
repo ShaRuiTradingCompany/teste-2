@@ -201,7 +201,7 @@ p{ margin:10px 0 }
 }
 
 /* imagem SEM CORTE (mostra 100% da foto) */
-#quem-somos .who-photo img{ aspect-ratio: 16 / 10;}
+#quem-somos .who-photo img{ aspect-ratio: 10 / 05;}
   display:block;
   width:100%;
   height:auto;                          /* mantém a proporção original */
