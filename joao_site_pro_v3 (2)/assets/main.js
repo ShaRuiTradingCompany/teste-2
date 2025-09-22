@@ -112,3 +112,55 @@ document.addEventListener('DOMContentLoaded', () => {
   }, {rootMargin:'-20% 0px -20% 0px'});
   guard.observe(document.querySelector('#diferenciais'));
 })();
+// === Slider "Plataforma do Cliente" ===========================
+document.addEventListener('DOMContentLoaded', () => {
+  const stage     = document.querySelector('#plataforma');
+  if (!stage) return;
+
+  const wrap      = stage.querySelector('#platSlides');
+  const slides    = Array.from(wrap.querySelectorAll('.slide'));
+  const dotsWrap  = stage.querySelector('.dots');
+  const btnPrev   = stage.querySelector('.nav.prev');
+  const btnNext   = stage.querySelector('.nav.next');
+
+  let i = 0, timer = null, AUTOPLAY_MS = 5500, paused = false;
+
+  // cria dots
+  slides.forEach((_, idx) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Ir para slide ${idx+1}`);
+    b.addEventListener('click', () => go(idx, true));
+    dotsWrap.appendChild(b);
+  });
+
+  function syncUI(){
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    dotsWrap.querySelectorAll('button').forEach((d, idx) => d.classList.toggle('active', idx === i));
+  }
+  function go(n, manual=false){
+    i = (n + slides.length) % slides.length;
+    syncUI();
+    if (manual) restart(); // ao clicar, reinicia o autoplay
+  }
+  function next(){ go(i+1) }
+  function prev(){ go(i-1) }
+
+  btnNext.addEventListener('click', () => go(i+1, true));
+  btnPrev.addEventListener('click', () => go(i-1, true));
+  document.addEventListener('keydown', (e) => {
+    if (!stage.matches(':hover')) return;
+    if (e.key === 'ArrowRight') go(i+1, true);
+    if (e.key === 'ArrowLeft')  go(i-1, true);
+  });
+
+  function start(){ if (!timer) timer = setInterval(next, AUTOPLAY_MS); }
+  function stop(){ clearInterval(timer); timer = null; }
+  function restart(){ stop(); start(); }
+
+  // pausa ao passar o mouse / foco
+  const tablet = stage.querySelector('.tablet');
+  ['mouseenter','focusin','touchstart'].forEach(ev => tablet.addEventListener(ev, () => { paused=true; stop(); }, {passive:true}));
+  ['mouseleave','focusout','touchend'].forEach(ev => tablet.addEventListener(ev, () => { if (paused){ paused=false; start(); } }, {passive:true}));
+
+  syncUI(); start();
+});
