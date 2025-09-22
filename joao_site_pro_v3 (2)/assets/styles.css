@@ -406,7 +406,7 @@ p{ margin:10px 0 }
 
 .radial-stage{
   --R: clamp(180px, 32vh, 320px);     /* RAIO do círculo (menor para caber numa tela) */
-  --CENTER: clamp(120px, 20vh, 250px);/* diâmetro do núcleo (logo) */
+  --CENTER: clamp(200px, 20vh, 260px);/* diâmetro do núcleo (logo) */
   --BUBBLE-W: clamp(230px, 28vw, 360px);
   --line: 2px dashed rgba(255,255,255,.35);
   --bubble-bg: rgba(255,255,255,.10);
