@@ -236,7 +236,7 @@ p{ margin:10px 0 }
 /* área do diagrama */
 .diff-radial .radial{
   position:relative; margin:22px auto 0;
-  width:min(960px, 92vw); aspect-ratio:1/1;
+  width:min(1160px, 152vw); aspect-ratio:1/1;
 }
 
 /* anel pontilhado (cresce ao iniciar) */
@@ -275,7 +275,7 @@ p{ margin:10px 0 }
 
 /* linha tracejada que é “revelada” do centro para fora */
 .diff-radial .dash{
-  display:block; height:0; border-top:2px dashed rgba(255,255,255,.65);
+  display:block; height:0; border-top:4px dashed rgba(255,255,255,.65);
   clip-path: inset(0 100% 0 0);           /* escondida (da direita p/ esquerda) */
   transition: clip-path .7s ease;
   transition-delay: calc(var(--i) * 120ms);
