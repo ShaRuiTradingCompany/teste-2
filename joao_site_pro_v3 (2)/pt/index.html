@@ -129,6 +129,22 @@
 <main>
   <!-- HERO com vídeo tela inteira -->
   <section class="hero-video-wrap">
+    <!-- TRANSIÇÃO: faixa com ticker -->
+<section class="brand-ticker" aria-hidden="true">
+  <div class="ticker">
+    <ul class="ticker-track">
+      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+    </ul>
+    <!-- clone para rolagem contínua -->
+    <ul class="ticker-track" aria-hidden="true">
+      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+    </ul>
+  </div>
+</section>
   <video class="hero-video" autoplay muted playsinline preload="metadata" poster="https://res.cloudinary.com/dqlirwz5x/video/upload/so_1,f_jpg/v1758539458/company-hero.jpg">
     <!-- versão mobile 720p -->
     <source
@@ -183,6 +199,17 @@
     </div>
   </div>
 </section>
+<!-- Reel de fotos (abaixo do conteúdo de Quem somos) -->
+<div class="who-reel" id="whoReel">
+  <div class="reel-track">
+    <!-- Troque as URLs pelos seus arquivos -->
+    <img src="/assets/qs-1.jpg" alt="">
+    <img src="/assets/qs-2.jpg" alt="">
+    <img src="/assets/qs-3.jpg" alt="">
+    <img src="/assets/qs-4.jpg" alt="">
+    <img src="/assets/qs-5.jpg" alt="">
+  </div>
+</div>
 
 
 <!-- DIFERENCIAIS – radar com logo central e nós sequenciais -->
@@ -590,6 +617,33 @@
   }, {threshold: .35});
 
   io.observe(stage);
+})();
+</script>
+<script>
+/* Reel para a DIREITA (duplica conteúdo e anima com rAF) */
+(function(){
+  const reel = document.getElementById('whoReel'); if(!reel) return;
+  const track = reel.querySelector('.reel-track');
+  const speed = 0.35;                 // px por frame (ajuste a “velocidade”)
+  // Duplicar conteúdo até ter comprimento suficiente para loop suave
+  const originals = Array.from(track.children);
+  function ensureLength(){
+    let w = track.scrollWidth;
+    while (w < reel.offsetWidth * 2){
+      originals.forEach(n => track.appendChild(n.cloneNode(true)));
+      w = track.scrollWidth;
+    }
+  }
+  ensureLength(); window.addEventListener('resize', ensureLength);
+
+  let x = 0, wHalf = track.scrollWidth / 2;
+  function step(){
+    x += speed;                        // move para a direita
+    if (x >= wHalf) x = 0;             // reinicia quando andou metade do conteúdo (duplo)
+    track.style.transform = `translateX(${x}px)`;
+    requestAnimationFrame(step);
+  }
+  step();
 })();
 </script>
 
