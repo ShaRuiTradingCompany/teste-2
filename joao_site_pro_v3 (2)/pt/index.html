@@ -166,60 +166,70 @@
 
   <!-- DIFERENCIAIS (balões) -->
  <!-- DIFERENCIAIS (radial com traços partindo do logo) -->
-<section id="diferenciais" class="section diff-radial">
+<!-- DIFERENCIAIS – radar com logo central e nós sequenciais -->
+<section id="diferenciais" class="section diffs-radar">
   <div class="container">
-    <h2 class="diff-title">Nossos Diferenciais</h2>
-    <p class="diff-sub">MAIS PREVISIBILIDADE E CONTROLE</p>
+    <h2 style="text-align:center;margin:0 0 6px">O que torna a <b>ShaRui</b> diferente</h2>
+    <p class="lead" style="text-align:center;margin:0 auto 14px;max-width:800px">
+      MAIS PREVISIBILIDADE E CONTROLE
+    </p>
 
-    <div class="radial">
-      <!-- anel pontilhado ao fundo -->
-      <div class="ring"></div>
+    <div class="radar" id="radarShaRui">
+      <!-- 1) Logo central (coloque seu JPG em /assets/logo-center.jpg) -->
+      <img class="center-logo" src="/assets/logo-center.jpg" alt="ShaRui Trading Company">
 
-      <!-- núcleo com o logo/nome -->
-      <div class="core">
-        <!-- Se tiver logo em SVG/PNG, troque o src abaixo -->
-        <img class="core-logo" src="/assets/logo.svg" alt="ShaRui Trading Company" />
-        <!-- fallback em texto (deixe se quiser mostrar junto ou remova o <img> acima) -->
-        <div class="core-brand">
-          <span class="core-top">SHA RUI</span>
-          <span class="core-sub">TRADING COMPANY</span>
-        </div>
-      </div>
+      <!-- 2) Anéis decorativos -->
+      <span class="ring r1" aria-hidden="true"></span>
+      <span class="ring r2" aria-hidden="true"></span>
+      <span class="ring r3" aria-hidden="true"></span>
 
-      <!-- raios (spokes): cada um gira com base em --i -->
-      <ul class="spokes">
-        <li class="spoke" style="--i:0">
-          <span class="dash"></span>
-          <span class="label">Fornecedor certo no lugar certo</span>
-        </li>
-        <li class="spoke" style="--i:1">
-          <span class="dash"></span>
-          <span class="label">Ficha técnica em português e chinês</span>
-        </li>
-        <li class="spoke" style="--i:2">
-          <span class="dash"></span>
-          <span class="label">Inspeção com fotos e vídeos</span>
-        </li>
-        <li class="spoke" style="--i:3">
-          <span class="dash"></span>
-          <span class="label">Negociação com nativos</span>
-        </li>
-        <li class="spoke" style="--i:4">
-          <span class="dash"></span>
-          <span class="label">Preço no Brasil (estimado)</span>
-        </li>
-        <li class="spoke" style="--i:5">
-          <span class="dash"></span>
-          <span class="label">Sem valor mínimo (pilotos & amostras)</span>
-        </li>
-        <li class="spoke" style="--i:6">
-          <span class="dash"></span>
-          <span class="label">Estamos em Ganzhou – visita em até 48h</span>
-        </li>
-      </ul>
+      <!-- 3) Nós (aparecem um por um da direita para a esquerda) -->
+      <!-- Dica: data-angle em graus. 0° é a direita; cresce no sentido anti‑horário. -->
+      <button class="node" type="button" data-angle="0">
+        <span class="dot"></span>
+        <span class="label">Fornecedor certo</span>
+        <span class="tip">Buscamos nos polos de origem. Estamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e visitamos qualquer fábrica na China.</span>
+      </button>
+
+      <button class="node" type="button" data-angle="32">
+        <span class="dot"></span>
+        <span class="label">Ficha técnica PT‑ZH</span>
+        <span class="tip">Foto/desenho, materiais, medidas, tolerâncias, <b>embalagem e etiqueta</b> — tudo combinado e assinado (português e chinês).</span>
+      </button>
+
+      <button class="node" type="button" data-angle="68">
+        <span class="dot"></span>
+        <span class="label">Inspeção com prova</span>
+        <span class="tip">Amostragem, testes e <b>aprovação/reprovação</b> com fotos e vídeos — sem surpresa na entrega.</span>
+      </button>
+
+      <button class="node" type="button" data-angle="108">
+        <span class="dot"></span>
+        <span class="label">Negociação nativa</span>
+        <span class="tip">Equipe local com <b>funcionários chineses</b> para negociar condições melhores direto com a fábrica.</span>
+      </button>
+
+      <button class="node" type="button" data-angle="150">
+        <span class="dot"></span>
+        <span class="label">Preço no Brasil</span>
+        <span class="tip"><b>Estimativa de impostos e despesas</b> antes do pedido, com memória de cálculo — transparência total.</span>
+      </button>
+
+      <button class="node" type="button" data-angle="198">
+        <span class="dot"></span>
+        <span class="label">Sem valor mínimo</span>
+        <span class="tip">Comece com <b>amostras e pilotos</b>. Quando fizer sentido, <b>compartilhe contêiner</b> para otimizar o frete.</span>
+      </button>
+
+      <button class="node" type="button" data-angle="242">
+        <span class="dot"></span>
+        <span class="label">Visita em 48h</span>
+        <span class="tip"><b>Visita à fábrica em até 48h</b>, inspeção por amostra e <b>preço estimado</b> antes do pedido.</span>
+      </button>
     </div>
   </div>
 </section>
+
 
   <!-- PLATAFORMA (scroll horizontal) -->
   <section id="plataforma" class="section clean">
