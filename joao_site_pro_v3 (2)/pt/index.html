@@ -169,94 +169,84 @@
 <section id="diferenciais" class="section diffs-radial">
   <div class="container">
     <h2 class="dif-title">Nossos Diferenciais</h2>
-    <p class="dif-sub">Mais previsibilidade e controle</p>
+    <p class="dif-sub">MAIS PREVISIBILIDADE E CONTROLE</p>
 
-    <div class="radial-stage" id="radialDif">
-      <!-- Núcleo com o logo -->
-      <div class="core">
-        <!-- troque o caminho da imagem do logo, se precisar -->
-        <img src="/assets/logo-sharui.png" alt="ShaRui Trading Company">
+    <div class="radial-stage">
+      <!-- Núcleo (logo) -->
+      <div class="core" aria-hidden="true">
+        <!-- troque o src se o arquivo tiver outro nome/extensão -->
+        <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company">
       </div>
 
-      <!-- Cada .node é um ponto na circunferência
-           --a = ângulo em graus (use "deg")
-           .left  = balão abre para a esquerda
-           .right = balão abre para a direita -->
-
-      <!-- 1 -->
-      <div class="node left" style="--a: 2000deg;">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Preço no Brasil</b>
-          Estimativa transparente de impostos e despesas antes do pedido.
-        </div>
-      </div>
-
-      <!-- 2 -->
-      <div class="node left" style="--a: 500deg;">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Visita à fábrica em até 48h</b>
-          Com registro visual (fotos e vídeos) e relatório.
-        </div>
-      </div>
-
-      <!-- 3 -->
-      <div class="node left" style="--a: 1000deg;">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Negociação com nativos</b>
-          Equipe local chinesa negocia direto na fábrica por melhores condições.
-        </div>
-      </div>
-
-      <!-- 4 -->
-      <div class="node right" style="--a: 1000deg;">
+      <!-- Nós (cada um tem um ângulo --a e o lado para encaixe do balão) -->
+      <!-- Ângulos em graus: 0° aponta para a direita; positivos no sentido horário -->
+      <div class="node right" style="--a:-18deg">
         <span class="dot"></span>
         <div class="bubble">
           <b>Inspeção com fotos e vídeos</b>
-          Amostragem, testes e aprovação/reprovação — sem surpresa na entrega.
+          <small>Amostragem, testes e aprovação/reprovação — sem surpresa na entrega.</small>
         </div>
       </div>
 
-      <!-- 5 -->
-      <div class="node right" style="--a: 2600deg;">
+      <div class="node right" style="--a:18deg">
         <span class="dot"></span>
         <div class="bubble">
           <b>Ficha técnica PT‑ZH</b>
-          Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — combinado e assinado.
+          <small>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</small>
         </div>
       </div>
 
-      <!-- 6 -->
-      <div class="node left" style="--a: 2320deg;">
+      <div class="node right" style="--a:60deg">
         <span class="dot"></span>
         <div class="bubble">
           <b>Fornecedor certo, lugar certo</b>
-          Estamos em Ganzhou e visitamos qualquer fábrica na China.
+          <small>Estamos em Ganzhou e visitamos qualquer fábrica na China.</small>
         </div>
       </div>
 
-      <!-- 7 -->
-      <div class="node right" style="--a: 1500deg;">
+      <div class="node left" style="--a:110deg">
+        <span class="dot"></span>
+        <div class="bubble">
+          <b>Visita à fábrica em até 48h</b>
+          <small>Com registro visual (fotos e vídeos) e relatório.</small>
+        </div>
+      </div>
+
+      <div class="node left" style="--a:162deg">
         <span class="dot"></span>
         <div class="bubble">
           <b>Menos risco e custo total</b>
-          Integração engenharia + qualidade + finanças — presença dentro da fábrica.
+          <small>Integração engenharia + qualidade + finanças — presença dentro da fábrica.</small>
         </div>
       </div>
 
-      <!-- 8 -->
-      <div class="node left" style="--a: 1500deg;">
+      <div class="node left" style="--a:-160deg">
+        <span class="dot"></span>
+        <div class="bubble">
+          <b>Negociação com nativos</b>
+          <small>Equipe local chinesa negocia direto na fábrica por melhores condições.</small>
+        </div>
+      </div>
+
+      <div class="node left" style="--a:-110deg">
         <span class="dot"></span>
         <div class="bubble">
           <b>Sem valor mínimo</b>
-          Comece por amostras/pilotos; quando fizer sentido, compartilhe contêiner.
+          <small>Comece por amostras/pilotos; quando fizer sentido, compartilhe contêiner.</small>
+        </div>
+      </div>
+
+      <div class="node right" style="--a:-60deg">
+        <span class="dot"></span>
+        <div class="bubble">
+          <b>Preço no Brasil</b>
+          <small>Estimativa transparente de impostos e despesas antes do pedido.</small>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 
   <!-- PLATAFORMA (scroll horizontal) -->
@@ -512,6 +502,27 @@
   }, {threshold:.35});
 
   io.observe(section);
+})();
+</script>
+<script>
+(function(){
+  const sec = document.getElementById('diferenciais');
+  if(!sec) return;
+  const stage = sec.querySelector('.radial-stage');
+  const nodes = Array.from(stage.querySelectorAll('.node'));
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      // liga um por vez
+      nodes.forEach((n, i)=>{
+        setTimeout(()=> n.classList.add('on'), i * 360); // intervalo entre nós
+      });
+      io.unobserve(stage);
+    });
+  }, {threshold: .35});
+
+  io.observe(stage);
 })();
 </script>
 
