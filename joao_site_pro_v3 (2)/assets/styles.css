@@ -268,7 +268,7 @@ p{ margin:10px 0 }
 .diff-radial .spoke{
   --ang: calc(var(--i) * 360deg / 7);     /* 7 itens igualmente espaçados */
   position:absolute; left:50%; top:50%;
-  width:44%; height:0;                    /* comprimento do raio */
+  width:40%; height:0;                    /* comprimento do raio */
   transform-origin: 0% 50%;
   transform: rotate(var(--ang));
 }
