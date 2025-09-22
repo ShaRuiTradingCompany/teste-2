@@ -164,68 +164,78 @@
   </div>
 </section>
 
-  <!-- DIFERENCIAIS (balões) -->
- <!-- DIFERENCIAIS (radial com traços partindo do logo) -->
+
 <!-- DIFERENCIAIS – radar com logo central e nós sequenciais -->
-<section id="diferenciais" class="section diffs-radar">
+<section id="diferenciais" class="section diffs-radial">
   <div class="container">
-    <h2 style="text-align:center;margin:0 0 6px">O que torna a <b>ShaRui</b> diferente</h2>
-    <p class="lead" style="text-align:center;margin:0 auto 14px;max-width:800px">
-      MAIS PREVISIBILIDADE E CONTROLE
-    </p>
 
-    <div class="radar" id="radarShaRui">
-      <!-- 1) Logo central (coloque seu JPG em /assets/logo-center.jpg) -->
-      <img class="center-logo" src="/assets/logo-center.jpg" alt="ShaRui Trading Company">
+    <h2 class="dif-title">Nossos Diferenciais</h2>
+    <p class="dif-sub">MAIS PREVISIBILIDADE E CONTROLE</p>
 
-      <!-- 2) Anéis decorativos -->
-      <span class="ring r1" aria-hidden="true"></span>
-      <span class="ring r2" aria-hidden="true"></span>
-      <span class="ring r3" aria-hidden="true"></span>
+    <div class="radial-stage" aria-label="Diferenciais da ShaRui em disposição radial">
+      <!-- Núcleo com o logotipo -->
+      <div class="core" aria-hidden="true">
+        <!-- Coloque o seu arquivo em /assets/logo-sharui.jpg (ou .png) -->
+        <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company">
+      </div>
 
-      <!-- 3) Nós (aparecem um por um da direita para a esquerda) -->
-      <!-- Dica: data-angle em graus. 0° é a direita; cresce no sentido anti‑horário. -->
-      <button class="node" type="button" data-angle="0">
+      <!-- Nós (aparecem em sequência da direita para a esquerda) -->
+      <!-- Dica: deixe como está. A ordem do data-step define a sequência -->
+      <div class="node right" style="--a: 0deg;"   data-step="1">
         <span class="dot"></span>
-        <span class="label">Fornecedor certo</span>
-        <span class="tip">Buscamos nos polos de origem. Estamos em <b>Ganzhou</b>, participamos da <b>Canton Fair</b> e visitamos qualquer fábrica na China.</span>
-      </button>
+        <div class="bubble"><b>Fornecedor certo, lugar certo</b>
+          <small>Buscamos nos polos de origem. Estamos em Ganzhou e visitamos qualquer fábrica na China.</small>
+        </div>
+      </div>
 
-      <button class="node" type="button" data-angle="32">
+      <div class="node right" style="--a: 315deg;" data-step="2">
         <span class="dot"></span>
-        <span class="label">Ficha técnica PT‑ZH</span>
-        <span class="tip">Foto/desenho, materiais, medidas, tolerâncias, <b>embalagem e etiqueta</b> — tudo combinado e assinado (português e chinês).</span>
-      </button>
+        <div class="bubble"><b>Ficha técnica PT‑ZH</b>
+          <small>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — combinado e assinado.</small>
+        </div>
+      </div>
 
-      <button class="node" type="button" data-angle="68">
+      <div class="node right" style="--a: 270deg;" data-step="3">
         <span class="dot"></span>
-        <span class="label">Inspeção com prova</span>
-        <span class="tip">Amostragem, testes e <b>aprovação/reprovação</b> com fotos e vídeos — sem surpresa na entrega.</span>
-      </button>
+        <div class="bubble"><b>Inspeção com fotos e vídeos</b>
+          <small>Mostramos amostragem, testes e aprovação/reprovação — sem surpresa na entrega.</small>
+        </div>
+      </div>
 
-      <button class="node" type="button" data-angle="108">
+      <div class="node right" style="--a: 225deg;" data-step="4">
         <span class="dot"></span>
-        <span class="label">Negociação nativa</span>
-        <span class="tip">Equipe local com <b>funcionários chineses</b> para negociar condições melhores direto com a fábrica.</span>
-      </button>
+        <div class="bubble"><b>Negociação com nativos</b>
+          <small>Equipe local chinesa negocia direto na fábrica por melhores condições.</small>
+        </div>
+      </div>
 
-      <button class="node" type="button" data-angle="150">
+      <div class="node left"  style="--a: 180deg;" data-step="5">
         <span class="dot"></span>
-        <span class="label">Preço no Brasil</span>
-        <span class="tip"><b>Estimativa de impostos e despesas</b> antes do pedido, com memória de cálculo — transparência total.</span>
-      </button>
+        <div class="bubble"><b>Preço no Brasil</b>
+          <small>Estimativa transparente de impostos e despesas antes do pedido.</small>
+        </div>
+      </div>
 
-      <button class="node" type="button" data-angle="198">
+      <div class="node left"  style="--a: 135deg;" data-step="6">
         <span class="dot"></span>
-        <span class="label">Sem valor mínimo</span>
-        <span class="tip">Comece com <b>amostras e pilotos</b>. Quando fizer sentido, <b>compartilhe contêiner</b> para otimizar o frete.</span>
-      </button>
+        <div class="bubble"><b>Sem valor mínimo</b>
+          <small>Comece por amostras/pilotos; quando fizer sentido, compartilhe contêiner.</small>
+        </div>
+      </div>
 
-      <button class="node" type="button" data-angle="242">
+      <div class="node left"  style="--a: 90deg;"  data-step="7">
         <span class="dot"></span>
-        <span class="label">Visita em 48h</span>
-        <span class="tip"><b>Visita à fábrica em até 48h</b>, inspeção por amostra e <b>preço estimado</b> antes do pedido.</span>
-      </button>
+        <div class="bubble"><b>Visita à fábrica em até 48h</b>
+          <small>Com registro visual (fotos e vídeos) e relatório.</small>
+        </div>
+      </div>
+
+      <div class="node left"  style="--a: 45deg;"  data-step="8">
+        <span class="dot"></span>
+        <div class="bubble"><b>Menos risco e custo total</b>
+          <small>Integração engenharia + qualidade + finanças — presença dentro da fábrica.</small>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -448,47 +458,32 @@
   })();
 </script>
 
-</body>
-</html>
 <script>
+/* Animação sequencial: da direita (0°) para a esquerda */
 (function(){
-  const radar = document.getElementById('radarShaRui');
-  if(!radar) return;
+  const section = document.querySelector('#diferenciais.diffs-radial');
+  if(!section) return;
 
-  // 1) Posiciona os nós e define lado (esquerda/direita)
-  const nodes = Array.from(radar.querySelectorAll('.node'));
+  const nodes = Array.from(section.querySelectorAll('.node'))
+    .sort((a,b)=> (a.dataset.step|0) - (b.dataset.step|0));
 
-  // Ordena por ângulo ASC para começar da direita (0°) e ir anti-horário (direita → esquerda)
-  nodes.sort((a,b)=> (+a.dataset.angle) - (+b.dataset.angle));
-
-  nodes.forEach((n, i)=>{
-    const angle = +n.dataset.angle;                // graus
-    n.style.setProperty('--a', angle + 'deg');     // usado no CSS
-    n.style.setProperty('--delay', (i * 0.55) + 's');       // atraso do nó
-    n.style.setProperty('--tipDelay', (i * 0.55 + 0.30) + 's'); // atraso do balão
-    // marca nós do lado esquerdo para inverter label/tip
-    const a = ((angle % 360) + 360) % 360;
-    if(a > 90 && a < 270) n.classList.add('left');
-  });
-
-  // 2) Dispara a sequência quando o radar entra na tela
+  // dispara quando a seção entra na tela
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){
-        radar.classList.add('on');
-        io.disconnect();
-      }
+      if(!e.isIntersecting) return;
+      let i = 0;
+      const tick = ()=> {
+        nodes[i]?.classList.add('on');
+        i++;
+        if(i < nodes.length) setTimeout(tick, 420);
+      };
+      tick();
+      io.unobserve(section);
     });
   }, {threshold:.35});
-  io.observe(radar);
 
-  // 3) Acessibilidade: abrir/fechar balão no foco/toque
-  nodes.forEach(n=>{
-    const tip = n.querySelector('.tip');
-    n.addEventListener('mouseenter', ()=> tip.style.opacity = '1');
-    n.addEventListener('mouseleave', ()=> tip.style.opacity = '');
-    n.addEventListener('focusin',   ()=> tip.style.opacity = '1');
-    n.addEventListener('focusout',  ()=> tip.style.opacity = '');
-  });
+  io.observe(section);
 })();
 </script>
+
+</body>
