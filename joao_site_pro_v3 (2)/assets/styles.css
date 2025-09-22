@@ -306,5 +306,91 @@ p{ margin:10px 0 }
   .diff-radial .spoke{ width:48%; }
   .diff-radial .label{ max-width:180px; }
 }
+/* ===== DIFERENCIAIS – Radar com logo central e nós sequenciais ===== */
+.diffs-radar .radar{
+  --size: clamp(320px, 72vw, 860px);   /* tamanho total do círculo */
+  --radius: calc(var(--size) * .42);   /* raio onde ficam os nós */
+  position: relative;
+  width: var(--size);
+  aspect-ratio: 1 / 1;
+  margin: 18px auto 8px;
+  border-radius: 50%;
+  background: radial-gradient(transparent 55%, rgba(255,255,255,.04) 56% 100%);
+  box-shadow: 0 30px 80px rgba(0,0,0,.25) inset;
+}
+
+/* Anéis */
+.diffs-radar .ring{
+  position:absolute; inset:0; border-radius:50%;
+  border:1px dashed rgba(255,255,255,.14);
+  pointer-events:none;
+}
+.diffs-radar .ring.r1{ transform: scale(.66) }
+.diffs-radar .ring.r2{ transform: scale(.82) }
+.diffs-radar .ring.r3{ transform: scale(.98) }
+
+/* Logo central */
+.diffs-radar .center-logo{
+  position:absolute; inset:50% auto auto 50%;
+  transform: translate(-50%,-50%);
+  width: clamp(96px, 14vw, 160px); height: clamp(96px, 14vw, 160px);
+  object-fit: contain; border-radius: 50%;
+  background:#fff; padding:10px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.15) inset;
+}
+
+/* Nó + rótulo + balão */
+.diffs-radar .node{
+  position:absolute; top:50%; left:50%;
+  transform: rotate(var(--a)) translate(var(--radius)) rotate(calc(-1 * var(--a)));
+  background:none; border:0; padding:0; cursor:default;
+  opacity:0; /* entra animando */
+}
+.diffs-radar .node .dot{
+  width:12px; height:12px; border-radius:50%;
+  display:inline-block; background:#22D3EE; box-shadow:0 0 0 4px rgba(34,211,238,.2);
+}
+.diffs-radar .node .label{
+  display:inline-block; margin-left:10px; font-weight:800;
+  background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.16);
+  padding:6px 10px; border-radius:999px; white-space:nowrap;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+/* balão de descrição */
+.diffs-radar .node .tip{
+  position:absolute; top:26px; left:-6px;
+  max-width: 280px; font-size:14px; line-height:1.45;
+  color:#e9eef6; background:rgba(8,12,20,.85);
+  border:1px solid rgba(255,255,255,.18); border-radius:12px;
+  padding:10px 12px; box-shadow:0 18px 40px rgba(0,0,0,.35);
+  opacity:0; transform: translateY(6px);
+}
+
+/* Quando o nó está do lado esquerdo, invertimos alinhamentos */
+.diffs-radar .node.left .label{ margin-left:0; margin-right:10px }
+.diffs-radar .node.left{ transform: rotate(var(--a)) translate(var(--radius)) rotate(calc(-1 * var(--a))) translateX(-100%); }
+.diffs-radar .node.left .tip{ left:auto; right:-6px }
+
+/* Animações (sequenciais) */
+.diffs-radar .radar.on .node{
+  animation: radarPop .55s var(--delay, 0s) both cubic-bezier(.2,.7,.2,1);
+}
+.diffs-radar .radar.on .node .tip{
+  animation: tipIn .45s var(--tipDelay, .2s) both;
+}
+@keyframes radarPop{
+  from{ opacity:0; transform: rotate(var(--a)) translate(calc(var(--radius) - 18px)) rotate(calc(-1 * var(--a))); }
+  to  { opacity:1; transform: rotate(var(--a)) translate(var(--radius)) rotate(calc(-1 * var(--a))); }
+}
+@keyframes tipIn{
+  from{ opacity:0; transform: translateY(6px) }
+  to  { opacity:1; transform: translateY(0) }
+}
+
+/* Responsivo: em telas pequenas, mantenha leitura boa */
+@media (max-width: 720px){
+  .diffs-radar .node .label{ font-size:14px }
+  .diffs-radar .node .tip{ max-width:220px }
+}
 
 
