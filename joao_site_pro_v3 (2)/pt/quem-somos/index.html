@@ -1,1 +1,105 @@
 <a href="/quem-somos/">Quem somos</a>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quem somos — ShaRui Trading Company</title>
+<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="/assets/video_hero.css">
+<style>
+.page-hero{padding:72px 0 28px}
+.page-hero h1{text-align:center;margin:0 0 8px}
+.page-hero p{max-width:860px;margin:0 auto;text-align:center;opacity:.92}
+.split{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
+@media(max-width:980px){.split{grid-template-columns:1fr}}
+.pic{border-radius:14px;overflow:hidden;box-shadow:0 18px 48px rgba(0,0,0,.35)}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.kb{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.kb{grid-template-columns:1fr}}
+.kb .card{min-height:160px}
+.timeline{position:relative;padding-left:20px}
+.timeline::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:rgba(255,255,255,.2)}
+.ti{position:relative;margin:14px 0;padding-left:14px}
+.ti::before{content:"";position:absolute;left:-7px;top:.5em;width:10px;height:10px;border-radius:50%;
+background:linear-gradient(180deg,#66e0c2,#22b3e5);box-shadow:0 0 0 4px rgba(34,179,229,.15)}
+.fade{opacity:0;transform:translateY(8px);transition:.5s}
+.fade.in{opacity:1;transform:none}
+.brand-band{margin:16px 0}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <div class="brand"><a href="/" class="brand-logo"><span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span></a></div>
+    <nav><div class="menu">
+      <a href="/">Início</a><a href="/diferenciais/">Diferenciais</a><a href="/plataforma/">Plataforma</a>
+      <a href="#" onclick="openCalendly();return false;">Contato</a>
+    </div></nav>
+  </div>
+</header>
+
+<main>
+<section class="page-hero section">
+  <div class="container">
+    <h1>Quem somos</h1>
+    <p>Há 30 anos conectando empresas brasileiras a fornecedores confiáveis na China — com presença em <b>Ganzhou</b>, visita à fábrica e <b>inspeção com prova</b>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <figure class="pic fade"><img src="/assets/socio.jpg" alt=""></figure>
+    <div class="fade">
+      <h2>Nossa missão</h2>
+      <p>Reduzir <b>risco</b> e <b>custo total</b> de importação com engenharia, qualidade e finanças trabalhando juntas — do pedido à entrega no Brasil.</p>
+      <ul class="who-stats">
+        <li>Ganzhou, China</li><li>Visita à fábrica &lt; 48h</li><li>Relatórios com foto & vídeo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Pequeno importador, solução completa</h2>
+    <div class="kb">
+      <div class="card fade"><h3>Contêiner compartilhado</h3><p>Sem valor mínimo. Comece com amostras e, quando fizer sentido, <b>compartilhe</b> o contêiner para otimizar frete.</p></div>
+      <div class="card fade"><h3>Ficha técnica PT–ZH</h3><p>Foto, materiais, medidas, tolerâncias, embalagem e etiqueta — <b>combinado e assinado</b>.</p></div>
+      <div class="card fade"><h3>Preço no Brasil</h3><p>Estimativa de impostos e despesas <b>antes</b> do pedido para decidir com segurança.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Como funciona o contêiner compartilhado</h2>
+    <div class="timeline">
+      <div class="ti fade"><b>1) Seleção & cotação</b> — fornecedor certo no polo certo, amostras e proposta.</div>
+      <div class="ti fade"><b>2) Pedido & ficha técnica</b> — especificação clara PT–ZH.</div>
+      <div class="ti fade"><b>3) Inspeção</b> — amostragem, fotos e vídeos; aprovação/reprovação.</div>
+      <div class="ti fade"><b>4) Consolidação</b> — compartilhamento de contêiner (LCL) e <b>linha do tempo</b> no app.</div>
+      <div class="ti fade"><b>5) Desembaraço & entrega</b> — documentos, impostos, conferência e entrega final.</div>
+    </div>
+  </div>
+</section>
+
+<section class="brand-band" aria-hidden="true"><div class="marquee"><span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span></div></section>
+</main>
+
+<footer class="footer"><div class="container footer-row">
+  <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+  <nav class="foot-social" aria-label="Redes sociais">
+    <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" class="ic ig"></a>
+    <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" class="ic tk"></a>
+    <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" class="ic yt"></a>
+    <a href="https://wa.me/551193381008" target="_blank" rel="noopener" class="ic wa"></a>
+  </nav>
+</div></footer>
+
+<script>
+// revelar suave
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}}),{threshold:.25});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+function openCalendly(){alert('Substitua por seu modal/Calendly, igual na home.')}
+</script>
+</body></html>
