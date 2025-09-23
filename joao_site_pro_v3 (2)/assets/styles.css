@@ -902,5 +902,65 @@ p{ margin:10px 0 }
   box-shadow: 0 0 12px rgba(102,224,194,.35);
 }
 @keyframes bubbleSweep{ to{ transform: rotate(1turn); } }
+/* ===== Navegação mais visível sobre o vídeo ===== */
+.site-header .menu{ gap: clamp(12px, 2vw, 24px); }
+.site-header .menu a{
+  font-weight: 800;
+  font-size: clamp(14px, 1.25vw, 18px);
+  letter-spacing: .02em;
+  padding: 8px 4px;
+  text-shadow: 0 2px 14px rgba(0,0,0,.55), 0 0 8px rgba(0,0,0,.35);
+}
+@media (max-width: 880px){
+  .site-header .menu a{ font-size: 15px; }
+}
+
+/* ===== FAQ (estilo simples) ===== */
+.section.faq details{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+.section.faq summary{ cursor: pointer; font-weight: 700; }
+.section.faq summary::-webkit-details-marker{ display:none }
+
+/* ===== Rodapé — endereço ===== */
+.corp-address{
+  margin-top:6px; font-style:normal; line-height:1.45;
+  color:#cfd7e6; opacity:.9; font-size:14px;
+}
+@media (max-width:720px){
+  .footer-row{ flex-direction:column; align-items:flex-start; }
+}
+
+/* ===== Diferenciais: remover brilho dos BALÕES ===== */
+#diferenciais .radial-stage .bubble{
+  /* volta ao fundo “normal” do balão (sem conic-gradient animado) */
+  background: var(--bubble-bg);
+  border: 1px solid var(--bubble-bd);
+  animation: none;
+}
+
+/* ===== Diferenciais: feixe de luz girando APENAS no LOGO central ===== */
+#diferenciais .core{
+  position: absolute; /* garante contexto para o pseudo-elemento */
+}
+#diferenciais .core::before{
+  content:"";
+  position:absolute; inset:-6px; border-radius:50%;
+  /* anel colorido girando */
+  background: conic-gradient(from var(--angle),
+    #66e0c2, #22b3e5, #7c3aed, #22b3e5, #66e0c2);
+  filter: blur(6px); opacity:.9;
+  --angle: 0deg;
+  animation: coreSpin 6s linear infinite;
+  /* máscara para mostrar só a borda (o “anel” de luz) */
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px));
+  pointer-events:none;
+}
+@keyframes coreSpin{ to{ --angle: 360deg; } }
 
 
