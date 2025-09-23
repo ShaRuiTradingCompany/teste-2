@@ -111,7 +111,8 @@
         <a href="#diferenciais">Diferenciais</a>
         <a href="#plataforma">Plataforma</a>
         <a href="#" onclick="openCalendly();return false;">Contato</a>
-        <a href="marketplace.html"><b>Marketplace</b></a>
+        <a href="#materiais" onclick="openLeads();return false;"><b>Materiais Gratuitos</b></a>
+
       </div>
     </nav>
     <div class="lang" id="lang">
@@ -161,25 +162,10 @@
     Seu navegador não suporta vídeo HTML5.
   </video>
 </section>
-<!-- FAIXA DE TRANSIÇÃO (entre o vídeo e a 1ª seção) -->
-<section class="brand-marquee" aria-label="Transição de seção">
+  <!-- FAIXA / MARQUEE: após o vídeo -->
+<section class="brand-band" aria-hidden="true">
   <div class="marquee">
-    <div class="track">
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-    </div>
-    <div class="track" aria-hidden="true">
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-      <span>SHARUI TRADING COMPANY •</span>
-    </div>
+    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
   </div>
 </section>
 
@@ -210,7 +196,30 @@
     <img src="/assets/qs-5.jpg" alt="">
   </div>
 </div>
-
+  <!-- Galeria contínua (abaixo do “Quem somos”) -->
+<section class="who-gallery">
+  <div class="strip">
+    <!-- Troque os src pelos seus arquivos; quantos quiser -->
+    <img src="/assets/qs1.jpg" alt="">
+    <img src="/assets/qs2.jpg" alt="">
+    <img src="/assets/qs3.jpg" alt="">
+    <img src="/assets/qs4.jpg" alt="">
+    <img src="/assets/qs5.jpg" alt="">
+    <!-- Duplicadas para loop perfeito -->
+    <img src="/assets/qs1.jpg" alt="" aria-hidden="true">
+    <img src="/assets/qs2.jpg" alt="" aria-hidden="true">
+    <img src="/assets/qs3.jpg" alt="" aria-hidden="true">
+    <img src="/assets/qs4.jpg" alt="" aria-hidden="true">
+    <img src="/assets/qs5.jpg" alt="" aria-hidden="true">
+  </div>
+</section>
+  
+<!-- FAIXA / MARQUEE: antes da Plataforma -->
+<section class="brand-band" aria-hidden="true">
+  <div class="marquee">
+    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+  </div>
+</section>
 
 <!-- DIFERENCIAIS – radar com logo central e nós sequenciais -->
 <section id="diferenciais" class="section diffs-radial">
@@ -364,30 +373,15 @@
 </section>
 
   <!-- E‑BOOKS -->
-  <section id="ebooks" class="section bg-cover bg-ebooks">
-    <div class="container">
-      <h2>Do planejamento ao desembaraço</h2>
-      <p class="lead">3 e‑books gratuitos de quem está há mais de 30 anos no mercado</p>
-
-      <div class="ebooks-grid">
-        <a class="ebook-tile" href="#"><span class="ph" style="background-image:url('/assets/ebook1.jpg')"></span><span class="label">Importação em 10 passos (2025)</span></a>
-        <a class="ebook-tile" href="#"><span class="ph" style="background-image:url('/assets/ebook2.jpg')"></span><span class="label">Impostos na Importação — guia prático</span></a>
-        <a class="ebook-tile" href="#"><span class="ph" style="background-image:url('/assets/ebook3.jpg')"></span><span class="label">Qualidade sem drama: inspeção com prova</span></a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div>© <span data-text="brand">ShaRui Trading Company</span> — Importação China ↔ Brasil</div>
-    <div class="contact-row" style="margin-top:8px">
-      <a class="badge" data-contact="facebook">Facebook</a>
-      <a class="badge" data-contact="instagram">Instagram</a>
-      <a class="badge" data-contact="tiktok">TikTok</a>
-    </div>
+ <!-- MATERIAIS GRATUITOS (CTA simples que abre o modal) -->
+<section id="materiais" class="section freebies">
+  <div class="container freebies-inner">
+    <h2>Materiais gratuitos</h2>
+    <p class="lead">Baixe nossos e‑books e guias práticos.</p>
+    <button class="cta primary" onclick="openLeads()">Quero receber por e‑mail</button>
   </div>
-</footer>
+</section>
+
 
 <!-- Modal Calendly -->
 <div id="calendly-modal" class="modal" onclick="closeCalendly()">
@@ -416,15 +410,18 @@
   })();
 </script>
 
-  const CAL_URL = "https://calendly.com/seuusuario/30min?hide_landing_page_details=1&hide_gdpr_banner=1";
-  function openCalendly(){
-    const m = document.getElementById('calendly-modal');
-    const f = document.getElementById('calendly-frame');
-    if(f.src === "about:blank") f.src = CAL_URL;
-    m.classList.add('open');
-  }
-  function closeCalendly(){ document.getElementById('calendly-modal').classList.remove('open'); }
-</script>
+<footer class="footer">
+  <div class="container footer-row">
+    <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+    <nav class="foot-social" aria-label="Redes sociais">
+      <a href="https://instagram.com/SEU_USUARIO" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
+      <a href="https://www.tiktok.com/@SEU_USUARIO" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
+      <a href="https://youtube.com/@SEU_USUARIO" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
+      <a href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa" title="WhatsApp"></a>
+      <a href="#" aria-label="WeChat" class="ic wc" title="WeChat"></a>
+    </nav>
+  </div>
+</footer>
 
 <!-- Scripts de revelação/digitação (mantidos) -->
 <script>
@@ -646,5 +643,34 @@
   step();
 })();
 </script>
+<!-- MODAL: captação para envio de e‑books -->
+<div id="leads-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="leads-title" onclick="closeLeads()">
+  <div class="modal-card leads" onclick="event.stopPropagation()">
+    <h3 id="leads-title">Receba os materiais por e‑mail</h3>
+    <form id="leads-form" onsubmit="return submitLeads(event)">
+      <div class="form-row">
+        <label>Nome completo</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="form-row">
+        <label>E‑mail</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="form-row">
+        <label>Telefone (WhatsApp)</label>
+        <input type="tel" name="phone" placeholder="+55 (__) _____‑____" required>
+      </div>
+      <label class="chk">
+        <input type="checkbox" name="consent" required>
+        <span>Aceito receber e‑mails promocionais e comunicações da ShaRui.</span>
+      </label>
+      <div class="form-actions">
+        <button type="button" class="cta" onclick="closeLeads()">Cancelar</button>
+        <button type="submit" class="cta primary">Enviar</button>
+      </div>
+      <p id="leads-msg" class="msg" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
 
 </body>
