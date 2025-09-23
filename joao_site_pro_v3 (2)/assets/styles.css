@@ -967,3 +967,20 @@ p{ margin:10px 0 }
   margin-top:8px; font-size: clamp(14px, 1.9vw, 16px); 
   line-height:1.6; color:#e7ecff;
 }
+/* ==== OFFSET PARA ÂNCORAS COM CABEÇALHO FIXO ==== */
+:root{ --header-h: 72px; }                 /* altura aproximada do header */
+@media (max-width: 880px){ :root{ --header-h: 64px; } }
+
+/* Suaviza a rolagem e reserva espaço no topo */
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 10px);
+}
+
+/* Alvo das âncoras do menu (ajuste os IDs que existir em sua home) */
+#quem-somos,
+#diferenciais,
+#plataforma,
+#faq{
+  scroll-margin-top: calc(var(--header-h) + 10px);
+}
