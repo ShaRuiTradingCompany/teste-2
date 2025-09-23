@@ -111,7 +111,6 @@
         <a href="#diferenciais">Diferenciais</a>
         <a href="#plataforma">Plataforma</a>
         <a href="#" onclick="openCalendly();return false;">Contato</a>
-        <a href="#materiais" onclick="openLeads();return false;"><b>Materiais Gratuitos</b></a>
 
       </div>
     </nav>
@@ -162,8 +161,9 @@
     Seu navegador não suporta vídeo HTML5.
   </video>
 </section>
-  <!-- FAIXA / MARQUEE: após o vídeo -->
-<section class="brand-band" aria-hidden="true">
+  
+<!-- FAIXA / MARQUEE: após o vídeo -->
+<section class="brand-band light" aria-hidden="true">
   <div class="marquee">
     <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
   </div>
@@ -185,17 +185,8 @@
     </div>
   </div>
 </section>
+  
 <!-- Reel de fotos (abaixo do conteúdo de Quem somos) -->
-<div class="who-reel" id="whoReel">
-  <div class="reel-track">
-    <!-- Troque as URLs pelos seus arquivos -->
-    <img src="/assets/qs-1.jpg" alt="">
-    <img src="/assets/qs-2.jpg" alt="">
-    <img src="/assets/qs-3.jpg" alt="">
-    <img src="/assets/qs-4.jpg" alt="">
-    <img src="/assets/qs-5.jpg" alt="">
-  </div>
-</div>
   <!-- Galeria contínua (abaixo do “Quem somos”) -->
 <section class="who-gallery">
   <div class="strip">
@@ -302,6 +293,13 @@
     </div>
   </div>
 </section>
+  
+<!-- FAIXA / MARQUEE: de Nossos Diferenciais para a Plataforma -->
+<section class="brand-band" aria-hidden="true">
+  <div class="marquee">
+    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+  </div>
+</section>
 
 
 
@@ -371,17 +369,6 @@
     <div class="plat-hint">Passe o mouse para pausar • Toque/Use as setas para controlar</div>
   </div>
 </section>
-
-  <!-- E‑BOOKS -->
- <!-- MATERIAIS GRATUITOS (CTA simples que abre o modal) -->
-<section id="materiais" class="section freebies">
-  <div class="container freebies-inner">
-    <h2>Materiais gratuitos</h2>
-    <p class="lead">Baixe nossos e‑books e guias práticos.</p>
-    <button class="cta primary" onclick="openLeads()">Quero receber por e‑mail</button>
-  </div>
-</section>
-
 
 <!-- Modal Calendly -->
 <div id="calendly-modal" class="modal" onclick="closeCalendly()">
@@ -616,33 +603,7 @@
   io.observe(stage);
 })();
 </script>
-<script>
-/* Reel para a DIREITA (duplica conteúdo e anima com rAF) */
-(function(){
-  const reel = document.getElementById('whoReel'); if(!reel) return;
-  const track = reel.querySelector('.reel-track');
-  const speed = 0.35;                 // px por frame (ajuste a “velocidade”)
-  // Duplicar conteúdo até ter comprimento suficiente para loop suave
-  const originals = Array.from(track.children);
-  function ensureLength(){
-    let w = track.scrollWidth;
-    while (w < reel.offsetWidth * 2){
-      originals.forEach(n => track.appendChild(n.cloneNode(true)));
-      w = track.scrollWidth;
-    }
-  }
-  ensureLength(); window.addEventListener('resize', ensureLength);
 
-  let x = 0, wHalf = track.scrollWidth / 2;
-  function step(){
-    x += speed;                        // move para a direita
-    if (x >= wHalf) x = 0;             // reinicia quando andou metade do conteúdo (duplo)
-    track.style.transform = `translateX(${x}px)`;
-    requestAnimationFrame(step);
-  }
-  step();
-})();
-</script>
 <!-- MODAL: captação para envio de e‑books -->
 <div id="leads-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="leads-title" onclick="closeLeads()">
   <div class="modal-card leads" onclick="event.stopPropagation()">
