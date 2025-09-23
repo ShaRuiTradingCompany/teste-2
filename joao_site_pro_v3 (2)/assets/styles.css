@@ -950,12 +950,3 @@ p{ margin:10px 0 }
   object-fit: cover;                        /* preenche sem distorcer */
 }
 
-/* === NOSSOS DIFERENCIAIS — diagrama mais compacto === */
-#diferenciais .radial-stage{
-  --R: clamp(180px, 22vh, 240px);           /* raio menor */
-  --CENTER: clamp(170px, 20vh, 220px);      /* núcleo (logo) um pouco menor */
-  --BUBBLE-W: clamp(240px, 28vw, 360px);    /* balões ligeiramente mais estreitos */
-  min-height: clamp(440px, 66vh, 620px);    /* altura total menor */
-}
-
-
