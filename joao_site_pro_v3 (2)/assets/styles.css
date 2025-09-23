@@ -872,36 +872,6 @@ p{ margin:10px 0 }
   color:#f6fbff;
   text-shadow: 0 1px 0 rgba(0,0,0,.22);
 }
-/* Luz girando em volta do balão */
-.radial-stage .bubble{
-  position: relative;               /* ancora o pseudo-elemento */
-  background: var(--bubble-bg);
-  border: 1px solid var(--bubble-bd);
-}
-.radial-stage .bubble::after{
-  content:"";
-  position:absolute; inset:-2px; border-radius:inherit;
-  /* cria um arco colorido e deixa só a borda visível com máscara */
-  background: conic-gradient(
-    from 0deg,
-    transparent 0 70%,
-    rgba(102,224,194,.95) 75%,
-    rgba(34,179,229,.95) 82%,
-    rgba(124,58,237,.85) 88%,
-    transparent 93% 100%
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);              /* recorta o interior */
-  -webkit-mask-composite: xor;              /* Safari */
-          mask-composite: exclude;          /* demais */
-  padding:2px;                              /* espessura do “feixe” */
-  pointer-events:none;
-  animation: bubbleSweep 2.8s linear infinite;
-  opacity:.95;
-  box-shadow: 0 0 12px rgba(102,224,194,.35);
-}
-@keyframes bubbleSweep{ to{ transform: rotate(1turn); } }
 /* ===== Navegação mais visível sobre o vídeo ===== */
 .site-header .menu{ gap: clamp(12px, 2vw, 24px); }
 .site-header .menu a{
