@@ -398,7 +398,7 @@ p{ margin:10px 0 }
   background:
     radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,.07), transparent 60%),
     linear-gradient(180deg,#214a83,#183a69 55%, #17335f);
-  padding-block: clamp(48px, 6vh, 72px);
+  padding-block: clamp(32px, 4.5vh, 52px);
 }
 
 .dif-title{ text-align:center; font-size:clamp(28px,4.8vw,46px); margin:0 0 6px }
@@ -863,5 +863,44 @@ p{ margin:10px 0 }
 #leads-form .chk{ display:flex; gap:8px; align-items:flex-start; margin:8px 0 10px; font-size:14px; opacity:.9; }
 #leads-form .form-actions{ display:flex; gap:10px; justify-content:flex-end; align-items:center; }
 #leads-form .msg{ min-height:20px; margin-top:8px; opacity:.95; }
+/* Primeira faixa mais clara (aplique class="brand-band light") */
+.brand-band.light{
+  background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
+  border-block-color: rgba(255,255,255,.24);
+}
+.brand-band.light .marquee span{
+  color:#f6fbff;
+  text-shadow: 0 1px 0 rgba(0,0,0,.22);
+}
+/* Luz girando em volta do balão */
+.radial-stage .bubble{
+  position: relative;               /* ancora o pseudo-elemento */
+  background: var(--bubble-bg);
+  border: 1px solid var(--bubble-bd);
+}
+.radial-stage .bubble::after{
+  content:"";
+  position:absolute; inset:-2px; border-radius:inherit;
+  /* cria um arco colorido e deixa só a borda visível com máscara */
+  background: conic-gradient(
+    from 0deg,
+    transparent 0 70%,
+    rgba(102,224,194,.95) 75%,
+    rgba(34,179,229,.95) 82%,
+    rgba(124,58,237,.85) 88%,
+    transparent 93% 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);              /* recorta o interior */
+  -webkit-mask-composite: xor;              /* Safari */
+          mask-composite: exclude;          /* demais */
+  padding:2px;                              /* espessura do “feixe” */
+  pointer-events:none;
+  animation: bubbleSweep 2.8s linear infinite;
+  opacity:.95;
+  box-shadow: 0 0 12px rgba(102,224,194,.35);
+}
+@keyframes bubbleSweep{ to{ transform: rotate(1turn); } }
 
 
