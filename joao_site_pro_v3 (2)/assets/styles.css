@@ -949,4 +949,22 @@ p{ margin:10px 0 }
   height: 100%;
   object-fit: cover;                        /* preenche sem distorcer */
 }
+/* FAQ */
+.faq .faq-list { max-width: 980px; margin: 0 auto; }
+.faq details { 
+  background: rgba(255,255,255,.06); 
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:12px; padding:12px 14px; margin:10px 0;
+  box-shadow:0 10px 26px rgba(0,0,0,.25);
+}
+.faq summary {
+  cursor:pointer; list-style:none; font-weight:800; 
+  font-size: clamp(16px, 2.2vw, 18px);
+}
+.faq summary::-webkit-details-marker { display:none }
+.faq details[open] { background: rgba(255,255,255,.10) }
+.faq details > div { 
+  margin-top:8px; font-size: clamp(14px, 1.9vw, 16px); 
+  line-height:1.6; color:#e7ecff;
+}
 
