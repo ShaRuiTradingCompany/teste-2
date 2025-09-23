@@ -147,7 +147,7 @@ p{ margin:10px 0 }
 .diffs{ text-align:center }
 .pill-head{
   display:inline-block; padding:10px 16px; border-radius:999px;
-  background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.11); border:1px solid rgba(255,255,255,.18);
   font-weight:700; letter-spacing:.3px; margin-bottom:18px;
 }
 .pill-grid{ display:grid; gap:12px; max-width:980px; margin:0 auto }
