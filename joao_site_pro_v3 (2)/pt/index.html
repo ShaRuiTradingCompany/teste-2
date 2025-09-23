@@ -759,4 +759,17 @@
     </form>
   </div>
 </div>
+    <script>
+(function(){
+  const header = document.getElementById('siteHeader');
+  if(!header) return;
+  function setOffset(){
+    const h = header.offsetHeight || 72;
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  }
+  setOffset();
+  window.addEventListener('resize', setOffset);
+})();
+</script>
+
 </body>
