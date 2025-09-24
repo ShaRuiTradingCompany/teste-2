@@ -60,5 +60,199 @@
       <a href="https://wa.me/551193381008" target="_blank" class="ic wa"></a>
     </nav>
   </div></footer>
+  <!-- ROTA DINÂMICA — Da Fábrica à Sua Loja -->
+<section id="rota" class="section route">
+  <div class="container">
+    <header class="route-head">
+      <h2>Da fábrica à sua loja</h2>
+      <p class="lead">Acompanhe o caminho completo — com provas em cada etapa.</p>
+    </header>
+
+    <div class="route-stage">
+      <!-- Mapa/rota sticky -->
+      <figure class="map-wrap" aria-hidden="true">
+        <svg id="routeMap" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet" role="img">
+          <title>Rota da fábrica até a loja do cliente</title>
+          <desc>Um navio percorre um trajeto tracejado representando as etapas da importação.</desc>
+
+          <!-- Rota base (tracejado) -->
+          <path id="routePath"
+                d="M80,380 C220,340 360,280 480,260 C610,240 720,280 820,300 C900,316 940,340 960,360"
+                fill="none" stroke="rgba(255,255,255,.55)" stroke-width="3"
+                stroke-dasharray="8 10" />
+
+          <!-- Progresso (cor) — mesmo 'd' do routePath -->
+          <path id="routeProgress"
+                d="M80,380 C220,340 360,280 480,260 C610,240 720,280 820,300 C900,316 940,340 960,360"
+                fill="none" stroke="var(--accent, #66e0c2)" stroke-width="4"
+                stroke-linecap="round" stroke-dasharray="0 1" />
+
+          <!-- Pontos (marcadores das etapas) -->
+          <g class="route-dots">
+            <circle r="6" cx="80"  cy="380" fill="var(--accent2, #22D3EE)" opacity=".95"/>
+            <circle r="5" cx="280" cy="320" fill="#fff" opacity=".8"/>
+            <circle r="5" cx="460" cy="265" fill="#fff" opacity=".8"/>
+            <circle r="5" cx="640" cy="270" fill="#fff" opacity=".8"/>
+            <circle r="5" cx="820" cy="300" fill="#fff" opacity=".8"/>
+            <circle r="5" cx="915" cy="332" fill="#fff" opacity=".8"/>
+            <circle r="6" cx="960" cy="360" fill="var(--accent, #66e0c2)" opacity=".95"/>
+          </g>
+
+          <!-- Navio (ícone vetorial simples) -->
+          <g id="ship" class="ship" transform="translate(80,380)">
+            <!-- casco -->
+            <path d="M-18,6 H18 L10,16 H-10 Z" fill="rgba(255,255,255,.95)" />
+            <!-- cabine -->
+            <rect x="-6" y="-4" width="12" height="10" rx="2" fill="rgba(255,255,255,.95)"/>
+            <!-- chaminé -->
+            <rect x="2" y="-8" width="4" height="6" rx="1" fill="var(--accent, #66e0c2)"/>
+          </g>
+        </svg>
+      </figure>
+
+      <!-- Lista de etapas (aciona a animação ao entrar no viewport) -->
+      <ol class="route-steps" aria-label="Etapas da importação">
+        <li class="step active" data-pos="0.00">
+          <h3>Fábrica (48h)</h3>
+          <p>Visitamos a fábrica e enviamos fotos/vídeos. Você sabe quem produz o seu pedido.</p>
+          <small>Prova: relatório com horário, lote e contato do responsável.</small>
+        </li>
+        <li class="step" data-pos="0.18">
+          <h3>Ficha técnica PT‑ZH</h3>
+          <p>Materiais, medidas, tolerâncias e embalagem combinados por escrito (PT‑ZH).</p>
+          <small>Prova: ficha assinada armazenada na Plataforma.</small>
+        </li>
+        <li class="step" data-pos="0.32">
+          <h3>Negociação local</h3>
+          <p>Nativos negociam direto na fábrica para reduzir custo total e prazo.</p>
+          <small>Prova: histórico de cotações e condições.</small>
+        </li>
+        <li class="step" data-pos="0.50">
+          <h3>Amostra &amp; Inspeção</h3>
+          <p>Amostra aprovada e inspeção por amostragem com fotos/vídeos antes do embarque.</p>
+          <small>Prova: laudo simples e fotos do lote.</small>
+        </li>
+        <li class="step" data-pos="0.72">
+          <h3>Embarque (LCL/FCL)</h3>
+          <p>Frete e seguro com checkpoints na rota. Você acompanha no mapa.</p>
+          <small>Prova: BL/AWB e status na linha do tempo.</small>
+        </li>
+        <li class="step" data-pos="0.88">
+          <h3>Desembaraço com estimativa</h3>
+          <p>Custos no Brasil previstos antes do pedido. Sem surpresa no desembaraço.</p>
+          <small>Prova: memória de cálculo prevista × real.</small>
+        </li>
+        <li class="step" data-pos="1.00">
+          <h3>Entrega &amp; pós‑venda</h3>
+          <p>Chegou. Acompanhamos performance do fornecedor e repomos quando preciso.</p>
+          <small>Prova: timeline completa e SLA atendido.</small>
+        </li>
+      </ol>
+    </div>
+
+    <div class="route-cta">
+      <button class="cta primary" data-calendly>Quero ver isso no meu produto</button>
+      <a class="cta" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+
+    <!-- Região viva para leitores de tela (anuncia etapa atual) -->
+    <p class="sr-only" aria-live="polite" id="routeStatus">Etapa: Fábrica (48h)</p>
+  </div>
+</section>
+<script>
+// ===== ROTA DINÂMICA (navio + tracejado) =====
+(function(){
+  const sec = document.getElementById('rota');
+  if(!sec) return;
+
+  const pathBase = sec.querySelector('#routePath');
+  const pathProg = sec.querySelector('#routeProgress');
+  const ship     = sec.querySelector('#ship');
+  const steps    = Array.from(sec.querySelectorAll('.route-steps .step'));
+  const live     = sec.querySelector('#routeStatus');
+
+  if(!pathBase || !pathProg || !ship || !steps.length) return;
+
+  const L = pathProg.getTotalLength();
+  // Inicializa dash do progresso
+  pathProg.style.strokeDasharray = `0 ${L}`;
+  pathProg.style.strokeDashoffset = 0;
+
+  // Mapa de posições-alvo (0..1) por etapa (usando data-pos)
+  const positions = steps.map(li => Math.min(1, Math.max(0, parseFloat(li.dataset.pos || '0'))));
+
+  // IO para ativar cards e mover o navio
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const li = e.target;
+      steps.forEach(s => s.classList.toggle('active', s === li));
+
+      const idx = steps.indexOf(li);
+      const t = positions[idx] ?? 0;
+
+      animateTo(t, li.querySelector('h3')?.textContent || '');
+    });
+  }, { rootMargin:'-30% 0px -50% 0px', threshold:.6 });
+
+  steps.forEach(li => io.observe(li));
+
+  // Move navio e atualiza dash progress
+  let currentT = 0;
+  let animId = null;
+  function animateTo(targetT, label){
+    cancelAnimationFrame(animId);
+    const start = currentT;
+    const duration = 360; // ms
+    const t0 = performance.now();
+
+    function tick(now){
+      const p = Math.min(1, (now - t0)/duration);
+      const ease = p<.5 ? 2*p*p : -1 + (4-2*p)*p; // easeInOutQuad
+      const t = start + (targetT - start) * ease;
+      setProgress(t);
+      if(p < 1) { animId = requestAnimationFrame(tick); }
+      else { currentT = targetT; }
+    }
+    animId = requestAnimationFrame(tick);
+
+    if(live && label) live.textContent = `Etapa: ${label}`;
+  }
+
+  function setProgress(t){
+    const len = L * t;
+    pathProg.style.strokeDasharray = `${len} ${L - len}`;
+
+    const pt = pathProg.getPointAtLength(len);
+    // Orientação aproximada (derivada numérica)
+    const eps = 1;
+    const prev = pathProg.getPointAtLength(Math.max(0, len - eps));
+    const angle = Math.atan2(pt.y - prev.y, pt.x - prev.x) * 180 / Math.PI;
+
+    ship.setAttribute('transform', `translate(${pt.x},${pt.y}) rotate(${angle})`);
+  }
+
+  // Estado inicial
+  setProgress(0);
+
+  // Botão Calendly (abre modal existente)
+  const calendlyBtn = sec.querySelector('[data-calendly]');
+  if(calendlyBtn){
+    calendlyBtn.addEventListener('click', () => {
+      const modal = document.getElementById('calendly-modal');
+      const frame = document.getElementById('calendly-frame');
+      if(modal && frame){
+        frame.src = 'https://calendly.com/'; // <-- troque pelo seu link
+        modal.classList.add('open');
+      }
+    });
+  }
+
+  // Reduced motion: pula para o final ao abrir a seção
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(mq.matches){ setProgress(1); steps.forEach(s=>s.classList.remove('active')); steps.at(-1)?.classList.add('active'); }
+})();
+</script>
+
 </body>
 </html>
