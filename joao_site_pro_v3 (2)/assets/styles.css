@@ -746,7 +746,6 @@ p{ margin:10px 0 }
   position:relative; overflow:hidden; margin-top:16px;
   height: clamp(120px, 18vh, 200px);
   /* fade nas bordas para ficar elegante */
-  mask-image: linear-gradient(90deg, transparent, #000 48px, #000 calc(100% - 48px), transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 48px, #000 calc(100% - 48px), transparent);
   border-radius:12px; border:1px solid rgba(255,255,255,.12);
   background:rgba(0,0,0,.10);
@@ -804,7 +803,6 @@ p{ margin:10px 0 }
 .who-gallery .strip{
   display:flex; gap:12px; will-change: transform;
   animation: stripMove 25s linear infinite;
-  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 .who-gallery img{
   width: clamp(220px, 30vw, 420px);
@@ -1005,29 +1003,6 @@ html{
   margin-bottom: 9px;           /* encosta um pouco mais */
   letter-spacing: .06em;
   opacity: .95;
-}
-/* … (sua base permanece) … */
-
-/* ===== Reel de fotos ===== */
-.who-gallery{ padding:16px 0 6px; }
-.who-gallery .strip{
-  display:flex; gap:12px; will-change: transform;
-  animation: stripMove 25s linear infinite;
-  /* fade nas bordas (compatível com WebKit) */
-  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-}
-.who-gallery img{
-  width: clamp(220px, 30vw, 420px);
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 10px 26px rgba(0,0,0,.3);
-}
-/* Loop perfeito: termina exatamente no meio (após a 6ª), recomeça sem “pulo” */
-@keyframes stripMove{
-  to{ transform: translateX(-50%); }
 }
 
 /* ===== Slides do tablet: foto configurável por variáveis ===== */
@@ -1263,5 +1238,40 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
   .route .route-stage{ grid-template-columns: 1fr; }
   .route .map-wrap{ order:2; }
   .route .route-steps{ order:1; }
+}
+/* === FIX: Galeria "who-gallery" (qs1..qs6) === */
+
+/* A máscara (fade nas bordas) deve estar no CONTÊINER, e não na faixa */
+.who-gallery{
+  padding:16px 0 6px;
+  overflow:hidden; /* importante p/ esconder o que passa do contêiner */
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+/* A faixa deve ter largura = soma dos itens e não pode “apertar” as imagens */
+.who-gallery .strip{
+  display:inline-flex;          /* largura se ajusta ao conteúdo */
+  width:max-content;            /* impede encolhimento da faixa */
+  gap:12px;
+  will-change: transform;
+  animation: stripMove 25s linear infinite;
+  /* Remova QUALQUER mask-image daqui, ela fica no contêiner */
+}
+
+/* Cada imagem NÃO pode encolher no flex */
+.who-gallery .strip > img{
+  flex:0 0 auto;                /* trava a largura do item */
+  width:clamp(220px, 30vw, 420px);
+  aspect-ratio:4 / 3;
+  object-fit:cover;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 10px 26px rgba(0,0,0,.3);
+}
+
+/* Mantém o loop perfeito (metade = sequência original, metade = duplicada) */
+@keyframes stripMove{
+  to{ transform: translateX(-50%); }
 }
 
