@@ -792,7 +792,7 @@ p{ margin:10px 0 }
 .who-gallery{ padding:16px 0 6px; }
 .who-gallery .strip{
   display:flex; gap:12px; will-change: transform;
-  animation: stripMove 28s linear infinite;
+  animation: stripMove 25s linear infinite;
   mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 .who-gallery img{
