@@ -984,3 +984,14 @@ html{
 #faq{
   scroll-margin-top: calc(var(--header-h) + 10px);
 }
+/* Aproxima título/subtítulo dos balões em #diferenciais */
+#diferenciais .dif-title{
+  margin-bottom: 2px;           /* estava maior */
+  line-height: 1.1;
+}
+#diferenciais .dif-sub{
+  margin-top: 0;
+  margin-bottom: 8px;           /* encosta um pouco mais */
+  letter-spacing: .06em;
+  opacity: .95;
+}
