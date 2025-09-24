@@ -986,12 +986,12 @@ html{
 }
 /* Aproxima título/subtítulo dos balões em #diferenciais */
 #diferenciais .dif-title{
-  margin-bottom: 2px;           /* estava maior */
+  margin-bottom: 1px;           /* estava maior */
   line-height: 1.1;
 }
 #diferenciais .dif-sub{
   margin-top: 0;
-  margin-bottom: 8px;           /* encosta um pouco mais */
+  margin-bottom: 9px;           /* encosta um pouco mais */
   letter-spacing: .06em;
   opacity: .95;
 }
