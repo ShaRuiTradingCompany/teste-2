@@ -3,13 +3,20 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Diferenciais — ShaRui Trading Company</title>
+
+  <!-- Base do site -->
   <link rel="stylesheet" href="/assets/styles.css">
+
+  <!-- Estilos específicos desta página -->
+  <link rel="stylesheet" href="/assets/diferenciais.css?v=1">
 </head>
 <body>
-  <!-- Header igual -->
+  <!-- Header igual ao do site -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
-      <a href="/pt/index.html" class="brand-logo"><span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span></a>
+      <a href="/pt/index.html" class="brand-logo">
+        <span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span>
+      </a>
       <nav class="menu">
         <a href="/pt/quem-somos.html">Quem somos</a>
         <a href="/pt/diferenciais.html" aria-current="page">Diferenciais</a>
@@ -19,452 +26,255 @@
     </div>
   </header>
 
-  <main style="padding-top:calc(var(--header-h) + 24px)">
-    <!-- Página 1: Radial (reaproveita o mesmo bloco da home) -->
-    <section class="section diffs-radial">
-      <div class="container">
-        <h2 class="dif-title">Nossos Diferenciais</h2>
-        <p class="dif-sub">MENOS ERRO • MAIS PREVISIBILIDADE E CONTROLE</p>
-        <!-- (cole aqui o mesmo .radial-stage da home se quiser repetir) -->
-      </div>
-    </section>
+  <main class="journey-fs">
+    <div class="viewport">
+      <div class="stage">
+        <!-- Título fixo da página (como você pediu) -->
+        <div class="title">
+          Nossos Diferenciais
+          <span class="subtitle">menos erro • mais previsibilidade e controle</span>
+        </div>
 
-    <!-- Página 2: Pílulas detalhadas -->
-    <section class="section">
-      <div class="container grid">
-        <article class="card"><h3>Ficha técnica PT‑ZH</h3><p>Contrato técnico bilíngue que reduz ruído e facilita inspeção.</p></article>
-        <article class="card"><h3>Inspeção por amostra</h3><p>Fotos e vídeos, aprovações e reprovações documentadas.</p></article>
-        <article class="card"><h3>Preço no Brasil</h3><p>Estimativa de tributos e despesas antes do pedido.</p></article>
-        <article class="card"><h3>Equipe local</h3><p>Nativos negociando direto com a fábrica.</p></article>
-      </div>
-    </section>
+        <!-- ===== Frame 1: Pessoa → Fábrica ===== -->
+        <section class="frame f1 active" aria-label="Visita à fábrica em 48 horas">
+          <svg viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+            <rect x="0" y="0" width="1000" height="520" fill="url(#s1bg)"/>
+            <defs>
+              <linearGradient id="s1bg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#122d54"/>
+                <stop offset="100%" stop-color="#0b1f3d"/>
+              </linearGradient>
+            </defs>
 
-    <!-- Página 3: Chamado à ação -->
-    <section class="section">
-      <div class="container" style="text-align:center">
-        <h2>Quer começar certo?</h2>
-        <p class="lead">Mostramos em 15 minutos como nossa plataforma reduz retrabalho e imprevisibilidade.</p>
-        <a class="cta primary" href="/pt/contato.html">Fale com a ShaRui</a>
+            <!-- caminho da pessoa -->
+            <path id="walkPath" d="M160,420 C240,410 340,390 420,360 520,320 600,300 700,300"
+                  fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-dasharray="6 8"/>
+
+            <!-- fábrica -->
+            <g class="factory" transform="translate(700,240)">
+              <rect x="-40" y="40" width="160" height="120" fill="#1d3557" stroke="rgba(255,255,255,.18)"/>
+              <rect x="-40" y="20" width="70" height="20" fill="#264d7a"/>
+              <rect x="30" y="0" width="30" height="40" fill="#2a4f84"/>
+              <rect x="60" y="20" width="60" height="140" fill="#1c3d6b"/>
+              <rect x="85" y="-30" width="18" height="50" fill="#607d8b"/>
+              <circle cx="94" cy="-36" r="4" fill="#a3e2ff" opacity=".8"/>
+            </g>
+
+            <!-- pessoa -->
+            <g id="walker" transform="translate(160,420)">
+              <circle r="8" cx="0" cy="-22" fill="#e7ecf3"/>
+              <rect x="-6" y="-20" width="12" height="20" rx="4" fill="#9bb5d1"/>
+              <rect x="-10" y="0" width="8" height="18" rx="3" fill="#a6b0bf"/>
+              <rect x="2"   y="0" width="8" height="18" rx="3" fill="#a6b0bf"/>
+            </g>
+          </svg>
+
+          <aside class="balloon" style="right:16px; left:auto;">
+            <h3>Visitamos a fábrica em 48h</h3>
+            <p>Você recebe fotos e vídeos da visita. Nada de surpresa.</p>
+          </aside>
+
+          <button class="next" aria-label="Próxima etapa"><span>Clique na seta</span> ➜</button>
+        </section>
+
+        <!-- ===== Frame 2: Mapa do Tesouro ===== -->
+        <section class="frame f2" aria-label="Mapa do processo e validações">
+          <svg viewBox="0 0 1000 520" role="img" aria-hidden="true">
+            <rect width="1000" height="520" fill="#0e2647"/>
+            <path id="goldenRoute"
+                  d="M80,420 C220,360 340,320 460,300 620,270 760,300 900,360"
+                  fill="none" stroke="var(--treasure)" stroke-width="6" stroke-linecap="round"/>
+            <g class="xmark" transform="translate(900,360)">
+              <line x1="-12" y1="-12" x2="12" y2="12" stroke="#f59e0b" stroke-width="5"/>
+              <line x1="-12" y1="12"  x2="12" y2="-12" stroke="#f59e0b" stroke-width="5"/>
+            </g>
+          </svg>
+
+          <aside class="balloon">
+            <h3>Alinhamento técnico e qualidade</h3>
+            <p class="type" data-lines="Ficha técnica (PT‑ZH)|Negociação local|Amostra &amp; Inspeção"></p>
+          </aside>
+
+          <button class="next" aria-label="Próxima etapa">➜</button>
+        </section>
+
+        <!-- ===== Frame 3: Navio vermelho (embarque) ===== -->
+        <section class="frame f3" aria-label="Embarque (LCL/FCL)">
+          <svg viewBox="0 0 1000 520" role="img" aria-hidden="true">
+            <rect width="1000" height="520" fill="url(#seaGrad)"/>
+            <defs>
+              <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0b1f3d"/>
+                <stop offset="100%" stop-color="#09233a"/>
+              </linearGradient>
+              <!-- brilho sutil no casco -->
+              <linearGradient id="shipGloss" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="rgba(255,255,255,.12)"/>
+                <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+            </defs>
+
+            <!-- ondas -->
+            <path class="wave w1" d="M0 410 Q 125 390 250 410 T 500 410 T 750 410 T 1000 410"
+                  fill="none" stroke="rgba(163,226,255,.40)" stroke-width="2"/>
+            <path class="wave w2" d="M0 430 Q 125 410 250 430 T 500 430 T 750 430 T 1000 430"
+                  fill="none" stroke="rgba(163,226,255,.25)" stroke-width="2"/>
+
+            <!-- rota marítima -->
+            <path id="seaPath" d="M60,380 C260,360 500,340 820,360" fill="none" stroke="transparent"/>
+
+            <!-- navio (grande, vermelho) -->
+            <g id="cargoShip" transform="translate(60,380)">
+              <!-- sombra na água -->
+              <ellipse cx="0" cy="18" rx="88" ry="8" fill="rgba(0,0,0,.25)"/>
+              <!-- casco -->
+              <path d="M-100,0 L110,0 L80,26 L-70,26 Z"
+                    fill="var(--ship-red)" stroke="var(--ship-red-dark)" stroke-width="2"/>
+              <path d="M-100,0 L110,0 L80,26 L-70,26 Z" fill="url(#shipGloss)"/>
+
+              <!-- ponte -->
+              <rect x="20" y="-28" width="40" height="28" rx="3" fill="#ffe4e6" stroke="#e5c2c9" stroke-width="1"/>
+              <rect x="28" y="-34" width="20" height="8" rx="2" fill="#ffd1d9"/>
+              <!-- chaminé + fumacinha -->
+              <rect x="42" y="-42" width="12" height="14" rx="2" fill="#991B1B"/>
+              <g opacity=".7">
+                <circle cx="48" cy="-48" r="3" fill="#fff"/>
+                <circle cx="52" cy="-54" r="2.5" fill="#fff"/>
+                <circle cx="56" cy="-60" r="2" fill="#fff"/>
+              </g>
+
+              <!-- containers -->
+              <g transform="translate(-80,-18)">
+                <rect width="26" height="18" x="0"   y="0" fill="var(--container)"/>
+                <rect width="26" height="18" x="28"  y="0" fill="var(--container-2)"/>
+                <rect width="26" height="18" x="56"  y="0" fill="var(--container-3)"/>
+                <rect width="26" height="18" x="84"  y="0" fill="var(--container)"/>
+                <rect width="26" height="18" x="112" y="0" fill="var(--container-2)"/>
+                <rect width="26" height="18" x="140" y="0" fill="var(--container-3)"/>
+              </g>
+              <g transform="translate(-66,-36)">
+                <rect width="26" height="18" x="0"   y="0" fill="var(--container-2)"/>
+                <rect width="26" height="18" x="28"  y="0" fill="var(--container-3)"/>
+                <rect width="26" height="18" x="56"  y="0" fill="var(--container)"/>
+                <rect width="26" height="18" x="84"  y="0" fill="var(--container-2)"/>
+                <rect width="26" height="18" x="112" y="0" fill="var(--container-3)"/>
+              </g>
+            </g>
+          </svg>
+
+          <aside class="balloon">
+            <h3>Embarque</h3>
+            <p>Monitoramos checkpoints do LCL/FCL. Você vê tudo no mapa.</p>
+          </aside>
+
+          <button class="next" aria-label="Próxima etapa">➜</button>
+        </section>
+
+        <!-- ===== Frame 4: Porto (desembaraço) ===== -->
+        <section class="frame f4" aria-label="Desembaraço com estimativa">
+          <svg viewBox="0 0 1000 520" role="img" aria-hidden="true">
+            <rect width="1000" height="520" fill="#0d2749"/>
+            <rect x="0" y="360" width="1000" height="160" fill="#162a46"/>
+            <g class="crane" transform="translate(740,240)">
+              <rect x="-8" y="0" width="16" height="160" fill="#203b68"/>
+              <rect x="-100" y="-20" width="200" height="20" fill="#203b68"/>
+              <line x1="60" y1="-20" x2="60" y2="70" stroke="#9bb5d1" stroke-width="2"/>
+              <rect x="54" y="70" width="12" height="12" fill="#ef4444"/>
+            </g>
+            <g transform="translate(400,360)">
+              <rect x="-100" y="0" width="200" height="26" fill="var(--ship-red)"/>
+              <rect x="30" y="-26" width="40" height="26" rx="3" fill="#ffe4e6"/>
+            </g>
+          </svg>
+
+          <aside class="balloon">
+            <h3>Desembaraço com estimativa</h3>
+            <p>Impostos e despesas previstos antes do pedido. Sem susto no Brasil.</p>
+          </aside>
+
+          <button class="next" aria-label="Próxima etapa">➜</button>
+        </section>
+
+        <!-- ===== Frame 5: Depósito (entrega & pós-venda) ===== -->
+        <section class="frame f5" aria-label="Entrega e pós-venda">
+          <svg viewBox="0 0 1000 520" role="img" aria-hidden="true">
+            <rect width="1000" height="520" fill="#0f2b50"/>
+            <path d="M0,420 L1000,420" stroke="#263b58" stroke-width="12"/>
+            <path id="truckPath" d="M120,420 L860,420" fill="none" stroke="transparent"/>
+            <g class="warehouse" transform="translate(860,340)">
+              <rect x="-60" y="0" width="140" height="80" fill="#1e3a66" stroke="rgba(255,255,255,.2)"/>
+              <rect x="-40" y="30" width="40" height="50" fill="#0d2749"/>
+              <rect x="20"  y="20" width="40" height="20" fill="#9bb5d1"/>
+            </g>
+            <g id="truck" transform="translate(120,420)">
+              <rect x="-30" y="-18" width="60" height="18" fill="#9bb5d1"/>
+              <rect x="30" y="-24" width="28" height="24" fill="#cbd6e4"/>
+              <circle r="6" cx="-16" cy="0" fill="#0b1f3d"/>
+              <circle r="6" cx="16"  cy="0" fill="#0b1f3d"/>
+            </g>
+          </svg>
+
+          <aside class="balloon">
+            <h3>Entrega & pós‑venda</h3>
+            <p>Chegou. Monitoramos o fornecedor e aceleramos reposições quando preciso.</p>
+          </aside>
+
+          <div class="end-cta">
+            <button class="cta primary" id="ctaCalendly">Quero ver isso no meu produto</button>
+            <a class="cta" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          </div>
+        </section>
+
+        <!-- status ao leitor de tela -->
+        <p class="sr-only" aria-live="polite" id="journeyLive">Etapa 1 de 5</p>
       </div>
-    </section>
+    </div>
   </main>
 
-  <!-- Rodapé -->
-  <footer class="footer"><div class="container footer-row">
-    <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
-    <address class="corp-address">Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>Fortune Plaza – Panyu<br>Postal code: 51150 – Guangzhou, China.</address>
-    <nav class="foot-social">
-      <a href="https://www.instagram.com/sharui_trading/" target="_blank" class="ic ig"></a>
-      <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" class="ic tk"></a>
-      <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" class="ic yt"></a>
-      <a href="https://wa.me/551193381008" target="_blank" class="ic wa"></a>
-    </nav>
-  </div></footer>
-  <!-- ROTA DINÂMICA — Da Fábrica à Sua Loja -->
-<section id="rota" class="section route">
-  <div class="container">
-    <header class="route-head">
-      <h2>Da fábrica à sua loja</h2>
-      <p class="lead">Acompanhe o caminho completo — com provas em cada etapa.</p>
-    </header>
-
-    <div class="route-stage">
-      <!-- Mapa/rota sticky -->
-      <figure class="map-wrap" aria-hidden="true">
-        <svg id="routeMap" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet" role="img">
-          <title>Rota da fábrica até a loja do cliente</title>
-          <desc>Um navio percorre um trajeto tracejado representando as etapas da importação.</desc>
-
-          <!-- Rota base (tracejado) -->
-          <path id="routePath"
-                d="M80,380 C220,340 360,280 480,260 C610,240 720,280 820,300 C900,316 940,340 960,360"
-                fill="none" stroke="rgba(255,255,255,.55)" stroke-width="3"
-                stroke-dasharray="8 10" />
-
-          <!-- Progresso (cor) — mesmo 'd' do routePath -->
-          <path id="routeProgress"
-                d="M80,380 C220,340 360,280 480,260 C610,240 720,280 820,300 C900,316 940,340 960,360"
-                fill="none" stroke="var(--accent, #66e0c2)" stroke-width="4"
-                stroke-linecap="round" stroke-dasharray="0 1" />
-
-          <!-- Pontos (marcadores das etapas) -->
-          <g class="route-dots">
-            <circle r="6" cx="80"  cy="380" fill="var(--accent2, #22D3EE)" opacity=".95"/>
-            <circle r="5" cx="280" cy="320" fill="#fff" opacity=".8"/>
-            <circle r="5" cx="460" cy="265" fill="#fff" opacity=".8"/>
-            <circle r="5" cx="640" cy="270" fill="#fff" opacity=".8"/>
-            <circle r="5" cx="820" cy="300" fill="#fff" opacity=".8"/>
-            <circle r="5" cx="915" cy="332" fill="#fff" opacity=".8"/>
-            <circle r="6" cx="960" cy="360" fill="var(--accent, #66e0c2)" opacity=".95"/>
-          </g>
-
-          <!-- Navio (ícone vetorial simples) -->
-          <g id="ship" class="ship" transform="translate(80,380)">
-            <!-- casco -->
-            <path d="M-18,6 H18 L10,16 H-10 Z" fill="rgba(255,255,255,.95)" />
-            <!-- cabine -->
-            <rect x="-6" y="-4" width="12" height="10" rx="2" fill="rgba(255,255,255,.95)"/>
-            <!-- chaminé -->
-            <rect x="2" y="-8" width="4" height="6" rx="1" fill="var(--accent, #66e0c2)"/>
-          </g>
-        </svg>
-      </figure>
-
-      <!-- Lista de etapas (aciona a animação ao entrar no viewport) -->
-      <ol class="route-steps" aria-label="Etapas da importação">
-        <li class="step active" data-pos="0.00">
-          <h3>Fábrica (48h)</h3>
-          <p>Visitamos a fábrica e enviamos fotos/vídeos. Você sabe quem produz o seu pedido.</p>
-          <small>Prova: relatório com horário, lote e contato do responsável.</small>
-        </li>
-        <li class="step" data-pos="0.18">
-          <h3>Ficha técnica PT‑ZH</h3>
-          <p>Materiais, medidas, tolerâncias e embalagem combinados por escrito (PT‑ZH).</p>
-          <small>Prova: ficha assinada armazenada na Plataforma.</small>
-        </li>
-        <li class="step" data-pos="0.32">
-          <h3>Negociação local</h3>
-          <p>Nativos negociam direto na fábrica para reduzir custo total e prazo.</p>
-          <small>Prova: histórico de cotações e condições.</small>
-        </li>
-        <li class="step" data-pos="0.50">
-          <h3>Amostra &amp; Inspeção</h3>
-          <p>Amostra aprovada e inspeção por amostragem com fotos/vídeos antes do embarque.</p>
-          <small>Prova: laudo simples e fotos do lote.</small>
-        </li>
-        <li class="step" data-pos="0.72">
-          <h3>Embarque (LCL/FCL)</h3>
-          <p>Frete e seguro com checkpoints na rota. Você acompanha no mapa.</p>
-          <small>Prova: BL/AWB e status na linha do tempo.</small>
-        </li>
-        <li class="step" data-pos="0.88">
-          <h3>Desembaraço com estimativa</h3>
-          <p>Custos no Brasil previstos antes do pedido. Sem surpresa no desembaraço.</p>
-          <small>Prova: memória de cálculo prevista × real.</small>
-        </li>
-        <li class="step" data-pos="1.00">
-          <h3>Entrega &amp; pós‑venda</h3>
-          <p>Chegou. Acompanhamos performance do fornecedor e repomos quando preciso.</p>
-          <small>Prova: timeline completa e SLA atendido.</small>
-        </li>
-      </ol>
+  <!-- Rodapé do site (igual ao padrão) -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+      <address class="corp-address">
+        Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>
+        Fortune Plaza – Panyu<br>
+        Postal code: 51150 – Guangzhou, China.
+      </address>
+      <nav class="foot-social">
+        <a href="https://www.instagram.com/sharui_trading/" target="_blank" class="ic ig" aria-label="Instagram"></a>
+        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" class="ic tk" aria-label="TikTok"></a>
+        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" class="ic yt" aria-label="YouTube"></a>
+        <a href="https://wa.me/551193381008" target="_blank" class="ic wa" aria-label="WhatsApp"></a>
+      </nav>
     </div>
+  </footer>
 
-    <div class="route-cta">
-      <button class="cta primary" data-calendly>Quero ver isso no meu produto</button>
-      <a class="cta" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  <!-- Modal Calendly (reutilize o seu se já existir na página; este é opcional) -->
+  <div id="calendly-modal" class="modal" onclick="this.classList.remove('open')">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <strong>Agendar conversa</strong>
+        <button class="btn-close" onclick="document.getElementById('calendly-modal').classList.remove('open')">Fechar</button>
+      </div>
+      <div class="modal-body"><iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe></div>
     </div>
-
-    <!-- Região viva para leitores de tela (anuncia etapa atual) -->
-    <p class="sr-only" aria-live="polite" id="routeStatus">Etapa: Fábrica (48h)</p>
   </div>
-</section>
-<script>
-// ===== ROTA DINÂMICA (navio + tracejado) =====
-(function(){
-  const sec = document.getElementById('rota');
-  if(!sec) return;
 
-  const pathBase = sec.querySelector('#routePath');
-  const pathProg = sec.querySelector('#routeProgress');
-  const ship     = sec.querySelector('#ship');
-  const steps    = Array.from(sec.querySelectorAll('.route-steps .step'));
-  const live     = sec.querySelector('#routeStatus');
-
-  if(!pathBase || !pathProg || !ship || !steps.length) return;
-
-  const L = pathProg.getTotalLength();
-  // Inicializa dash do progresso
-  pathProg.style.strokeDasharray = `0 ${L}`;
-  pathProg.style.strokeDashoffset = 0;
-
-  // Mapa de posições-alvo (0..1) por etapa (usando data-pos)
-  const positions = steps.map(li => Math.min(1, Math.max(0, parseFloat(li.dataset.pos || '0'))));
-
-  // IO para ativar cards e mover o navio
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
-      const li = e.target;
-      steps.forEach(s => s.classList.toggle('active', s === li));
-
-      const idx = steps.indexOf(li);
-      const t = positions[idx] ?? 0;
-
-      animateTo(t, li.querySelector('h3')?.textContent || '');
-    });
-  }, { rootMargin:'-30% 0px -50% 0px', threshold:.6 });
-
-  steps.forEach(li => io.observe(li));
-
-  // Move navio e atualiza dash progress
-  let currentT = 0;
-  let animId = null;
-  function animateTo(targetT, label){
-    cancelAnimationFrame(animId);
-    const start = currentT;
-    const duration = 360; // ms
-    const t0 = performance.now();
-
-    function tick(now){
-      const p = Math.min(1, (now - t0)/duration);
-      const ease = p<.5 ? 2*p*p : -1 + (4-2*p)*p; // easeInOutQuad
-      const t = start + (targetT - start) * ease;
-      setProgress(t);
-      if(p < 1) { animId = requestAnimationFrame(tick); }
-      else { currentT = targetT; }
-    }
-    animId = requestAnimationFrame(tick);
-
-    if(live && label) live.textContent = `Etapa: ${label}`;
-  }
-
-  function setProgress(t){
-    const len = L * t;
-    pathProg.style.strokeDasharray = `${len} ${L - len}`;
-
-    const pt = pathProg.getPointAtLength(len);
-    // Orientação aproximada (derivada numérica)
-    const eps = 1;
-    const prev = pathProg.getPointAtLength(Math.max(0, len - eps));
-    const angle = Math.atan2(pt.y - prev.y, pt.x - prev.x) * 180 / Math.PI;
-
-    ship.setAttribute('transform', `translate(${pt.x},${pt.y}) rotate(${angle})`);
-  }
-
-  // Estado inicial
-  setProgress(0);
-
-  // Botão Calendly (abre modal existente)
-  const calendlyBtn = sec.querySelector('[data-calendly]');
-  if(calendlyBtn){
-    calendlyBtn.addEventListener('click', () => {
-      const modal = document.getElementById('calendly-modal');
-      const frame = document.getElementById('calendly-frame');
-      if(modal && frame){
-        frame.src = 'https://calendly.com/'; // <-- troque pelo seu link
-        modal.classList.add('open');
+  <!-- JS específico desta página -->
+  <script src="/assets/diferenciais.js?v=1" defer></script>
+  <script>
+    // Abre Calendly (troque o link!)
+    addEventListener('DOMContentLoaded', ()=>{
+      const btn = document.getElementById('ctaCalendly');
+      if(btn){
+        btn.addEventListener('click', ()=>{
+          const modal = document.getElementById('calendly-modal');
+          const frame = document.getElementById('calendly-frame');
+          frame.src = 'https://calendly.com/'; // seu link
+          modal.classList.add('open');
+        });
       }
     });
-  }
-
-  // Reduced motion: pula para o final ao abrir a seção
-  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if(mq.matches){ setProgress(1); steps.forEach(s=>s.classList.remove('active')); steps.at(-1)?.classList.add('active'); }
-})();
-</script>
-<section id="journey" class="section journey">
-  <div class="container">
-    <header class="journey-head">
-      <h2>Da fábrica ao seu depósito</h2>
-      <p class="lead">Entenda, em poucos passos, como reduzimos erro e aumentamos sua previsibilidade.</p>
-    </header>
-
-    <!-- ======= Cena 1: Pessoa → Fábrica ======= -->
-    <section class="scene scene-1" aria-label="Visita à fábrica em até 48 horas">
-      <div class="stage">
-        <svg viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid slice" class="s1-svg" role="img" aria-hidden="true">
-          <!-- solo/plano -->
-          <rect x="0" y="0" width="1000" height="520" fill="url(#s1bg)"/>
-          <defs>
-            <linearGradient id="s1bg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#122d54"/>
-              <stop offset="100%" stop-color="#0b1f3d"/>
-            </linearGradient>
-          </defs>
-
-          <!-- caminho pequeno da pessoa até a fábrica -->
-          <path id="walkPath" d="M160,420 C240,410 340,390 420,360 520,320 600,300 700,300"
-                fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-dasharray="6 8"/>
-
-          <!-- fábrica (minimal) -->
-          <g class="factory" transform="translate(700,240)">
-            <rect x="-40" y="40" width="160" height="120" fill="#1d3557" stroke="rgba(255,255,255,.18)"/>
-            <rect x="-40" y="20" width="70" height="20" fill="#264d7a"/>
-            <rect x="30" y="0" width="30" height="40" fill="#2a4f84"/>
-            <rect x="60" y="20" width="60" height="140" fill="#1c3d6b"/>
-            <rect x="85" y="-30" width="18" height="50" fill="#607d8b"/> <!-- chaminé -->
-            <circle cx="94" cy="-36" r="4" fill="#a3e2ff" opacity=".8"/> <!-- fumaça start -->
-          </g>
-
-          <!-- pessoa (boneco simples) -->
-          <g id="walker" transform="translate(160,420)">
-            <circle r="8" cx="0" cy="-22" fill="#e7ecf3"/> <!-- cabeça -->
-            <rect x="-6" y="-20" width="12" height="20" rx="4" fill="#9bb5d1"/> <!-- tronco -->
-            <rect x="-10" y="0" width="8" height="18" rx="3" fill="#a6b0bf"/> <!-- perna esq -->
-            <rect x="2"   y="0" width="8" height="18" rx="3" fill="#a6b0bf"/> <!-- perna dir -->
-          </g>
-        </svg>
-
-        <button class="next" data-next aria-label="Próxima etapa">
-          <span>Clique na seta</span> ➜
-        </button>
-
-        <aside class="balloon">
-          <h3>Visitamos a fábrica em 48h</h3>
-          <p>Você recebe fotos e vídeos da visita. Nada de surpresa.</p>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ======= Cena 2: Mapa do Tesouro ======= -->
-    <section class="scene scene-2" aria-label="Mapa do processo e validações">
-      <div class="stage">
-        <svg viewBox="0 0 1000 520" class="s2-svg" role="img" aria-hidden="true">
-          <rect width="1000" height="520" fill="#0e2647"/>
-          <!-- rota dourada que “desenha” -->
-          <path id="goldenRoute"
-                d="M80,420 C220,360 340,320 460,300 620,270 760,300 900,360"
-                fill="none" stroke="var(--treasure)" stroke-width="5" stroke-linecap="round"/>
-          <!-- X do tesouro -->
-          <g class="xmark" transform="translate(900,360)">
-            <line x1="-10" y1="-10" x2="10" y2="10" stroke="#f59e0b" stroke-width="4"/>
-            <line x1="-10" y1="10"  x2="10" y2="-10" stroke="#f59e0b" stroke-width="4"/>
-          </g>
-        </svg>
-
-        <aside class="balloon auto">
-          <h3>Alinhamento técnico e qualidade</h3>
-          <p class="type" data-lines="Ficha técnica (PT‑ZH)|Negociação local|Amostra &amp; Inspeção"></p>
-        </aside>
-
-        <button class="next" data-next aria-label="Próxima etapa">➜</button>
-      </div>
-    </section>
-
-    <!-- ======= Cena 3: Navio vermelho (embarque) ======= -->
-    <section class="scene scene-3" aria-label="Embarque (LCL/FCL)">
-      <div class="stage sea">
-        <svg viewBox="0 0 1000 520" class="s3-svg" role="img" aria-hidden="true">
-          <rect width="1000" height="520" fill="url(#seaGrad)"/>
-          <defs>
-            <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#0b1f3d"/>
-              <stop offset="100%" stop-color="#09233a"/>
-            </linearGradient>
-          </defs>
-
-          <!-- Ondas simples (parallax) -->
-          <path class="wave w1" d="M0 410 Q 125 390 250 410 T 500 410 T 750 410 T 1000 410"
-                fill="none" stroke="rgba(163,226,255,.4)" stroke-width="2"/>
-          <path class="wave w2" d="M0 430 Q 125 410 250 430 T 500 430 T 750 430 T 1000 430"
-                fill="none" stroke="rgba(163,226,255,.25)" stroke-width="2"/>
-
-          <!-- Rota marítima (para moveTo) -->
-          <path id="seaPath" d="M60,380 C260,360 500,340 820,360" fill="none" stroke="transparent"/>
-
-          <!-- Navio cargueiro vermelho -->
-          <g id="cargoShip" transform="translate(60,380)">
-            <!-- casco -->
-            <path d="M-90,0 L90,0 L60,24 L-60,24 Z"
-                  fill="var(--ship-red)" stroke="var(--ship-red-dark)" stroke-width="2"/>
-            <!-- ponte -->
-            <rect x="10" y="-26" width="34" height="26" rx="3" fill="#ffe4e6" stroke="#e5c2c9" stroke-width="1"/>
-            <rect x="18" y="-32" width="18" height="8" rx="2" fill="#ffd1d9"/>
-            <!-- chaminé -->
-            <rect x="32" y="-40" width="10" height="12" rx="2" fill="#991B1B"/>
-            <circle cx="37" cy="-46" r="3" fill="#ffffff" opacity=".6"> </circle>
-
-            <!-- containers 3 fileiras -->
-            <g transform="translate(-70,-16)">
-              <rect width="24" height="16" x="0"   y="0" fill="var(--container)"/>
-              <rect width="24" height="16" x="26"  y="0" fill="var(--container-2)"/>
-              <rect width="24" height="16" x="52"  y="0" fill="var(--container-3)"/>
-              <rect width="24" height="16" x="78"  y="0" fill="var(--container)"/>
-              <rect width="24" height="16" x="104" y="0" fill="var(--container-2)"/>
-              <rect width="24" height="16" x="130" y="0" fill="var(--container-3)"/>
-            </g>
-            <g transform="translate(-58,-32)">
-              <rect width="24" height="16" x="0"   y="0" fill="var(--container-2)"/>
-              <rect width="24" height="16" x="26"  y="0" fill="var(--container-3)"/>
-              <rect width="24" height="16" x="52"  y="0" fill="var(--container)"/>
-              <rect width="24" height="16" x="78"  y="0" fill="var(--container-2)"/>
-              <rect width="24" height="16" x="104" y="0" fill="var(--container-3)"/>
-            </g>
-          </g>
-        </svg>
-
-        <aside class="balloon">
-          <h3>Embarque</h3>
-          <p>Monitoramos checkpoints do LCL/FCL. Você vê tudo no mapa.</p>
-        </aside>
-
-        <button class="next" data-next aria-label="Próxima etapa">➜</button>
-      </div>
-    </section>
-
-    <!-- ======= Cena 4: Porto (desembaraço) ======= -->
-    <section class="scene scene-4" aria-label="Desembaraço com estimativa">
-      <div class="stage dock">
-        <svg viewBox="0 0 1000 520" class="s4-svg" role="img" aria-hidden="true">
-          <rect width="1000" height="520" fill="#0d2749"/>
-          <!-- cais -->
-          <rect x="0" y="360" width="1000" height="160" fill="#162a46"/>
-          <!-- guindaste simples -->
-          <g class="crane" transform="translate(740,240)">
-            <rect x="-8" y="0" width="16" height="160" fill="#203b68"/>
-            <rect x="-100" y="-20" width="200" height="20" fill="#203b68"/>
-            <line x1="60" y1="-20" x2="60" y2="70" stroke="#9bb5d1" stroke-width="2"/>
-            <rect x="54" y="70" width="12" height="12" fill="#ef4444"/>
-          </g>
-          <!-- navio parado -->
-          <g id="shipDocked" transform="translate(400,360)">
-            <rect x="-90" y="0" width="180" height="24" fill="var(--ship-red)"/>
-            <rect x="30" y="-26" width="34" height="26" rx="3" fill="#ffe4e6"/>
-          </g>
-        </svg>
-
-        <aside class="balloon">
-          <h3>Desembaraço com estimativa</h3>
-          <p>Impostos e despesas previstos antes do pedido. Sem susto no Brasil.</p>
-        </aside>
-
-        <button class="next" data-next aria-label="Próxima etapa">➜</button>
-      </div>
-    </section>
-
-    <!-- ======= Cena 5: Depósito do cliente (entrega & pós-venda) ======= -->
-    <section class="scene scene-5" aria-label="Entrega e pós-venda">
-      <div class="stage last">
-        <svg viewBox="0 0 1000 520" class="s5-svg" role="img" aria-hidden="true">
-          <rect width="1000" height="520" fill="#0f2b50"/>
-          <!-- estrada -->
-          <path d="M0,420 L1000,420" stroke="#263b58" stroke-width="12"/>
-          <path id="truckPath" d="M120,420 L860,420" fill="none" stroke="transparent"/>
-
-          <!-- depósito/loja -->
-          <g class="warehouse" transform="translate(860,340)">
-            <rect x="-60" y="0" width="140" height="80" fill="#1e3a66" stroke="rgba(255,255,255,.2)"/>
-            <rect x="-40" y="30" width="40" height="50" fill="#0d2749"/>
-            <rect x="20"  y="20" width="40" height="20" fill="#9bb5d1"/>
-          </g>
-
-          <!-- caminhão -->
-          <g id="truck" transform="translate(120,420)">
-            <rect x="-30" y="-18" width="60" height="18" fill="#9bb5d1"/>
-            <rect x="30" y="-24" width="28" height="24" fill="#cbd6e4"/>
-            <circle r="6" cx="-16" cy="0" fill="#0b1f3d"/>
-            <circle r="6" cx="16"  cy="0" fill="#0b1f3d"/>
-          </g>
-        </svg>
-
-        <aside class="balloon">
-          <h3>Entrega & pós‑venda</h3>
-          <p>Chegou. Monitoramos o fornecedor e aceleramos reposições quando preciso.</p>
-        </aside>
-
-        <div class="end-cta">
-          <button class="cta primary" data-calendly>Quero ver isso no meu produto</button>
-          <a class="cta" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- status vivo para leitores de tela -->
-  <p class="sr-only" aria-live="polite" id="journeyStatus">Etapa 1 de 5: Visita à fábrica</p>
-</section>
-<script>
-  
+  </script>
 </body>
 </html>
