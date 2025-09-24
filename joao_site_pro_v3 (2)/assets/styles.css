@@ -1274,4 +1274,13 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
 @keyframes stripMove{
   to{ transform: translateX(-50%); }
 }
+/* ===== Layout base: header | main (flexível) | footer (base) ===== */
+html,body{ height:100%; }
+body{
+  min-height:100svh;
+  display:grid;
+  grid-template-rows: auto 1fr auto; /* header | conteúdo | footer */
+}
+main{ min-height:0; } /* evita overflow estranho em sticky/iframes */
+footer{ margin-top:0; } /* garante que o rodapé fique no final */
 
