@@ -1,106 +1,77 @@
 <!doctype html>
-<html lang="pt-BR" dir="ltr">
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Quem somos — ShaRui Trading Company</title>
-  <meta name="description" content="Estrutura completa para pequenos e grandes importadores. Escritório na China, inspeção, ficha técnica PT‑ZH e plataforma.">
   <link rel="stylesheet" href="/assets/styles.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* ajustes leves específicos da página */
-    .hero-about{ min-height:54vh; display:flex; align-items:center; background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)); }
-    .pillars{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px }
-    @media(max-width:980px){ .pillars{ grid-template-columns:1fr } }
-    .timeline{ border-left:2px dashed rgba(255,255,255,.2); padding-left:14px }
-    .timeline .step{ margin:10px 0; }
-  </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container nav-wrap">
-    <div class="brand">
-      <a href="/pt/" class="brand-logo" aria-label="ShaRui Trading Company">
-        <span class="brand-top">SHA RUI</span>
-        <span class="brand-sub">TRADING COMPANY</span>
+  <!-- Header igual ao da home -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+        <span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span>
       </a>
+      <nav class="menu">
+        <a href="/pt/quem-somos.html" aria-current="page">Quem somos</a>
+        <a href="/pt/diferenciais.html">Diferenciais</a>
+        <a href="/pt/plataforma.html">Plataforma</a>
+        <a href="/pt/contato.html">Contato</a>
+      </nav>
     </div>
-    <nav>
-      <div class="menu">
-        <a href="/pt/quem-somos.html"><b>Quem somos</b></a>
-        <a href="/pt/#diferenciais">Diferenciais</a>
-        <a href="/pt/#plataforma">Plataforma</a>
-        <a href="#" onclick="openCalendly();return false;">Contato</a>
-      </div>
-    </nav>
-  </div>
-</header>
+  </header>
 
-<main>
-  <!-- Sessão 1: herói simples -->
-  <section class="hero-about">
-    <div class="container">
-      <h1>Quem somos</h1>
-      <p class="lead">Estrutura na China para reduzir risco e custo total — do protótipo ao desembaraço.</p>
-    </div>
-  </section>
-
-  <!-- Sessão 2: proposta para o pequeno importador (LCL) -->
-  <section class="section">
-    <div class="container">
-      <h2>Comece pequeno, cresça com previsibilidade</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Contêiner compartilhado (LCL)</h3>
-          <p>Consolidação por m³/tonelada, redução de frete e prazos transparentes.</p>
-        </div>
-        <div class="card">
-          <h3>Ficha técnica PT‑ZH</h3>
-          <p>Especificação bilíngue para evitar retrabalho e dar base à inspeção.</p>
-        </div>
-        <div class="card">
-          <h3>Inspeção com fotos e vídeos</h3>
-          <p>Amostragem, aprovação/reprovação e registro completo na plataforma.</p>
+  <main>
+    <!-- Bloco 1: Quem somos -->
+    <section class="section" style="padding-top:calc(var(--header-h) + 24px)">
+      <div class="container who-split">
+        <figure class="who-photo"><img src="/assets/socio.jpg" alt=""></figure>
+        <div class="who-copy">
+          <h2>Nossa estrutura na China</h2>
+          <p>Escritório em <b>Guangzhou</b>, presença em feiras como a <b>Canton Fair</b> e equipe local para visitar fábricas em toda a China.</p>
+          <p>Integramos <b>engenharia</b>, <b>qualidade</b> e <b>finanças</b> para reduzir risco e custo total do seu projeto.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Sessão 3: como trabalhamos (linha do tempo) -->
-  <section class="section">
-    <div class="container">
-      <h2>Como trabalhamos</h2>
-      <div class="timeline">
-        <div class="step"><b>1)</b> Entendimento do produto + ficha técnica PT‑ZH</div>
-        <div class="step"><b>2)</b> Cotação/negociação com fábrica</div>
-        <div class="step"><b>3)</b> Amostras (se aplicável) + testes/certificações</div>
-        <div class="step"><b>4)</b> Pedido + inspeção com mídia</div>
-        <div class="step"><b>5)</b> Embarque (LCL/FCL) + alertas</div>
-        <div class="step"><b>6)</b> Desembaraço + entrega</div>
+    <!-- Bloco 2: Como ajudamos o pequeno importador -->
+    <section class="section">
+      <div class="container grid">
+        <article class="card"><h3>Comece pequeno</h3><p>Amostras e pilotos sem pedido mínimo. Validamos custo no Brasil antes de fechar.</p></article>
+        <article class="card"><h3>Contêiner compartilhado (LCL)</h3><p>Consolidação por m³/tonelada, com checkpoints e prazos na plataforma.</p></article>
+        <article class="card"><h3>Inspeção por amostragem</h3><p>Fotos e vídeos; aprovação/reprovação documentadas. Sem surpresa na entrega.</p></article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Sessão 4: CTA -->
-  <section class="section">
-    <div class="container" style="text-align:center">
-      <a class="cta primary" href="#" onclick="openCalendly();return false;">Quero conversar</a>
-    </div>
-  </section>
-</main>
+    <!-- Bloco 3: Linha do processo -->
+    <section class="section">
+      <div class="container grid">
+        <article class="card"><h3>1) Especificação PT‑ZH</h3><p>Ficha técnica bilíngue com materiais, medidas e tolerâncias.</p></article>
+        <article class="card"><h3>2) Cotação & negociação</h3><p>Equipe nativa negocia direto na fábrica.</p></article>
+        <article class="card"><h3>3) Pedido & inspeção</h3><p>Registros com fotos e vídeos.</p></article>
+        <article class="card"><h3>4) Embarque</h3><p>LCL/FCL com documentação e prazos.</p></article>
+        <article class="card"><h3>5) Desembaraço</h3><p>Estimativa de tributos/despesas <i>antes</i> do pedido.</p></article>
+        <article class="card"><h3>6) Entrega</h3><p>Timeline e alertas na plataforma.</p></article>
+      </div>
+    </section>
+  </main>
 
-<footer class="footer">
-  <div class="container footer-row">
-    <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
-    <nav class="foot-social" aria-label="Redes sociais">
-      <a href="https://www.instagram.com/sharui_trading/" class="ic ig" target="_blank" rel="noopener"></a>
-      <a href="https://www.tiktok.com/@sharui_trading?lang=en" class="ic tk" target="_blank" rel="noopener"></a>
-      <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" class="ic yt" target="_blank" rel="noopener"></a>
-      <a href="https://wa.me/551193381008" class="ic wa" target="_blank" rel="noopener"></a>
-    </nav>
-  </div>
-</footer>
+  <!-- Rodapé igual ao da home -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+      <address class="corp-address">Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>Fortune Plaza – Panyu<br>Postal code: 51150 – Guangzhou, China.</address>
+      <nav class="foot-social">
+        <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig"></a>
+        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk"></a>
+        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt"></a>
+        <a href="https://wa.me/551193381008" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa"></a>
+      </nav>
+    </div>
+  </footer>
 </body>
+</html>
+
 </html>
 
