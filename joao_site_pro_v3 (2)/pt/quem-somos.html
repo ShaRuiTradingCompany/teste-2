@@ -375,6 +375,89 @@
       </nav>
     </div>
   </footer>
+
+<script>
+/* Subnav: realça link ativo conforme scroll */
+(function(){
+  const links = document.querySelectorAll('.subnav a[href^="#"]');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const id = '#' + e.target.id;
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+    });
+  }, { rootMargin: "-40% 0px -50% 0px", threshold: 0 });
+  sections.forEach(s => io.observe(s));
+})();
+
+/* Reveal genérico (você já usa algo similar; aqui é escopo local) */
+(function(){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.2});
+  document.querySelectorAll('.page-about .reveal').forEach(el=> io.observe(el));
+})();
+
+/* Count-up nos KPIs */
+(function(){
+  const nums = document.querySelectorAll('.about-metrics .num');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.count,10)||0;
+      let cur = 0;
+      const dur = 1100;
+      const t0 = performance.now();
+      function tick(t){
+        const p = Math.min(1, (t - t0)/dur);
+        cur = Math.round(target * (0.1 + 0.9 * p*p)); // ease
+        el.textContent = cur.toLocaleString('pt-BR');
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, {threshold:.5});
+  nums.forEach(n=> io.observe(n));
+})();
+
+/* Lightbox nativo para fotos (offices e cultura) */
+(function(){
+  const dlg = document.getElementById('lightbox');
+  if(!dlg) return;
+  const img = document.getElementById('lightbox-img');
+  const closeBtn = dlg.querySelector('.close');
+  function open(src, alt){
+    img.src = src; img.alt = alt || '';
+    dlg.showModal();
+  }
+  document.addEventListener('click', (e)=>{
+    const a = e.target.closest('[data-lightbox]');
+    if(a){
+      e.preventDefault();
+      open(a.getAttribute('data-lightbox'), a.querySelector('img')?.alt || '');
+    }
+  });
+  closeBtn.addEventListener('click', ()=> dlg.close());
+  dlg.addEventListener('click', (e)=> { if(e.target === dlg) dlg.close(); });
+})();
+
+/* Abre Calendly usando o seu modal existente */
+document.querySelectorAll('[data-open-calendly]').forEach(btn=>{
+  btn.addEventListener('click', ()=> {
+    if(window.openCalendly) { openCalendly(); }
+    else {
+      // fallback: abre link direto se preferir
+      window.open('https://calendly.com/', '_blank', 'noopener');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
 
