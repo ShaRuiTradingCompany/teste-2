@@ -4,10 +4,52 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Quem somos — ShaRui Trading Company</title>
-  <meta name="description" content="Integridade, prazo e presença dentro da fábrica. Escritórios em Guangzhou e Ganzhou; visitas em até 48h; ficha técnica PT‑ZH; inspeção com fotos e vídeos.">
+  <meta name="description" content="Integridade, prazos cumpridos e presença dentro da fábrica. Olhar pessoal, tecnologia própria e transparência de ponta a ponta. Escritório em Guangzhou e visitas em até 48h.">
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
+
+  <!-- Estilos locais mínimos (logo com feixes + centralização da CTA final + placeholder de foto) -->
+  <style>
+    /* Logo circular com feixes de luz */
+    .logo-orb{
+      position:relative; display:grid; place-items:center;
+      width:min(520px, 42vw); aspect-ratio:1/1; margin-inline:auto; border-radius:50%;
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22);
+      box-shadow:0 10px 32px rgba(0,0,0,.35), inset 0 0 40px rgba(255,255,255,.06);
+      overflow:hidden;
+    }
+    .logo-orb::before{
+      content:""; position:absolute; inset:-8px; border-radius:50%;
+      background: conic-gradient(#66e0c2, #22b3e5, #7c3aed, #22b3e5, #66e0c2);
+      filter: blur(8px);
+      animation: spin 10s linear infinite;
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
+              mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
+      pointer-events:none;
+    }
+    .logo-orb::after{
+      content:""; position:absolute; inset:12%; border-radius:50%;
+      background: radial-gradient(closest-side, rgba(102,224,194,.22), transparent 70%);
+      mix-blend-mode: screen; animation: pulse 3.2s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+    .logo-orb img{ width:76%; height:76%; object-fit:contain; border-radius:50%; display:block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse { from { transform: scale(.98) } to { transform: scale(1.02) } }
+
+    /* Centralização dos botões na CTA final */
+    .contact-row.center{ justify-content:center; }
+
+    /* Placeholder para “+ adicionar foto” em Bastidores */
+    .culture-photo.placeholder{
+      display:grid; place-items:center; min-height:160px;
+      border:1px dashed rgba(255,255,255,.28);
+      background:rgba(255,255,255,.04); color:#eaf1ff; text-decoration:none; border-radius:12px;
+      box-shadow:0 12px 30px rgba(0,0,0,.3);
+    }
+    .culture-photo.placeholder span{ font-weight:800; opacity:.9 }
+  </style>
 </head>
 
 <body>
@@ -28,77 +70,30 @@
 
   <main id="page-about" class="page-about">
 
-    <!-- SUB-NAV fixa (ordem nova, sem “Princípios”) -->
-    <nav class="subnav" aria-label="Seções desta página">
-      <div class="container">
-        <a href="#sobre">Quem somos</a>
-        <a href="#historia">Nossa trajetória</a>
-        <a href="#socios">Sócios</a>
-        <a href="#bastidores">Bastidores</a>
-        <a href="#cultura">Cultura</a>
-        <a href="#escritorios">Escritórios & Presença</a>
-        <a href="#contato" class="pill">Fale com a ShaRui</a>
-      </div>
-    </nav>
-
-    <!-- (1) QUEM SOMOS — 50/50: texto + logo circular com feixes -->
+    <!-- (1) QUEM SOMOS — 50/50 texto + logo com feixes -->
     <section id="sobre" class="section about-hero" style="padding-top:calc(var(--header-h) + 14px)">
       <div class="container hero-wrap">
-        <!-- Texto -->
+        <!-- Texto (narrativa com cultura embutida) -->
         <div class="hero-copy reveal">
           <h1>Quem somos</h1>
-          <p><strong>Integridade é nosso padrão.</strong> Nada de surpresa na entrega: tudo especificado em ficha técnica PT‑ZH e verificado por inspeção por amostragem (fotos e vídeos).</p>
-          <p><strong>Prazo é compromisso.</strong> Visitamos a fábrica em até <b>48h</b> na região de atuação. Para quem está começando, <b>sem pedido mínimo</b>: amostras e pilotos; quando fizer sentido, compartilhamos contêiner (LCL).</p>
+          <p><strong>Integridade é o que nos trouxe até aqui — e o que nos mantém.</strong> Cada projeto começa com um compromisso claro: fazer o certo, mesmo quando dá mais trabalho. Nosso papel é reduzir o seu risco, cuidar do custo total e defender o seu padrão de qualidade com a mesma seriedade que você tem no seu negócio.</p>
+          <p><strong>Estar perto faz diferença.</strong> Com base em <b>Guangzhou</b> e presença em toda a China, visitamos a fábrica em até <b>48h</b> na região de atuação. Isso nos permite ter <em>olhar pessoal</em> sobre o que acontece no chão de fábrica — não apenas fotos: <b>inspeção por amostragem</b>, evidências em <b>vídeo</b> e <b>ficha técnica PT‑ZH</b> assinada para não haver ruído nem “surpresas” na entrega.</p>
+          <p><strong>Conectados e transparentes de ponta a ponta.</strong> Na nossa plataforma, você acompanha <b>timeline</b>, <b>documentos</b> e <b>checkpoints</b> com prazos realistas — e comunicação ativa quando algo muda. É assim que tratamos <b>prazo como compromisso</b>, e <b>transparência</b> como regra.</p>
+          <p><strong>Tecnologia a serviço da sua decisão.</strong> Evoluímos continuamente o app, a coleta de evidências e a análise de custos para estimar o <b>preço no Brasil</b> antes do pedido. Quer começar pequeno? <b>Sem pedido mínimo</b>: amostras e pilotos; quando fizer sentido, consolidação em <b>LCL</b>. Tudo com o mesmo padrão de ética, sustentabilidade prática e profissionalismo — todos os dias.</p>
           <div class="contact-row hero-actions">
             <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
             <button class="cta" data-open-calendly>Agendar conversa</button>
           </div>
         </div>
 
-        <!-- Logo circular (feixes de luz) -->
+        <!-- Logo circular com feixes -->
         <figure class="logo-orb reveal" aria-label="Logotipo ShaRui">
-          <span class="beams" aria-hidden="true"></span>
           <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company" width="1024" height="1024" decoding="async" loading="eager">
         </figure>
       </div>
     </section>
 
-    <!-- (2) NOSSA TRAJETÓRIA -->
-    <section id="historia" class="section about-history">
-      <div class="container">
-        <h2 class="reveal">Nossa trajetória</h2>
-        <div class="timeline snap-track">
-          <div class="dot-card snap-card reveal">
-            <span class="dot"></span>
-            <h3>1990s</h3>
-            <p>Início em comércio internacional e primeiros fornecedores na Ásia.</p>
-          </div>
-          <div class="dot-card snap-card reveal">
-            <span class="dot"></span>
-            <h3>2000s</h3>
-            <p>Participações recorrentes na Canton Fair e consolidação de rede.</p>
-          </div>
-          <div class="dot-card snap-card reveal">
-            <span class="dot"></span>
-            <h3>2010s</h3>
-            <p>Ampliação de inspeções com fotos e vídeos por amostragem.</p>
-          </div>
-          <div class="dot-card snap-card reveal">
-            <span class="dot"></span>
-            <h3>2020s</h3>
-            <p>Lançamento da Plataforma do Cliente com timeline, alertas e documentos.</p>
-          </div>
-          <div class="dot-card snap-card reveal">
-            <span class="dot"></span>
-            <h3>Hoje</h3>
-            <p>Visitas em até 48h e estimativa de custos no Brasil antes do pedido.</p>
-          </div>
-        </div>
-        <div class="drag-hint">Arraste para ver os marcos</div>
-      </div>
-    </section>
-
-    <!-- (3) SÓCIOS (2) -->
+    <!-- (2) SÓCIOS (2) — sem botões de ação -->
     <section id="socios" class="section about-partners">
       <div class="container">
         <h2 class="reveal">Sócios</h2>
@@ -108,9 +103,8 @@
             <div class="info">
               <h3>Nome do Sócio 1</h3>
               <p class="role">Sócio‑Diretor • Brasil</p>
-              <p class="bio">30 anos de comércio internacional. Foco em engenharia, qualidade e finanças.</p>
+              <p class="bio">Mais de três décadas em comércio internacional. Integra engenharia, qualidade e finanças para reduzir risco e custo total.</p>
               <div class="mini-tags"><span>PT</span><span>EN</span></div>
-              <div class="actions"><a class="cta" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar com o sócio</a></div>
             </div>
           </article>
 
@@ -119,16 +113,15 @@
             <div class="info">
               <h3>Nome do Sócio 2</h3>
               <p class="role">Sócio‑Operações • China</p>
-              <p class="bio">Lidera a equipe local e negociações diretas com as fábricas.</p>
+              <p class="bio">Lidera a equipe local e as negociações na fábrica, garantindo prazos, padrão de qualidade e comunicação direta.</p>
               <div class="mini-tags"><span>ZH</span><span>EN</span></div>
-              <div class="actions"><button class="cta" data-open-calendly>Agendar com a equipe</button></div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- (4) BASTIDORES — fotos (mantidas) + 1 slot extra -->
+    <!-- (3) BASTIDORES — mantém fotos + 1 slot extra -->
     <section id="bastidores" class="section about-culture">
       <div class="container">
         <h2 class="reveal">Bastidores</h2>
@@ -140,37 +133,18 @@
             <img src="/assets/qs3.jpg" alt="Inspeção por amostragem" loading="lazy" decoding="async" width="640" height="427">
           </a>
           <a class="culture-photo reveal" data-lightbox="/assets/qs4.jpg">
-            <img src="/assets/qs4.jpg" alt="Visita técnica na linha" loading="lazy" decoding="async" width="640" height="427">
+            <img src="/assets/qs4.jpg" alt="Visita técnica na linha de produção" loading="lazy" decoding="async" width="640" height="427">
           </a>
           <a class="culture-photo reveal" data-lightbox="/assets/qs5.jpg">
             <img src="/assets/qs5.jpg" alt="Equipe local em Guangzhou" loading="lazy" decoding="async" width="640" height="427">
           </a>
-          <!-- Slot extra para mais uma foto -->
+          <!-- Slot extra: substitua pelo próximo <a> com img quando tiver a 5ª/6ª foto -->
           <a class="culture-photo placeholder reveal" title="Adicionar mais uma foto"><span>+ adicionar foto</span></a>
         </div>
       </div>
     </section>
 
-    <!-- (5) CULTURA — pilares com animação “abrindo” -->
-    <section id="cultura" class="section">
-      <div class="container">
-        <h2 class="reveal">Cultura</h2>
-        <p class="lead reveal" style="max-width:860px;margin:0 auto 10px;text-align:center;">
-          <b>Cultura é comportamento no dia a dia</b> (diferente de princípios, que são diretrizes). É assim que trabalhamos:
-        </p>
-
-        <div class="pill-grid" style="display:grid;gap:12px;max-width:980px;margin:12px auto 0;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
-          <article class="pill"><h3>Ética inegociável</h3><p>Decidimos pelo que é certo, não pelo que é conveniente.</p></article>
-          <article class="pill"><h3>Compromisso com prazos</h3><p>Planejamento realista, checkpoints e comunicação ativa.</p></article>
-          <article class="pill"><h3>Sustentabilidade prática</h3><p>Conformidade ambiental e social integrada ao processo.</p></article>
-          <article class="pill"><h3>Seriedade & profissionalismo</h3><p>Padrão de execução alto, responsabilidade e foco no resultado.</p></article>
-          <article class="pill"><h3>Transparência</h3><p>Informação clara, de ponta a ponta — sem surpresas.</p></article>
-        </div>
-        <div class="drag-hint" style="text-align:center;opacity:.7;font-size:13px;margin-top:6px">Os pilares se abrem automaticamente quando entram na tela</div>
-      </div>
-    </section>
-
-    <!-- (6) ESCRITÓRIOS & PRESENÇA (3 fotos) -->
+    <!-- (4) ESCRITÓRIOS & PRESENÇA (3 fotos) -->
     <section id="escritorios" class="section about-offices">
       <div class="container">
         <h2 class="reveal">Escritórios & Presença</h2>
@@ -202,12 +176,12 @@
       </div>
     </section>
 
-    <!-- (7) CTA final — botões centralizados -->
+    <!-- (5) CTA final — centralizado -->
     <section id="contato" class="section about-cta">
       <div class="container cta-wrap reveal">
         <h2>Vamos tirar sua ideia do papel?</h2>
         <p>Conte-nos seu produto e prazo. Em 48h visitamos a fábrica e alinhamos próximos passos.</p>
-        <div class="contact-row center">
+        <div class="contact-row center" style="margin-top:10px;">
           <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
           <button class="cta" data-open-calendly>Agendar conversa</button>
         </div>
@@ -221,7 +195,7 @@
     </dialog>
   </main>
 
-  <!-- MODAL Calendly (reuso do seu modal padrão) -->
+  <!-- MODAL Calendly (reuso do seu modal padrão, caso exista) -->
   <div id="calendly-modal" class="modal" onclick="closeCalendly && closeCalendly()">
     <div class="modal-card" onclick="event.stopPropagation()">
       <div class="modal-head">
@@ -283,20 +257,6 @@
     document.querySelectorAll('.page-about .reveal').forEach(el=> io.observe(el));
   })();
 
-  // Subnav: destaca link ativo conforme rolagem
-  (function(){
-    const links = document.querySelectorAll('.subnav a[href^="#"]');
-    const secs = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(!e.isIntersecting) return;
-        const id = '#' + e.target.id;
-        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-      });
-    }, { rootMargin: "-40% 0px -50% 0px" });
-    secs.forEach(s => io.observe(s));
-  })();
-
   // Lightbox (dialog nativo) — Bastidores & Escritórios
   (function(){
     const dlg = document.getElementById('lightbox');
@@ -315,22 +275,7 @@
     dlg.addEventListener('click', (e)=> { if(e.target === dlg) dlg.close(); });
   })();
 
-  // Cultura (pilares): animação abrindo em cascata
-  (function(){
-    const sec = document.getElementById('cultura');
-    if(!sec) return;
-    const pills = sec.querySelectorAll('.pill');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(!e.isIntersecting) return;
-        pills.forEach((p,i)=> setTimeout(()=> p.classList.add('in'), i*140)); // abre em sequência
-        io.unobserve(sec);
-      });
-    }, {threshold:.25});
-    io.observe(sec);
-  })();
-
-  // Calendly: usa seu modal global se existir
+  // Calendly: usa seu modal global se existir; caso não, abre o link padrão
   document.querySelectorAll('[data-open-calendly]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       if(typeof window.openCalendly === 'function'){ window.openCalendly(); }
