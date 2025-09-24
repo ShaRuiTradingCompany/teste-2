@@ -1,18 +1,25 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Quem somos — ShaRui Trading Company</title>
+  <meta name="description" content="Integridade, prazo e presença dentro da fábrica. Escritórios em Guangzhou e Ganzhou; visitas em até 48h; ficha técnica PT‑ZH; inspeção com fotos e vídeos.">
   <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/config.js"></script>
+  <script defer src="/assets/main.js"></script>
 </head>
+
 <body>
-  <!-- Header igual ao da home -->
+  <!-- Header (igual ao padrão do site) -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
-      <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
-        <span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span>
-      </a>
+      <div class="brand">
+        <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+          <span class="brand-top">SHA RUI</span>
+          <span class="brand-sub">TRADING COMPANY</span>
+        </a>
+      </div>
       <nav class="menu">
         <a href="/pt/quem-somos.html" aria-current="page">Quem somos</a>
         <a href="/pt/diferenciais.html">Diferenciais</a>
@@ -22,320 +29,272 @@
     </div>
   </header>
 
-  <main>
-    <!-- Bloco 1: Quem somos -->
-    <section class="section" style="padding-top:calc(var(--header-h) + 24px)">
-      <div class="container who-split">
-        <figure class="who-photo"><img src="/assets/socio.jpg" alt=""></figure>
-        <div class="who-copy">
-          <h2>Nossa estrutura na China</h2>
-          <p>Escritório em <b>Guangzhou</b>, presença em feiras como a <b>Canton Fair</b> e equipe local para visitar fábricas em toda a China.</p>
-          <p>Integramos <b>engenharia</b>, <b>qualidade</b> e <b>finanças</b> para reduzir risco e custo total do seu projeto.</p>
+  <!-- ====== PÁGINA ====== -->
+  <main id="page-about" class="page-about">
+
+    <!-- Sub-nav fixa (opcional) -->
+    <nav class="subnav" aria-label="Seções desta página">
+      <div class="container">
+        <a href="#sobre">Sobre</a>
+        <a href="#principios">Princípios</a>
+        <a href="#socios">Sócios</a>
+        <a href="#escritorios">Escritórios</a>
+        <a href="#historia">História</a>
+        <a href="#cultura">Cultura</a>
+        <a href="#contato" class="pill">Fale com a ShaRui</a>
+      </div>
+    </nav>
+
+    <!-- HERO 50/50: texto + logo circular com feixes -->
+    <section id="sobre" class="section about-hero" style="padding-top:calc(var(--header-h) + 14px)">
+      <div class="container hero-grid">
+        <!-- Texto -->
+        <div class="hero-copy reveal">
+          <h1>Quem somos</h1>
+          <p><strong>Integridade é nosso padrão.</strong> Nada de surpresa na entrega: tudo especificado em ficha técnica PT‑ZH e registrado com inspeção por amostragem (fotos e vídeos).</p>
+          <p><strong>Prazo é compromisso.</strong> Visitamos a fábrica em até <b>48h</b> na região de atuação. <strong>Para quem está começando</strong>, sem pedido mínimo: amostras e pilotos; quando fizer sentido, compartilhamos contêiner (LCL).</p>
+          <div class="contact-row hero-actions">
+            <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            <button class="cta" data-open-calendly>Agendar conversa</button>
+          </div>
+        </div>
+
+        <!-- Logo com feixes -->
+        <figure class="logo-orb reveal" aria-label="Logotipo ShaRui">
+          <span class="beams" aria-hidden="true"></span>
+          <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company" width="1024" height="1024" decoding="async" loading="eager">
+        </figure>
+      </div>
+    </section>
+
+    <!-- PRINCÍPIOS (animação a partir do centro: burst + ripples) -->
+    <section id="principios" class="section about-values">
+      <div class="container">
+        <h2 class="reveal">Princípios que guiam nosso trabalho</h2>
+
+        <div class="values-stage">
+          <div class="hub" aria-hidden="true"></div>
+          <div class="ripple r1" aria-hidden="true"></div>
+          <div class="ripple r2" aria-hidden="true"></div>
+
+          <div class="grid values-grid">
+            <article class="card" style="--i:0">
+              <h3>Transparência de custos</h3>
+              <p>Estimativa do preço no Brasil antes do pedido (tributos, despesas e memória de cálculo).</p>
+            </article>
+            <article class="card" style="--i:1">
+              <h3>Presença na fábrica</h3>
+              <p>Visita em até 48h com registro fotográfico, vídeo e relatório.</p>
+            </article>
+            <article class="card" style="--i:2">
+              <h3>Ficha técnica PT‑ZH</h3>
+              <p>Contrato técnico bilíngue com materiais, tolerâncias, embalagem e etiqueta.</p>
+            </article>
+            <article class="card" style="--i:3">
+              <h3>Inspeção por amostragem</h3>
+              <p>Aprovação/reprovação com evidências para evitar surpresa na entrega.</p>
+            </article>
+            <article class="card" style="--i:4">
+              <h3>Negociação nativa</h3>
+              <p>Equipe local chinesa negocia direto na fábrica por melhores condições.</p>
+            </article>
+            <article class="card" style="--i:5">
+              <h3>Comece pequeno</h3>
+              <p>Sem valor mínimo: amostras e pilotos; LCL quando fizer sentido.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Bloco 2: Como ajudamos o pequeno importador -->
-    <section class="section">
-      <div class="container grid">
-        <article class="card"><h3>Comece pequeno</h3><p>Amostras e pilotos sem pedido mínimo. Validamos custo no Brasil antes de fechar.</p></article>
-        <article class="card"><h3>Contêiner compartilhado (LCL)</h3><p>Consolidação por m³/tonelada, com checkpoints e prazos na plataforma.</p></article>
-        <article class="card"><h3>Inspeção por amostragem</h3><p>Fotos e vídeos; aprovação/reprovação documentadas. Sem surpresa na entrega.</p></article>
+    <!-- SÓCIOS (2) -->
+    <section id="socios" class="section about-partners">
+      <div class="container">
+        <h2 class="reveal">Sócios</h2>
+
+        <div class="partners-grid">
+          <article class="partner-card reveal">
+            <figure>
+              <img src="/assets/team-socio-1.jpg" alt="Sócio 1 — cargo" loading="lazy" decoding="async" width="760" height="950">
+            </figure>
+            <div class="info">
+              <h3>Nome do Sócio 1</h3>
+              <p class="role">Sócio‑Diretor • Brasil</p>
+              <p class="bio">30 anos de comércio internacional. Foco em engenharia, qualidade e finanças.</p>
+              <div class="mini-tags"><span>PT</span><span>EN</span></div>
+              <div class="actions"><a class="cta" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar com o sócio</a></div>
+            </div>
+          </article>
+
+          <article class="partner-card reveal">
+            <figure>
+              <img src="/assets/team-socio-2.jpg" alt="Sócio 2 — cargo" loading="lazy" decoding="async" width="760" height="950">
+            </figure>
+            <div class="info">
+              <h3>Nome do Sócio 2</h3>
+              <p class="role">Sócio‑Operações • China</p>
+              <p class="bio">Lidera a equipe local e negociações diretas com as fábricas.</p>
+              <div class="mini-tags"><span>ZH</span><span>EN</span></div>
+              <div class="actions"><button class="cta" data-open-calendly>Agendar com a equipe</button></div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- Bloco 3: Linha do processo -->
-    <section class="section">
-      <div class="container grid">
-        <article class="card"><h3>1) Especificação PT‑ZH</h3><p>Ficha técnica bilíngue com materiais, medidas e tolerâncias.</p></article>
-        <article class="card"><h3>2) Cotação & negociação</h3><p>Equipe nativa negocia direto na fábrica.</p></article>
-        <article class="card"><h3>3) Pedido & inspeção</h3><p>Registros com fotos e vídeos.</p></article>
-        <article class="card"><h3>4) Embarque</h3><p>LCL/FCL com documentação e prazos.</p></article>
-        <article class="card"><h3>5) Desembaraço</h3><p>Estimativa de tributos/despesas <i>antes</i> do pedido.</p></article>
-        <article class="card"><h3>6) Entrega</h3><p>Timeline e alertas na plataforma.</p></article>
+    <!-- ESCRITÓRIOS & PRESENÇA (3 fotos) -->
+    <section id="escritorios" class="section about-offices">
+      <div class="container">
+        <h2 class="reveal">Escritórios & Presença</h2>
+
+        <div class="offices-grid">
+          <article class="office-card reveal" data-lightbox="/assets/office-1.jpg">
+            <figure><img src="/assets/office-1.jpg" alt="Escritório — Guangzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta">
+              <h3>Guangzhou, China</h3>
+              <p>Base para feiras e acesso a fornecedores estratégicos.</p>
+            </div>
+          </article>
+
+          <article class="office-card reveal" data-lightbox="/assets/office-2.jpg">
+            <figure><img src="/assets/office-2.jpg" alt="Escritório — Ganzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta">
+              <h3>Ganzhou, China</h3>
+              <p>Visitas e inspeções em até 48h na região de atuação.</p>
+            </div>
+          </article>
+
+          <article class="office-card reveal" data-lightbox="/assets/office-3.jpg">
+            <figure><img src="/assets/office-3.jpg" alt="Ponto de apoio — Brasil" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta">
+              <h3>Brasil</h3>
+              <p>Atendimento comercial, engenharia e desembaraço em parceria.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
-  </main>
-<main id="page-about" class="page-about">
 
-  <!-- SUB-NAV fixa da página -->
-  <nav class="subnav" aria-label="Seções desta página">
-    <div class="container">
-      <a href="#sobre">Sobre</a>
-      <a href="#principios">Princípios</a>
-      <a href="#socios">Sócios</a>
-      <a href="#equipe">Equipe</a>
-      <a href="#escritorios">Escritórios</a>
-      <a href="#historia">História</a>
-      <a href="#numeros">Números</a>
-      <a href="#cultura">Cultura</a>
-      <a href="#contato" class="pill">Fale com a ShaRui</a>
-    </div>
-  </nav>
+    <!-- NOSSA TRAJETÓRIA -->
+    <section id="historia" class="section about-history">
+      <div class="container">
+        <h2 class="reveal">Nossa trajetória</h2>
 
-  <!-- HERO -->
-  <section id="sobre" class="section about-hero">
-    <div class="container hero-wrap">
-      <div class="hero-copy reveal">
-        <h1>Quem somos</h1>
-        <p>Presença dentro da fábrica, previsibilidade no Brasil. Base em Guangzhou e visitas a fábricas em toda a China.</p>
-        <div class="contact-row">
+        <div class="timeline snap-track">
+          <div class="dot-card snap-card reveal">
+            <span class="dot"></span>
+            <h3>1990s</h3>
+            <p>Início em comércio internacional e primeiros fornecedores na Ásia.</p>
+          </div>
+          <div class="dot-card snap-card reveal">
+            <span class="dot"></span>
+            <h3>2000s</h3>
+            <p>Participações recorrentes na Canton Fair e consolidação de rede.</p>
+          </div>
+          <div class="dot-card snap-card reveal">
+            <span class="dot"></span>
+            <h3>2010s</h3>
+            <p>Ampliação de inspeções com fotos e vídeos por amostragem.</p>
+          </div>
+          <div class="dot-card snap-card reveal">
+            <span class="dot"></span>
+            <h3>2020s</h3>
+            <p>Lançamento da Plataforma do Cliente com timeline, alertas e documentos.</p>
+          </div>
+          <div class="dot-card snap-card reveal">
+            <span class="dot"></span>
+            <h3>Hoje</h3>
+            <p>Visitas em até 48h e estimativa de custos no Brasil antes do pedido.</p>
+          </div>
+        </div>
+
+        <div class="drag-hint">Arraste para ver os marcos</div>
+      </div>
+    </section>
+
+    <!-- CULTURA & BASTIDORES: 5 pilares + 4 fotos + 1 slot extra -->
+    <section id="cultura" class="section about-culture">
+      <div class="container">
+        <h2 class="reveal">Cultura e bastidores</h2>
+
+        <div class="pillars-grid">
+          <article class="pillar reveal"><h3>1) Integridade</h3><p>O que combinamos na ficha técnica é o que entregamos.</p></article>
+          <article class="pillar reveal"><h3>2) Velocidade com critério</h3><p>Agilidade com checkpoints claros e prazos.</p></article>
+          <article class="pillar reveal"><h3>3) Transparência radical</h3><p>Custos e riscos à mesa, antecipados e explicados.</p></article>
+          <article class="pillar reveal"><h3>4) Presença local</h3><p>Negociação nativa e inspeção dentro da fábrica.</p></article>
+          <article class="pillar reveal"><h3>5) Comece pequeno</h3><p>Amostras, pilotos e LCL quando fizer sentido.</p></article>
+        </div>
+
+        <div class="culture-grid">
+          <a class="culture-photo reveal" data-lightbox="/assets/qs2.jpg">
+            <img src="/assets/qs2.jpg" alt="Reunião com fornecedor na China" loading="lazy" decoding="async" width="640" height="427">
+          </a>
+          <a class="culture-photo reveal" data-lightbox="/assets/qs3.jpg">
+            <img src="/assets/qs3.jpg" alt="Inspeção por amostragem" loading="lazy" decoding="async" width="640" height="427">
+          </a>
+          <a class="culture-photo reveal" data-lightbox="/assets/qs4.jpg">
+            <img src="/assets/qs4.jpg" alt="Visita técnica na linha" loading="lazy" decoding="async" width="640" height="427">
+          </a>
+          <a class="culture-photo reveal" data-lightbox="/assets/qs5.jpg">
+            <img src="/assets/qs5.jpg" alt="Equipe local em Guangzhou" loading="lazy" decoding="async" width="640" height="427">
+          </a>
+          <!-- Slot extra (substitua por um <a> com data-lightbox + <img>) -->
+          <a class="culture-photo placeholder reveal" title="Adicionar mais uma foto"><span>+ adicionar foto</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA final (botões centralizados) -->
+    <section id="contato" class="section about-cta">
+      <div class="container cta-wrap reveal">
+        <h2>Vamos tirar sua ideia do papel?</h2>
+        <p>Conte-nos seu produto e prazo. Em 48h visitamos a fábrica e alinhamos próximos passos.</p>
+        <div class="contact-row center">
           <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
           <button class="cta" data-open-calendly>Agendar conversa</button>
         </div>
       </div>
-      <figure class="hero-photo reveal">
-        <img src="/assets/qs1.jpg" alt="Equipe da ShaRui em visita à fábrica" loading="eager" decoding="async" width="1280" height="853">
-      </figure>
-    </div>
-  </section>
+    </section>
 
-  <!-- PRINCÍPIOS -->
-  <section id="principios" class="section about-values">
-    <div class="container">
-      <h2 class="reveal">Princípios que guiam nosso trabalho</h2>
-      <div class="grid values-grid">
-        <article class="card reveal">
-          <h3>Transparência de custos</h3>
-          <p>Estimativa do preço no Brasil antes do pedido: tributos, despesas e memória de cálculo.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Presença na fábrica</h3>
-          <p>Visita em até 48h na região de atuação, com registro em fotos e vídeos.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Ficha técnica PT‑ZH</h3>
-          <p>Contrato técnico bilíngue: materiais, tolerâncias, embalagem, etiqueta e assinaturas.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Inspeção e amostragem</h3>
-          <p>Aprovação/reprovação com evidências, para evitar surpresa na entrega.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Negociação nativa</h3>
-          <p>Equipe local chinesa, direto na fábrica, buscando melhores condições.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Comece pequeno</h3>
-          <p>Sem valor mínimo. Amostras e pilotos. Quando fizer sentido, compartilhamos contêiner (LCL).</p>
-        </article>
+    <!-- Lightbox (dialog nativo) -->
+    <dialog id="lightbox">
+      <button class="close" aria-label="Fechar">×</button>
+      <img src="" alt="" id="lightbox-img">
+    </dialog>
+  </main>
+
+  <!-- Modal Calendly (compatível com seu main.js) -->
+  <div id="calendly-modal" class="modal" onclick="closeCalendly && closeCalendly()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <strong>Agendar conversa</strong>
+        <button class="btn-close" onclick="closeCalendly && closeCalendly()">Fechar</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- SÓCIOS (2 destaques) -->
-  <section id="socios" class="section about-partners">
-    <div class="container">
-      <h2 class="reveal">Sócios</h2>
-      <div class="partners-grid">
-        <article class="partner-card reveal">
-          <figure>
-            <img src="/assets/team-socio-1.jpg" alt="Sócio 1 — cargo" loading="lazy" decoding="async" width="760" height="950">
-          </figure>
-          <div class="info">
-            <h3>Nome do Sócio 1</h3>
-            <p class="role">Sócio‑Diretor • Brasil</p>
-            <p class="bio">30 anos de comércio internacional. Foco em engenharia, qualidade e finanças.</p>
-            <div class="mini-tags"><span>PT</span><span>EN</span></div>
-            <div class="actions">
-              <a class="cta" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar com o sócio</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="partner-card reveal">
-          <figure>
-            <img src="/assets/team-socio-2.jpg" alt="Sócio 2 — cargo" loading="lazy" decoding="async" width="760" height="950">
-          </figure>
-          <div class="info">
-            <h3>Nome do Sócio 2</h3>
-            <p class="role">Sócio‑Operações • China</p>
-            <p class="bio">Lidera a equipe local e negociações diretas com as fábricas.</p>
-            <div class="mini-tags"><span>ZH</span><span>EN</span></div>
-            <div class="actions">
-              <button class="cta" data-open-calendly>Agendar com a equipe</button>
-            </div>
-          </div>
-        </article>
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>
+        <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+        <address class="corp-address">
+          Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>
+          Fortune Plaza – Panyu<br>
+          Postal code: 51150 – Guangzhou, China.
+        </address>
       </div>
+      <nav class="foot-social" aria-label="Redes sociais">
+        <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
+        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
+        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
+        <a href="https://wa.me/551193381008" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa" title="WhatsApp"></a>
+      </nav>
     </div>
-  </section>
-
-  <!-- EQUIPE (5 pessoas) -->
-  <section id="equipe" class="section about-team">
-    <div class="container">
-      <h2 class="reveal">Equipe</h2>
-      <p class="lead reveal">Gente no Brasil e na China para reduzir risco e custo total, com execução local.</p>
-      <div class="team-grid">
-        <!-- Repita para as 5 pessoas (exemplos) -->
-        <article class="member-card reveal">
-          <figure><img src="/assets/team-1.jpg" alt="Nome — Função" loading="lazy" decoding="async" width="520" height="650"></figure>
-          <h3>Nome 1</h3>
-          <p class="role">Qualidade • Guangzhou</p>
-          <div class="mini-tags"><span>ZH</span><span>EN</span></div>
-        </article>
-
-        <article class="member-card reveal">
-          <figure><img src="/assets/team-2.jpg" alt="Nome — Função" loading="lazy" decoding="async" width="520" height="650"></figure>
-          <h3>Nome 2</h3>
-          <p class="role">Compras • Ganzhou</p>
-          <div class="mini-tags"><span>ZH</span><span>EN</span></div>
-        </article>
-
-        <article class="member-card reveal">
-          <figure><img src="/assets/team-3.jpg" alt="Nome — Função" loading="lazy" decoding="async" width="520" height="650"></figure>
-          <h3>Nome 3</h3>
-          <p class="role">Engenharia • Brasil</p>
-          <div class="mini-tags"><span>PT</span><span>EN</span></div>
-        </article>
-
-        <article class="member-card reveal">
-          <figure><img src="/assets/team-4.jpg" alt="Nome — Função" loading="lazy" decoding="async" width="520" height="650"></figure>
-          <h3>Nome 4</h3>
-          <p class="role">Logística • Brasil</p>
-          <div class="mini-tags"><span>PT</span></div>
-        </article>
-
-        <article class="member-card reveal">
-          <figure><img src="/assets/team-5.jpg" alt="Nome — Função" loading="lazy" decoding="async" width="520" height="650"></figure>
-          <h3>Nome 5</h3>
-          <p class="role">Negociação • Guangzhou</p>
-          <div class="mini-tags"><span>ZH</span><span>EN</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ESCRITÓRIOS (3 fotos) -->
-  <section id="escritorios" class="section about-offices">
-    <div class="container">
-      <h2 class="reveal">Escritórios & Presença</h2>
-      <div class="offices-grid">
-        <article class="office-card reveal" data-lightbox="/assets/office-1.jpg">
-          <figure><img src="/assets/office-1.jpg" alt="Escritório — Guangzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
-          <div class="meta">
-            <h3>Guangzhou, China</h3>
-            <p>Base para feiras e acesso a fornecedores estratégicos.</p>
-          </div>
-        </article>
-
-        <article class="office-card reveal" data-lightbox="/assets/office-2.jpg">
-          <figure><img src="/assets/office-2.jpg" alt="Escritório — Ganzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
-          <div class="meta">
-            <h3>Ganzhou, China</h3>
-            <p>Visitas e inspeções em até 48h na região de atuação.</p>
-          </div>
-        </article>
-
-        <article class="office-card reveal" data-lightbox="/assets/office-3.jpg">
-          <figure><img src="/assets/office-3.jpg" alt="Ponto de apoio — Brasil" loading="lazy" decoding="async" width="900" height="600"></figure>
-          <div class="meta">
-            <h3>Brasil</h3>
-            <p>Atendimento comercial, engenharia e desembaraço em parceria.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- HISTÓRIA / TIMELINE -->
-  <section id="historia" class="section about-history">
-    <div class="container">
-      <h2 class="reveal">Nossa trajetória</h2>
-      <div class="timeline snap-track">
-        <div class="dot-card snap-card reveal">
-          <span class="dot"></span>
-          <h3>1990s</h3>
-          <p>Início em comércio internacional e primeiros fornecedores na Ásia.</p>
-        </div>
-        <div class="dot-card snap-card reveal">
-          <span class="dot"></span>
-          <h3>2000s</h3>
-          <p>Participações recorrentes na Canton Fair e consolidação de rede.</p>
-        </div>
-        <div class="dot-card snap-card reveal">
-          <span class="dot"></span>
-          <h3>2010s</h3>
-          <p>Ampliação de inspeções com fotos e vídeos por amostragem.</p>
-        </div>
-        <div class="dot-card snap-card reveal">
-          <span class="dot"></span>
-          <h3>2020s</h3>
-          <p>Lançamento da Plataforma do Cliente com timeline, alertas e documentos.</p>
-        </div>
-        <div class="dot-card snap-card reveal">
-          <span class="dot"></span>
-          <h3>Hoje</h3>
-          <p>Visitas em até 48h e estimativa de custos no Brasil antes do pedido.</p>
-        </div>
-      </div>
-      <div class="drag-hint">Arraste para ver os marcos</div>
-    </div>
-  </section>
-
-  <!-- NÚMEROS (KPI com contador) -->
-  <section id="numeros" class="section about-metrics">
-    <div class="container">
-      <h2 class="reveal">Em números</h2>
-      <div class="kpi-row">
-        <div class="kpi card reveal">
-          <div class="num" data-count="30">0</div>
-          <p>Anos de experiência</p>
-        </div>
-        <div class="kpi card reveal">
-          <div class="num" data-count="48">0</div>
-          <p>Horas para visitar a fábrica</p>
-        </div>
-        <div class="kpi card reveal">
-          <div class="num" data-count="500">0</div>
-          <p>Fábricas visitadas</p>
-        </div>
-        <div class="kpi card reveal">
-          <div class="num" data-count="1200">0</div>
-          <p>Inspeções com fotos/vídeos</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CULTURA (galeria simples com lightbox) -->
-  <section id="cultura" class="section about-culture">
-    <div class="container">
-      <h2 class="reveal">Cultura e bastidores</h2>
-      <div class="culture-grid">
-        <a class="culture-photo reveal" href="#" data-lightbox="/assets/qs2.jpg">
-          <img src="/assets/qs2.jpg" alt="Reunião com fornecedor na China" loading="lazy" decoding="async" width="640" height="427">
-        </a>
-        <a class="culture-photo reveal" href="#" data-lightbox="/assets/qs3.jpg">
-          <img src="/assets/qs3.jpg" alt="Inspeção por amostragem" loading="lazy" decoding="async" width="640" height="427">
-        </a>
-        <a class="culture-photo reveal" href="#" data-lightbox="/assets/qs4.jpg">
-          <img src="/assets/qs4.jpg" alt="Visita técnica na linha" loading="lazy" decoding="async" width="640" height="427">
-        </a>
-        <a class="culture-photo reveal" href="#" data-lightbox="/assets/qs5.jpg">
-          <img src="/assets/qs5.jpg" alt="Equipe local em Guangzhou" loading="lazy" decoding="async" width="640" height="427">
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA final -->
-  <section id="contato" class="section about-cta">
-    <div class="container cta-wrap reveal">
-      <h2>Vamos tirar sua ideia do papel?</h2>
-      <p>Conte-nos seu produto e prazo. Em 48h visitamos a fábrica e alinhamos próximos passos.</p>
-      <div class="contact-row">
-        <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
-        <button class="cta" data-open-calendly>Agendar conversa</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIGHTBOX nativo (dialog) -->
-  <dialog id="lightbox">
-    <button class="close" aria-label="Fechar">×</button>
-    <img src="" alt="" id="lightbox-img">
-  </dialog>
+  </footer>
 
   <!-- JSON-LD básico -->
   <script type="application/ld+json">
@@ -359,105 +318,90 @@
     ]
   }
   </script>
-</main>
 
+  <!-- ===== JS local desta página ===== -->
+  <script>
+  // Reveal simples
+  (function(){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:.18});
+    document.querySelectorAll('.page-about .reveal').forEach(el=> io.observe(el));
+  })();
 
-  <!-- Rodapé igual ao da home -->
-  <footer class="footer">
-    <div class="container footer-row">
-      <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
-      <address class="corp-address">Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>Fortune Plaza – Panyu<br>Postal code: 51150 – Guangzhou, China.</address>
-      <nav class="foot-social">
-        <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig"></a>
-        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk"></a>
-        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt"></a>
-        <a href="https://wa.me/551193381008" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa"></a>
-      </nav>
-    </div>
-  </footer>
+  // Princípios: liga animação (ripples + burst) quando entrar
+  (function(){
+    const sec = document.querySelector('.about-values');
+    if(!sec) return;
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          sec.classList.add('play');
+          io.unobserve(sec);
+        }
+      });
+    }, {threshold:.35});
+    io.observe(sec);
+  })();
 
-<script>
-/* Subnav: realça link ativo conforme scroll */
-(function(){
-  const links = document.querySelectorAll('.subnav a[href^="#"]');
-  const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
-      const id = '#' + e.target.id;
-      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-    });
-  }, { rootMargin: "-40% 0px -50% 0px", threshold: 0 });
-  sections.forEach(s => io.observe(s));
-})();
+  // Subnav: marca link ativo enquanto rola
+  (function(){
+    const links = document.querySelectorAll('.subnav a[href^="#"]');
+    const secs = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const id = '#' + e.target.id;
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+      });
+    }, { rootMargin: "-40% 0px -50% 0px" });
+    secs.forEach(s => io.observe(s));
+  })();
 
-/* Reveal genérico (você já usa algo similar; aqui é escopo local) */
-(function(){
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:.2});
-  document.querySelectorAll('.page-about .reveal').forEach(el=> io.observe(el));
-})();
-
-/* Count-up nos KPIs */
-(function(){
-  const nums = document.querySelectorAll('.about-metrics .num');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
-      const el = e.target;
-      const target = parseInt(el.dataset.count,10)||0;
-      let cur = 0;
-      const dur = 1100;
-      const t0 = performance.now();
-      function tick(t){
-        const p = Math.min(1, (t - t0)/dur);
-        cur = Math.round(target * (0.1 + 0.9 * p*p)); // ease
-        el.textContent = cur.toLocaleString('pt-BR');
-        if(p < 1) requestAnimationFrame(tick);
+  // Lightbox nativo (para Escritórios e Cultura)
+  (function(){
+    const dlg = document.getElementById('lightbox');
+    if(!dlg) return;
+    const img = document.getElementById('lightbox-img');
+    const closeBtn = dlg.querySelector('.close');
+    function open(src, alt){ img.src = src; img.alt = alt || ''; dlg.showModal(); }
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('[data-lightbox]');
+      if(a){
+        e.preventDefault();
+        const src = a.getAttribute('data-lightbox');
+        const alt = a.querySelector('img')?.alt || '';
+        if(src) open(src, alt);
       }
-      requestAnimationFrame(tick);
-      io.unobserve(el);
     });
-  }, {threshold:.5});
-  nums.forEach(n=> io.observe(n));
-})();
+    closeBtn.addEventListener('click', ()=> dlg.close());
+    dlg.addEventListener('click', (e)=> { if(e.target === dlg) dlg.close(); });
+  })();
 
-/* Lightbox nativo para fotos (offices e cultura) */
-(function(){
-  const dlg = document.getElementById('lightbox');
-  if(!dlg) return;
-  const img = document.getElementById('lightbox-img');
-  const closeBtn = dlg.querySelector('.close');
-  function open(src, alt){
-    img.src = src; img.alt = alt || '';
-    dlg.showModal();
-  }
-  document.addEventListener('click', (e)=>{
-    const a = e.target.closest('[data-lightbox]');
-    if(a){
-      e.preventDefault();
-      open(a.getAttribute('data-lightbox'), a.querySelector('img')?.alt || '');
-    }
+  // Calendly: usa seu modal se existir; senão, abre site do Calendly
+  document.querySelectorAll('[data-open-calendly]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(typeof window.openCalendly === 'function'){ window.openCalendly(); }
+      else{ window.open('https://calendly.com/', '_blank', 'noopener'); }
+    });
   });
-  closeBtn.addEventListener('click', ()=> dlg.close());
-  dlg.addEventListener('click', (e)=> { if(e.target === dlg) dlg.close(); });
-})();
 
-/* Abre Calendly usando o seu modal existente */
-document.querySelectorAll('[data-open-calendly]').forEach(btn=>{
-  btn.addEventListener('click', ()=> {
-    if(window.openCalendly) { openCalendly(); }
-    else {
-      // fallback: abre link direto se preferir
-      window.open('https://calendly.com/', '_blank', 'noopener');
+  // Ajusta variável --header-h para offset de âncoras
+  (function(){
+    const header = document.getElementById('siteHeader');
+    if(!header) return;
+    function setOffset(){
+      const h = header.offsetHeight || 72;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
     }
-  });
-});
-</script>
-
+    setOffset();
+    window.addEventListener('resize', setOffset);
+  })();
+  </script>
 </body>
 </html>
-
