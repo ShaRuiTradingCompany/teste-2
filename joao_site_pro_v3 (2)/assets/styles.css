@@ -1006,3 +1006,57 @@ html{
   letter-spacing: .06em;
   opacity: .95;
 }
+/* … (sua base permanece) … */
+
+/* ===== Reel de fotos ===== */
+.who-gallery{ padding:16px 0 6px; }
+.who-gallery .strip{
+  display:flex; gap:12px; will-change: transform;
+  animation: stripMove 25s linear infinite;
+  /* fade nas bordas (compatível com WebKit) */
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.who-gallery img{
+  width: clamp(220px, 30vw, 420px);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 10px 26px rgba(0,0,0,.3);
+}
+/* Loop perfeito: termina exatamente no meio (após a 6ª), recomeça sem “pulo” */
+@keyframes stripMove{
+  to{ transform: translateX(-50%); }
+}
+
+/* ===== Slides do tablet: foto configurável por variáveis ===== */
+.slide::before{
+  content:"";
+  position:absolute;
+  inset: 0 0 var(--photo-bottom, 30%) 0; /* reserva padrão 30% para o balão */
+  background-image: var(--bg, none);
+  background-position: center;
+  background-size: var(--bg-size, cover); /* mude para 'contain' por slide, quando quiser ver 100% */
+  background-repeat: no-repeat;
+  background-color: #0b0e10;
+}
+
+/* ===== Diferenciais: aproximar título/sub dos balões (só espaçamento) ===== */
+#diferenciais .dif-title{ margin: 2px 0 2px; line-height:1.15; }
+#diferenciais .dif-sub{ margin: 0 0 9px; letter-spacing:.06em; opacity:.95; }
+
+/* ===== Navegação visível sobre o vídeo (mantido) ===== */
+.site-header .menu{ gap: clamp(12px, 2vw, 24px); }
+.site-header .menu a{
+  font-weight: 800; font-size: clamp(14px, 1.25vw, 18px);
+  letter-spacing:.02em; padding:8px 4px;
+  text-shadow: 0 2px 14px rgba(0,0,0,.55), 0 0 8px rgba(0,0,0,.35);
+}
+
+/* ===== Offset âncoras ===== */
+:root{ --header-h: 72px; }
+@media (max-width: 880px){ :root{ --header-h: 64px; } }
+html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); }
+#quem-somos, #diferenciais, #plataforma, #faq{ scroll-margin-top: calc(var(--header-h) + 10px); }
+
