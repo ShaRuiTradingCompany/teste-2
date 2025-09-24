@@ -778,6 +778,17 @@ p{ margin:10px 0 }
 @keyframes marquee{
   to{ transform: translateX(-100%); }
 }
+/* Foto do slide: controlável por variáveis */
+.slide::before{
+  content:"";
+  position:absolute;
+  inset: 0 0 var(--photo-bottom, 30%) 0;  /* reserva p/ o balão: 30% padrão */
+  background-image: var(--bg, none);
+  background-position: center;
+  background-size: var(--bg-size, cover); /* 'cover' padrão; pode virar 'contain' por slide */
+  background-repeat: no-repeat;
+  background-color: #0b0e10;              /* fundo neutro nas “barras” quando usar contain */
+}
 
 /* ======  QUEM SOMOS – foto maior + galeria  ====== */
 /* aumenta levemente a coluna da foto, sem mexer no texto */
