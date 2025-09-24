@@ -1,39 +1,55 @@
 <!doctype html>
-<html lang="pt-BR"><head>
+<html lang="pt-BR">
+<head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Contato — ShaRui Trading Company</title>
   <link rel="stylesheet" href="/assets/styles.css">
-</head><body>
-<header class="site-header">
-  <div class="container nav-wrap">
-    <div class="brand"><a href="/pt/index.html" class="brand-logo"><span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span></a></div>
-    <nav><div class="menu">
-      <a href="/pt/index.html#quem-somos">Quem somos</a>
-      <a href="/pt/diferenciais.html">Diferenciais</a>
-      <a href="/pt/plataforma.html">Plataforma</a>
-      <a href="/pt/contato.html"><b>Contato</b></a>
-    </div></nav>
-  </div>
-</header>
-
-<main>
-  <section class="section">
-    <div class="container" style="max-width:860px">
-      <h1>Fale com a gente</h1>
-      <p>Agende uma conversa ou mande mensagem no WhatsApp.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Agendar (Calendly)</h3>
-          <p><a class="cta primary" href="#" onclick="openCalendly();return false;">Abrir Calendly</a></p>
-        </div>
-        <div class="card">
-          <h3>WhatsApp</h3>
-          <p><a class="cta" href="https://wa.me/551193381008" target="_blank" rel="noopener">Conversar agora</a></p>
-        </div>
-      </div>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="/pt/index.html" class="brand-logo"><span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span></a>
+      <nav class="menu">
+        <a href="/pt/quem-somos.html">Quem somos</a>
+        <a href="/pt/diferenciais.html">Diferenciais</a>
+        <a href="/pt/plataforma.html">Plataforma</a>
+        <a href="/pt/contato.html" aria-current="page">Contato</a>
+      </nav>
     </div>
-  </section>
-</main>
+  </header>
+
+  <main style="padding-top:calc(var(--header-h) + 24px)">
+    <section class="section">
+      <div class="container" style="max-width:720px">
+        <h2>Fale com a ShaRui</h2>
+        <p class="lead">Envie sua mensagem e retornamos em breve.</p>
+
+        <form class="card" style="display:grid; gap:12px">
+          <label>Nome <input type="text" required></label>
+          <label>E‑mail <input type="email" required></label>
+          <label>Telefone (WhatsApp) <input type="tel" placeholder="+55 (__) _____‑____" required></label>
+          <label>Mensagem <textarea rows="5" required></textarea></label>
+          <button class="cta primary" type="submit">Enviar</button>
+        </form>
+
+        <p class="lead" style="margin-top:14px">Ou fale agora pelo WhatsApp: <a class="cta" href="https://wa.me/551193381008" target="_blank" rel="noopener">Abrir conversa</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container footer-row">
+    <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+    <address class="corp-address">Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>Fortune Plaza – Panyu<br>Postal code: 51150 – Guangzhou, China.</address>
+    <nav class="foot-social">
+      <a href="https://www.instagram.com/sharui_trading/" target="_blank" class="ic ig"></a>
+      <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" class="ic tk"></a>
+      <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" class="ic yt"></a>
+      <a href="https://wa.me/551193381008" target="_blank" class="ic wa"></a>
+    </nav>
+  </div></footer>
+</body>
+</html>
+
 
 <footer class="footer"><div class="container footer-row"><strong class="foot-brand">SHARUI TRADING COMPANY</strong></div></footer>
 <script src="/assets/main.js" defer></script>
