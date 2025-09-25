@@ -1337,3 +1337,32 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
 .culture-photo.placeholder{ display:grid; place-items:center; color:#cfe4ff; opacity:.8; border-style:dashed; cursor:default }
 .culture-photo.placeholder span{ font-weight:800; letter-spacing:.02em }
 .about-cta .contact-row.center{ justify-content:center; gap:10px }
+/* ===== HEADER — marca e menu lado a lado ===== */
+.site-header .nav-wrap{
+  display:flex;                 /* coloca os itens na mesma linha */
+  align-items:center;
+  gap: clamp(12px, 2vw, 24px);
+  padding-block: 10px;
+}
+
+/* o <nav> vira o item da direita */
+.site-header nav{
+  margin-left:auto;             /* empurra o menu para a direita */
+  display:flex;
+  align-items:center;
+  justify-content:flex-start !important; /* evita "space-between" espalhando tudo */
+  gap: clamp(14px, 2vw, 28px);
+  flex-wrap: nowrap;
+}
+
+/* funciona nos dois formatos que você usa:
+   - <nav class="menu"> (quem-somos)
+   - <nav><div class="menu">…</div></nav> (index) */
+.site-header nav.menu,
+.site-header nav .menu{
+  display:flex;
+  align-items:center;
+  gap: clamp(14px, 2vw, 28px);
+}
+
+.site-header nav a{ white-space: nowrap; } /* evita quebra de itens */
