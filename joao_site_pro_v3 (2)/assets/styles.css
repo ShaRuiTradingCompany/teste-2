@@ -1379,47 +1379,47 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
 .site-header nav .menu{
   gap: 14px;                      /* ajuste fino; aumente/diminua se quiser */
 }
-/********* AJUSTES DE TAMANHO — SÓCIOS + BASTIDORES *********/
+/********* TAMANHO MÉDIO — SÓCIOS + BASTIDORES *********/
 
-/* ——— SÓCIOS: imagem maior no card ——— */
+/* ——— SÓCIOS: imagem levemente maior, sem exagero ——— */
 #socios .partner-card{
-  grid-template-columns: 1.35fr 1fr;   /* antes ~1fr 1.2fr — aumenta a coluna da foto */
+  grid-template-columns: 1.2fr 1fr;   /* imagem ~20% maior que o texto */
   align-items: stretch;
+  gap: 14px;
 }
 #socios .partner-card figure{
-  aspect-ratio: 4 / 5;                 /* deixa mais alto/vertical */
-  min-height: 420px;                    /* garante presença visual */
+  aspect-ratio: 4 / 5;                /* altura confortável */
 }
 #socios .partner-card img{
   width: 100%; height: 100%;
   object-fit: cover; object-position: center;
 }
 
-/* Responsivo: quando empilha, mantém a foto alta sem exagero */
+/* Empilhado no responsivo: mantém a foto alta mas equilibrada */
 @media (max-width: 1100px){
   #socios .partner-card{ grid-template-columns: 1fr; }
-  #socios .partner-card figure{ aspect-ratio: 16 / 10; min-height: 320px; }
+  #socios .partner-card figure{ aspect-ratio: 16 / 10; }
 }
 
-/* ——— BASTIDORES: thumbs maiores ——— */
+/* ——— BASTIDORES: thumbs um pouco maiores (meio-termo) ——— */
 #bastidores .culture-grid{
-  grid-template-columns: repeat(3, 1fr);  /* de 4 → 3 colunas no desktop */
-  gap: 14px;
+  grid-template-columns: repeat(4, 1fr) !important;  /* 4 colunas no desktop */
+  gap: 12px;
 }
 #bastidores .culture-photo{
-  aspect-ratio: 4 / 3;                    /* mais alto sem distorcer */
-  min-height: 240px;                       /* dá presença mesmo com telas grandes */
+  aspect-ratio: 4 / 3;
+  min-height: 200px;                                  /* sem “engolir” o texto */
 }
 #bastidores .culture-photo img{
   width: 100%; height: 100%;
   object-fit: cover; object-position: center;
 }
 
-/* Quebra para 2 colunas em telas médias e 1 coluna no mobile */
+/* Quebras responsivas */
 @media (max-width: 1100px){
-  #bastidores .culture-grid{ grid-template-columns: repeat(2, 1fr); }
+  #bastidores .culture-grid{ grid-template-columns: repeat(2, 1fr) !important; }
 }
 @media (max-width: 720px){
-  #bastidores .culture-grid{ grid-template-columns: 1fr; }
-  #bastidores .culture-photo{ min-height: 220px; }
+  #bastidores .culture-grid{ grid-template-columns: 1fr !important; }
+  #bastidores .culture-photo{ min-height: 190px; }
 }
