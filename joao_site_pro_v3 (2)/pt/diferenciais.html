@@ -25,15 +25,17 @@
 <main id="diferenciais-page">
 
   <!-- 1) HERO: título no fundo azul + foto 1/3 -->
-  <section class="diff-hero">
-    <div class="container hero-grid">
-      <!-- troque a imagem se quiser -->
-      <div class="hero-text">
-        <h1>O que nos torna diferente dos demais?</h1>
-        <p class="lead">Menos erro. Mais previsibilidade e controle — do pedido à entrega.</p>
-      </div>
+ <section class="logo-band">
+  <div class="container logo-trio">
+    <figure class="semi left"  style="--img:url('/assets/diff/logo-left.jpg')"></figure>
+
+    <div class="logo-orb small">
+      <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company">
     </div>
-  </section>
+
+    <figure class="semi right" style="--img:url('/assets/diff/logo-right.jpg')"></figure>
+  </div>
+</section>
 
   <!-- 2) Logo com “feixe” (neon) -->
   <section class="logo-band">
@@ -46,10 +48,21 @@
 
   <!-- 3) ROTA: área azul-clara com navio + balão que sai do navio -->
   <section id="rota-branca" aria-label="Fluxo de embarque">
-    <div class="board">
-      <svg id="rwSvg" viewBox="0 0 1200 420" aria-hidden="true">
-        <!-- caminho base (tracejado) -->
-        <path id="rwPath" class="rw-base" d="M80,300 C 360,260 620,220 1060,240" />
+  <div class="board">
+    <!-- ... SVG, #rwSpeech e os botões centrais ... -->
+    <div class="rw-controls">
+      <button class="btn" id="rwPrev">〈 Voltar</button>
+      <button class="btn" id="rwNext">Próximo 〉</button>
+    </div>
+
+    <!-- SETAS LATERAIS (dentro da .board) -->
+    <button class="rw-arrow left"  id="rwArrowPrev" aria-label="Anterior">‹</button>
+    <button class="rw-arrow right" id="rwArrowNext" aria-label="Próximo">›</button>
+
+    <p class="sr-only" id="rwLive" aria-live="polite">Etapa 1</p>
+  </div>
+</section>
+
 
         <!-- Fábrica (início) -->
         <g id="rwFactory" class="rw-mark" transform="translate(80,300)">
@@ -87,10 +100,6 @@
       <p class="sr-only" id="rwLive" aria-live="polite">Etapa 1</p>
     </div>
   </section>
-
-<button class="rw-arrow left"  id="rwArrowPrev" aria-label="Anterior">‹</button>
-<button class="rw-arrow right" id="rwArrowNext" aria-label="Próximo">›</button>
-
 
   <!-- 4) Título explicativo -->
   <section class="diff-meaning">
