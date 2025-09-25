@@ -1423,3 +1423,21 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
   #bastidores .culture-grid{ grid-template-columns: 1fr !important; }
   #bastidores .culture-photo{ min-height: 190px; }
 }
+/* === HEADER: centralizar menu (logo à esquerda, globo à direita) === */
+.site-header .nav-wrap{
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+/* Garante posição dos 3 blocos, cobrindo Home e páginas internas */
+.site-header .nav-wrap > .brand,
+.site-header .nav-wrap > .brand-logo { justify-self: start; }
+
+.site-header .nav-wrap > nav,
+.site-header .nav-wrap > .menu { justify-self: center; }
+
+.site-header .nav-wrap > .lang { justify-self: end; }
+
+/* (opcional) estabilidade visual do miolo */
+.site-header nav .menu { display: flex; gap: 16px; align-items: center; }
