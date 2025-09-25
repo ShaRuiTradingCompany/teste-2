@@ -18,6 +18,12 @@
   const btnPrev = document.getElementById('rwPrev');
   const btnNext = document.getElementById('rwNext');
   const live    = document.getElementById('rwLive');
+  const arrowPrev = document.getElementById('rwArrowPrev');
+  const arrowNext = document.getElementById('rwArrowNext');
+  arrowPrev?.addEventListener('click', ()=> setStep(idx-1));
+  arrowNext?.addEventListener('click', ()=> setStep(idx+1));
+
+
 
   if (svg && path && ship && prog && board && speech){
     const VBW = 1200, VBH = 420;
