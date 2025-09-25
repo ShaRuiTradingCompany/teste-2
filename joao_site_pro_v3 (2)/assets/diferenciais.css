@@ -390,7 +390,5 @@ body{
   .board{ min-height: 380px }
   .rw-slide{ grid-template-columns: 1fr }
 }
-/* Zig-zag só na 2ª página */
-#rw-details .rw-slide:nth-of-type(2) .rw-card:nth-child(1){ transform: translateY(6px); }
-#rw-details .rw-slide:nth-of-type(2) .rw-card:nth-child(2){ transform: translateY(-6px); }
+
 
