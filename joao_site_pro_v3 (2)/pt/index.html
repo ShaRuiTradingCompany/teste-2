@@ -93,6 +93,58 @@
     .modal-body iframe{width:100%; height:100%; border:0}
     .btn-close{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:6px 10px; cursor:pointer}
   </style>
+<!-- AJUSTE 2: Logo redondo (Home) -->
+<style id="ajuste-logo-redondo-home">
+  /* Núcleo redondo na seção radial da Home (não altera o raio/órbita) */
+  #diferenciais.diffs-radial .core{
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+  }
+  #diferenciais.diffs-radial .core img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* preenche o círculo */
+  }
+</style>
+
+  <!-- AJUSTE 3: Compactação "Nossos Diferenciais" (Home) -->
+<style id="ajuste-compacta-diferenciais-home">
+  /* Aproxima título e subtítulo do conjunto radial */
+  #diferenciais.diffs-radial .dif-title{
+    margin-bottom: 4px !important;
+  }
+  #diferenciais.diffs-radial .dif-sub{
+    margin-top: 0;
+    margin-bottom: 10px;
+    letter-spacing: .06em;
+  }
+
+  /* Reduz todo o palco radial sem alterar a órbita/ângulos */
+  #diferenciais.diffs-radial .radial-stage{
+    transform: scale(.85);
+    transform-origin: top center;
+    margin-top: 0;
+  }
+
+  /* Balões levemente mais compactos (sem afetar a órbita) */
+  #diferenciais.diffs-radial .bubble{
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  #diferenciais.diffs-radial .bubble b{
+    font-size: 15px;
+  }
+
+  /* Em telas menores, mantém tamanho original para legibilidade */
+  @media (max-width: 920px){
+    #diferenciais.diffs-radial .radial-stage{ transform: none; }
+  }
+</style>
+
+  
 </head>
 
 <body>
@@ -663,7 +715,7 @@
 </script>
 <script>
   (function(){
-    const sec = document.querySelector('#diferenciais.diff-radial');
+    const sec = document.querySelector('#diferenciais.diffs-radial');
     if(!sec) return;
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
