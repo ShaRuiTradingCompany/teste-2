@@ -390,5 +390,143 @@ body{
   .board{ min-height: 380px }
   .rw-slide{ grid-template-columns: 1fr }
 }
+/* ===== Utilitário: container (caso não venha do styles.css) ===== */
+.container{ max-width:1240px; margin:0 auto; padding:0 16px }
+
+/* ===== 1) HERO: título no fundo azul + foto 1/3 ===== */
+.diff-hero{
+  background:
+    radial-gradient(820px 560px at 50% 15%, rgba(255,255,255,.07), transparent 60%),
+    linear-gradient(180deg,#214a83,#183a69 55%, #17335f);
+  padding-block: clamp(28px, 7vh, 64px);
+}
+.diff-hero .hero-grid{
+  display:grid; grid-template-columns: 1fr 2fr;
+  gap: clamp(14px, 2.6vw, 24px); align-items:center;
+}
+.diff-hero .hero-photo{
+  height: clamp(220px, 36vh, 320px);
+  border-radius: 24px;
+  background: var(--rw-bg) center/cover no-repeat;
+  background-image: var(--img, none);
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+.diff-hero .hero-text{ text-align:center }
+.diff-hero h1{ margin:0 0 6px; font-size:clamp(28px,4.8vw,46px) }
+.diff-hero .lead{ margin:0; opacity:.96; font-size:clamp(15px,2.2vw,20px) }
+@media (max-width: 920px){
+  .diff-hero .hero-grid{ grid-template-columns: 1fr; }
+  .diff-hero .hero-photo{ order:2; }
+}
+
+/* ===== 2) LOGO com feixe (neon) ===== */
+.logo-band{ display:grid; place-items:center; padding: 10px 0 6px }
+.logo-orb{ --size: clamp(120px, 20vw, 200px); position:relative; width:var(--size); aspect-ratio:1/1; border-radius:50%; display:grid; place-items:center; filter:drop-shadow(0 18px 44px rgba(0,0,0,.35)); }
+.logo-orb img{ width:74%; height:74%; object-fit:contain; background:#fff; border-radius:50%; z-index:2 }
+.logo-orb::after{ content:""; position:absolute; inset:-6%; border-radius:50%;
+  background: conic-gradient(from var(--angle,0deg), #66e0c2,#22b3e5,#7c3aed,#22b3e5,#66e0c2);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px));
+  filter: blur(4px) saturate(1.06); animation: orbSpin 6.8s linear infinite;
+}
+@keyframes orbSpin{ to{ --angle: 360deg } }
+
+/* ===== 3) ROTA (navio) — azul claro só nesta área ===== */
+:root{
+  --rw-accent:#66e0c2;
+  --rw-ink:#0b1f3d;
+  --rw-red:#E11D48;
+  --rw-bg:#eaf4ff;
+  --rw-border:#d8e6f7;
+}
+#rota-branca{
+  background:var(--rw-bg);
+  border:1px solid var(--rw-border);
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(10,22,40,.06);
+  padding:14px;
+  margin:18px auto;
+}
+#rota-branca .board{ position:relative; width:min(1200px,96vw); height:clamp(300px,48vh,420px); margin:0 auto; }
+#rota-branca svg{ position:absolute; inset:0; width:100%; height:100%; display:block }
+#rwPath.rw-base{ stroke:#cdd7e6; stroke-width:3; stroke-dasharray:8 10; fill:none }
+#rwProg{ stroke:var(--rw-accent); stroke-width:4; stroke-linecap:round; fill:none }
+.rw-mark{ opacity:.9 }
+.rw-ship path.hull{ fill:var(--rw-red); stroke:#991B1B; stroke-width:1.5 }
+.rw-ship rect.bridge{ fill:#ffe4e6; stroke:#e5c2c9; stroke-width:1 }
+.rw-ship rect.stack{ fill:#991B1B }
+.rw-ship .shadow{ fill:rgba(0,0,0,.18) }
+
+/* Balão que sai do navio */
+.rw-speech{
+  position:absolute; left:0; top:0;
+  transform: translate(-9999px,-9999px); /* escondido até posicionar */
+  background:#0b1f3d; color:#fff; border:1px solid rgba(255,255,255,.16);
+  border-radius:12px; padding:10px 12px; max-width:260px;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
+}
+.rw-speech b{ display:block; font-weight:800; margin:0 0 4px }
+.rw-speech p{ margin:0; font-size:13px; line-height:1.45; opacity:.96 }
+.rw-speech::after{
+  content:""; position:absolute; left:18px; top:100%;
+  border:8px solid transparent; border-top-color:#0b1f3d;
+}
+
+/* Controles */
+.rw-controls{ position:absolute; right:10px; bottom:10px; display:flex; gap:8px }
+#rota-branca .btn{
+  padding:8px 12px; border-radius:10px; border:1px solid #d7dfeb;
+  background:#f7f9fc; color:#0b1f3d; font-weight:800; cursor:pointer
+}
+#rota-branca .btn:hover{ background:#eef3f9 }
+
+/* ===== 4) Título explicativo ===== */
+.diff-meaning{ padding: 8px 0 0 }
+.diff-meaning h2{ text-align:center; font-size:clamp(26px,4.6vw,42px); margin:0 }
+
+/* ===== 5) Detalhamento — 2 por viewport, alternando foto ===== */
+.diff-deep{ padding: 10px 0 6px }
+.diff-deep .slice{
+  min-height: 50vh; display:grid; align-items:center;
+  grid-template-columns: 1fr 1fr; gap: clamp(14px,2.6vw,24px);
+  margin: 12px 0; padding: clamp(12px,2.2vw,18px);
+  background:#fff; color:#0b1f3d;
+  border:1px solid #e5ecf6; border-radius:16px; box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+.diff-deep .slice.right .ph{ order:2 }
+.diff-deep .slice.right .copy{ order:1; padding-right: clamp(6px,1vw,10px) }
+.diff-deep .slice.left  .ph{ order:1 }
+.diff-deep .slice.left  .copy{ order:2; padding-left:  clamp(6px,1vw,10px) }
+
+.diff-deep .ph{
+  aspect-ratio: 16/10; border-radius:12px;
+  background: #0b0e10 center/cover no-repeat; background-image: var(--ph, none);
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+.diff-deep .copy h3{ margin:0 0 6px; font-weight:800; font-size:clamp(18px,2.2vw,26px) }
+.diff-deep .copy p{ margin:0; font-size:clamp(14px,1.6vw,18px); line-height:1.6; opacity:.95 }
+
+/* Digitação ao rolar */
+.type{ will-change: contents }
+.type.delay{ opacity:.98 }
+
+/* ===== 6) CTA ===== */
+.diff-cta{ padding: 10px 0 24px; text-align:center }
+.diff-cta .kpi-row{
+  display:grid; gap:12px; grid-template-columns: repeat(3,1fr);
+  max-width:860px; margin:0 auto 12px;
+}
+.diff-cta .kpi{
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+  border-radius:12px; padding:14px; color:#eaf1ff;
+}
+.diff-cta .kpi b{ display:block; font-size: clamp(22px,4.4vw,34px) }
+.diff-cta .kpi span{ opacity:.95 }
+
+@media (max-width: 920px){
+  .diff-deep .slice{ grid-template-columns: 1fr; }
+  .diff-deep .slice .copy{ order:2; padding:0 }
+  .diff-deep .slice .ph{ order:1 }
+}
 
 
