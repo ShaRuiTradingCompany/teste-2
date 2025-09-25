@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Quem somos — ShaRui Trading Company</title>
   <meta name="description" content="Somos uma empresa que une integridade, prazos cumpridos e tecnologia para reduzir risco e custo total. Base em Guangzhou e visitas a fábricas em toda a China.">
+
+  <!-- CSS base do site -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Estilos locais desta página -->
+  <!-- ===== Estilos locais desta página ===== -->
   <style>
-    /* Esconde a marca do header SOMENTE nesta página  */
-    .page-about .site-header .brand-logo{ display:none !important; }
-
-    /* Linha de título: marca + “Quem somos” dentro do herói */
+    /* ---------- HERÓI (50/50) ---------- */
+    #sobre.section{ padding-top: calc(var(--header-h, 72px) + 16px) }
     .title-row{ display:flex; align-items:center; gap:10px; margin-bottom:8px }
     .brand-badge{
       display:inline-flex; flex-direction:column; line-height:1;
@@ -24,7 +24,7 @@
     .brand-badge .brand-sub{ font-weight:700; letter-spacing:.18em; opacity:.85; font-size:clamp(9px,1vw,11px) }
     .title-row h1{ margin:0 }
 
-    /* Logo circular com feixes */
+    /* ---------- LOGO CIRCULAR COM FEIXES ---------- */
     .logo-orb{
       position:relative; display:grid; place-items:center;
       width:min(520px, 42vw); aspect-ratio:1/1; margin-inline:auto; border-radius:50%;
@@ -35,8 +35,7 @@
     .logo-orb::before{
       content:""; position:absolute; inset:-8px; border-radius:50%;
       background: conic-gradient(#66e0c2, #22b3e5, #7c3aed, #22b3e5, #66e0c2);
-      filter: blur(8px);
-      animation: orbSpin 10s linear infinite;
+      filter: blur(8px); animation: orbSpin 10s linear infinite;
       -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
               mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
       pointer-events:none;
@@ -50,47 +49,38 @@
     @keyframes orbSpin { to { transform: rotate(360deg); } }
     @keyframes orbPulse { from { transform: scale(.98) } to { transform: scale(1.02) } }
 
-    /* Hero: compensa o header fixo */
-    #sobre.section{ padding-top: calc(var(--header-h, 72px) + 16px) }
-
-    /* ===== Faixa de métricas (STICKY abaixo do header) ===== */
+    /* ---------- FAIXA DE MÉTRICAS (NÃO FIXA) ---------- */
     #stats-band{
-      position: sticky;
-      top: calc(var(--header-h, 72px) + 0px);
-      z-index: 15;
+      position:relative; /* não é sticky/fixed */
+      top:auto; z-index:auto;
       background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
       border-block:1px solid rgba(255,255,255,.22);
-      padding: 12px 0; /* maior */
+      padding:14px 0;
     }
     #stats-band .metrics{
       display:flex; align-items:center; flex-wrap:wrap; gap:16px 24px; justify-content:space-between;
     }
-    #stats-band .metric{
-      display:flex; align-items:baseline; gap:8px; font-weight:800; letter-spacing:.02em;
-    }
+    #stats-band .metric{ display:flex; align-items:baseline; gap:8px; font-weight:800; letter-spacing:.02em; }
     #stats-band .metric .num{
       font-family:'Space Grotesk', Inter, system-ui, sans-serif;
-      font-size: clamp(18px, 3.4vw, 30px); font-weight:800; line-height:1;
-      min-width:34px; text-shadow:0 2px 12px rgba(0,0,0,.25);
+      font-size: clamp(18px, 3.4vw, 30px); font-weight:800; line-height:1; min-width:34px;
+      text-shadow:0 2px 12px rgba(0,0,0,.25);
     }
     #stats-band .metric span.label{ opacity:.95; font-size: clamp(13px, 2vw, 16px) }
 
-    /* CTA final centralizada */
-    .contact-row.center{ justify-content:center }
-
-    /* Grid Bastidores — só qs2..qs6 */
+    /* ---------- BASTIDORES GRID (qs2..qs6) ---------- */
     .culture-grid{ grid-template-columns: repeat(5,1fr) }
     @media (max-width:1100px){ .culture-grid{ grid-template-columns: repeat(3,1fr) } }
     @media (max-width:720px){ .culture-grid{ grid-template-columns: 1fr } }
 
-    /* Utilitário Reveal desta página */
+    /* ---------- Reveal utilitário ---------- */
     .reveal{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease }
     .reveal.in{ opacity:1; transform:none }
   </style>
 </head>
 
 <body class="page-about">
-  <!-- Header global (a marca fica oculta via CSS nesta página) -->
+  <!-- HEADER global (marca visível para voltar à home) -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
       <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
@@ -135,7 +125,7 @@
       </div>
     </section>
 
-    <!-- (1.1) FAIXA DE MÉTRICAS — STICKY (fica fixa ao rolar) -->
+    <!-- (1.1) FAIXA DE MÉTRICAS (NÃO FIXA) -->
     <section id="stats-band" aria-label="Indicadores da ShaRui">
       <div class="container metrics">
         <div class="metric">
@@ -151,11 +141,6 @@
         <div class="metric">
           <span class="num" data-target="4">0</span>
           <span class="label">bases: China, Itália, Brasil e Dubai</span>
-        </div>
-        <div class="metric">
-          <span class="prefix">+ de</span>
-          <span class="num" data-target="5">0</span>
-          <span class="label">colaboradores nativos</span>
         </div>
       </div>
     </section>
@@ -188,7 +173,7 @@
       </div>
     </section>
 
-    <!-- (3) BASTIDORES — mantém qs2..qs6 -->
+    <!-- (3) BASTIDORES — qs2..qs6 -->
     <section id="bastidores" class="section about-culture">
       <div class="container">
         <h2 class="reveal">Bastidores</h2>
@@ -228,7 +213,7 @@
       <div class="container cta-wrap reveal">
         <h2>Vamos tirar sua ideia do papel?</h2>
         <p>Conte-nos seu produto e prazo. Em 48h visitamos a fábrica e alinhamos próximos passos.</p>
-        <div class="contact-row center" style="margin-top:10px;">
+        <div class="contact-row" style="justify-content:center; margin-top:10px;">
           <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
           <button class="cta" data-open-calendly>Agendar conversa</button>
         </div>
@@ -241,17 +226,6 @@
       <img src="" alt="" id="lightbox-img">
     </dialog>
   </main>
-
-  <!-- Modal Calendly (usa seu modal padrão se existir no projeto) -->
-  <div id="calendly-modal" class="modal" onclick="closeCalendly && closeCalendly()">
-    <div class="modal-card" onclick="event.stopPropagation()">
-      <div class="modal-head">
-        <strong>Agendar conversa</strong>
-        <button class="btn-close" onclick="closeCalendly && closeCalendly()">Fechar</button>
-      </div>
-      <div class="modal-body"><iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe></div>
-    </div>
-  </div>
 
   <!-- Rodapé -->
   <footer class="footer">
@@ -266,29 +240,6 @@
       </nav>
     </div>
   </footer>
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ShaRui Trading Company",
-    "url": "https://seu-dominio.com",
-    "logo": "https://seu-dominio.com/assets/logo-sharui.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Yayun Avenue, 893 0 Building 23 – Jinlongcheng",
-      "addressLocality": "Guangzhou",
-      "postalCode": "51150",
-      "addressCountry": "CN"
-    },
-    "sameAs": [
-      "https://www.instagram.com/sharui_trading/",
-      "https://www.tiktok.com/@sharui_trading?lang=en",
-      "https://www.youtube.com/@ShaRu%C3%ADTrading"
-    ]
-  }
-  </script>
 
   <!-- ===== JS local desta página ===== -->
   <script>
@@ -325,7 +276,7 @@
     });
   });
 
-  // Ajuste dinâmico da altura do header para âncoras/offset
+  // Ajusta var(--header-h) para compensar o cabeçalho fixo
   (function(){
     const header = document.getElementById('siteHeader');
     if(!header) return;
@@ -333,11 +284,10 @@
       const h = header.offsetHeight || 72;
       document.documentElement.style.setProperty('--header-h', h + 'px');
     }
-    setOffset();
-    window.addEventListener('resize', setOffset);
+    setOffset(); window.addEventListener('resize', setOffset);
   })();
 
-  // Count-up na faixa sticky (uma única vez, quando o band entrar na viewport)
+  // Count-up na faixa de métricas (uma vez)
   (function(){
     const band = document.getElementById('stats-band');
     const nums = band.querySelectorAll('.num');
@@ -359,9 +309,10 @@
           done = true; io.disconnect();
         }
       });
-    }, {threshold:.4});
+    }, {threshold:.35});
     io.observe(band);
   })();
   </script>
 </body>
 </html>
+
