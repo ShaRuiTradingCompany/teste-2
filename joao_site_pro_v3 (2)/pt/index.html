@@ -767,38 +767,5 @@
   window.addEventListener('resize', setOffset);
 })();
 </script>
-<script>
-/* Converte o texto da faixa em pílulas por palavra: SHARUI | TRADING | COMPANY */
-(function(){
-  document.querySelectorAll('.brand-band .marquee').forEach((marq)=>{
-    // Texto base (pode personalizar aqui)
-    const base = 'SHARUI TRADING COMPANY';
-    const parts = base.split(/\s+/); // ["SHARUI","TRADING","COMPANY"]
-
-    // Monta uma linha (row) com pílulas e pontinhos entre elas
-    function makeRow(){
-      const row = document.createElement('div');
-      row.className = 'row';
-      parts.forEach((w, i)=>{
-        const pill = document.createElement('i');
-        pill.className = 'brand-token';
-        pill.textContent = w;
-        row.appendChild(pill);
-        if(i < parts.length - 1){
-          const dot = document.createElement('span');
-          dot.className = 'brand-dot';
-          row.appendChild(dot);
-        }
-      });
-      return row;
-    }
-
-    // Limpa conteúdo antigo e injeta 2 linhas para loop infinito
-    marq.innerHTML = '';
-    marq.appendChild(makeRow());
-    marq.appendChild(makeRow());
-  });
-})();
-</script>
 
 </body>
