@@ -1366,3 +1366,61 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
 }
 
 .site-header nav a{ white-space: nowrap; } /* evita quebra de itens */
+/* === NAV: fixo, invisível, alinhado à esquerda (globo intacto) === */
+.site-header{
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  background: transparent; border: none;
+}
+.site-header .nav-wrap{
+  display:flex; align-items:center; gap:16px; padding:10px 16px;
+}
+.site-header nav{
+  margin-left: 10px;                 /* aproxima o menu do logo */
+  display:flex; align-items:center; justify-content:flex-start !important;
+}
+.site-header nav .menu{
+  display:flex; align-items:center; gap:14px; flex-wrap:nowrap;
+}
+
+/* Deixa os links invisíveis mas preserva layout; ainda “fixo” no topo */
+.site-header .menu a{
+  opacity: 0; pointer-events: none;  /* invisível e não clicável */
+}
+
+/* Mantém o globo normal (sem círculo branco adicional) */
+.site-header .lang .lang-toggle{
+  opacity: 1; pointer-events: auto;  /* globo ativo */
+}
+
+/* Reserva o offset de rolagem para o header fixo */
+:root{ --header-h: 64px; }
+html{ scroll-padding-top: calc(var(--header-h) + 8px); }
+/* === Brand band com pílulas por palavra === */
+.brand-band{ height:54px; display:flex; align-items:center; overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-block:1px solid rgba(255,255,255,.12);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.brand-band .marquee{ white-space:nowrap; will-change:transform; }
+.brand-band .marquee .row{ display:inline-flex; align-items:center; animation: rowMove 18s linear infinite; }
+.brand-band .marquee .row + .row{ margin-left: 40px; } /* loop contínuo */
+
+.brand-token{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:6px 12px; margin:0 8px;
+  border:2px solid rgba(255,255,255,.92);
+  border-radius:999px; font-weight:800; letter-spacing:.06em; color:#fff;
+  text-shadow:0 1px 0 rgba(0,0,0,.25);
+  box-shadow:0 0 0 2px rgba(255,255,255,.12) inset, 0 6px 18px rgba(0,0,0,.25);
+}
+
+.brand-dot{
+  display:inline-block; width:6px; height:6px; border-radius:50%;
+  background:#fff; opacity:.9; margin:0 10px; transform:translateY(1px);
+}
+
+@keyframes rowMove{ to{ transform: translateX(-50%); } }
+
+/* Variante mais clara para a primeira faixa, se usar .brand-band.light */
+.brand-band.light .brand-token{ border-color:#fff; }
