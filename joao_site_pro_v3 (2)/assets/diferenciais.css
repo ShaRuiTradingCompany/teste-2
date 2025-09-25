@@ -628,5 +628,27 @@ body{
 
 /* Corrige seletor do SVG (id correto) */
 #rwSvg{ position:absolute; inset:0; width:100%; height:100%; display:block }
+/* === AJUSTE: fotos semicirculares com lado reto colado na borda === */
+.diff-deep .slice{
+  /* usamos a mesma “margem interna” do slice como variável */
+  --slice-pad: clamp(10px, 2vw, 16px);
+  padding: var(--slice-pad) !important;
+}
+
+/* cola o lado reto na BORDA da página */
+.diff-deep .slice.left  { padding-left: 0 !important; }
+.diff-deep .slice.right { padding-right: 0 !important; }
+
+/* LEFT: foto à esquerda → lado reto fica na esquerda; curva para o centro */
+.diff-deep .slice.left .ph{
+  border-radius: 22px 9999px 9999px 22px !important; /* arredondado para o centro */
+  margin-left: calc(-1 * var(--slice-pad));          /* encosta na borda esquerda */
+}
+
+/* RIGHT: foto à direita → lado reto fica na direita; curva para o centro */
+.diff-deep .slice.right .ph{
+  border-radius: 9999px 22px 22px 9999px !important; /* arredondado para o centro */
+  margin-right: calc(-1 * var(--slice-pad));         /* encosta na borda direita */
+}
 
 
