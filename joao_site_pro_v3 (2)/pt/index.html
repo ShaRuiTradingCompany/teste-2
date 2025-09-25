@@ -109,42 +109,6 @@
   }
 </style>
 
-  <!-- AJUSTE 3: Compactação "Nossos Diferenciais" (Home) -->
-<style id="ajuste-compacta-diferenciais-home">
-  /* Aproxima título e subtítulo do conjunto radial */
-  #diferenciais.diffs-radial .dif-title{
-    margin-bottom: 4px !important;
-  }
-  #diferenciais.diffs-radial .dif-sub{
-    margin-top: 0;
-    margin-bottom: 10px;
-    letter-spacing: .06em;
-  }
-
-  /* Reduz todo o palco radial sem alterar a órbita/ângulos */
-  #diferenciais.diffs-radial .radial-stage{
-    transform: scale(.85);
-    transform-origin: top center;
-    margin-top: 0;
-  }
-
-  /* Balões levemente mais compactos (sem afetar a órbita) */
-  #diferenciais.diffs-radial .bubble{
-    padding: 10px 12px;
-    font-size: 14px;
-    line-height: 1.4;
-  }
-  #diferenciais.diffs-radial .bubble b{
-    font-size: 15px;
-  }
-
-  /* Em telas menores, mantém tamanho original para legibilidade */
-  @media (max-width: 920px){
-    #diferenciais.diffs-radial .radial-stage{ transform: none; }
-  }
-</style>
-
-  
 </head>
 
 <body>
