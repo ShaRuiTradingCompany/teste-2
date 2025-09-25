@@ -1,147 +1,195 @@
-/* ====== DIFERENCIAIS (página) – Tokens visuais ====== */
+/* ===== DIFERENCIAIS (página) – visual tecnológico ===== */
 :root{
-  --header-h: 72px;                 /* atualizado por JS */
+  --header-h: 72px;              /* atualizado via JS */
   --text:#E7ECF3;
   --muted:#A6B0BF;
 
-  /* narrativa */
-  --treasure:#FBBF24;               /* rota dourada */
-  --sea:#0b1f3d;                    /* mar profundo */
-  --foam:#a3e2ff;                   /* espuma */
+  --accentA:#22D3EE;             /* ciano */
+  --accentB:#7C3AED;             /* roxo */
+  --glow: 0 0 24px rgba(34,211,238,.25), 0 0 48px rgba(124,58,237,.20);
 
-  /* navio */
+  /* Navio vermelho e containers */
   --ship-red:#E11D48;
   --ship-red-dark:#991B1B;
   --container:#ef4444;
   --container-2:#fb7185;
   --container-3:#fca5a5;
 
-  /* balões */
-  --balloon-bg:rgba(13,30,52,.92);
-  --balloon-bd:rgba(255,255,255,.16);
+  /* Balão (glass) */
+  --balloon-bg: rgba(13,30,52,.72);
+  --balloon-bd: rgba(255,255,255,.16);
 }
 
-/* ====== Layout da página: header | viewport 100vh | footer ====== */
-html,body{height:100%;}
+/* Layout base: header | viewport 100vh | footer */
+html,body{ height:100%; }
 body{
   min-height:100svh;
   display:grid;
-  grid-template-rows:auto 1fr auto;  /* header | conteúdo | footer  */
-}
-
-/* ====== Hero/Viewport de animação (tela inteira) ====== */
-.journey-fs{
-  position:relative;
-  background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.20), transparent 60%),
-    radial-gradient(1000px 500px at 90% 0, rgba(34,211,238,.18), transparent 60%),
-    linear-gradient(180deg, #0f2544, #17335f);
+  grid-template-rows:auto 1fr auto;
   color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 8% -8%, rgba(124,58,237,.18), transparent 60%),
+    radial-gradient(1000px 500px at 92% 0, rgba(34,211,238,.18), transparent 60%),
+    linear-gradient(180deg,#0f2544,#17335f);
 }
 
-.journey-fs .viewport{
+/* ===== Viewport tech ===== */
+.tech-journey{
   position:relative;
-  height:calc(100svh - var(--header-h));
-  max-width:1280px;
-  margin:0 auto;
-  padding:0 16px;
-  display:grid;
-  place-items:center;
+}
+.tech-journey .viewport{
+  height: calc(100svh - var(--header-h));
+  max-width: 1240px; margin: 0 auto; padding: 0 14px;
+  position:relative; display:grid; place-items:center;
 }
 
-.journey-fs .stage{
-  position:relative;
-  width:min(1200px, 98vw);
-  height:calc(100% - 16px);
+/* Fundo: grid sutil + varredura */
+.tech-journey .bg{
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+}
+.tech-journey .bg::before{
+  content:""; position:absolute; inset:0;
+  background:
+   linear-gradient(0deg, rgba(255,255,255,.06) 1px, transparent 1px),
+   linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px;
+  opacity:.08;
+}
+.tech-journey .bg::after{
+  content:""; position:absolute; inset:-40% -40% -40% -40%;
+  background: conic-gradient(from 0deg, transparent 0%, rgba(124,58,237,.18) 8%, transparent 16%);
+  animation: sweep 8s linear infinite;
+  mix-blend-mode: screen; opacity:.25; filter: blur(18px);
+}
+@keyframes sweep{ to { transform: rotate(1turn); } }
+
+/* ===== Stepper (menu sequencial) ===== */
+.seq{
+  position:relative; z-index:1;
+  width: min(1200px, 98vw);
+  height: calc(100% - 10px);
   border:1px solid rgba(255,255,255,.14);
   border-radius:18px;
-  overflow:hidden;
-  background:rgba(255,255,255,.04);
-  box-shadow:0 18px 50px rgba(0,0,0,.35);
+  background: rgba(255,255,255,.04);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  overflow: hidden;
 }
-
-/* título sobreposto */
-.journey-fs .title{
-  position:absolute; inset:14px auto auto 14px; z-index:5;
+.seq .title{
+  position:absolute; inset:14px auto auto 14px; z-index:4;
   padding:10px 14px; border-radius:12px;
-  background:rgba(0,0,0,.28);
-  border:1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.16);
   font-weight:800; letter-spacing:.02em;
 }
-.journey-fs .subtitle{
-  display:block; font-weight:700; opacity:.9; letter-spacing:.06em; margin-top:4px;
+.seq .subtitle{ display:block; opacity:.95; letter-spacing:.06em; margin-top:4px; font-weight:700; }
+
+/* Barra do stepper (topo) */
+.seq .stepper{
+  position:absolute; left:0; right:0; top:66px; z-index:3;
+  display:flex; align-items:center; justify-content:center; gap:16px;
+  padding: 0 18px;
 }
 
-/* frames da animação */
-.frame{
-  position:absolute; inset:0; display:grid; place-items:center;
-  opacity:0; transform:scale(1.01);
-  transition:opacity .45s ease, transform .45s ease;
-  pointer-events:none;
+/* trilho e progresso */
+.seq .rail{
+  position:absolute; left:8%; right:8%; top: 34px; height:4px; z-index:1;
+  background: linear-gradient(90deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+  border-radius:999px; overflow:hidden;
 }
-.frame.active{ opacity:1; transform:none; pointer-events:auto; z-index:2; }
-.frame svg{ width:100%; height:100%; display:block; }
+.seq .progress{
+  width:0%; height:100%;
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: var(--glow);
+  transition: width .35s ease;
+}
 
-/* balão que se sobrepõe */
-.balloon{
-  position:absolute; left:16px; right:16px; bottom:16px; z-index:6;
-  max-width:520px;
-  background:var(--balloon-bg);
-  border:1px solid var(--balloon-bd);
-  border-radius:14px; padding:14px 16px;
-  box-shadow:0 18px 40px rgba(0,0,0,.35);
-  opacity:0; transform:translateY(6px);
-  transition:opacity .3s ease, transform .3s ease;
+/* nós do stepper */
+.seq .nodes{ position:relative; display:flex; gap:18px; }
+.seq .node{
+  position:relative; width:54px; height:54px; border-radius:50%;
+  display:grid; place-items:center; cursor:pointer; user-select:none;
+  background: radial-gradient(closest-side, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow: 0 8px 22px rgba(0,0,0,.26);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s;
 }
-.frame.active .balloon{ opacity:1; transform:none; }
-.balloon h3{ margin:0 0 4px; font-size:clamp(18px,2.2vw,22px) }
+.seq .node:hover{ transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,.32); }
+.seq .node.active{
+  border-color: transparent;
+  background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+  outline: 0 solid transparent;
+  box-shadow: var(--glow);
+}
+.seq .node .icon{
+  width:26px; height:26px; opacity:.95;
+  stroke:#E7ECF3; stroke-width:2; fill:none; vector-effect:non-scaling-stroke;
+}
+.seq .node .label{
+  position:absolute; top:62px; width:max-content; white-space:nowrap;
+  left:50%; transform:translateX(-50%);
+  font-size:12px; opacity:.9; font-weight:700; letter-spacing:.02em;
+  color:#E7ECF3;
+}
+
+/* ===== Painéis/Conteúdo por passo ===== */
+.seq .stage{ position:absolute; inset:110px 14px 14px 14px; border-radius:14px; overflow:hidden; }
+.seq .panel{
+  position:absolute; inset:0; opacity:0; transform:scale(1.01);
+  transition: opacity .35s ease, transform .35s ease;
+  display:grid; place-items:center;
+}
+.seq .panel.active{ opacity:1; transform:none; z-index:2; }
+
+/* cartão (balão) */
+.panel .balloon{
+  position:absolute; left:16px; bottom:16px; right:auto; z-index:6;
+  max-width:560px; padding:14px 16px; border-radius:14px;
+  background: var(--balloon-bg); border:1px solid var(--balloon-bd);
+  box-shadow: 0 18px 42px rgba(0,0,0,.34);
+  opacity:0; transform: translateY(6px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.panel.active .balloon{ opacity:1; transform:none; }
+.balloon h3{ margin:0 0 6px; font-size:clamp(18px,2.2vw,22px); font-weight:800 }
 .balloon p{ margin:0; opacity:.96 }
 
-/* CTA final */
-.end-cta{
-  position:absolute; right:16px; bottom:16px; z-index:7;
-  display:flex; gap:10px; flex-wrap:wrap;
-}
+/* Canvas/SVG das cenas */
+.panel svg{ width:100%; height:100%; display:block; }
 
-/* botões & link iguais aos da base do site (ajuste se necessário) */
+/* ondas no embarque */
+.panel.f-embarque .w1{ animation: waveA 6s linear infinite; }
+.panel.f-embarque .w2{ animation: waveA 8s linear infinite reverse; }
+@keyframes waveA{ from{ transform:translateX(0) } to{ transform:translateX(-160px) } }
+
+/* guindaste no porto */
+.panel.f-porto.active .gancho{ animation: gancho 2.4s ease-in-out infinite alternate; transform-origin: top center; }
+@keyframes gancho{ from{ transform: translateY(0) } to{ transform: translateY(14px) } }
+
+/* controles */
+.seq .controls{
+  position:absolute; right:16px; bottom:16px; z-index:7; display:flex; gap:10px; flex-wrap:wrap;
+}
 .cta{
-  display:inline-block; padding:12px 16px; border-radius:12px;
-  border:1px solid rgba(255,255,255,.18);
-  color:#fff; text-decoration:none; font-weight:800;
-  background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));
+  display:inline-block; padding:12px 16px; border-radius:12px; font-weight:800; text-decoration:none; color:#fff;
+  border:1px solid rgba(255,255,255,.16);
+  background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
 }
 .cta.primary{
-  background:linear-gradient(90deg,#7C3AED,#22D3EE);
-  color:#051018; border-color:transparent;
-  box-shadow:0 0 20px rgba(34,211,238,.35),0 0 48px rgba(124,58,237,.25);
+  background: linear-gradient(90deg, var(--accentB), var(--accentA));
+  color:#051018; border-color: transparent; box-shadow: var(--glow);
 }
-
-/* seta “próximo” */
-.next{
-  position:absolute; right:16px; bottom:16px; z-index:7;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.10);
-  color:#fff; border-radius:12px; padding:10px 12px;
-  font-weight:800; cursor:pointer;
+.btn{
+  border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.08); color:#fff;
+  padding:10px 12px; border-radius:12px; font-weight:800; cursor:pointer;
 }
-.next span{ opacity:.9; margin-right:6px }
-
-/* ondas do mar */
-.wave{ transform:translateZ(0); }
-.frame.f3.active .w1{ animation: waveA 6s linear infinite; }
-.frame.f3.active .w2{ animation: waveA 8s linear infinite reverse; }
-@keyframes waveA{ from{ transform:translateX(0) } to{ transform:translateX(-140px) } }
-
-/* guindaste (gancho) */
-.frame.f4.active .crane line{ animation: gancho 2.6s ease-in-out infinite alternate; }
-@keyframes gancho{ from{ transform:translateY(0) } to{ transform:translateY(16px) } }
 
 /* acessibilidade */
 .sr-only{ position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); }
 
 /* responsivo */
-@media (max-width:920px){
-  .balloon{ max-width:86vw; }
-  .end-cta{ right:12px; bottom:12px; }
-  .next{ right:12px; bottom:12px; }
+@media (max-width: 920px){
+  .seq .nodes{ gap:12px }
+  .seq .node{ width:48px; height:48px }
+  .seq .node .label{ display:none; } /* esconde rótulo para não quebrar layout */
+  .panel .balloon{ max-width:86vw; }
 }
