@@ -1441,16 +1441,3 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
 
 /* (opcional) estabilidade visual do miolo */
 .site-header nav .menu { display: flex; gap: 16px; align-items: center; }
-/* === Núcleo redondo no radial da Home (sem mudar o RAIO/órbita) === */
-#diferenciais.diffs-radial .core{
-  border-radius: 50%;
-  overflow: hidden;
-  background: #fff; /* fundo branco para evitar bordas escuras */
-}
-
-#diferenciais.diffs-radial .core img{
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover; /* preenche o círculo */
-}
