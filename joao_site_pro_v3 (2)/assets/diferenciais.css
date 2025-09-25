@@ -483,33 +483,62 @@ body{
 /* ===== 4) Título explicativo ===== */
 .diff-meaning{ padding: 8px 0 0 }
 .diff-meaning h2{ text-align:center; font-size:clamp(26px,4.6vw,42px); margin:0 }
-
 /* ===== 5) Detalhamento — 2 por viewport, alternando foto ===== */
-.diff-deep{ padding: 10px 0 6px }
+.diff-deep{ padding: 10px 0 6px; color:#eaf1ff; }
+
+/* Cada “slice” ocupa metade da viewport, com foto + texto */
 .diff-deep .slice{
-  min-height: 50vh; display:grid; align-items:center;
-  grid-template-columns: 1fr 1fr; gap: clamp(14px,2.6vw,24px);
-  margin: 12px 0; padding: clamp(12px,2.2vw,18px);
-  background:#fff; color:#0b1f3d;
-  border:1px solid #e5ecf6; border-radius:16px; box-shadow:0 12px 30px rgba(0,0,0,.08);
+  min-height: 50vh;
+  display:grid; align-items:center;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px,2.6vw,24px);
+  margin: 12px 0;
+  padding: clamp(10px,2vw,16px);
+
+  /* fundo azul da página visível (sem cartão branco) */
+  background: transparent; border: 0; box-shadow: none;
 }
+
+/* Ordem do conteúdo conforme o lado */
 .diff-deep .slice.right .ph{ order:2 }
 .diff-deep .slice.right .copy{ order:1; padding-right: clamp(6px,1vw,10px) }
 .diff-deep .slice.left  .ph{ order:1 }
 .diff-deep .slice.left  .copy{ order:2; padding-left:  clamp(6px,1vw,10px) }
 
+/* FOTO — base */
 .diff-deep .ph{
-  aspect-ratio: 16/10; border-radius:12px;
-  background: #0b0e10 center/cover no-repeat; background-image: var(--ph, none);
-  box-shadow:0 8px 22px rgba(0,0,0,.12);
+  aspect-ratio: 16 / 9;
+  background: #0b0e10 center/cover no-repeat;
+  background-image: var(--ph, none);   /* vem do style="--ph:url('...')" do HTML */
+  box-shadow: 0 10px 28px rgba(0,0,0,.25);
+  overflow: hidden;                     /* garante o corte perfeito */
+  border-radius: 0;                     /* zera qualquer raio anterior */
 }
-.diff-deep .copy h3{ margin:0 0 6px; font-weight:800; font-size:clamp(18px,2.2vw,26px) }
-.diff-deep .copy p{ margin:0; font-size:clamp(14px,1.6vw,18px); line-height:1.6; opacity:.95 }
+
+/* FOTO — semicírculo automático conforme o lado do slice */
+.diff-deep .slice.left  .ph{  border-radius: 9999px 22px 22px 9999px; }
+.diff-deep .slice.right .ph{  border-radius: 22px 9999px 9999px 22px; }
+
+/* Texto */
+.diff-deep .copy h3{
+  margin:0 0 6px; font-weight:800;
+  font-size:clamp(18px,2.2vw,26px); color:#ffffff;
+}
+.diff-deep .copy p{
+  margin:0; font-size:clamp(14px,1.6vw,18px);
+  line-height:1.6; opacity:.96; color:#e7efff;
+}
 
 /* Digitação ao rolar */
 .type{ will-change: contents }
 .type.delay{ opacity:.98 }
 
+/* Responsivo */
+@media (max-width: 920px){
+  .diff-deep .slice{ grid-template-columns: 1fr; }
+  .diff-deep .slice .copy{ order:2; padding:0 }
+  .diff-deep .slice .ph{ order:1 }
+}
 /* ===== 6) CTA ===== */
 .diff-cta{ padding: 10px 0 24px; text-align:center }
 .diff-cta .kpi-row{
@@ -550,31 +579,6 @@ body{
 #rota-branca .rw-arrow:hover{ background:#eef3f9 }
 #rota-branca .rw-arrow.left{ left:8px }
 #rota-branca .rw-arrow.right{ right:8px }
-/* Mantém o fundo azul da página; sem card branco */
-.diff-deep .slice{
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: clamp(10px,2vw,16px);
-}
-
-/* Fotos com lateral semicircular (modelo do seu exemplo) */
-.diff-deep .ph{
-  aspect-ratio: 16/9;                  /* pode ajustar para 4/3 se preferir */
-  background: #0b0e10 center/cover no-repeat;
-  background-image: var(--ph, none);
-  box-shadow: 0 10px 28px rgba(0,0,0,.25);
-}
-
-/* Semicírculo do lado ESQUERDO */
-.diff-deep .ph.round-left{
-  border-radius: 999px 18px 18px 999px;              /* metade arredondada à esquerda */
-}
-
-/* Semicírculo do lado DIREITO */
-.diff-deep .ph.round-right{
-  border-radius: 18px 999px 999px 18px;
-}
 
 /* Respiro no texto */
 .diff-deep .copy h3{ margin: 0 0 6px }
@@ -625,21 +629,4 @@ body{
 /* Corrige seletor do SVG (id correto) */
 #rwSvg{ position:absolute; inset:0; width:100%; height:100%; display:block }
 
-/* base para a foto */
-.figure-semi{
-  background: var(--img) center/cover no-repeat; /* use --img:url('...') */
-  aspect-ratio: 16 / 9;       /* ajuste se preferir 4/3, 21/9 etc. */
-  overflow: hidden;           /* garante o corte perfeito */
-  box-shadow: 0 10px 28px rgba(0,0,0,.25);
-}
-
-/* semicírculo à ESQUERDA */
-.figure-semi.left{
-  border-radius: 9999px 0 0 9999px;  /* “9999px” = metade da altura → vira semicírculo */
-}
-
-/* semicírculo à DIREITA */
-.figure-semi.right{
-  border-radius: 0 9999px 9999px 0;
-}
 
