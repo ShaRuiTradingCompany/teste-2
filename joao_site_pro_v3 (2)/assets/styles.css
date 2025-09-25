@@ -1441,3 +1441,37 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
 
 /* (opcional) estabilidade visual do miolo */
 .site-header nav .menu { display: flex; gap: 16px; align-items: center; }
+<!-- AJUSTE MENU: chips com linha branca (Home) -->
+<style id="ajuste-menu-chips-home">
+  /* Aplica nos links do menu do header (funciona com <nav><div class="menu"> e <nav class="menu">) */
+  .site-header .menu a{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.9); /* linha branca */
+    border-radius: 999px;                    /* formato pill */
+    line-height: 1.15;
+    text-decoration: none;
+    background: rgba(255,255,255,.04);       /* só pra dar leve contraste no vídeo */
+    backdrop-filter: blur(2px);              /* sutil, opcional */
+    transition: background .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+
+  .site-header .menu a:hover,
+  .site-header .menu a:focus-visible{
+    background: rgba(255,255,255,.14);
+    box-shadow: 0 0 0 3px rgba(255,255,255,.18) inset;
+    outline: none;
+  }
+
+  /* Página ativa (se usar aria-current="page") */
+  .site-header .menu a[aria-current="page"]{
+    background: rgba(255,255,255,.2);
+    border-color: #fff;
+  }
+
+  @media (max-width: 760px){
+    .site-header .menu a{ padding: 8px 10px; } /* dá uma folguinha no mobile */
+  }
+</style>
