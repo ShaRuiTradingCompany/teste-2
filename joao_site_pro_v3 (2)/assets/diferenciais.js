@@ -1,194 +1,133 @@
-// ===== Diferenciais v6 — navio + balão ligado ao navio + título fora do quadro =====
+// ===== Diferenciais — hero + navio com balão + digitação =====
 (function(){
-  // Alinha --header-h para âncoras/sticky
+  // 0) Altura do header -> CSS var
   const header = document.getElementById('siteHeader');
   function syncHeader(){
-    document.documentElement.style.setProperty('--header-h', (header?.offsetHeight || 72) + 'px');
+    const h = (header?.offsetHeight || 72) + 'px';
+    document.documentElement.style.setProperty('--header-h', h);
   }
   syncHeader(); addEventListener('resize', syncHeader);
 
-  const sec   = document.getElementById('rota-branca');
-  if(!sec) return;
+  // 1) ROTA / NAVIO
+  const board   = document.querySelector('#rota-branca .board');
+  const svg     = document.getElementById('rwSvg');
+  const path    = document.getElementById('rwPath');
+  const prog    = document.getElementById('rwProg');
+  const ship    = document.getElementById('rwShip');
+  const speech  = document.getElementById('rwSpeech');
+  const btnPrev = document.getElementById('rwPrev');
+  const btnNext = document.getElementById('rwNext');
+  const live    = document.getElementById('rwLive');
 
-  // Etapas (posições 0–1 + conteúdo do balão)
-  const steps = [
-    { t: 0.02, h: 'Visita à fábrica em 48h', p: 'Checamos capacidade real, prazos e estrutura no local. Você recebe fotos e vídeos — decisão mais segura.' },
-    { t: 0.22, h: 'Ficha técnica PT‑ZH', p: 'Especificação bilíngue (materiais, medidas, tolerâncias, embalagem). Base para custo e inspeção.' },
-    { t: 0.40, h: 'Negociação local', p: 'Equipe nativa negocia direto na fábrica. Melhor TCO (custo total) e prazos realistas.' },
-    { t: 0.60, h: 'Amostra & Inspeção', p: 'Golden sample aprovado + inspeção por amostragem com fotos/vídeos antes do embarque.' },
-    { t: 0.80, h: 'Desembaraço com estimativa', p: 'Tributos e despesas previstos antes do pedido. Decisão com números do Brasil.' },
-    { t: 0.98, h: 'Entrega & pós‑venda', p: 'Chegou. Monitoramos performance e aceleramos reposições quando necessário.' },
-  ];
+  if (svg && path && ship && prog && board && speech){
+    const VBW = 1200, VBH = 420;
+    const L = path.getTotalLength();
+    prog.setAttribute('d', path.getAttribute('d'));
+    prog.style.strokeDasharray = L + 'px';
 
-  // DOM
-  const svg   = sec.querySelector('#rw-svg');
-  const path  = sec.querySelector('#rw-path');
-  const prog  = sec.querySelector('#rw-prog');
-  const ship  = sec.querySelector('#rw-ship');
-  const dotsG = sec.querySelector('#rw-dots');
-  const factory = sec.querySelector('#rwFactory');
-  const cliente = sec.querySelector('#rwCliente');
+    const steps = [
+      { title:'Visita 48h',       text:'Vamos até a fábrica em até 48h, com fotos e vídeos no local.',                p: .04 },
+      { title:'Ficha técnica',    text:'Contrato técnico PT‑ZH (materiais, medidas, tolerâncias, embalagem).',       p: .22 },
+      { title:'Negociação',       text:'Equipe nativa negocia direto em chinês para melhores condições.',            p: .38 },
+      { title:'Amostra & inspeção', text:'Amostra aprovada e inspeção por amostragem com evidências visuais.',      p: .54 },
+      { title:'Embarque',         text:'Check‑points LCL/FCL e documentos na plataforma.',                           p: .74 },
+      { title:'Desembaraço',      text:'Estimativa de tributos/despesas antes do pedido — sem susto no Brasil.',     p: .88 },
+      { title:'Entrega',          text:'Chegou. Acompanhamos performance e aceleramos reposições quando necessário.',p: 1.00 }
+    ];
 
-  const speech = sec.querySelector('#rw-speech');
-  const live   = sec.querySelector('#rwLive');
-  const prevBtn = sec.querySelector('#rwPrev');
-  const nextBtn = sec.querySelector('#rwNext');
+    let idx = 0, raf = null;
 
-  const VIEW_W = 1200, VIEW_H = 460;
-  let L = 0, idx = 0, raf = 0;
+    function ease(t){ return t<.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2 }
 
-  // Dots conforme steps
-  let dots = [];
-  function buildDots(){
-    dotsG.innerHTML = '';
-    dots = steps.map((s, k)=>{
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      placeCircleAt(s.t, c, 7);
-      c.addEventListener('click', ()=> setStep(k));
-      dotsG.appendChild(c);
-      return c;
-    });
-  }
-  function placeCircleAt(t, el, r=6){
-    const d = L * t, pt = path.getPointAtLength(d);
-    el.setAttribute('cx', pt.x); el.setAttribute('cy', pt.y); el.setAttribute('r', r);
-  }
+    function placeSpeech(pt){
+      const r = board.getBoundingClientRect();
+      const sx = r.width / VBW, sy = r.height / VBH;
+      const w = speech.offsetWidth || 240, h = speech.offsetHeight || 90;
 
-  // Posição do navio e progresso
-  function placeShipAtT(t){
-    const d = Math.max(0, Math.min(L, L*t));
-    const pt = path.getPointAtLength(d);
-    const pv = path.getPointAtLength(Math.max(0, d-1));
-    const ang = Math.atan2(pt.y - pv.y, pt.x - pv.x) * 180/Math.PI;
-    ship.setAttribute('transform', `translate(${pt.x},${pt.y}) rotate(${ang})`);
-    prog.setAttribute('stroke-dasharray', `${d} ${L - d}`);
-    return pt; // para posicionar o balão
-  }
+      // Posição “acima e um pouco à direita” do navio
+      let left = pt.x * sx + 18;
+      let top  = pt.y * sy - (h + 16);
 
-  // Marcadores especiais
-  function placeMarkerAt(t, g){
-    const d = L * t, pt = path.getPointAtLength(d);
-    g.setAttribute('transform', `translate(${pt.x},${pt.y - 20})`);
-  }
+      // Mantém dentro da área
+      left = Math.min(Math.max(8, left), r.width - w - 8);
+      top  = Math.min(Math.max(8, top),  r.height - h - 8);
 
-  // Converte coordenada SVG (viewBox) -> CSS na .board
-  function toBoardXY(pt){
-    const board = sec.querySelector('.board');
-    const W = board.clientWidth, H = board.clientHeight;
-    return { x: (pt.x / VIEW_W) * W, y: (pt.y / VIEW_H) * H };
-  }
-
-  // Posiciona/mostra o balão depois que o navio chega
-  function showSpeech(stepIdx){
-    const s = steps[stepIdx];
-    const d = L * s.t;
-    const pt = path.getPointAtLength(d);
-    const xy = toBoardXY(pt);
-
-    // texto
-    speech.querySelector('h4').textContent = s.h;
-    speech.querySelector('p').textContent  = s.p;
-
-    // orientação automática conforme x
-    speech.classList.remove('left','right','below','show');
-    const relX = pt.x / VIEW_W;
-    if(relX > .66) speech.classList.add('left');
-    else if(relX < .34) speech.classList.add('right');
-    // (opcional) se estiver muito baixo, mostra abaixo:
-    if(pt.y > VIEW_H * .78) speech.classList.add('below');
-
-    // posiciona
-    speech.style.left = `${xy.x}px`;
-    speech.style.top  = `${xy.y}px`;
-
-    // revela
-    requestAnimationFrame(()=> speech.classList.add('show'));
-  }
-
-  function updateUI(){
-    dots.forEach((d, k)=> d.classList.toggle('active', k <= idx));
-    if(live) live.textContent = `Etapa ${idx+1} de ${steps.length}`;
-  }
-
-  function setStep(nextIdx, animate=true){
-    const target = Math.max(0, Math.min(steps.length-1, nextIdx));
-    const t0 = steps[idx].t, t1 = steps[target].t;
-
-    // atualiza UI (dots e leitor de tela)
-    updateUI();
-
-    // oculta o balão enquanto anima o navio
-    speech.classList.remove('show');
-
-    if(!animate){
-      idx = target;
-      placeShipAtT(t1);
-      showSpeech(idx);
-      updateUI();
-      return;
+      speech.style.transform = `translate(${left}px, ${top}px)`;
     }
 
-    cancelAnimationFrame(raf);
-    const tStart = performance.now(), dur = 900;
+    function renderAt(pct){
+      const d = L * pct;
+      // progresso
+      prog.style.strokeDashoffset = (L - d) + 'px';
 
-    function tick(now){
-      const p = Math.min(1, (now - tStart)/dur);
-      const cur = t0 + (t1 - t0) * p;
-      placeShipAtT(cur);
-      if(p < 1) raf = requestAnimationFrame(tick);
-      else{
-        idx = target;
-        showSpeech(idx);
-        updateUI();
-      }
+      // posição/ângulo do navio
+      const pt = path.getPointAtLength(d);
+      const prev = path.getPointAtLength(Math.max(0, d-1));
+      const ang = Math.atan2(pt.y - prev.y, pt.x - prev.x) * 180/Math.PI;
+      ship.setAttribute('transform', `translate(${pt.x},${pt.y}) rotate(${ang})`);
+
+      // balão seguindo o navio
+      placeSpeech(pt);
     }
-    raf = requestAnimationFrame(tick);
-  }
 
-  function recalc(){
-    L = path.getTotalLength();
-    buildDots();
-    placeMarkerAt(steps[0].t, factory);
-    placeMarkerAt(steps[steps.length-1].t, cliente);
-    placeShipAtT(steps[idx].t);
-    showSpeech(idx);
-    updateUI();
-  }
+    function setStep(i, animate=true){
+      const clamped = Math.max(0, Math.min(steps.length-1, i));
+      const from = steps[idx].p;
+      const to   = steps[clamped].p;
+      idx = clamped;
 
-  // Controles e teclado
-  prevBtn?.addEventListener('click', ()=> setStep(idx-1));
-  nextBtn?.addEventListener('click', ()=> setStep(idx+1));
-  addEventListener('keydown', (e)=>{
-    if(e.key==='ArrowRight') setStep(idx+1);
-    if(e.key==='ArrowLeft')  setStep(idx-1);
-    if(e.key==='Enter')      setStep(idx+1);
-  });
-  addEventListener('resize', ()=> { clearTimeout(recalc._t); recalc._t = setTimeout(recalc, 100); });
+      // conteúdo do balão
+      const s = steps[idx];
+      speech.innerHTML = `<b>${s.title}</b><p>${s.text}</p>`;
+      live && (live.textContent = `Etapa ${idx+1} de ${steps.length}`);
 
-  // Inicializa
-  recalc();
-  setStep(0, false);
+      if(!animate){ renderAt(to); return; }
 
-  // ===== Typewriter para o título no fundo azul + cards =====
-  function typewrite(el, speed=18){
-    if(el.dataset.done) return;
-    const text = el.dataset.ty || el.getAttribute('data-ty') || el.textContent.trim();
-    el.dataset.ty = text; el.textContent = ''; let i = 0;
-    (function step(){
-      el.textContent = text.slice(0, i++);
-      if(i <= text.length){
-        const ch = text.charAt(i-1);
-        setTimeout(step, speed + (ch==='.'?120: ch===','?60: 0));
-      }else el.dataset.done = '1';
-    })();
-  }
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
-      e.target.querySelectorAll('.typewrite').forEach((el, i)=> setTimeout(()=> typewrite(el), i*140));
-      io.unobserve(e.target);
+      const t0 = performance.now(), dur = 900;
+      cancelAnimationFrame(raf);
+      (function tick(now){
+        const t = Math.min(1, (now - t0)/dur);
+        const k = from + (to - from) * ease(t);
+        renderAt(k);
+        if(t < 1) raf = requestAnimationFrame(tick);
+      })(t0);
+    }
+
+    // Controles
+    btnPrev?.addEventListener('click', ()=> setStep(idx-1));
+    btnNext?.addEventListener('click', ()=> setStep(idx+1));
+    addEventListener('keydown', (e)=>{
+      if(e.key==='ArrowRight' || e.key==='Enter') setStep(idx+1);
+      if(e.key==='ArrowLeft')  setStep(idx-1);
     });
-  }, {threshold:.3});
-  const hero = document.querySelector('.rw-hero'); if(hero) io.observe(hero);
-  document.querySelectorAll('#rw-details .rw-slide').forEach(s=> io.observe(s));
+    addEventListener('resize', ()=> renderAt(steps[idx].p));
+
+    // inicial
+    setStep(0, false);
+  }
+
+  // 2) Digitação ao rolar (blocos de detalhamento)
+  (function(){
+    const items = [...document.querySelectorAll('.diff-deep .type')];
+    if(!items.length) return;
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        typeIn(e.target, e.target.classList.contains('delay') ? 220 : 0);
+        io.unobserve(e.target);
+      });
+    }, { threshold:.35 });
+    items.forEach(el=> io.observe(el));
+
+    function typeIn(el, delay){
+      const txt = el.dataset.text || el.textContent;
+      el.textContent = '';
+      let i = 0;
+      setTimeout(function step(){
+        el.textContent += txt.charAt(i++);
+        if(i <= txt.length) setTimeout(step, 16);
+      }, delay);
+    }
+  })();
 })();
+
