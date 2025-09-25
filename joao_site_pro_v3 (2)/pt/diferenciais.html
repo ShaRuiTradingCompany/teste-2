@@ -22,167 +22,158 @@
     </div>
   </header>
 
- <main id="diferenciais-main">
+<main id="diferenciais-page">
 
-   
-<!-- TÍTULO NO FUNDO AZUL -->
-<section class="rw-hero" aria-label="Seção Diferenciais — título">
-  <div class="container">
-    <h2 class="typewrite" data-ty="O que nos torna diferente dos demais?">O que nos torna diferente dos demais?</h2>
-    <div class="mini-orb" aria-hidden="true"><img src="/assets/logo-sharui.jpg" alt="Logo ShaRui"></div>
-  </div>
-</section>
+  <!-- 1) HERO: título no fundo azul + foto 1/3 -->
+  <section class="diff-hero">
+    <div class="container hero-grid">
+      <!-- troque a imagem se quiser -->
+      <figure class="hero-photo" style="--img:url('/assets/hero-diffs.jpg')"></figure>
 
-   
- <section id="rota-branca" aria-label="Fluxo com navio e etapas">
-  <div class="board">
-    <svg id="rw-svg" viewBox="0 0 1200 460" role="img" aria-label="Rota do pedido até a entrega">
-      <!-- Caminho base (tracejado) -->
-      <path id="rw-path" class="rw-base"
-            d="M60,340 C260,310 520,290 760,300 S1080,330 1140,330" />
-      <!-- Progresso (cheio) -->
-      <path id="rw-prog" class="rw-prog"
-            d="M60,340 C260,310 520,290 760,300 S1080,330 1140,330"
-            stroke-dasharray="0 1" />
-
-      <!-- Dots das etapas (JS popula) -->
-      <g id="rw-dots" class="rw-dots"></g>
-
-      <!-- Navio vermelho -->
-      <g id="rw-ship" class="rw-ship" transform="translate(60,340)">
-        <ellipse class="shadow" cx="0" cy="18" rx="90" ry="8"/>
-        <path class="hull" d="M-110,0 L110,0 L80,26 L-80,26 Z"/>
-        <rect class="bridge" x="20" y="-28" width="40" height="28" rx="3"/>
-        <rect class="stack" x="42" y="-42" width="12" height="14" rx="2"/>
-        <g transform="translate(-86,-18)">
-          <rect width="26" height="18" x="0"   y="0" class="c1"/>
-          <rect width="26" height="18" x="28"  y="0" class="c2"/>
-          <rect width="26" height="18" x="56"  y="0" class="c3"/>
-          <rect width="26" height="18" x="84"  y="0" class="c1"/>
-          <rect width="26" height="18" x="112" y="0" class="c2"/>
-          <rect width="26" height="18" x="140" y="0" class="c3"/>
-        </g>
-        <g transform="translate(-72,-36)">
-          <rect width="26" height="18" x="0"   y="0" class="c2"/>
-          <rect width="26" height="18" x="28"  y="0" class="c3"/>
-          <rect width="26" height="18" x="56"  y="0" class="c1"/>
-          <rect width="26" height="18" x="84"  y="0" class="c2"/>
-          <rect width="26" height="18" x="112" y="0" class="c3"/>
-        </g>
-      </g>
-
-      <!-- Marcadores especiais — Fábrica e Cliente/Entrega -->
-      <g id="rwFactory" class="rw-marker factory" aria-label="Fábrica">
-        <circle class="badge" r="16"></circle>
-        <g class="ic" transform="translate(-10,-10)">
-          <rect x="0" y="8" width="20" height="10"></rect>
-          <rect x="1" y="4" width="5" height="4"></rect>
-          <rect x="7" y="2" width="5" height="8"></rect>
-          <rect x="14" y="6" width="5" height="12"></rect>
-        </g>
-      </g>
-      <g id="rwCliente" class="rw-marker cliente" aria-label="Cliente / Entrega">
-        <circle class="badge" r="16"></circle>
-        <path class="ic" d="M -5 0 l4 4 l8 -8" />
-      </g>
-    </svg>
-
-    <!-- Overlay para o balão que “sai do navio” -->
-    <div class="rw-overlay">
-      <div id="rw-speech" class="rw-speech">
-        <h4>Visita à fábrica em 48h</h4>
-        <p>Checamos capacidade real, prazos e estrutura no local. Você recebe fotos e vídeos.</p>
+      <div class="hero-text">
+        <h1>O que nos torna diferente dos demais?</h1>
+        <p class="lead">Menos erro. Mais previsibilidade e controle — do pedido à entrega.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Controles -->
-    <div class="rw-controls" aria-label="Controles da rota">
-      <button class="btn" id="rwPrev">〈 Voltar</button>
-      <button class="btn" id="rwNext">Próximo 〉</button>
-    </div>
-  </div>
-  <p class="sr-only" id="rwLive">Etapa 1 de 6</p>
-</section>
-
-
-  <!-- DETALHAMENTO (3 páginas • 2 cards por página) -->
-  <section id="rw-details" class="rw-details">
+  <!-- 2) Logo com “feixe” (neon) -->
+  <section class="logo-band">
     <div class="container">
-      <!-- Página 1 -->
-      <div class="rw-slide">
-        <article class="rw-card">
-          <h3 class="typewrite" data-ty="Visita à fábrica em 48h"></h3>
-          <p class="typewrite" data-ty="Presença física reduz risco e acelera decisão: validamos capacidade, processo, compliance e prazos, com registro visual."></p>
-          <ul>
-            <li><b>Velocidade:</b> SLA de 48h para visitar e reportar.</li>
-            <li><b>Transparência:</b> fotos/vídeos, checklist e pontos de atenção.</li>
-            <li><b>Decisão segura:</b> evita pedido com fornecedor inadequado.</li>
-          </ul>
-        </article>
-
-        <article class="rw-card">
-          <h3 class="typewrite" data-ty="Ficha técnica PT‑ZH (contrato técnico)"></h3>
-          <p class="typewrite" data-ty="Elimina ruído de tradução e re-trabalho. Travamos o que será entregue e como será inspecionado."></p>
-          <ul>
-            <li><b>Clareza total:</b> materiais, medidas, tolerâncias, embalagem e etiqueta.</li>
-            <li><b>Base de custo:</b> cotação comparável entre fornecedores.</li>
-            <li><b>Base da inspeção:</b> aprova/reprova com critérios objetivos.</li>
-          </ul>
-        </article>
-      </div>
-
-      <!-- Página 2 -->
-      <div class="rw-slide">
-        <article class="rw-card">
-          <h3 class="typewrite" data-ty="Negociação local (nativos)"></h3>
-          <p class="typewrite" data-ty="Cultura e linguagem certas destravam preço, prazo e prioridade. Negociamos no chão de fábrica."></p>
-          <ul>
-            <li><b>TCO menor:</b> não só preço unitário — também prazo, qualidade e logística.</li>
-            <li><b>Agilidade:</b> resolução rápida de impasses técnicos/comerciais.</li>
-            <li><b>Menos atrito:</b> entendemos contexto e evitamos mal-entendidos.</li>
-          </ul>
-        </article>
-
-        <article class="rw-card">
-          <h3 class="typewrite" data-ty="Amostra &amp; Inspeção (AQL)"></h3>
-          <p class="typewrite" data-ty="Amostra aprovada vira referência (golden sample). Antes do embarque, inspecionamos por amostragem e registramos tudo."></p>
-          <ul>
-            <li><b>Qualidade à vista:</b> fotos/vídeos do lote real.</li>
-            <li><b>Correção antes do barco:</b> evita custo no Brasil.</li>
-            <li><b>Rastreabilidade:</b> histórico por pedido na Plataforma.</li>
-          </ul>
-        </article>
-      </div>
-
-      <!-- Página 3 -->
-      <div class="rw-slide">
-        <article class="rw-card">
-          <h3 class="typewrite" data-ty="Desembaraço com estimativa"></h3>
-          <p class="typewrite" data-ty="Simulamos tributos e despesas antes do pedido. Você escolhe com previsibilidade de preço no Brasil."></p>
-          <ul>
-            <li><b>Transparência:</b> II, IPI, PIS/COFINS, ICMS, AFRMM e serviços.</li>
-            <li><b>Memória de cálculo:</b> base para auditoria interna.</li>
-            <li><b>Planejamento:</b> evita ‘surpresas’ de custo e prazo.</li>
-          </ul>
-        </article>
-
-        <article class="rw-card">
-          <h3 class="typewrite" data-ty="Entrega &amp; pós‑venda"></h3>
-          <p class="typewrite" data-ty="Fechamos o ciclo com entrega, feedback e plano de reposição. Mantemos fornecedor performando."></p>
-          <ul>
-            <li><b>SLA pós-venda:</b> acompanhamento após a chegada.</li>
-            <li><b>Métricas de fornecedor:</b> qualidade, prazo e resposta.</li>
-            <li><b>Escala com segurança:</b> do piloto ao contêiner cheio.</li>
-          </ul>
-        </article>
+      <div class="logo-orb small">
+        <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company">
       </div>
     </div>
   </section>
 
-  <!-- CTA final (opcional) -->
-  <section class="rw-cta">
-    <a class="cta primary" href="/pt/contato.html">Quero ver na prática</a>
+  <!-- 3) ROTA: área azul-clara com navio + balão que sai do navio -->
+  <section id="rota-branca" aria-label="Fluxo de embarque">
+    <div class="board">
+      <svg id="rwSvg" viewBox="0 0 1200 420" aria-hidden="true">
+        <!-- caminho base (tracejado) -->
+        <path id="rwPath" class="rw-base" d="M80,300 C 360,260 620,220 1060,240" />
+
+        <!-- Fábrica (início) -->
+        <g id="rwFactory" class="rw-mark" transform="translate(80,300)">
+          <rect x="-32" y="-22" width="64" height="44" rx="6" fill="#0b1f3d"/>
+          <rect x="-32" y="-44" width="22" height="22" fill="#0b1f3d"/>
+          <rect x="-6"  y="-44" width="16" height="16" fill="#0b1f3d"/>
+          <rect x="14"  y="-44" width="12" height="12" fill="#0b1f3d"/>
+        </g>
+
+        <!-- Cliente (fim) -->
+        <g id="rwClient" class="rw-mark" transform="translate(1060,240)">
+          <rect x="-32" y="-22" width="64" height="44" rx="6" fill="#0b1f3d"/>
+          <path d="M-18 12h36" stroke="#e7ecf3" stroke-width="4"/>
+        </g>
+
+        <!-- progresso preenchido -->
+        <path id="rwProg" class="rw-prog" d="" />
+
+        <!-- Navio vermelho -->
+        <g id="rwShip" class="rw-ship" transform="translate(80,300)">
+          <ellipse class="shadow" cx="0" cy="18" rx="80" ry="8" />
+          <path class="hull" d="M-100,0 L100,0 L74,24 L-80,24 Z"/>
+          <rect class="bridge" x="16" y="-26" width="38" height="26" rx="3"/>
+          <rect class="stack" x="38" y="-40" width="12" height="16" rx="2"/>
+        </g>
+      </svg>
+
+      <!-- Balão que “sai” do navio -->
+      <div id="rwSpeech" class="rw-speech"></div>
+
+      <div class="rw-controls">
+        <button class="btn" id="rwPrev">〈 Voltar</button>
+        <button class="btn" id="rwNext">Próximo 〉</button>
+      </div>
+      <p class="sr-only" id="rwLive" aria-live="polite">Etapa 1</p>
+    </div>
   </section>
+
+  <!-- 4) Título explicativo -->
+  <section class="diff-meaning">
+    <div class="container">
+      <h2>O que isso significa na prática?</h2>
+    </div>
+  </section>
+
+  <!-- 5) Detalhamento (2 por tela, foto alternando lados) -->
+  <section class="diff-deep">
+
+    <article class="slice right">
+      <figure class="ph" style="--ph:url('/assets/qs1.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Visita à fábrica em até 48h">Visita à fábrica em até 48h</h3>
+        <p class="type delay" data-text="Registro com fotos e vídeos, checklist e relatório. Você valida a capacidade real antes de comprometer capital.">
+          Registro com fotos e vídeos, checklist e relatório. Você valida a capacidade real antes de comprometer capital.
+        </p>
+      </div>
+    </article>
+
+    <article class="slice left">
+      <figure class="ph" style="--ph:url('/assets/qs2.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Ficha técnica PT‑ZH">Ficha técnica PT‑ZH</h3>
+        <p class="type delay" data-text="Contrato técnico bilíngue com materiais, medidas, tolerâncias e embalagem. Reduz ruído, estabiliza custo e facilita inspeção.">
+          Contrato técnico bilíngue com materiais, medidas, tolerâncias e embalagem. Reduz ruído, estabiliza custo e facilita inspeção.
+        </p>
+      </div>
+    </article>
+
+    <article class="slice right">
+      <figure class="ph" style="--ph:url('/assets/qs3.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Negociação local, em chinês">Negociação local, em chinês</h3>
+        <p class="type delay" data-text="Equipe nativa negocia direto na fábrica. Ganho em preço total, prazo e condições comerciais.">
+          Equipe nativa negocia direto na fábrica. Ganho em preço total, prazo e condições comerciais.
+        </p>
+      </div>
+    </article>
+
+    <article class="slice left">
+      <figure class="ph" style="--ph:url('/assets/qs4.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Amostra & inspeção com evidências">Amostra & inspeção com evidências</h3>
+        <p class="type delay" data-text="Teste por amostragem, fotos e vídeos. Reprovação aciona correções antes do embarque — evita custo no Brasil.">
+          Teste por amostragem, fotos e vídeos. Reprovação aciona correções antes do embarque — evita custo no Brasil.
+        </p>
+      </div>
+    </article>
+
+    <article class="slice right">
+      <figure class="ph" style="--ph:url('/assets/qs5.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Embarque visível (LCL/FCL)">Embarque visível (LCL/FCL)</h3>
+        <p class="type delay" data-text="Check‑points e documentação acessível. Menos incerteza de prazos e mais previsibilidade de entregas.">
+          Check‑points e documentação acessível. Menos incerteza de prazos e mais previsibilidade de entregas.
+        </p>
+      </div>
+    </article>
+
+    <article class="slice left">
+      <figure class="ph" style="--ph:url('/assets/qs6.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Preço no Brasil, antes do pedido">Preço no Brasil, antes do pedido</h3>
+        <p class="type delay" data-text="Estimativa transparente de tributos e despesas para decidir com segurança e sem sustos.">
+          Estimativa transparente de tributos e despesas para decidir com segurança e sem sustos.
+        </p>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- 6) CTA / Prova social -->
+  <section class="diff-cta">
+    <div class="container">
+      <div class="kpi-row">
+        <div class="kpi"><b>48h</b><span>para visitar fábrica</span></div>
+        <div class="kpi"><b>+30 anos</b><span>atuando na China</span></div>
+        <div class="kpi"><b>0</b><span>pedido mínimo</span></div>
+      </div>
+      <a class="cta primary" href="/pt/contato.html">Quero ver na prática</a>
+    </div>
+  </section>
+
 </main>
   
   <!-- Rodapé padrão -->
