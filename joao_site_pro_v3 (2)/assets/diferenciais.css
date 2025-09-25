@@ -193,3 +193,87 @@ body{
   .seq .node .label{ display:none; } /* esconde rótulo para não quebrar layout */
   .panel .balloon{ max-width:86vw; }
 }
+/* ===== ROTA (navio) — fundo azul claro só na seção ===== */
+:root{
+  --rw-accent:#66e0c2;
+  --rw-ink:#0b1f3d;
+  --rw-red:#E11D48;
+  --rw-bg:#eaf4ff;            /* <<< azul claro da área do navio */
+  --rw-border:#d8e6f7;
+}
+
+#rota-branca{
+  background:var(--rw-bg);
+  border:1px solid var(--rw-border);
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(10,22,40,.06);
+  padding:14px;
+  margin:18px auto;
+}
+
+#rota-branca .board{
+  position:relative;
+  width:min(1400px,96vw);
+  height:clamp(320px,46vh,460px);
+  margin:0 auto;
+}
+
+/* SVG ocupa toda a área */
+#rota-branca svg{ position:absolute; inset:0; width:100%; height:100%; display:block }
+
+/* Linha base (tracejada) e progresso (cheio) */
+#rota-branca .rw-base{ stroke:#cdd7e6; stroke-width:3; stroke-dasharray:8 10; fill:none }
+#rota-branca .rw-prog{ stroke:var(--rw-accent); stroke-width:4; stroke-linecap:round; fill:none }
+
+/* Pontos de chegada */
+#rota-branca .rw-dots circle{ fill:#b9c7da }
+#rota-branca .rw-dots circle.active{ fill:var(--rw-accent) }
+
+/* Navio vermelho pequeno */
+#rota-branca .rw-ship path.hull{ fill:var(--rw-red); stroke:#991B1B; stroke-width:1.5 }
+#rota-branca .rw-ship rect.bridge{ fill:#ffe4e6; stroke:#e5c2c9; stroke-width:1 }
+#rota-branca .rw-ship rect.stack{ fill:#991B1B }
+#rota-branca .rw-ship .shadow{ fill:rgba(0,0,0,.18) }
+
+/* Balões (sempre visíveis) */
+#rota-branca .rw-balloons{ list-style:none; margin:0; padding:0 }
+#rota-branca .rw-balloons li{
+  position:absolute; transform: translate(-50%,-120%);
+  background:#0b1f3d; color:#fff; border:1px solid rgba(255,255,255,.16);
+  border-radius:12px; padding:10px 12px; max-width:240px;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
+}
+#rota-branca .rw-balloons li h4{ margin:0 0 4px; font-size:15px; font-weight:800 }
+#rota-branca .rw-balloons li p{ margin:0; font-size:13px; line-height:1.45; opacity:.95 }
+
+/* Setinha do balão */
+#rota-branca .rw-balloons li::after{
+  content:""; position:absolute; left:50%; top:100%; transform:translateX(-50%);
+  border:8px solid transparent; border-top-color:#0b1f3d;
+}
+
+/* Ajustes automáticos de posição */
+#rota-branca .rw-balloons li.left  { transform: translate(-6px,-120%); }
+#rota-branca .rw-balloons li.left::after{ left:10px; transform:none }
+#rota-branca .rw-balloons li.right { transform: translate(-100%,-120%); }
+#rota-branca .rw-balloons li.right::after{ left:auto; right:10px; transform:none }
+#rota-branca .rw-balloons li.below { transform: translate(-50%,18px); }
+#rota-branca .rw-balloons li.below::after{ top:-8px; transform:translateX(-50%) rotate(180deg) }
+
+/* Controles */
+#rota-branca .rw-controls{ position:absolute; right:10px; bottom:10px; display:flex; gap:8px; }
+#rota-branca .btn{
+  padding:8px 12px; border-radius:10px; border:1px solid #d7dfeb;
+  background:#f7f9fc; color:#0b1f3d; font-weight:800; cursor:pointer
+}
+#rota-branca .btn:hover{ background:#eef3f9 }
+
+/* Acessibilidade (SR-Only) */
+.sr-only{ position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); }
+
+/* Mobile */
+@media (max-width:720px){
+  #rota-branca .board{ height: clamp(300px, 48vh, 420px); }
+  #rota-branca .rw-balloons li{ max-width:52vw; }
+}
+
