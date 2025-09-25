@@ -625,3 +625,21 @@ body{
 /* Corrige seletor do SVG (id correto) */
 #rwSvg{ position:absolute; inset:0; width:100%; height:100%; display:block }
 
+/* base para a foto */
+.figure-semi{
+  background: var(--img) center/cover no-repeat; /* use --img:url('...') */
+  aspect-ratio: 16 / 9;       /* ajuste se preferir 4/3, 21/9 etc. */
+  overflow: hidden;           /* garante o corte perfeito */
+  box-shadow: 0 10px 28px rgba(0,0,0,.25);
+}
+
+/* semicírculo à ESQUERDA */
+.figure-semi.left{
+  border-radius: 9999px 0 0 9999px;  /* “9999px” = metade da altura → vira semicírculo */
+}
+
+/* semicírculo à DIREITA */
+.figure-semi.right{
+  border-radius: 0 9999px 9999px 0;
+}
+
