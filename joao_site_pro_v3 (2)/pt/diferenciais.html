@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Diferenciais — ShaRui Trading Company</title>
-
+<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="/assets/diferenciais.css">
   <!-- CSS específico (visual tech) -->
   <link rel="stylesheet" href="/assets/diferenciais.css">
 </head>
@@ -21,202 +22,84 @@
     </div>
   </header>
 
-  <main class="tech-journey">
-    <div class="bg" aria-hidden="true"></div>
-    <div class="viewport">
-      <section class="seq" aria-label="Fluxo de diferenciais">
+ <main>
+  <!-- ROTA (navio) — azul claro só aqui -->
+  <section id="rota-branca" aria-label="Etapas da jornada">
+    <div class="board">
+      <svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="rotaTitle rotaDesc">
+        <title id="rotaTitle">Jornada da importação</title>
+        <desc id="rotaDesc">Rota com navio seguindo trechos; cada ponto tem um balão.</desc>
 
-        <!-- Título fixo e sóbrio -->
-        <div class="title">
-          Nossos Diferenciais
-          <span class="subtitle">menos erro • mais previsibilidade e controle</span>
-        </div>
+        <!-- Linha base (tracejada) -->
+        <path id="rw-path" class="rw-base"
+              d="M40,300 C220,260 420,240 600,260 S980,300 1160,260" />
 
-        <!-- Stepper (menu sequencial) -->
-        <div class="stepper" role="navigation" aria-label="Etapas">
-          <div class="rail" aria-hidden="true"><div class="progress"></div></div>
-          <div class="nodes" role="tablist">
-            <button class="node active" role="tab" aria-selected="true" aria-label="Visita 48h">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M4 20h16M5 20V9l3-2 3 2v11M16 20V7l3-2 0 15M9 13h2" /></svg>
-              <span class="label">Visita 48h</span>
-            </button>
-            <button class="node" role="tab" aria-label="Ficha técnica"><svg class="icon" viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7zM15 3v4h4" /><path d="M9 10h6M9 14h6M9 18h4"/></svg><span class="label">Ficha técnica</span></button>
-            <button class="node" role="tab" aria-label="Negociação local"><svg class="icon" viewBox="0 0 24 24"><path d="M8 12l3-3 2 2 3-3" /><path d="M3 8a4 4 0 0 0 4 4v5H4a1 1 0 0 1-1-1zM21 8a4 4 0 0 1-4 4v5h3a1 1 0 0 0 1-1z"/></svg><span class="label">Negociação</span></button>
-            <button class="node" role="tab" aria-label="Amostra & Inspeção"><svg class="icon" viewBox="0 0 24 24"><path d="M10 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" /><path d="M14 14l6 6"/><path d="M3 21l6-6"/></svg><span class="label">Amostra &amp; Inspeção</span></button>
-            <button class="node" role="tab" aria-label="Embarque"><svg class="icon" viewBox="0 0 24 24"><path d="M2 15h20" /><path d="M3 15l3-6h12l3 6"/><path d="M7 15v3M17 15v3"/></svg><span class="label">Embarque</span></button>
-            <button class="node" role="tab" aria-label="Desembaraço"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4z" /><path d="M8 10h8M8 14h8"/></svg><span class="label">Desembaraço</span></button>
-            <button class="node" role="tab" aria-label="Entrega & Pós-venda"><svg class="icon" viewBox="0 0 24 24"><path d="M3 7h13v10H3z"/><path d="M16 12h5l-2 5h-3z"/><circle cx="7" cy="17" r="2"/><circle cx="18" cy="17" r="2"/></svg><span class="label">Entrega</span></button>
-          </div>
-        </div>
+        <!-- Progresso (cheio) -->
+        <path id="rw-prog" class="rw-prog"
+              d="M40,300 C220,260 420,240 600,260 S980,300 1160,260"
+              stroke-dasharray="0 9999" />
 
-        <!-- Área dinâmica dos painéis -->
-        <div class="stage">
-          <!-- 1. Visita 48h -->
-          <article class="panel active f-visita" role="tabpanel" aria-labelledby="step1">
-            <svg viewBox="0 0 1000 520" aria-hidden="true">
-              <defs>
-                <linearGradient id="bgVis" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#112a4f"/><stop offset="100%" stop-color="#0b1f3d"/>
-                </linearGradient>
-              </defs>
-              <rect width="1000" height="520" fill="url(#bgVis)"/>
-              <!-- linha técnica -->
-              <path d="M120,420 C260,380 420,340 700,300" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="6 10"/>
-              <!-- “fábrica” minimalista -->
-              <g transform="translate(700,240)">
-                <rect x="-40" y="40" width="160" height="120" fill="#1d3557" opacity=".85" stroke="rgba(255,255,255,.14)"/>
-                <rect x="-40" y="20" width="70" height="20" fill="#264d7a"/>
-                <rect x="30" y="0" width="30" height="40" fill="#2a4f84"/>
-                <rect x="60" y="20" width="60" height="140" fill="#1c3d6b"/>
-              </g>
-            </svg>
-            <div class="balloon" style="right:16px; left:auto;">
-              <h3>Visitamos a fábrica em 48h</h3>
-              <p>Registro com fotos e vídeos no local. Sem surpresas mais à frente.</p>
-            </div>
-          </article>
+        <!-- Pontos de chegada -->
+        <g class="rw-dots">
+          <circle cx="180" cy="280" r="6"></circle>
+          <circle cx="380" cy="260" r="6"></circle>
+          <circle cx="560" cy="250" r="6"></circle>
+          <circle cx="740" cy="265" r="6"></circle>
+          <circle cx="900" cy="285" r="6"></circle>
+          <circle cx="1060" cy="270" r="6"></circle>
+        </g>
 
-          <!-- 2. Ficha técnica -->
-          <article class="panel f-ficha" role="tabpanel">
-            <svg viewBox="0 0 1000 520" aria-hidden="true">
-              <rect width="1000" height="520" fill="#0e2647"/>
-              <g transform="translate(180,160)" stroke="#e7ecf3" stroke-width="2" opacity=".9">
-                <rect x="0" y="0" width="320" height="200" fill="none"/>
-                <path d="M0 36h320M36 0v200" />
-                <path d="M60 72h200M60 108h220M60 144h180" opacity=".8"/>
-              </g>
-            </svg>
-            <div class="balloon">
-              <h3>Ficha técnica PT‑ZH</h3>
-              <p>Contrato técnico bilíngue (materiais, medidas, tolerâncias, embalagem) — base para custo e inspeção.</p>
-            </div>
-          </article>
+        <!-- Navio vermelho pequeno -->
+        <g id="rw-ship" class="rw-ship" transform="translate(40,300)">
+          <ellipse class="shadow" cx="0" cy="14" rx="28" ry="6"/>
+          <path class="hull" d="M-34,0 L34,0 L26,14 L-24,14 Z"/>
+          <rect class="bridge" x="6" y="-12" width="16" height="12" rx="2"/>
+          <rect class="stack"  x="18" y="-18" width="5"  height="8"  rx="1"/>
+        </g>
+      </svg>
 
-          <!-- 3. Negociação -->
-          <article class="panel f-negociacao" role="tabpanel">
-            <svg viewBox="0 0 1000 520" aria-hidden="true"><rect width="1000" height="520" fill="#0e274a"/></svg>
-            <div class="balloon">
-              <h3>Negociação local</h3>
-              <p>Equipe nativa na fábrica para reduzir custo total e prazo. Condições combinadas na sua língua.</p>
-            </div>
-          </article>
+      <!-- Balões: um para cada ponto (sempre visíveis) -->
+      <ul class="rw-balloons" id="rw-balloons">
+        <li style="left:180px; top:280px">
+          <h4>Visita 48h</h4>
+          <p>Fotos e vídeos na fábrica.</p>
+        </li>
 
-          <!-- 4. Amostra & Inspeção -->
-          <article class="panel f-inspecao" role="tabpanel">
-            <svg viewBox="0 0 1000 520" aria-hidden="true">
-              <rect width="1000" height="520" fill="#0e2647"/>
-              <g transform="translate(180,160)" stroke="#e7ecf3" stroke-width="2" opacity=".9">
-                <rect x="0" y="0" width="260" height="160" fill="none"/>
-                <circle cx="300" cy="80" r="40" fill="none"/>
-                <line x1="330" y1="110" x2="360" y2="140" />
-              </g>
-            </svg>
-            <div class="balloon">
-              <h3>Amostra &amp; Inspeção</h3>
-              <p>Amostra aprovada e inspeção por amostragem com fotos/vídeos antes do embarque.</p>
-            </div>
-          </article>
+        <li style="left:380px; top:260px">
+          <h4>Ficha técnica</h4>
+          <p>PT‑ZH com tolerâncias e embalagem.</p>
+        </li>
 
-          <!-- 5. Embarque (navio vermelho) -->
-          <article class="panel f-embarque" role="tabpanel">
-            <svg viewBox="0 0 1000 520" aria-hidden="true">
-              <defs>
-                <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#0b1f3d"/><stop offset="100%" stop-color="#09233a"/>
-                </linearGradient>
-                <linearGradient id="shipGloss" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="rgba(255,255,255,.12)"/><stop offset="1" stop-color="rgba(255,255,255,0)"/>
-                </linearGradient>
-              </defs>
-              <rect width="1000" height="520" fill="url(#seaGrad)"/>
-              <path class="w1" d="M0 410 Q 125 390 250 410 T 500 410 T 750 410 T 1000 410" fill="none" stroke="rgba(163,226,255,.40)" stroke-width="2"/>
-              <path class="w2" d="M0 430 Q 125 410 250 430 T 500 430 T 750 430 T 1000 430" fill="none" stroke="rgba(163,226,255,.25)" stroke-width="2"/>
-              <path id="seaPath" d="M60,380 C260,360 500,340 820,360" fill="none" stroke="transparent"/>
-              <g id="cargoShip" transform="translate(60,380)">
-                <ellipse cx="0" cy="18" rx="90" ry="8" fill="rgba(0,0,0,.25)"/>
-                <path d="M-110,0 L110,0 L80,26 L-80,26 Z" fill="var(--ship-red)" stroke="var(--ship-red-dark)" stroke-width="2"/>
-                <path d="M-110,0 L110,0 L80,26 L-80,26 Z" fill="url(#shipGloss)"/>
-                <rect x="20" y="-28" width="40" height="28" rx="3" fill="#ffe4e6" stroke="#e5c2c9"/>
-                <rect x="28" y="-34" width="20" height="8" rx="2" fill="#ffd1d9"/>
-                <rect x="42" y="-42" width="12" height="14" rx="2" fill="#991B1B"/>
-                <g opacity=".75">
-                  <circle cx="48" cy="-48" r="3" fill="#fff"/>
-                  <circle cx="52" cy="-54" r="2.5" fill="#fff"/>
-                  <circle cx="56" cy="-60" r="2" fill="#fff"/>
-                </g>
-                <g transform="translate(-86,-18)">
-                  <rect width="26" height="18" x="0"   y="0" fill="var(--container)"/>
-                  <rect width="26" height="18" x="28"  y="0" fill="var(--container-2)"/>
-                  <rect width="26" height="18" x="56"  y="0" fill="var(--container-3)"/>
-                  <rect width="26" height="18" x="84"  y="0" fill="var(--container)"/>
-                  <rect width="26" height="18" x="112" y="0" fill="var(--container-2)"/>
-                  <rect width="26" height="18" x="140" y="0" fill="var(--container-3)"/>
-                </g>
-                <g transform="translate(-72,-36)">
-                  <rect width="26" height="18" x="0"   y="0" fill="var(--container-2)"/>
-                  <rect width="26" height="18" x="28"  y="0" fill="var(--container-3)"/>
-                  <rect width="26" height="18" x="56"  y="0" fill="var(--container)"/>
-                  <rect width="26" height="18" x="84"  y="0" fill="var(--container-2)"/>
-                  <rect width="26" height="18" x="112" y="0" fill="var(--container-3)"/>
-                </g>
-              </g>
-            </svg>
-            <div class="balloon">
-              <h3>Embarque</h3>
-              <p>Checkpoints LCL/FCL visíveis no mapa da plataforma — frete e seguro sob controle.</p>
-            </div>
-          </article>
+        <li style="left:560px; top:250px">
+          <h4>Negociação</h4>
+          <p>Equipe nativa na fábrica.</p>
+        </li>
 
-          <!-- 6. Desembaraço -->
-          <article class="panel f-porto" role="tabpanel">
-            <svg viewBox="0 0 1000 520" aria-hidden="true">
-              <rect width="1000" height="520" fill="#0d2749"/>
-              <rect x="0" y="360" width="1000" height="160" fill="#162a46"/>
-              <g transform="translate(740,240)">
-                <rect x="-8" y="0" width="16" height="160" fill="#203b68"/>
-                <rect x="-100" y="-20" width="200" height="20" fill="#203b68"/>
-                <g class="gancho">
-                  <line x1="60" y1="-20" x2="60" y2="70" stroke="#9bb5d1" stroke-width="2"/>
-                  <rect x="54" y="70" width="12" height="12" fill="#ef4444"/>
-                </g>
-              </g>
-            </svg>
-            <div class="balloon">
-              <h3>Desembaraço com estimativa</h3>
-              <p>Impostos e despesas previstos antes do pedido. Sem susto no Brasil.</p>
-            </div>
-          </article>
+        <li class="right" style="left:740px; top:265px">
+          <h4>Amostra &amp; inspeção</h4>
+          <p>Registro visual e aprovação.</p>
+        </li>
 
-          <!-- 7. Entrega & pós-venda -->
-          <article class="panel f-entrega" role="tabpanel">
-            <svg viewBox="0 0 1000 520" aria-hidden="true">
-              <rect width="1000" height="520" fill="#0f2b50"/>
-              <path d="M0,420 L1000,420" stroke="#263b58" stroke-width="12"/>
-              <g transform="translate(860,340)">
-                <rect x="-60" y="0" width="140" height="80" fill="#1e3a66" stroke="rgba(255,255,255,.2)"/>
-                <rect x="-40" y="30" width="40" height="50" fill="#0d2749"/>
-                <rect x="20"  y="20" width="40" height="20" fill="#9bb5d1"/>
-              </g>
-            </svg>
-            <div class="balloon">
-              <h3>Entrega & pós‑venda</h3>
-              <p>Chegou. Monitoramos performance do fornecedor e aceleramos reposições quando necessário.</p>
-            </div>
-          </article>
-        </div>
+        <li class="right" style="left:900px; top:285px">
+          <h4>Embarque</h4>
+          <p>Checkpoints LCL/FCL.</p>
+        </li>
 
-        <!-- Controles -->
-        <div class="controls" aria-label="Controles de passo">
-          <button class="btn" id="stepPrev">〈 Voltar</button>
-          <button class="btn" id="stepNext">Próximo 〉</button>
-          <a class="cta primary" href="/pt/contato.html">Quero ver na prática</a>
-        </div>
+        <li class="right" style="left:1060px; top:270px">
+          <h4>Desembaraço &amp; Entrega</h4>
+          <p>Estimativa prévia e pós‑venda.</p>
+        </li>
+      </ul>
 
-        <!-- Status ao leitor de tela -->
-        <p class="sr-only" aria-live="polite" id="seqLive">Etapa 1 de 7</p>
-      </section>
+      <div class="rw-controls">
+        <button class="btn" id="rwPrev">〈 Voltar</button>
+        <button class="btn" id="rwNext">Próximo 〉</button>
+      </div>
+
+      <span class="sr-only" id="rwLive" aria-live="polite">Etapa 1 de 6</span>
     </div>
-  </main>
+  </section>
+</main>
 
   <!-- Rodapé padrão -->
   <footer class="footer">
