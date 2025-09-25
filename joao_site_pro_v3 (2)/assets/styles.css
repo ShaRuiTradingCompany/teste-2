@@ -1423,35 +1423,3 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
   #bastidores .culture-grid{ grid-template-columns: 1fr; }
   #bastidores .culture-photo{ min-height: 220px; }
 }
-/* ===== Header: logo à esquerda, menu CENTRAL, globo à direita ===== */
-.site-header .nav-wrap{
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 10px 16px;
-}
-
-/* Logo fica naturalmente à esquerda */
-.site-header .brand{ flex: 0 0 auto; }
-
-/* O nav ocupa o meio e centraliza os links */
-.site-header nav{
-  flex: 1 1 auto;
-  margin-left: 0 !important;          /* override do ajuste anterior */
-  display: flex;
-  align-items: center;
-  justify-content: center;             /* <-- centraliza as palavras */
-}
-
-/* A lista do menu em linha */
-.site-header nav .menu{
-  display: flex;
-  align-items: center;
-  gap: 18px;                            /* ajuste fino do espaçamento */
-}
-
-/* Globo fixo à direita */
-.site-header .lang{
-  flex: 0 0 auto;
-  margin-left: 0;                       /* garante que não empurre nada */
-}
