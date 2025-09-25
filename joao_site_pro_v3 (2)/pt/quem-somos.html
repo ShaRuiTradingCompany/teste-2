@@ -9,20 +9,22 @@
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Estilos locais mínimos para esta página -->
+  <!-- Estilos locais desta página -->
   <style>
-    /* ====== Linha de título: marca + “Quem somos” (abaixo do header) ====== */
+    /* Esconde a marca do header SOMENTE nesta página  */
+    .page-about .site-header .brand-logo{ display:none !important; }
+
+    /* Linha de título: marca + “Quem somos” dentro do herói */
     .title-row{ display:flex; align-items:center; gap:10px; margin-bottom:8px }
     .brand-badge{
       display:inline-flex; flex-direction:column; line-height:1;
-      padding-right:10px; margin-right:10px;
-      border-right:1px solid rgba(255,255,255,.18);
+      padding-right:10px; margin-right:10px; border-right:1px solid rgba(255,255,255,.18);
     }
     .brand-badge .brand-top{ font-weight:800; letter-spacing:.04em; font-size:clamp(16px,1.6vw,20px) }
     .brand-badge .brand-sub{ font-weight:700; letter-spacing:.18em; opacity:.85; font-size:clamp(9px,1vw,11px) }
     .title-row h1{ margin:0 }
 
-    /* ===== Logo circular com feixes ===== */
+    /* Logo circular com feixes */
     .logo-orb{
       position:relative; display:grid; place-items:center;
       width:min(520px, 42vw); aspect-ratio:1/1; margin-inline:auto; border-radius:50%;
@@ -42,47 +44,53 @@
     .logo-orb::after{
       content:""; position:absolute; inset:12%; border-radius:50%;
       background: radial-gradient(closest-side, rgba(102,224,194,.22), transparent 70%);
-      mix-blend-mode: screen; animation: orbPulse 3.2s ease-in-out infinite alternate;
-      pointer-events:none;
+      mix-blend-mode: screen; animation: orbPulse 3.2s ease-in-out infinite alternate; pointer-events:none;
     }
     .logo-orb img{ width:76%; height:76%; object-fit:contain; border-radius:50%; display:block; }
     @keyframes orbSpin { to { transform: rotate(360deg); } }
     @keyframes orbPulse { from { transform: scale(.98) } to { transform: scale(1.02) } }
 
-    /* ===== Faixa de métricas (FIXA) que entra ao rolar + countup ===== */
-    #stats-band{
-      position: fixed; left:0; right:0;
-      top: calc(var(--header-h, 72px) + 2px);
-      z-index: 15; /* abaixo do header (que é >20), acima do conteúdo */
-      transform: translateY(-110%); opacity:0; visibility:hidden;
-      transition: transform .45s ease, opacity .45s ease, visibility .45s linear;
-      background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
-      border-block:1px solid rgba(255,255,255,.22);
-    }
-    #stats-band.on{ transform:none; opacity:1; visibility:visible; }
-    #stats-band .marquee{ display:flex; gap:24px; align-items:center; white-space:nowrap; padding:8px 0 }
-    #stats-band .metric{ display:inline-flex; gap:6px; align-items:baseline; font-weight:800; letter-spacing:.02em }
-    #stats-band .metric .num{ min-width: 28px; display:inline-block }
+    /* Hero: compensa o header fixo */
+    #sobre.section{ padding-top: calc(var(--header-h, 72px) + 16px) }
 
-    /* ===== CTA final centralizada ===== */
+    /* ===== Faixa de métricas (STICKY abaixo do header) ===== */
+    #stats-band{
+      position: sticky;
+      top: calc(var(--header-h, 72px) + 0px);
+      z-index: 15;
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
+      border-block:1px solid rgba(255,255,255,.22);
+      padding: 12px 0; /* maior */
+    }
+    #stats-band .metrics{
+      display:flex; align-items:center; flex-wrap:wrap; gap:16px 24px; justify-content:space-between;
+    }
+    #stats-band .metric{
+      display:flex; align-items:baseline; gap:8px; font-weight:800; letter-spacing:.02em;
+    }
+    #stats-band .metric .num{
+      font-family:'Space Grotesk', Inter, system-ui, sans-serif;
+      font-size: clamp(18px, 3.4vw, 30px); font-weight:800; line-height:1;
+      min-width:34px; text-shadow:0 2px 12px rgba(0,0,0,.25);
+    }
+    #stats-band .metric span.label{ opacity:.95; font-size: clamp(13px, 2vw, 16px) }
+
+    /* CTA final centralizada */
     .contact-row.center{ justify-content:center }
 
-    /* ===== Placeholder para +1 foto em Bastidores ===== */
-    .culture-photo.placeholder{
-      display:grid; place-items:center; min-height:160px;
-      border:1px dashed rgba(255,255,255,.28);
-      background:rgba(255,255,255,.04); color:#eaf1ff; text-decoration:none; border-radius:12px;
-      box-shadow:0 12px 30px rgba(0,0,0,.3);
-      font-weight:800; opacity:.9;
-    }
+    /* Grid Bastidores — só qs2..qs6 */
+    .culture-grid{ grid-template-columns: repeat(5,1fr) }
+    @media (max-width:1100px){ .culture-grid{ grid-template-columns: repeat(3,1fr) } }
+    @media (max-width:720px){ .culture-grid{ grid-template-columns: 1fr } }
 
-    /* Ajustes de espaçamento do hero neste page */
-    #sobre.section{ padding-top: calc(var(--header-h) + 16px) }
+    /* Utilitário Reveal desta página */
+    .reveal{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease }
+    .reveal.in{ opacity:1; transform:none }
   </style>
 </head>
 
-<body>
-  <!-- HEADER: marca + navegação (sem “Quem somos” duplicado) -->
+<body class="page-about">
+  <!-- Header global (a marca fica oculta via CSS nesta página) -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
       <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
@@ -97,12 +105,10 @@
     </div>
   </header>
 
-  <main id="page-about" class="page-about">
-
-    <!-- (1) QUEM SOMOS — 50/50 texto + logo com feixes -->
+  <main id="page-about">
+    <!-- (1) QUEM SOMOS — 50/50 texto + logo -->
     <section id="sobre" class="section about-hero">
       <div class="container hero-wrap">
-        <!-- Texto revisado -->
         <div class="hero-copy reveal">
           <div class="title-row">
             <span class="brand-badge">
@@ -113,7 +119,7 @@
           </div>
 
           <p><strong>Somos uma empresa</strong> com mais de três décadas em comércio internacional que escolheu a <b>integridade</b> como princípio diário. Nosso compromisso é fazer o certo — mesmo quando dá mais trabalho — para reduzir o seu risco, cuidar do <b>custo total</b> e defender o seu padrão de qualidade.</p>
-          <p><strong>Estar perto faz diferença.</strong> Com base em <b>Guangzhou</b> e presença em toda a China, visitamos a fábrica em até <b>48h</b> na região de atuação. Mantemos <em>olhar pessoal</em> no chão de fábrica e formalizamos <b>contratos bilíngues (PT‑ZH)</b> de acordo com os padrões aceitos pela <b>corte chinesa</b>, para dar segurança jurídica e alinhamento de expectativas.</p>
+          <p><strong>Estar perto faz diferença.</strong> Com base em <b>Guangzhou</b> e presença em toda a China, visitamos a fábrica em até <b>48h</b> na região de atuação. Mantemos <em>olhar pessoal</em> no chão de fábrica e formalizamos <b>contratos bilíngues (PT‑ZH)</b> alinhados aos padrões aceitos pela <b>corte chinesa</b>, para dar segurança jurídica e expectativa clara.</p>
           <p><strong>Conectados e transparentes.</strong> Você acompanha <b>timeline</b>, <b>documentos</b> e <b>checkpoints</b> com prazos realistas, comunicação ativa e registros em <b>foto e vídeo</b>. Prazo é compromisso — e transparência é regra.</p>
           <p><strong>Tecnologia a serviço da decisão.</strong> Evoluímos continuamente o app, a coleta de evidências e a análise de custos para estimar o <b>preço no Brasil</b> antes do pedido. Dá para começar pequeno, com <b>amostras</b> e <b>pilotos</b>; quando fizer sentido, consolidamos em <b>carga fracionada</b> (compartilhamento de contêiner), sem abrir mão de <b>ética</b>, <b>sustentabilidade prática</b> e <b>seriedade</b>.</p>
 
@@ -123,36 +129,38 @@
           </div>
         </div>
 
-        <!-- Logo circular com feixes -->
         <figure class="logo-orb reveal" aria-label="Logotipo ShaRui">
           <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company" width="1024" height="1024" decoding="async" loading="eager">
         </figure>
       </div>
     </section>
 
-    <!-- (1.1) FAIXA DE MÉTRICAS — FIXA (entra ao rolar) -->
-    <section id="stats-band" aria-hidden="true">
-      <div class="container marquee">
+    <!-- (1.1) FAIXA DE MÉTRICAS — STICKY (fica fixa ao rolar) -->
+    <section id="stats-band" aria-label="Indicadores da ShaRui">
+      <div class="container metrics">
         <div class="metric">
-          + de <span class="num" data-target="1000">0</span>
-          <span>clientes em diversos segmentos</span>
+          <span class="prefix">+ de</span>
+          <span class="num" data-target="1000">0</span>
+          <span class="label">clientes em diversos segmentos</span>
         </div>
         <div class="metric">
-          + de <span class="num" data-target="30">0</span>
-          <span>colaboradores em Guangzhou</span>
+          <span class="prefix">+ de</span>
+          <span class="num" data-target="30">0</span>
+          <span class="label">colaboradores em Guangzhou</span>
         </div>
         <div class="metric">
           <span class="num" data-target="4">0</span>
-          <span>bases: China, Itália, Brasil e Dubai</span>
+          <span class="label">bases: China, Itália, Brasil e Dubai</span>
         </div>
         <div class="metric">
-          + de <span class="num" data-target="5">0</span>
-          <span>colaboradores nativos</span>
+          <span class="prefix">+ de</span>
+          <span class="num" data-target="5">0</span>
+          <span class="label">colaboradores nativos</span>
         </div>
       </div>
     </section>
 
-    <!-- (2) SÓCIOS (sem botões) -->
+    <!-- (2) SÓCIOS (nomes/cargos atualizados, sem botões) -->
     <section id="socios" class="section about-partners">
       <div class="container">
         <h2 class="reveal">Sócios</h2>
@@ -180,28 +188,16 @@
       </div>
     </section>
 
-    <!-- (3) BASTIDORES — qs2..qs6 + espaço extra -->
+    <!-- (3) BASTIDORES — mantém qs2..qs6 -->
     <section id="bastidores" class="section about-culture">
       <div class="container">
         <h2 class="reveal">Bastidores</h2>
         <div class="culture-grid">
-          <a class="culture-photo reveal" data-lightbox="/assets/qs2.jpg">
-            <img src="/assets/qs2.jpg" alt="Reunião com fornecedor na China" loading="lazy" decoding="async" width="640" height="427">
-          </a>
-          <a class="culture-photo reveal" data-lightbox="/assets/qs3.jpg">
-            <img src="/assets/qs3.jpg" alt="Inspeção por amostragem" loading="lazy" decoding="async" width="640" height="427">
-          </a>
-          <a class="culture-photo reveal" data-lightbox="/assets/qs4.jpg">
-            <img src="/assets/qs4.jpg" alt="Visita técnica na linha de produção" loading="lazy" decoding="async" width="640" height="427">
-          </a>
-          <a class="culture-photo reveal" data-lightbox="/assets/qs5.jpg">
-            <img src="/assets/qs5.jpg" alt="Equipe local em Guangzhou" loading="lazy" decoding="async" width="640" height="427">
-          </a>
-          <a class="culture-photo reveal" data-lightbox="/assets/qs6.jpg">
-            <img src="/assets/qs6.jpg" alt="Registro de qualidade e embalagem" loading="lazy" decoding="async" width="640" height="427">
-          </a>
-          <!-- Slot extra: substitua este bloco por outra foto quando quiser -->
-          <a class="culture-photo placeholder reveal" title="Adicionar mais uma foto">+ adicionar foto</a>
+          <a class="culture-photo reveal" data-lightbox="/assets/qs2.jpg"><img src="/assets/qs2.jpg" alt="Reunião com fornecedor na China" loading="lazy" decoding="async" width="640" height="427"></a>
+          <a class="culture-photo reveal" data-lightbox="/assets/qs3.jpg"><img src="/assets/qs3.jpg" alt="Inspeção por amostragem" loading="lazy" decoding="async" width="640" height="427"></a>
+          <a class="culture-photo reveal" data-lightbox="/assets/qs4.jpg"><img src="/assets/qs4.jpg" alt="Visita técnica na linha de produção" loading="lazy" decoding="async" width="640" height="427"></a>
+          <a class="culture-photo reveal" data-lightbox="/assets/qs5.jpg"><img src="/assets/qs5.jpg" alt="Equipe local em Guangzhou" loading="lazy" decoding="async" width="640" height="427"></a>
+          <a class="culture-photo reveal" data-lightbox="/assets/qs6.jpg"><img src="/assets/qs6.jpg" alt="Registro de qualidade e embalagem" loading="lazy" decoding="async" width="640" height="427"></a>
         </div>
       </div>
     </section>
@@ -213,26 +209,15 @@
         <div class="offices-grid">
           <article class="office-card reveal" data-lightbox="/assets/office-1.jpg">
             <figure><img src="/assets/office-1.jpg" alt="Escritório — Guangzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
-            <div class="meta">
-              <h3>Guangzhou, China</h3>
-              <p>Base para feiras e acesso a fornecedores estratégicos.</p>
-            </div>
+            <div class="meta"><h3>Guangzhou, China</h3><p>Base para feiras e acesso a fornecedores estratégicos.</p></div>
           </article>
-
           <article class="office-card reveal" data-lightbox="/assets/office-2.jpg">
             <figure><img src="/assets/office-2.jpg" alt="Escritório — Ganzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
-            <div class="meta">
-              <h3>Ganzhou, China</h3>
-              <p>Visitas e inspeções em até 48h na região de atuação.</p>
-            </div>
+            <div class="meta"><h3>Ganzhou, China</h3><p>Visitas e inspeções em até 48h na região de atuação.</p></div>
           </article>
-
           <article class="office-card reveal" data-lightbox="/assets/office-3.jpg">
             <figure><img src="/assets/office-3.jpg" alt="Ponto de apoio — Brasil" loading="lazy" decoding="async" width="900" height="600"></figure>
-            <div class="meta">
-              <h3>Brasil</h3>
-              <p>Atendimento comercial, engenharia e desembaraço em parceria.</p>
-            </div>
+            <div class="meta"><h3>Brasil</h3><p>Atendimento comercial, engenharia e desembaraço em parceria.</p></div>
           </article>
         </div>
       </div>
@@ -257,7 +242,7 @@
     </dialog>
   </main>
 
-  <!-- MODAL Calendly (reuso do seu modal padrão, se existir) -->
+  <!-- Modal Calendly (usa seu modal padrão se existir no projeto) -->
   <div id="calendly-modal" class="modal" onclick="closeCalendly && closeCalendly()">
     <div class="modal-card" onclick="event.stopPropagation()">
       <div class="modal-head">
@@ -307,14 +292,14 @@
 
   <!-- ===== JS local desta página ===== -->
   <script>
-  // Reveal genérico (adiciona .in quando entra na viewport)
+  // Reveal genérico
   (function(){
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
       });
     }, {threshold:.18});
-    document.querySelectorAll('.page-about .reveal').forEach(el=> io.observe(el));
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
   })();
 
   // Lightbox (dialog nativo)
@@ -326,16 +311,13 @@
     function open(src, alt){ img.src = src; img.alt = alt || ''; dlg.showModal(); }
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('[data-lightbox]');
-      if(a){
-        e.preventDefault();
-        open(a.getAttribute('data-lightbox'), a.querySelector('img')?.alt || '');
-      }
+      if(a){ e.preventDefault(); open(a.getAttribute('data-lightbox'), a.querySelector('img')?.alt || ''); }
     });
     closeBtn.addEventListener('click', ()=> dlg.close());
     dlg.addEventListener('click', (e)=> { if(e.target === dlg) dlg.close(); });
   })();
 
-  // Calendly: usa modal global se houver; senão, abre link direto
+  // Calendly: usa modal global se existir; senão abre link direto
   document.querySelectorAll('[data-open-calendly]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       if(typeof window.openCalendly === 'function'){ window.openCalendly(); }
@@ -343,7 +325,7 @@
     });
   });
 
-  // Header offset (para âncoras e padding dinâmico)
+  // Ajuste dinâmico da altura do header para âncoras/offset
   (function(){
     const header = document.getElementById('siteHeader');
     if(!header) return;
@@ -355,42 +337,30 @@
     window.addEventListener('resize', setOffset);
   })();
 
-  // Faixa FIXA de métricas: entra ao rolar e faz count-up uma vez
+  // Count-up na faixa sticky (uma única vez, quando o band entrar na viewport)
   (function(){
     const band = document.getElementById('stats-band');
-    const hero = document.getElementById('sobre');
     const nums = band.querySelectorAll('.num');
-    let counted = false;
-
+    let done = false;
     function countUp(el, to, dur=1100){
       const start = performance.now(); const from = 0;
       function step(t){
         const p = Math.min(1, (t-start)/dur);
-        const val = Math.round(from + (to-from) * (0.1 + 0.9*p*p));
+        const val = Math.round((from + (to-from) * (0.1 + 0.9*p*p)));
         el.textContent = val.toLocaleString('pt-BR');
         if(p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     }
-
-    function check(){
-      const rect = hero.getBoundingClientRect();
-      const trigger = rect.bottom <= window.innerHeight * 0.85;
-      if(trigger){
-        band.classList.add('on');
-        band.setAttribute('aria-hidden','false');
-        if(!counted){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting && !done){
           nums.forEach(n => countUp(n, parseInt(n.dataset.target,10) || 0));
-          counted = true;
+          done = true; io.disconnect();
         }
-      }else{
-        band.classList.remove('on');
-        band.setAttribute('aria-hidden','true');
-      }
-    }
-
-    ['load','scroll','resize'].forEach(ev => window.addEventListener(ev, check, { passive:true }));
-    check();
+      });
+    }, {threshold:.4});
+    io.observe(band);
   })();
   </script>
 </body>
