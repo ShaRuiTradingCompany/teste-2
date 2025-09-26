@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Diferenciais — ShaRui Trading Company</title>
-<link rel="stylesheet" href="/assets/styles.css">
-  <!-- CSS específico (visual tech) -->
+  <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/diferenciais.css">
 </head>
 <body>
@@ -23,204 +22,175 @@
 
 <main id="diferenciais-page">
 
-  <!-- 1) HERO: título no fundo azul + foto 1/3 -->
-<!-- 1) HERO — título no fundo azul -->
-<section class="diff-hero">
-  <div class="container hero-grid">
-    <div class="hero-text">
-      <h1>O que a SHA RUI faz de diferente?</h1>
-      <p class="lead">Processo transparente, controle técnico e preço previsível — do pedido à entrega.</p>
+  <!-- 1) HERO — título no fundo azul -->
+  <section class="diff-hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>O que a SHA RUI faz de diferente?</h1>
+        <p class="lead">Processo transparente, controle técnico e preço previsível — do pedido à entrega.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 2) LOGO central + duas fotos semicirculares -->
-<section class="logo-band" id="logo-trio">
-  <div class="container logo-trio">
-    <!-- foto semicircular à esquerda (lado reto para fora) -->
-    <figure class="semi left"  style="--img:url('/assets/diff/hero-left.jpg')" aria-hidden="true"></figure>
+  <!-- 2) LOGO central + duas fotos semicirculares (JPG direto em /assets) -->
+  <section class="logo-band" id="logo-trio">
+    <div class="container logo-trio">
+      <!-- foto semicircular à ESQUERDA (lado reto colado na borda) -->
+      <figure class="semi left"  style="--img:url('/assets/hero-left.jpg')" aria-hidden="true"></figure>
 
-    <!-- logo com “feixe” -->
-    <div class="logo-orb">
-      <img src="/assets/logo-sharui.jpg" alt="SHA RUI Trading Company">
+      <!-- logo com “feixe” -->
+      <div class="logo-orb">
+        <img src="/assets/logo-sharui.jpg" alt="SHA RUI Trading Company">
+      </div>
+
+      <!-- foto semicircular à DIREITA (lado reto colado na borda) -->
+      <figure class="semi right" style="--img:url('/assets/hero-right.jpg')" aria-hidden="true"></figure>
     </div>
-
-    <!-- foto semicircular à direita (lado reto para fora) -->
-    <figure class="semi right" style="--img:url('/assets/diff/hero-right.jpg')" aria-hidden="true"></figure>
-  </div>
-</section>
-
+  </section>
 
   <!-- 3) ROTA: área azul-clara com navio + balão que sai do navio -->
- <section id="rota-branca" aria-label="Fluxo de embarque">
-  <div class="board">
-    <svg id="rwSvg" viewBox="0 0 1200 420" aria-hidden="true">
-      <!-- caminho base (tracejado) -->
-      <path id="rwPath" class="rw-base" d="M80,300 C 360,260 620,220 1060,240" />
+  <section id="rota-branca" aria-label="Fluxo de embarque">
+    <div class="board">
+      <svg id="rwSvg" viewBox="0 0 1200 420" aria-hidden="true">
+        <!-- caminho base (tracejado) -->
+        <path id="rwPath" class="rw-base" d="M80,300 C 360,260 620,220 1060,240" />
 
-      <!-- marcadores fábrica/cliente (opcional) -->
-      <g id="rwFactory" class="rw-mark" transform="translate(80,300)">
-        <rect x="-32" y="-22" width="64" height="44" rx="6" fill="#0b1f3d"/>
-        <rect x="-32" y="-44" width="22" height="22" fill="#0b1f3d"/>
-        <rect x="-6"  y="-44" width="16" height="16" fill="#0b1f3d"/>
-        <rect x="14"  y="-44" width="12" height="12" fill="#0b1f3d"/>
-      </g>
-      <g id="rwClient" class="rw-mark" transform="translate(1060,240)">
-        <rect x="-32" y="-22" width="64" height="44" rx="6" fill="#0b1f3d"/>
-        <path d="M-18 12h36" stroke="#e7ecf3" stroke-width="4"/>
-      </g>
-
-      <!-- progresso -->
-      <path id="rwProg" class="rw-prog" d="" />
-
-      <!-- navio -->
-      <g id="rwShip" class="rw-ship" transform="translate(80,300)">
-        <ellipse class="shadow" cx="0" cy="18" rx="80" ry="8" />
-        <path class="hull" d="M-100,0 L100,0 L74,24 L-80,24 Z"/>
-        <rect class="bridge" x="16" y="-26" width="38" height="26" rx="3"/>
-        <rect class="stack"  x="38" y="-40" width="12" height="16" rx="2"/>
-      </g>
-    </svg>
-
-    <!-- balão que acompanha o navio -->
-    <div id="rwSpeech" class="rw-speech"></div>
-
-    <!-- botões centrais -->
-    <div class="rw-controls">
-      <button class="btn" id="rwPrev">〈 Voltar</button>
-      <button class="btn" id="rwNext">Próximo 〉</button>
-    </div>
-
-    <!-- setas laterais (dentro da .board) -->
-    <button class="rw-arrow left"  id="rwArrowPrev" aria-label="Anterior">‹</button>
-    <button class="rw-arrow right" id="rwArrowNext" aria-label="Próximo">›</button>
-
-    <p class="sr-only" id="rwLive" aria-live="polite">Etapa 1</p>
-  </div>
-</section>
-
-        <!-- Cliente (fim) -->
+        <!-- marcadores fábrica/cliente -->
+        <g id="rwFactory" class="rw-mark" transform="translate(80,300)">
+          <rect x="-32" y="-22" width="64" height="44" rx="6" fill="#0b1f3d"/>
+          <rect x="-32" y="-44" width="22" height="22" fill="#0b1f3d"/>
+          <rect x="-6"  y="-44" width="16" height="16" fill="#0b1f3d"/>
+          <rect x="14"  y="-44" width="12" height="12" fill="#0b1f3d"/>
+        </g>
         <g id="rwClient" class="rw-mark" transform="translate(1060,240)">
           <rect x="-32" y="-22" width="64" height="44" rx="6" fill="#0b1f3d"/>
           <path d="M-18 12h36" stroke="#e7ecf3" stroke-width="4"/>
         </g>
 
-        <!-- progresso preenchido -->
+        <!-- progresso da rota -->
         <path id="rwProg" class="rw-prog" d="" />
 
-        <!-- Navio vermelho -->
+        <!-- navio -->
         <g id="rwShip" class="rw-ship" transform="translate(80,300)">
           <ellipse class="shadow" cx="0" cy="18" rx="80" ry="8" />
           <path class="hull" d="M-100,0 L100,0 L74,24 L-80,24 Z"/>
           <rect class="bridge" x="16" y="-26" width="38" height="26" rx="3"/>
-          <rect class="stack" x="38" y="-40" width="12" height="16" rx="2"/>
+          <rect class="stack"  x="38" y="-40" width="12" height="16" rx="2"/>
         </g>
       </svg>
 
-      <!-- Balão que “sai” do navio -->
+      <!-- balão que acompanha o navio -->
       <div id="rwSpeech" class="rw-speech"></div>
 
- <!-- 4) Título explicativo -->
-<section class="diff-meaning">
-  <div class="container">
-    <h2>O que isso significa na prática?</h2>
-  </div>
-</section>
+      <!-- botões centrais -->
+      <div class="rw-controls">
+        <button class="btn" id="rwPrev">〈 Voltar</button>
+        <button class="btn" id="rwNext">Próximo 〉</button>
+      </div>
 
-<!-- 5) Detalhamento (2 por tela, foto alternando lados) -->
-<section class="diff-deep">
+      <!-- setas laterais (dentro da .board) -->
+      <button class="rw-arrow left"  id="rwArrowPrev" aria-label="Anterior">‹</button>
+      <button class="rw-arrow right" id="rwArrowNext" aria-label="Próximo">›</button>
 
-  <article class="slice right">
-    <figure class="ph" style="--ph:url('/assets/diff/visita.webp')"></figure>
-    <div class="copy">
-      <h3 class="type" data-text="Visita à fábrica em até 48h">Visita à fábrica em até 48h</h3>
-      <p class="type delay" data-text="Equipe local vai ao chão de fábrica, registra tudo (fotos/vídeos) e emite relatório técnico para você decidir com segurança.">
-        Equipe local vai ao chão de fábrica, registra tudo (fotos/vídeos) e emite relatório técnico para você decidir com segurança.
-      </p>
-      <ul class="points">
-        <li><span class="badge good">Diferencial</span>Validação presencial antes de qualquer compromisso financeiro.</li>
-        <li><span class="badge neutral">Mercado</span>Orça por e‑mail; visita só se o pedido for grande.</li>
-        <li><span class="badge why">Por que importa</span>Evita “fábrica fachada”, atraso crônico e produto fora de especificação.</li>
-      </ul>
+      <p class="sr-only" id="rwLive" aria-live="polite">Etapa 1</p>
     </div>
-  </article>
+  </section>
 
-  <article class="slice left">
-    <figure class="ph" style="--ph:url('/assets/diff/ficha-tecnica.webp')"></figure>
-    <div class="copy">
-      <h3 class="type" data-text="Ficha técnica PT‑ZH contratual">Ficha técnica PT‑ZH contratual</h3>
-      <p class="type delay" data-text="Materiais, medidas, tolerâncias e embalagem descritos em contrato bilíngue (PT‑ZH), base para inspeção e custo estável.">
-        Materiais, medidas, tolerâncias e embalagem descritos em contrato bilíngue (PT‑ZH), base para inspeção e custo estável.
-      </p>
-      <ul class="points">
-        <li><span class="badge good">Diferencial</span>Documento jurídico + engenharia: zero ambiguidade.</li>
-        <li><span class="badge neutral">Mercado</span>“Especificação por WhatsApp/Excel” e fotos de referência.</li>
-        <li><span class="badge why">Por que importa</span>Menos retrabalho, menos disputa comercial e qualidade reprodutível.</li>
-      </ul>
+  <!-- 4) Título explicativo -->
+  <section class="diff-meaning">
+    <div class="container">
+      <h2>O que isso significa na prática?</h2>
     </div>
-  </article>
+  </section>
 
-  <article class="slice right">
-    <figure class="ph" style="--ph:url('/assets/diff/negociacao.webp')"></figure>
-    <div class="copy">
-      <h3 class="type" data-text="Negociação local, em chinês">Negociação local, em chinês</h3>
-      <p class="type delay" data-text="Tratativa direta com time nativo dentro da fábrica para preço total, prazos e condições melhores.">
-        Tratativa direta com time nativo dentro da fábrica para preço total, prazos e condições melhores.
-      </p>
-      <ul class="points">
-        <li><span class="badge good">Diferencial</span>Barganha real e resposta rápida a imprevistos.</li>
-        <li><span class="badge neutral">Mercado</span>Intermediários sem poder de negociação.</li>
-        <li><span class="badge why">Por que importa</span>Lead time menor, previsibilidade e ganho de margem.</li>
-      </ul>
-    </div>
-  </article>
+  <!-- 5) Detalhamento (2 por tela, foto alternando lados) -->
+  <section class="diff-deep">
 
-  <article class="slice left">
-    <figure class="ph" style="--ph:url('/assets/diff/inspecao.webp')"></figure>
-    <div class="copy">
-      <h3 class="type" data-text="Amostra & inspeção com evidências">Amostra & inspeção com evidências</h3>
-      <p class="type delay" data-text="Teste por amostragem com fotos/vídeos e checklist. Reprovação aciona correções antes do embarque.">
-        Teste por amostragem com fotos/vídeos e checklist. Reprovação aciona correções antes do embarque.
-      </p>
-      <ul class="points">
-        <li><span class="badge good">Diferencial</span>Traçabilidade por pedido e histórico de não‑conformidades.</li>
-        <li><span class="badge neutral">Mercado</span>Confia na amostra de showroom.</li>
-        <li><span class="badge why">Por que importa</span>Evita custo no Brasil com devolução, reprocesso e multa.</li>
-      </ul>
-    </div>
-  </article>
+    <article class="slice right">
+      <figure class="ph" style="--ph:url('/assets/visita.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Visita à fábrica em até 48h">Visita à fábrica em até 48h</h3>
+        <p class="type delay" data-text="Equipe local vai ao chão de fábrica, registra tudo (fotos/vídeos) e emite relatório técnico para você decidir com segurança.">
+          Equipe local vai ao chão de fábrica, registra tudo (fotos/vídeos) e emite relatório técnico para você decidir com segurança.
+        </p>
+        <ul class="points">
+          <li><span class="badge good">Diferencial</span>Validação presencial antes de qualquer compromisso financeiro.</li>
+          <li><span class="badge why">Por que importa</span>Evita “fábrica fachada”, atraso crônico e produto fora de especificação.</li>
+        </ul>
+      </div>
+    </article>
 
-  <article class="slice right">
-    <figure class="ph" style="--ph:url('/assets/diff/embarque.webp')"></figure>
-    <div class="copy">
-      <h3 class="type" data-text="Embarque visível (LCL/FCL)">Embarque visível (LCL/FCL)</h3>
-      <p class="type delay" data-text="Check‑points e documentação acessível (booking, BL, packing, certificados) com alertas de prazo.">
-        Check‑points e documentação acessível (booking, BL, packing, certificados) com alertas de prazo.
-      </p>
-      <ul class="points">
-        <li><span class="badge good">Diferencial</span>Plataforma com marcos, anexos e timeline.</li>
-        <li><span class="badge neutral">Mercado</span>Informação por e‑mail quando dá.</li>
-        <li><span class="badge why">Por que importa</span>Planejamento de estoque e transporte sem “escuro logístico”.</li>
-      </ul>
-    </div>
-  </article>
+    <article class="slice left">
+      <figure class="ph" style="--ph:url('/assets/ficha-tecnica.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Ficha técnica PT‑ZH contratual">Ficha técnica PT‑ZH contratual</h3>
+        <p class="type delay" data-text="Materiais, medidas, tolerâncias e embalagem descritos em contrato bilíngue (PT‑ZH), base para inspeção e custo estável.">
+          Materiais, medidas, tolerâncias e embalagem descritos em contrato bilíngue (PT‑ZH), base para inspeção e custo estável.
+        </p>
+        <ul class="points">
+          <li><span class="badge good">Diferencial</span>Documento jurídico + engenharia: zero ambiguidade.</li>
+          <li><span class="badge why">Por que importa</span>Menos retrabalho, menos disputa comercial e qualidade reprodutível.</li>
+        </ul>
+      </div>
+    </article>
 
-  <article class="slice left">
-    <figure class="ph" style="--ph:url('/assets/diff/preco-br.webp')"></figure>
-    <div class="copy">
-      <h3 class="type" data-text="Preço no Brasil antes do pedido">Preço no Brasil antes do pedido</h3>
-      <p class="type delay" data-text="Estimativa completa de tributos e despesas antes de fechar — sem sustos na chegada.">
-        Estimativa completa de tributos e despesas antes de fechar — sem sustos na chegada.
-      </p>
-      <ul class="points">
-        <li><span class="badge good">Diferencial</span>Cenários de câmbio/frete e impacto no preço final.</li>
-        <li><span class="badge neutral">Mercado</span>Entrega a conta depois do embarque.</li>
-        <li><span class="badge why">Por que importa</span>Decisão segura e margem preservada no Brasil.</li>
-      </ul>
-    </div>
-  </article>
+    <article class="slice right">
+      <figure class="ph" style="--ph:url('/assets/negociacao.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Negociação local, em chinês">Negociação local, em chinês</h3>
+        <p class="type delay" data-text="Tratativa direta com time nativo dentro da fábrica para preço total, prazos e condições melhores.">
+          Tratativa direta com time nativo dentro da fábrica para preço total, prazos e condições melhores.
+        </p>
+        <ul class="points">
+          <li><span class="badge good">Diferencial</span>Barganha real e resposta rápida a imprevistos.</li>
+          <li><span class="badge why">Por que importa</span>Lead time menor, previsibilidade e ganho de margem.</li>
+        </ul>
+      </div>
+    </article>
 
-</section>
+    <article class="slice left">
+      <figure class="ph" style="--ph:url('/assets/inspecao.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Amostra & inspeção com evidências">Amostra & inspeção com evidências</h3>
+        <p class="type delay" data-text="Teste por amostragem com fotos/vídeos e checklist. Reprovação aciona correções antes do embarque.">
+          Teste por amostragem com fotos/vídeos e checklist. Reprovação aciona correções antes do embarque.
+        </p>
+        <ul class="points">
+          <li><span class="badge good">Diferencial</span>Traçabilidade por pedido e histórico de não‑conformidades.</li>
+          <li><span class="badge why">Por que importa</span>Evita custo no Brasil com devolução, reprocesso e multa.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="slice right">
+      <figure class="ph" style="--ph:url('/assets/embarque.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Embarque visível (LCL/FCL)">Embarque visível (LCL/FCL)</h3>
+        <p class="type delay" data-text="Check‑points e documentação acessível (booking, BL, packing, certificados) com alertas de prazo.">
+          Check‑points e documentação acessível (booking, BL, packing, certificados) com alertas de prazo.
+        </p>
+        <ul class="points">
+          <li><span class="badge good">Diferencial</span>Plataforma com marcos, anexos e timeline.</li>
+          <li><span class="badge why">Por que importa</span>Planejamento de estoque e transporte sem “escuro logístico”.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="slice left">
+      <figure class="ph" style="--ph:url('/assets/preco-br.jpg')"></figure>
+      <div class="copy">
+        <h3 class="type" data-text="Preço no Brasil antes do pedido">Preço no Brasil antes do pedido</h3>
+        <p class="type delay" data-text="Estimativa completa de tributos e despesas antes de fechar — sem sustos na chegada.">
+          Estimativa completa de tributos e despesas antes de fechar — sem sustos na chegada.
+        </p>
+        <ul class="points">
+          <li><span class="badge good">Diferencial</span>Cenários de câmbio/frete e impacto no preço final.</li>
+          <li><span class="badge why">Por que importa</span>Decisão segura e margem preservada no Brasil.</li>
+        </ul>
+      </div>
+    </article>
+
+  </section>
 
   <!-- 6) CTA / Prova social -->
   <section class="diff-cta">
@@ -235,7 +205,7 @@
   </section>
 
 </main>
-  
+
   <!-- Rodapé padrão -->
   <footer class="footer">
     <div class="container footer-row">
@@ -251,7 +221,7 @@
   </footer>
 
   <!-- JS específico desta página -->
-<script src="/assets/diferenciais.js?v=5" defer></script>
+  <script src="/assets/diferenciais.js?v=5" defer></script>
 
 </body>
 </html>
