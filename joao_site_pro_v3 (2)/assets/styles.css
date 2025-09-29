@@ -1474,4 +1474,66 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
   @media (max-width: 760px){
     .site-header .menu a{ padding: 8px 10px; } /* dá uma folguinha no mobile */
   }
+/* ===== MENU UNIVERSAL (todas as páginas) ===== */
+
+/* 0) Desliga qualquer “vidro/blur” e sombra do header padrão */
+header.site-header{
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 1) Texto nítido (branco com leve sombra para ler sobre foto/vídeo) */
+header.site-header .brand a,
+header.site-header nav .menu a,
+header.site-header .lang .lang-toggle{
+  color:#fff !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.55) !important;
+  opacity:1 !important;
+  filter:none !important;
+}
+
+/* 2) “Chips” com aro branco nos links do menu */
+header.site-header nav .menu{ display:flex; gap:16px; align-items:center }
+header.site-header nav .menu a{
+  display:inline-flex; align-items:center;
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:999px;
+  background:transparent;
+  font-weight:800;
+  text-decoration:none;
+}
+header.site-header nav .menu a:hover,
+header.site-header nav .menu a:focus-visible{
+  background:rgba(255,255,255,.12);
+  text-decoration:none;
+}
+
+/* 3) Globo de idioma com aro */
+header.site-header .lang .lang-toggle{
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:999px;
+  background:transparent;
+}
+
+/* 4) Aro também na marca (nome da empresa) */
+header.site-header .brand .brand-logo{
+  display:inline-flex; flex-direction:column; align-items:flex-start;
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:999px;
+  background:transparent;
+  text-decoration:none;
+}
+
+/* (opcional) Se quiser o header SOLID nas internas, ative .solid no <header> */
+header.site-header.solid{
+  background: rgba(13,18,27,.86) !important;
+  border-bottom:1px solid rgba(255,255,255,.12) !important;
+}
+
 </style>
