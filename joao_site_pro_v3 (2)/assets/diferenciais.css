@@ -700,5 +700,60 @@ body{
   border-radius: 9999px 22px 22px 9999px !important;
   margin-right: calc(-1 * var(--slice-pad));
 }
+/* === MENU 100% TRANSPARENTE QUANDO O HEADER ESTÁ SOBRE VÍDEO === */
+.site-header.on-video {
+  /* Garante header sem fundo */
+  background: transparent !important;
+}
+
+/* Links do menu: sem fundo, sem borda, só o texto */
+.site-header.on-video nav.menu a,
+.site-header.on-video nav .menu a,
+.site-header.on-video .menu a{
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  /* mantém área clicável confortável */
+  padding: 8px 12px;
+  /* melhora a leitura sobre o vídeo, mas é sutil */
+  text-shadow: 0 2px 10px rgba(0,0,0,.55);
+  transition: opacity .2s ease, text-shadow .2s ease;
+}
+
+/* Hover/focus: sem fundo; use sublinhado sutil para feedback */
+.site-header.on-video nav.menu a:hover,
+.site-header.on-video nav .menu a:hover,
+.site-header.on-video .menu a:hover,
+.site-header.on-video nav.menu a:focus-visible,
+.site-header.on-video nav .menu a:focus-visible,
+.site-header.on-video .menu a:focus-visible{
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  opacity: .95;
+}
+
+/* Marca e botão do globo: idem (sem caixinha) */
+.site-header.on-video .brand a{
+  color: #fff !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.55);
+}
+.site-header.on-video .lang .lang-toggle{
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.55);
+  padding: 6px 10px; /* mantém o alvo de clique */
+}
+
+/* Se você estiver usando "chips" nas outras páginas, garanta que só desliga aqui */
+.site-header.on-video nav.menu,
+.site-header.on-video nav .menu{
+  gap: 16px; /* preserva espaçamento entre itens */
+}
 
 
