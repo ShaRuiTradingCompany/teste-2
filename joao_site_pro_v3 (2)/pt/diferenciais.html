@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/diferenciais.css">
 </head>
-<body>
+<body class="page-diferenciais">
   <!-- Header padrão -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
@@ -25,29 +25,36 @@
 
   <main id="diferenciais-page">
 
-    <!-- HERO: foto semicircular à ESQUERDA + texto à direita -->
-    <section class="df-hero">
-      <div class="container df-hero-grid">
-        <!-- Foto semicircular: lado reto à esquerda, arredondado para dentro -->
-        <figure class="df-semi left flush-left" style="--img:url('/assets/diferenciais-hero.jpg')" aria-hidden="true"></figure>
+  <!-- HERO: foto semicircular à esquerda + texto à direita (full viewport) -->
+<section class="df-hero">
+  <div class="container df-hero-grid">
+    <!-- Foto semicircular com lado reto colado à ESQUERDA do viewport -->
+    <figure
+      class="df-semi left flush-left"
+      style="--img:url('/assets/diferenciais-hero.jpg')"
+      aria-hidden="true"
+    ></figure>
 
-        <!-- Texto -->
-        <div class="df-copy">
-          <h1>Diferenciais</h1>
-          <p class="lead">
-            Na SHA RUI, transformar um projeto em produto entregue no Brasil é um processo
-            <strong>transparente, técnico e previsível</strong>. Unimos <em>sourcing</em>, engenharia,
-            inspeção e logística em um fluxo único para que você controle custo, prazo e qualidade — do pedido à reposição.
-          </p>
-          <p class="lead">
-            Com equipe própria na China, realizamos <strong>validação presencial de fábrica</strong>, emitimos
-            <strong>ficha técnica contratual PT‑ZH</strong>, negociamos diretamente em chinês e monitoramos cada marco
-            até o embarque. Antes de fechar, você já enxerga o <strong>preço no Brasil</strong> com tributos e despesas
-            estimadas. Menos risco, mais resultado.
-          </p>
-        </div>
-      </div>
-    </section>
+    <!-- Texto -->
+    <div class="df-copy">
+      <h1 class="df-title">Diferenciais</h1>
+      <p class="lead">
+        Na SHA RUI, transformar um projeto em produto entregue no Brasil
+        é um processo <strong>transparente, técnico e previsível</strong>.
+        Unimos <em>sourcing</em>, engenharia, inspeção e logística em um
+        fluxo único para que você controle <strong>custo, prazo e qualidade</strong>
+        — do pedido à reposição.
+      </p>
+      <p class="lead">
+        Com equipe própria na China, realizamos <strong>validação presencial
+        de fábrica</strong>, emitimos <strong>ficha técnica contratual PT‑ZH</strong>,
+        negociamos em chinês e monitoramos cada marco até o embarque.
+        Antes de fechar, você já enxerga o <strong>preço no Brasil</strong>
+        com tributos e despesas estimadas. Menos risco, mais resultado.
+      </p>
+    </div>
+  </div>
+</section>
 
     <!-- Intro curta (opcional; pode manter para SEO/escaneabilidade) -->
     <section class="df-intro">
