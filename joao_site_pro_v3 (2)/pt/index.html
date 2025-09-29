@@ -513,17 +513,6 @@
 <!-- WhatsApp flutuante -->
 <a class="wp-float" href="https://wa.me/551193381008" target="_blank" rel="noopener">WhatsApp</a>
 
-<!-- Script Calendly -->
-  <script>
-  // Revela os nós um por um
-  (function () {
-    const nodes = [...document.querySelectorAll('#diferenciais .node')];
-    // ordem de entrada; altere se quiser outra sequência
-    nodes.forEach((n, i) => {
-      setTimeout(() => n.classList.add('on'), 250 + i * 420);
-    });
-  })();
-</script>
 </main>
   
 <footer class="footer">
@@ -720,26 +709,6 @@
 })();
 </script>
 <script>
-(function(){
-  const sec = document.getElementById('diferenciais');
-  if(!sec) return;
-  const stage = sec.querySelector('.radial-stage');
-  const nodes = Array.from(stage.querySelectorAll('.node'));
-
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
-      // liga um por vez
-      nodes.forEach((n, i)=>{
-        setTimeout(()=> n.classList.add('on'), i * 360); // intervalo entre nós
-      });
-      io.unobserve(stage);
-    });
-  }, {threshold: .35});
-
-  io.observe(stage);
-})();
-</script>
 
 <!-- MODAL: captação para envio de e‑books -->
 <div id="leads-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="leads-title" onclick="closeLeads()">
