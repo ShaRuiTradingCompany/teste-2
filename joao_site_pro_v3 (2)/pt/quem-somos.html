@@ -68,21 +68,53 @@
     }
     #stats-band .metric span.label{ opacity:.95; font-size: clamp(13px, 2vw, 16px) }
 
-    /* ---------- BASTIDORES GRID (def. antiga – não usada agora) ---------- */
-    .culture-grid{ grid-template-columns: repeat(5,1fr) }
-    @media (max-width:1100px){ .culture-grid{ grid-template-columns: repeat(3,1fr) } }
-    @media (max-width:720px){ .culture-grid{ grid-template-columns: 1fr } }
-
     /* ---------- Reveal utilitário ---------- */
     .reveal{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease }
     .reveal.in{ opacity:1; transform:none }
 
-    /* ---------- BASTIDORES: FAIXA CONTÍNUA IGUAL À HOME ---------- */
+    /* ---------- SÓCIOS — foto grande + texto lado a lado (alternado) ---------- */
+    #socios .partner-row{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;      /* dá mais “peso” à foto */
+      gap: clamp(14px, 3vw, 28px);
+      align-items: stretch;
+      margin-bottom: clamp(14px, 3vw, 22px);
+    }
+    /* linha alternada: quando a foto está à direita, ela também fica maior */
+    #socios .partner-row.reverse{ grid-template-columns: 0.8fr 1.2fr; }
+
+    #socios .partner-row .photo{
+      border-radius:16px; overflow:hidden;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    #socios .partner-row .photo img{
+      width:100%; height:100%;
+      object-fit:cover;
+      aspect-ratio: 4 / 5;                    /* retrato em destaque */
+      display:block;
+    }
+    #socios .partner-row .info{
+      display:flex; flex-direction:column; justify-content:center;
+    }
+    #socios .partner-row .info h3{ margin:0 0 6px }
+    #socios .partner-row .info .role{ opacity:.9; margin:0 0 10px }
+    #socios .partner-row .info .bio{ margin:0 }
+
+    @media (max-width: 1100px){
+      #socios .partner-row,
+      #socios .partner-row.reverse{ grid-template-columns: 1fr; }
+      /* no mobile, traga a foto sempre primeiro para manter o foco visual */
+      #socios .partner-row.reverse .photo{ order:-1; }
+      #socios .partner-row .photo img{ aspect-ratio: 16 / 10; }
+    }
+
+    /* ---------- BASTIDORES: FAIXA CONTÍNUA (mais alta) ---------- */
     #bastidores .who-gallery{
       position:relative; overflow:hidden; margin-top:8px;
-      height: clamp(120px, 18vh, 200px);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 48px, #000 calc(100% - 48px), transparent);
-              mask-image: linear-gradient(90deg, transparent, #000 48px, #000 calc(100% - 48px), transparent);
+      height: clamp(180px, 28vh, 320px); /* ↑ mais altura para valorizar as fotos */
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
       border:1px solid rgba(255,255,255,.12);
       border-radius:12px;
       background: rgba(0,0,0,.10);
@@ -94,7 +126,7 @@
       animation: stripMove 25s linear infinite; /* mesma direção/velocidade da Home */
     }
     #bastidores .who-gallery img{
-      height:100%; width:auto; object-fit:cover; border-radius:10px;
+      height:100%; width:auto; object-fit:cover; border-radius:12px;
       box-shadow:0 10px 26px rgba(0,0,0,.25);
       border:1px solid rgba(255,255,255,.15);
     }
@@ -230,33 +262,38 @@
       </div>
     </section>
 
-    <!-- (2) SÓCIOS (nomes/cargos atualizados, sem botões) -->
+    <!-- (2) SÓCIOS — foto grande + texto alternado -->
     <section id="socios" class="section about-partners">
       <div class="container">
         <h2 class="reveal">Sócios</h2>
-        <div class="partners-grid">
-          <article class="partner-card reveal">
-            <figure><img src="/assets/team-socio-1.jpg" alt="Rogério Takeshita — Sócio-Diretor" loading="lazy" decoding="async" width="760" height="950"></figure>
-            <div class="info">
-              <h3>Rogério Takeshita</h3>
-              <p class="role">Sócio‑Diretor</p>
-              <p class="bio">Integra engenharia, qualidade e finanças para reduzir risco e custo total, cuidando da tomada de decisão no Brasil.</p>
-            </div>
-          </article>
 
-          <article class="partner-card reveal">
-            <figure><img src="/assets/team-socio-2.jpg" alt="Sandra de Almeida — Sócia, Operações e Compliance" loading="lazy" decoding="async" width="760" height="950"></figure>
-            <div class="info">
-              <h3>Sandra de Almeida</h3>
-              <p class="role">Sócia — Operações e Compliance</p>
-              <p class="bio">Lidera a equipe local e negociações na fábrica para garantir prazos, padrão de qualidade e comunicação direta.</p>
-            </div>
-          </article>
-        </div>
+        <!-- Linha 1: foto à esquerda -->
+        <article class="partner-row reveal">
+          <figure class="photo">
+            <img src="/assets/team-socio-1.jpg" alt="Rogério Takeshita — Sócio-Diretor" loading="lazy" decoding="async" width="760" height="950">
+          </figure>
+          <div class="info">
+            <h3>Rogério Takeshita</h3>
+            <p class="role">Sócio‑Diretor</p>
+            <p class="bio">Integra engenharia, qualidade e finanças para reduzir risco e custo total, cuidando da tomada de decisão no Brasil.</p>
+          </div>
+        </article>
+
+        <!-- Linha 2: foto à direita -->
+        <article class="partner-row reverse reveal">
+          <div class="info">
+            <h3>Sandra de Almeida</h3>
+            <p class="role">Sócia — Operações e Compliance</p>
+            <p class="bio">Lidera a equipe local e negociações na fábrica para garantir prazos, padrão de qualidade e comunicação direta.</p>
+          </div>
+          <figure class="photo">
+            <img src="/assets/team-socio-2.jpg" alt="Sandra de Almeida — Sócia, Operações e Compliance" loading="lazy" decoding="async" width="760" height="950">
+          </figure>
+        </article>
       </div>
     </section>
 
-    <!-- (3) BASTIDORES — faixa contínua igual à Home -->
+    <!-- (3) BASTIDORES — faixa contínua (mais alta) -->
     <section id="bastidores" class="section about-culture">
       <div class="container">
         <h2 class="reveal">Bastidores</h2>
@@ -271,8 +308,7 @@
             <img src="/assets/qs4.jpg?v=2" alt="">
             <img src="/assets/qs5.jpg?v=3" alt="Foto 5">
             <img src="/assets/qs6.jpg?v=3" alt="Foto 6">
-
-            <!-- duplicadas na MESMA ordem para o loop perfeito -->
+            <!-- duplicadas para o loop perfeito -->
             <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true">
             <img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
             <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true">
@@ -282,7 +318,7 @@
           </div>
         </section>
 
-        <!-- Texto sob a faixa (mantido) -->
+        <!-- Texto sob a faixa -->
         <p class="section-note reveal" style="margin-top:10px">
           Somos <b>30 colaboradores em Guangzhou</b>. Levamos a sério a <b>presença na fábrica</b> — visitas em até 48h na região de atuação,
           <b>inspeção por amostragem</b> com fotos e vídeos, checagem de <b>embalagem/etiqueta</b> e alinhamento direto com a produção.
@@ -292,7 +328,7 @@
       </div>
     </section>
 
-    <!-- (4) ESTRUTURA (SEM ZOOM) -->
+    <!-- (4) ESTRUTURA -->
     <section id="escritorios" class="section about-offices">
       <div class="container">
         <h2 class="reveal">Estrutura</h2>
