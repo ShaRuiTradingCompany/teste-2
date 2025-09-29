@@ -16,7 +16,19 @@
       </a>
       <nav class="menu">
         <a href="/pt/quem-somos.html">Quem somos</a>
-        <a href="/pt/diferenciais.html" aria-current="page">Diferenciais</a>
+        <!-- ===== MENU UNIVERSAL (igual ao da Home) ===== -->
+  <!-- Fonte Montserrat usada no menu/brand -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Header transparente (sem vidro) e sobreposto, como na Home */
+    header.site-header{
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      background:transparent !important;
+      -webkit-backdrop-filter:none !important;
+      backdrop-filter:none !important;
+      border:0 !important; box-shadow:none !important;
+    }
         <a href="/pt/plataforma.html">Plataforma</a>
         <a href="/pt/contato.html">Contato</a>
       </nav>
