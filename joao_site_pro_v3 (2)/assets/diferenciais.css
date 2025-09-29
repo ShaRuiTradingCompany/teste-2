@@ -755,5 +755,60 @@ body{
 .site-header.on-video nav .menu{
   gap: 16px; /* preserva espaçamento entre itens */
 }
+/* ===== Header transparente só na página de Diferenciais ===== */
+.page-diferenciais .site-header{
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  position: fixed; top:0; left:0; right:0; z-index: 1000; /* mantém o menu por cima */
+}
+
+/* ===== HERO full-viewport com foto semicircular à esquerda ===== */
+.df-hero{
+  min-height: calc(100svh - var(--header-h));
+  padding-block: calc(var(--header-h) + 24px) clamp(24px, 6vh, 48px);
+  /* Azul um pouco mais claro */
+  background:
+    radial-gradient(900px 600px at 25% 10%, rgba(255,255,255,.10), transparent 60%),
+    linear-gradient(180deg, #2c6bb0, #1e4f87 60%, #1b4478);
+  color: #eaf1ff;
+}
+
+.df-hero-grid{
+  display: grid;
+  grid-template-columns: minmax(420px, 50%) 1fr;  /* foto ~metade, texto metade */
+  gap: clamp(16px, 3vw, 40px);
+  align-items: center;
+}
+
+/* Foto semicircular (lado reto para fora) */
+.df-semi{
+  background: center/cover no-repeat var(--img, none);
+  height: clamp(360px, 72vh, 760px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.30);
+}
+.df-semi.left  { border-radius: 0 9999px 9999px 0; }
+.df-semi.right { border-radius: 9999px 0 0 9999px; }
+
+/* Cola a borda reta na lateral ESQUERDA do viewport */
+.df-semi.flush-left{
+  margin-left: calc(-1 * (max(0px, (100vw - 1240px) / 2) + 16px)); /* 16px = padding do .container */
+}
+
+/* Texto */
+.df-title{
+  margin: 0 0 10px;
+  font-weight: 800;
+  font-size: clamp(38px, 6vw, 64px);
+  color: #ffffff;                /* título branco */
+  letter-spacing: .2px;
+}
+.df-copy .lead{
+  font-size: clamp(15px, 2vw, 20px);
+  line-height: 1.6;
+  color: #eef5ff;
+  opacity: .98;
+}
 
 
