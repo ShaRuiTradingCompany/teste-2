@@ -31,7 +31,6 @@
   text-shadow: 0 2px 10px rgba(0,0,0,.55); /* melhora contraste no vídeo */
 }
     nav .menu{display:flex; gap:16px; align-items:center}
-    nav .menu a{opacity:.1}
     nav .menu a:hover{opacity:1}
 
     /* Marca empilhada */
@@ -140,25 +139,6 @@
     </div>
   </div>
 
-  <style id="fix-menu-fosco">
-    <style id="chips-home-sem-vidro">
-  /* Reativa a borda branca, mas sem nenhum fundo/vidro */
-  .site-header.on-video .menu a{
-    border: 1px solid rgba(255,255,255,.9) !important;
-    border-radius: 999px !important;
-    background: transparent !important;
-  }
-  .site-header.on-video .menu a:hover{
-    background: rgba(255,255,255,.12) !important; /* feedback sutil */
-    text-decoration: none; /* deixe sublinhado desligado se preferir */
-  }
-  .site-header.on-video .lang .lang-toggle{
-    border: 1px solid rgba(255,255,255,.85) !important;
-    border-radius: 999px !important;
-    background: transparent !important;
-  }
-</style>
-
   /* Home (header sobre vídeo): desliga qualquer vidro, blur e opacidade */
   .site-header.on-video .menu a,
   .site-header.on-video .lang .lang-toggle{
@@ -179,6 +159,55 @@
   }
 </style>
 
+<style id="fix-header-home-video">
+/* Header da HOME sobre o vídeo: 100% transparente e sem blur/vidro */
+header.site-header.on-video{
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  z-index: 1000 !important;
+}
+
+/* Texto nítido (sem opacidade reduzida, sem filtros) */
+header.site-header.on-video .brand a,
+header.site-header.on-video nav .menu a,
+header.site-header.on-video .lang .lang-toggle{
+  color: #fff !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.55) !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* CHIPS (aros brancos) – sem fundo, só a borda arredondada */
+header.site-header.on-video nav .menu a{
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px !important;
+  border: 1px solid rgba(255,255,255,.9) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Hover/focus: leve realce */
+header.site-header.on-video nav .menu a:hover,
+header.site-header.on-video nav .menu a:focus-visible{
+  background: rgba(255,255,255,.12) !important;
+  text-decoration: none !important;
+}
+
+/* Botão de idioma (globo) no mesmo estilo dos chips */
+header.site-header.on-video .lang .lang-toggle{
+  border: 1px solid rgba(255,255,255,.9) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+}
+
+/* Por garantia, anula QUALQUER regra que deixa os links “lavados” */
+nav .menu a{ opacity: 1 !important; }
+</style>
 
 </header>
 
