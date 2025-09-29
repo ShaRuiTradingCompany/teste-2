@@ -1,545 +1,134 @@
-/* ===== DIFERENCIAIS (página) – visual tecnológico ===== */
+/* ====== DIFERENCIAIS — CSS da página ====== */
 :root{
-  --header-h: 72px;              /* atualizado via JS */
-  --text:#E7ECF3;
-  --muted:#A6B0BF;
-
-  --accentA:#22D3EE;             /* ciano */
-  --accentB:#7C3AED;             /* roxo */
-  --glow: 0 0 24px rgba(34,211,238,.25), 0 0 48px rgba(124,58,237,.20);
-
-  /* Navio vermelho e containers */
-  --ship-red:#E11D48;
-  --ship-red-dark:#991B1B;
-  --container:#ef4444;
-  --container-2:#fb7185;
-  --container-3:#fca5a5;
-
-  /* Balão (glass) */
-  --balloon-bg: rgba(13,30,52,.72);
-  --balloon-bd: rgba(255,255,255,.16);
+  --header-h: 72px;
+  --container-w: 1240px;
+  --container-pad: 16px;
 }
 
-/* Layout base: header | viewport 100vh | footer */
-html,body{ height:100%; }
-body{
-  min-height:100svh;
-  display:grid;
-  grid-template-rows:auto 1fr auto;
-  color:var(--text);
-  /* (IMPORTANTE) sem background aqui, quem define é o styles.css global */
+/* ===== Header desta página SEMPRE transparente (como na Home) ===== */
+.page-diferenciais .site-header,
+.page-diferenciais .site-header::before,
+.page-diferenciais .site-header .nav-wrap,
+.page-diferenciais .site-header.is-glass,
+.page-diferenciais .site-header.sticky,
+.page-diferenciais .site-header.scrolled,
+.page-diferenciais .site-header[data-state="glass"]{
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
-/* ===== Viewport tech ===== */
-.tech-journey{
-  position:relative;
+/* Links do menu SEMPRE sem caixinha (só contorno no item ativo) */
+.page-diferenciais .site-header .menu a{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.55);
+  padding: 8px 12px;
 }
-.tech-journey .viewport{
-  height: calc(100svh - var(--header-h));
-  max-width: 1240px; margin: 0 auto; padding: 0 14px;
-  position:relative; display:grid; place-items:center;
+.page-diferenciais .site-header .menu a:hover,
+.page-diferenciais .site-header .menu a:focus-visible{
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
-
-/* Fundo: grid sutil + varredura */
-.tech-journey .bg{
-  position:absolute; inset:0; z-index:0; pointer-events:none;
-}
-.tech-journey .bg::before{
-  content:""; position:absolute; inset:0;
-  background:
-   linear-gradient(0deg, rgba(255,255,255,.06) 1px, transparent 1px),
-   linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
-  background-size: 48px 48px, 48px 48px;
-  opacity:.08;
-}
-.tech-journey .bg::after{
-  content:""; position:absolute; inset:-40% -40% -40% -40%;
-  background: conic-gradient(from 0deg, transparent 0%, rgba(124,58,237,.18) 8%, transparent 16%);
-  animation: sweep 8s linear infinite;
-  mix-blend-mode: screen; opacity:.25; filter: blur(18px);
-}
-@keyframes sweep{ to { transform: rotate(1turn); } }
-
-/* ===== Stepper (menu sequencial) ===== */
-.seq{
-  position:relative; z-index:1;
-  width: min(1200px, 98vw);
-  height: calc(100% - 10px);
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:18px;
-  background: rgba(255,255,255,.04);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 18px 50px rgba(0,0,0,.35);
-  overflow: hidden;
-}
-.seq .title{
-  position:absolute; inset:14px auto auto 14px; z-index:4;
-  padding:10px 14px; border-radius:12px;
-  background: rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.16);
-  font-weight:800; letter-spacing:.02em;
-}
-.seq .subtitle{ display:block; opacity:.95; letter-spacing:.06em; margin-top:4px; font-weight:700; }
-
-/* Barra do stepper (topo) */
-.seq .stepper{
-  position:absolute; left:0; right:0; top:66px; z-index:3;
-  display:flex; align-items:center; justify-content:center; gap:16px;
-  padding: 0 18px;
+.page-diferenciais .site-header .menu a[aria-current="page"]{
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,.55) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
 }
 
-/* trilho e progresso */
-.seq .rail{
-  position:absolute; left:8%; right:8%; top: 34px; height:4px; z-index:1;
-  background: linear-gradient(90deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
-  border-radius:999px; overflow:hidden;
-}
-.seq .progress{
-  width:0%; height:100%;
-  background: linear-gradient(90deg, var(--accentA), var(--accentB));
-  box-shadow: var(--glow);
-  transition: width .35s ease;
-}
+/* ===== Utilitário container (mantém o padrão do site) ===== */
+.container{ max-width: var(--container-w); margin:0 auto; padding:0 var(--container-pad); }
 
-/* nós do stepper */
-.seq .nodes{ position:relative; display:flex; gap:18px; }
-.seq .node{
-  position:relative; width:54px; height:54px; border-radius:50%;
-  display:grid; place-items:center; cursor:pointer; user-select:none;
-  background: radial-gradient(closest-side, rgba(255,255,255,.12), rgba(255,255,255,.06));
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow: 0 8px 22px rgba(0,0,0,.26);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s;
-}
-.seq .node:hover{ transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,.32); }
-.seq .node.active{
-  border-color: transparent;
-  background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
-  outline: 0 solid transparent;
-  box-shadow: var(--glow);
-}
-.seq .node .icon{
-  width:26px; height:26px; opacity:.95;
-  stroke:#E7ECF3; stroke-width:2; fill:none; vector-effect:non-scaling-stroke;
-}
-.seq .node .label{
-  position:absolute; top:62px; width:max-content; white-space:nowrap;
-  left:50%; transform:translateX(-50%);
-  font-size:12px; opacity:.9; font-weight:700; letter-spacing:.02em;
-  color:#E7ECF3;
-}
-
-/* ===== Painéis/Conteúdo por passo ===== */
-.seq .stage{ position:absolute; inset:110px 14px 14px 14px; border-radius:14px; overflow:hidden; }
-.seq .panel{
-  position:absolute; inset:0; opacity:0; transform:scale(1.01);
-  transition: opacity .35s ease, transform .35s ease;
-  display:grid; place-items:center;
-}
-.seq .panel.active{ opacity:1; transform:none; z-index:2; }
-
-/* cartão (balão) */
-.panel .balloon{
-  position:absolute; left:16px; bottom:16px; right:auto; z-index:6;
-  max-width:560px; padding:14px 16px; border-radius:14px;
-  background: var(--balloon-bg); border:1px solid var(--balloon-bd);
-  box-shadow: 0 18px 42px rgba(0,0,0,.34);
-  opacity:0; transform: translateY(6px);
-  transition: opacity .3s ease, transform .3s ease;
-}
-.panel.active .balloon{ opacity:1; transform:none; }
-.balloon h3{ margin:0 0 6px; font-size:clamp(18px,2.2vw,22px); font-weight:800 }
-.balloon p{ margin:0; opacity:.96 }
-
-/* Canvas/SVG das cenas */
-.panel svg{ width:100%; height:100%; display:block; }
-
-/* ondas no embarque */
-.panel.f-embarque .w1{ animation: waveA 6s linear infinite; }
-.panel.f-embarque .w2{ animation: waveA 8s linear infinite reverse; }
-@keyframes waveA{ from{ transform:translateX(0) } to{ transform:translateX(-160px) } }
-
-/* guindaste no porto */
-.panel.f-porto.active .gancho{ animation: gancho 2.4s ease-in-out infinite alternate; transform-origin: top center; }
-@keyframes gancho{ from{ transform: translateY(0) } to{ transform: translateY(14px) } }
-
-/* controles */
-.seq .controls{
-  position:absolute; right:16px; bottom:16px; z-index:7; display:flex; gap:10px; flex-wrap:wrap;
-}
-.cta{
-  display:inline-block; padding:12px 16px; border-radius:12px; font-weight:800; text-decoration:none; color:#fff;
-  border:1px solid rgba(255,255,255,.16);
-  background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
-}
-.cta.primary{
-  background: linear-gradient(90deg, var(--accentB), var(--accentA));
-  color:#051018; border-color: transparent; box-shadow: var(--glow);
-}
-.btn{
-  border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.08); color:#fff;
-  padding:10px 12px; border-radius:12px; font-weight:800; cursor:pointer;
-}
-
-/* acessibilidade */
-.sr-only{ position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); }
-
-/* responsivo */
-@media (max-width: 920px){
-  .seq .nodes{ gap:12px }
-  .seq .node{ width:48px; height:48px }
-  .seq .node .label{ display:none; } /* esconde rótulo para não quebrar layout */
-  .panel .balloon{ max-width:86vw; }
-}
-/* ===== ROTA (navio) — fundo azul claro só na seção ===== */
-:root{
-  --rw-accent:#66e0c2;
-  --rw-ink:#0b1f3d;
-  --rw-red:#E11D48;
-  --rw-bg:#eaf4ff;            /* <<< azul claro da área do navio */
-  --rw-border:#d8e6f7;
-}
-
-#rota-branca{
-  background:var(--rw-bg);
-  border:1px solid var(--rw-border);
-  border-radius:16px;
-  box-shadow:0 12px 30px rgba(10,22,40,.06);
-  padding:14px;
-  margin:18px auto;
-}
-
-#rota-branca .board{
-  position:relative;
-  width:min(1400px,96vw);
-  height:clamp(320px,46vh,460px);
-  margin:0 auto;
-}
-
-/* SVG ocupa toda a área */
-#rota-branca svg{ position:absolute; inset:0; width:100%; height:100%; display:block }
-
-/* Linha base (tracejada) e progresso (cheio) */
-#rota-branca .rw-base{ stroke:#cdd7e6; stroke-width:3; stroke-dasharray:8 10; fill:none }
-#rota-branca .rw-prog{ stroke:var(--rw-accent); stroke-width:4; stroke-linecap:round; fill:none }
-
-/* Pontos de chegada */
-#rota-branca .rw-dots circle{ fill:#b9c7da }
-#rota-branca .rw-dots circle.active{ fill:var(--rw-accent) }
-
-/* Navio vermelho pequeno */
-#rota-branca .rw-ship path.hull{ fill:var(--rw-red); stroke:#991B1B; stroke-width:1.5 }
-#rota-branca .rw-ship rect.bridge{ fill:#ffe4e6; stroke:#e5c2c9; stroke-width:1 }
-#rota-branca .rw-ship rect.stack{ fill:#991B1B }
-#rota-branca .rw-ship .shadow{ fill:rgba(0,0,0,.18) }
-
-/* Balões (sempre visíveis) */
-#rota-branca .rw-balloons{ list-style:none; margin:0; padding:0 }
-#rota-branca .rw-balloons li{
-  position:absolute; transform: translate(-50%,-120%);
-  background:#0b1f3d; color:#fff; border:1px solid rgba(255,255,255,.16);
-  border-radius:12px; padding:10px 12px; max-width:240px;
-  box-shadow:0 12px 28px rgba(0,0,0,.18);
-}
-#rota-branca .rw-balloons li h4{ margin:0 0 4px; font-size:15px; font-weight:800 }
-#rota-branca .rw-balloons li p{ margin:0; font-size:13px; line-height:1.45; opacity:.95 }
-
-/* Setinha do balão */
-#rota-branca .rw-balloons li::after{
-  content:""; position:absolute; left:50%; top:100%; transform:translateX(-50%);
-  border:8px solid transparent; border-top-color:#0b1f3d;
-}
-
-/* Ajustes automáticos de posição */
-#rota-branca .rw-balloons li.left  { transform: translate(-6px,-120%); }
-#rota-branca .rw-balloons li.left::after{ left:10px; transform:none }
-#rota-branca .rw-balloons li.right { transform: translate(-100%,-120%); }
-#rota-branca .rw-balloons li.right::after{ left:auto; right:10px; transform:none }
-#rota-branca .rw-balloons li.below { transform: translate(-50%,18px); }
-#rota-branca .rw-balloons li.below::after{ top:-8px; transform:translateX(-50%) rotate(180deg) }
-
-/* Controles */
-#rota-branca .rw-controls{ position:absolute; right:10px; bottom:10px; display:flex; gap:8px; }
-#rota-branca .btn{
-  padding:8px 12px; border-radius:10px; border:1px solid #d7dfeb;
-  background:#f7f9fc; color:#0b1f3d; font-weight:800; cursor:pointer
-}
-#rota-branca .btn:hover{ background:#eef3f9 }
-
-/* Acessibilidade (SR-Only) */
-.sr-only{ position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); }
-
-/* Mobile */
-@media (max-width:720px){
-  #rota-branca .board{ height: clamp(300px, 48vh, 420px); }
-  #rota-branca .rw-balloons li{ max-width:52vw; }
-}
-/* ===== ROTA (fundo branco apenas aqui) ===== */
-:root{
-  --rw-accent:#66e0c2;
-  --rw-ink:#0b1f3d;
-  --rw-red:#E11D48;
-  --rw-bg:#ffffff;          /* fundo branco na área do navio */
-  --rw-border:#dfe7f3;
-}
-
-#rota-branca{
-  background:var(--rw-bg);
-  border:1px solid var(--rw-border);
-  border-radius:16px;
-  box-shadow:0 12px 30px rgba(10,22,40,.06);
-  padding:14px;
-  margin:18px auto;
-  max-width:1260px;
-}
-
-/* Cabeçalho: título + mini-orb com feixe */
-.rw-head{
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
-  margin:4px 6px 10px;
-}
-.rw-head h2{
-  margin:0; font-weight:800; color:#0b1f3d; letter-spacing:.2px;
-  font-size: clamp(20px, 3.2vw, 28px);
-}
-.mini-orb{
-  --size: 52px; position:relative; width:var(--size); aspect-ratio:1/1; border-radius:50%; display:grid; place-items:center;
-}
-.mini-orb img{ width:72%; height:72%; object-fit:contain; border-radius:50%; background:#fff; position:relative; z-index:1; }
-.mini-orb::after{
-  content:""; position:absolute; inset:-8%; border-radius:50%;
-  background: conic-gradient(from var(--angle,0deg), #66e0c2,#22b3e5,#7c3aed,#22b3e5,#66e0c2);
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 8px), #000 calc(100% - 7px));
-          mask: radial-gradient(farthest-side, transparent calc(100% - 8px), #000 calc(100% - 7px));
-  filter: blur(2px);
-  animation: orbSpin 6.8s linear infinite;
-}
-@keyframes orbSpin{ to{ --angle:360deg } }
-
-/* Layout da área: rota (esq) + balão (dir) */
-.rw-layout{
-  display:grid; grid-template-columns: 1.25fr .85fr;
-  gap: clamp(12px, 2vw, 18px); align-items:stretch;
-}
-.board{ position:relative; min-height: 420px; }
-#rw-svg{ position:absolute; inset:0; width:100%; height:100%; display:block }
-
-/* Traços da rota */
-.rw-base{ stroke:#cfd9ea; stroke-width:3; stroke-dasharray:8 10; fill:none }
-.rw-prog{ stroke:var(--rw-accent); stroke-width:4; stroke-linecap:round; fill:none }
-
-/* Dots gerados no JS */
-.rw-dots circle{ fill:#b9c7da; transition: transform .2s ease, fill .2s ease; cursor:pointer }
-.rw-dots circle.active{ fill:var(--rw-accent); transform: scale(1.08); }
-
-/* Navio vermelho */
-.rw-ship .hull{ fill:var(--rw-red); stroke:#991B1B; stroke-width:1.5 }
-.rw-ship .bridge{ fill:#ffe4e6; stroke:#e5c2c9; stroke-width:1 }
-.rw-ship .stack{ fill:#991B1B }
-.rw-ship .shadow{ fill:rgba(0,0,0,.18) }
-.rw-ship .c1{ fill:#ef4444 } .rw-ship .c2{ fill:#fb7185 } .rw-ship .c3{ fill:#fca5a5 }
-
-/* Marcadores de início/fim */
-.rw-marker .badge{ fill:#0b1f3d; stroke:#c7d4e8; stroke-width:1 }
-.rw-marker .ic{ fill:none; stroke:#eaf2ff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; opacity:.95 }
-
-/* Balão lateral (apenas um visível) */
-.rw-aside .rw-balloons{ list-style:none; padding:0; margin:0 }
-.rw-aside .rw-balloons li{
-  background:#0b1f3d; color:#fff; border:1px solid rgba(255,255,255,.16);
-  border-radius:12px; padding:12px 14px; box-shadow:0 12px 28px rgba(0,0,0,.18);
-  display:none;
-}
-.rw-aside .rw-balloons li.active{ display:block; }
-.rw-aside h4{ margin:0 0 6px; font-size: 16px; font-weight:800 }
-
-/* Controles */
-.rw-controls{ position:absolute; right:10px; bottom:10px; display:flex; gap:8px }
-.rw-controls .btn{
-  padding:8px 12px; border-radius:10px; border:1px solid #d7dfeb;
-  background:#f7f9fc; color:#0b1f3d; font-weight:800; cursor:pointer
-}
-.rw-controls .btn:hover{ background:#eef3f9 }
-
-/* Detalhamento (3 páginas) */
-.rw-details{ padding: 10px 0 4px }
-.rw-details .container{ max-width:1240px; margin:0 auto; padding:0 14px }
-.rw-slide{
-  display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin: 12px 0 10px;
-}
-.rw-card{
-  background: rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:14px; padding:14px; color:#eaf1ff;
-  box-shadow:0 10px 26px rgba(0,0,0,.25);
-}
-.rw-card h3{ margin:0 0 6px; font-weight:800; font-size: clamp(18px,2.2vw,22px) }
-.rw-card p{ margin:0 0 8px; opacity:.95 }
-.rw-card ul{ margin:0; padding-left:18px }
-.rw-card li{ margin:4px 0 }
-
-/* CTA final */
-.rw-cta{ text-align:center; margin: 10px 0 0 }
-.rw-cta .cta{ display:inline-block; padding:12px 16px; border-radius:12px; font-weight:800; text-decoration:none; color:#051018; border:0;
-  background:linear-gradient(90deg,#7C3AED,#22D3EE); box-shadow:0 0 20px rgba(34,211,238,.35),0 0 48px rgba(124,58,237,.25);
-}
-
-/* Typewriter (títulos/textos ao descer) */
-.typewrite{ position:relative }
-@media (max-width: 920px){
-  .rw-layout{ grid-template-columns: 1fr; }
-  .board{ min-height: 380px }
-  .rw-slide{ grid-template-columns: 1fr }
-}
-/* ===== Utilitário: container (caso não venha do styles.css) ===== */
-.container{ max-width:1240px; margin:0 auto; padding:0 16px }
-
-/* ===== 1) HERO: título no fundo azul + foto 1/3 ===== */
-.diff-hero{
+/* ===== HERO (topo) — foto semicircular à ESQUERDA + texto à DIREITA ===== */
+.df-hero{
+  min-height: calc(100svh - var(--header-h));
+  padding-top: calc(var(--header-h) + 24px);
+  padding-bottom: clamp(24px, 5vh, 56px);
+  /* >>> gradiente azul ORIGINAL do site <<< */
   background:
     radial-gradient(820px 560px at 50% 15%, rgba(255,255,255,.07), transparent 60%),
     linear-gradient(180deg,#214a83,#183a69 55%, #17335f);
-  padding-block: clamp(28px, 7vh, 64px);
+  color:#eaf1ff;
+  display:grid; align-items:center;
 }
-.diff-hero .hero-grid{
-  display:grid; grid-template-columns: 1fr 2fr;
-  gap: clamp(14px, 2.6vw, 24px); align-items:center;
-}
-.diff-hero .hero-photo{
-  height: clamp(220px, 36vh, 320px);
-  border-radius: 24px;
-  background: var(--rw-bg) center/cover no-repeat;
-  background-image: var(--img, none);
-  box-shadow: 0 16px 40px rgba(0,0,0,.35);
-}
-.diff-hero .hero-text{ text-align:center }
-.diff-hero h1{ margin:0 0 6px; font-size:clamp(28px,4.8vw,46px) }
-.diff-hero .lead{ margin:0; opacity:.96; font-size:clamp(15px,2.2vw,20px) }
-@media (max-width: 920px){
-  .diff-hero .hero-grid{ grid-template-columns: 1fr; }
-  .diff-hero .hero-photo{ order:2; }
+.df-hero-grid{
+  display:grid; grid-template-columns: 1fr 1fr; align-items:center;
+  gap: clamp(18px, 3vw, 36px);
 }
 
-/* ===== 2) LOGO com feixe (neon) ===== */
-.logo-band{ display:grid; place-items:center; padding: 10px 0 6px }
-.logo-orb{ --size: clamp(120px, 20vw, 200px); position:relative; width:var(--size); aspect-ratio:1/1; border-radius:50%; display:grid; place-items:center; filter:drop-shadow(0 18px 44px rgba(0,0,0,.35)); }
-.logo-orb img{ width:74%; height:74%; object-fit:contain; background:#fff; border-radius:50%; z-index:2 }
-.logo-orb::after{ content:""; position:absolute; inset:-6%; border-radius:50%;
-  background: conic-gradient(from var(--angle,0deg), #66e0c2,#22b3e5,#7c3aed,#22b3e5,#66e0c2);
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px));
-          mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px));
-  filter: blur(4px) saturate(1.06); animation: orbSpin 6.8s linear infinite;
+/* Foto semicircular: lado RETO colado na lateral ESQUERDA do viewport */
+.df-semi{
+  background: center/cover no-repeat var(--img, none);
+  /* altura “igual às outras” (responsiva e consistente) */
+  height: min(560px, calc(100svh - var(--header-h) - 64px));
+  box-shadow: 0 16px 40px rgba(0,0,0,.30);
 }
-@keyframes orbSpin{ to{ --angle: 360deg } }
+.df-semi.left{  border-radius: 0 9999px 9999px 0; }
+.df-semi.right{ border-radius: 9999px 0 0 9999px; }
 
-/* ===== 3) ROTA (navio) — azul claro só nesta área ===== */
-:root{
-  --rw-accent:#66e0c2;
-  --rw-ink:#0b1f3d;
-  --rw-red:#E11D48;
-  --rw-bg:#eaf4ff;
-  --rw-border:#d8e6f7;
-}
-#rota-branca{
-  background:var(--rw-bg);
-  border:1px solid var(--rw-border);
-  border-radius:16px;
-  box-shadow:0 12px 30px rgba(10,22,40,.06);
-  padding:14px;
-  margin:18px auto;
-}
-#rota-branca .board{ position:relative; width:min(1200px,96vw); height:clamp(300px,48vh,420px); margin:0 auto; }
-#rota-branca svg{ position:absolute; inset:0; width:100%; height:100%; display:block }
-#rwPath.rw-base{ stroke:#cdd7e6; stroke-width:3; stroke-dasharray:8 10; fill:none }
-#rwProg{ stroke:var(--rw-accent); stroke-width:4; stroke-linecap:round; fill:none }
-.rw-mark{ opacity:.9 }
-.rw-ship path.hull{ fill:var(--rw-red); stroke:#991B1B; stroke-width:1.5 }
-.rw-ship rect.bridge{ fill:#ffe4e6; stroke:#e5c2c9; stroke-width:1 }
-.rw-ship rect.stack{ fill:#991B1B }
-.rw-ship .shadow{ fill:rgba(0,0,0,.18) }
-
-/* Balão que sai do navio */
-.rw-speech{
-  position:absolute; left:0; top:0;
-  transform: translate(-9999px,-9999px); /* escondido até posicionar */
-  background:#0b1f3d; color:#fff; border:1px solid rgba(255,255,255,.16);
-  border-radius:12px; padding:10px 12px; max-width:260px;
-  box-shadow:0 12px 28px rgba(0,0,0,.18);
-}
-.rw-speech b{ display:block; font-weight:800; margin:0 0 4px }
-.rw-speech p{ margin:0; font-size:13px; line-height:1.45; opacity:.96 }
-.rw-speech::after{
-  content:""; position:absolute; left:18px; top:100%;
-  border:8px solid transparent; border-top-color:#0b1f3d;
+/* Cola o lado reto na BORDA esquerda da página (como nos outros blocos) */
+.df-semi.flush-left{
+  margin-left: calc(-1 * (max(0px, (100vw - var(--container-w)) / 2) + var(--container-pad)));
 }
 
-/* Controles */
-.rw-controls{ position:absolute; right:10px; bottom:10px; display:flex; gap:8px }
-#rota-branca .btn{
-  padding:8px 12px; border-radius:10px; border:1px solid #d7dfeb;
-  background:#f7f9fc; color:#0b1f3d; font-weight:800; cursor:pointer
+/* Texto do topo */
+.df-title{
+  margin:0 0 10px; font-weight:800;
+  font-size: clamp(38px, 6vw, 64px); color:#fff; letter-spacing:.2px;
 }
-#rota-branca .btn:hover{ background:#eef3f9 }
+.df-copy .lead{
+  margin:0 0 10px;
+  font-size: clamp(16px, 2vw, 20px); line-height: 1.65; color:#eef5ff;
+}
 
-/* ===== 4) Título explicativo ===== */
+/* ===== Slices (2 por tela, alternando foto/descrição) ===== */
 .diff-meaning{ padding: 8px 0 0 }
-.diff-meaning h2{ text-align:center; font-size:clamp(26px,4.6vw,42px); margin:0 }
-/* ===== 5) Detalhamento — 2 por viewport, alternando foto ===== */
-.diff-deep{ padding: 10px 0 6px; color:#eaf1ff; }
+.diff-meaning h2{ text-align:center; font-size:clamp(26px,4.6vw,42px); margin:0; color:#f6fbff }
 
-/* Cada “slice” ocupa metade da viewport, com foto + texto */
+.diff-deep{ padding: 10px 0 6px; color:#eaf1ff; }
 .diff-deep .slice{
+  --slice-pad: clamp(10px, 2vw, 16px);
   min-height: 50vh;
   display:grid; align-items:center;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(14px,2.6vw,24px);
-  margin: 12px 0;
-  padding: clamp(10px,2vw,16px);
-
-  /* fundo azul da página visível (sem cartão branco) */
+  gap: clamp(14px, 2.6vw, 24px);
+  margin: 12px 0; padding: var(--slice-pad);
   background: transparent; border: 0; box-shadow: none;
 }
+/* Cola o lado reto da foto na borda da página */
+.diff-deep .slice.left  { padding-left:  0 !important; }
+.diff-deep .slice.right { padding-right: 0 !important; }
 
-/* Ordem do conteúdo conforme o lado */
 .diff-deep .slice.right .ph{ order:2 }
 .diff-deep .slice.right .copy{ order:1; padding-right: clamp(6px,1vw,10px) }
 .diff-deep .slice.left  .ph{ order:1 }
 .diff-deep .slice.left  .copy{ order:2; padding-left:  clamp(6px,1vw,10px) }
 
-/* FOTO — base */
+/* Foto das seções (mesmo molde) */
 .diff-deep .ph{
-  aspect-ratio: 16 / 9;
-  background: #0b0e10 center/cover no-repeat;
-  background-image: var(--ph, none);   /* vem do style="--ph:url('...')" do HTML */
-  box-shadow: 0 10px 28px rgba(0,0,0,.25);
-  overflow: hidden;                     /* garante o corte perfeito */
-  border-radius: 0;                     /* zera qualquer raio anterior */
+  aspect-ratio: 16/9;
+  background: #0b0e10 center/cover no-repeat; background-image: var(--ph, none);
+  box-shadow: 0 10px 28px rgba(0,0,0,.25); overflow:hidden;
 }
+.diff-deep .slice.left  .ph{  border-radius: 22px 9999px 9999px 22px; margin-left:  calc(-1 * var(--slice-pad)); }
+.diff-deep .slice.right .ph{  border-radius: 9999px 22px 22px 9999px; margin-right: calc(-1 * var(--slice-pad)); }
 
-/* FOTO — semicírculo automático conforme o lado do slice */
-.diff-deep .slice.left  .ph{  border-radius: 9999px 22px 22px 9999px; }
-.diff-deep .slice.right .ph{  border-radius: 22px 9999px 9999px 22px; }
-
-/* Texto */
+/* Tipografia das seções */
 .diff-deep .copy h3{
   margin:0 0 6px; font-weight:800;
-  font-size:clamp(18px,2.2vw,26px); color:#ffffff;
+  font-size: clamp(24px, 3.2vw, 34px); color:#fff; letter-spacing:.2px;
 }
 .diff-deep .copy p{
-  margin:0; font-size:clamp(14px,1.6vw,18px);
-  line-height:1.6; opacity:.96; color:#e7efff;
+  margin:0; font-size: clamp(16px, 2vw, 20px); line-height: 1.65; color:#e7efff;
 }
 
-/* Digitação ao rolar */
-.type{ will-change: contents }
-.type.delay{ opacity:.98 }
-
-/* Responsivo */
-@media (max-width: 920px){
-  .diff-deep .slice{ grid-template-columns: 1fr; }
-  .diff-deep .slice .copy{ order:2; padding:0 }
-  .diff-deep .slice .ph{ order:1 }
-}
-/* ===== 6) CTA ===== */
+/* CTA */
 .diff-cta{ padding: 10px 0 24px; text-align:center }
 .diff-cta .kpi-row{
   display:grid; gap:12px; grid-template-columns: repeat(3,1fr);
@@ -552,263 +141,11 @@ body{
 .diff-cta .kpi b{ display:block; font-size: clamp(22px,4.4vw,34px) }
 .diff-cta .kpi span{ opacity:.95 }
 
-@media (max-width: 920px){
+/* Responsivo */
+@media (max-width: 980px){
+  .df-hero-grid{ grid-template-columns: 1fr; }
+  .df-semi{ height: min(52vh, 520px); margin-left: 0; }
   .diff-deep .slice{ grid-template-columns: 1fr; }
   .diff-deep .slice .copy{ order:2; padding:0 }
-  .diff-deep .slice .ph{ order:1 }
+  .diff-deep .slice .ph{ order:1; margin:0; }
 }
-/* HERO sem foto lateral (remove o "quadrado branco") */
-.diff-hero .hero-grid{ grid-template-columns: 1fr; }
-.diff-hero .hero-photo{ display:none !important; }
-.diff-hero .hero-text{ max-width: 980px; margin: 0 auto; }
-/* Centraliza o bloco Voltar/Próximo dentro da área azul-clara */
-#rota-branca .rw-controls{
-  position:absolute; left:50%; right:auto; bottom:12px;
-  transform: translateX(-50%); gap:10px;
-}
-
-/* Setas laterais (meio da altura, dentro do bloco) */
-#rota-branca .rw-arrow{
-  position:absolute; top:50%; transform: translateY(-50%);
-  width:44px; height:44px; border-radius:999px;
-  border:1px solid #d7dfeb; background:#f7f9fc;
-  color:#0b1f3d; font-weight:800; font-size:22px; line-height:1;
-  display:grid; place-items:center; cursor:pointer; opacity:.96;
-  box-shadow:0 6px 16px rgba(0,0,0,.07);
-}
-#rota-branca .rw-arrow:hover{ background:#eef3f9 }
-#rota-branca .rw-arrow.left{ left:8px }
-#rota-branca .rw-arrow.right{ right:8px }
-
-/* Respiro no texto */
-.diff-deep .copy h3{ margin: 0 0 6px }
-.diff-deep .copy p{ margin: 0; opacity:.96; line-height:1.6 }
-/* Legibilidade no azul */
-.diff-hero, .diff-meaning, .diff-deep { color:#eaf1ff; }
-.diff-meaning h2{ color:#f6fbff; text-shadow:0 2px 12px rgba(0,0,0,.28); }
-.diff-deep .copy h3{ color:#ffffff; }
-.diff-deep .copy p { color:#e7efff; }
-
-/* Trio do logo (logo único + 2 fotos semicirculares) */
-.logo-band .logo-trio{
-  display:grid; grid-template-columns: 1fr auto 1fr;
-  align-items:center; gap: clamp(12px, 2vw, 22px);
-}
-.logo-trio .semi{
-  height: clamp(160px, 22vw, 260px);
-  background: #0b0e10 center/cover no-repeat;
-  background-image: var(--img, none);
-  box-shadow: 0 12px 28px rgba(0,0,0,.28);
-}
-.logo-trio .semi.left{  border-radius: 999px 22px 22px 999px; }
-.logo-trio .semi.right{ border-radius: 22px 999px 999px 22px; }
-
-/* Setas laterais dentro do bloco do navio */
-#rota-branca .rw-arrow{
-  position:absolute; top:50%; transform: translateY(-50%);
-  width:44px; height:44px; border-radius:999px;
-  border:1px solid #d7dfeb; background:#f7f9fc;
-  color:#0b1f3d; font-weight:800; font-size:22px; line-height:1;
-  display:grid; place-items:center; cursor:pointer; opacity:.96;
-  box-shadow:0 6px 16px rgba(0,0,0,.07);
-}
-#rota-branca .rw-arrow.left{ left:8px }
-#rota-branca .rw-arrow.right{ right:8px }
-
-/* Balão que acompanha o navio */
-.rw-speech{
-  position:absolute; left:0; top:0;
-  transform: translate(-9999px,-9999px);
-  background:#0b1f3d; color:#fff; border:1px solid rgba(255,255,255,.16);
-  border-radius:12px; padding:10px 12px; max-width:260px;
-  box-shadow:0 12px 28px rgba(0,0,0,.18);
-}
-.rw-speech b{ display:block; font-weight:800; margin:0 0 4px }
-.rw-speech p{ margin:0; font-size:13px; line-height:1.45; opacity:.96 }
-
-/* Corrige seletor do SVG (id correto) */
-#rwSvg{ position:absolute; inset:0; width:100%; height:100%; display:block }
-/* === AJUSTE: fotos semicirculares com lado reto colado na borda === */
-.diff-deep .slice{
-  /* usamos a mesma “margem interna” do slice como variável */
-  --slice-pad: clamp(10px, 2vw, 16px);
-  padding: var(--slice-pad) !important;
-}
-
-/* cola o lado reto na BORDA da página */
-.diff-deep .slice.left  { padding-left: 0 !important; }
-.diff-deep .slice.right { padding-right: 0 !important; }
-
-/* LEFT: foto à esquerda → lado reto fica na esquerda; curva para o centro */
-.diff-deep .slice.left .ph{
-  border-radius: 22px 9999px 9999px 22px !important; /* arredondado para o centro */
-  margin-left: calc(-1 * var(--slice-pad));          /* encosta na borda esquerda */
-}
-
-/* RIGHT: foto à direita → lado reto fica na direita; curva para o centro */
-.diff-deep .slice.right .ph{
-  border-radius: 9999px 22px 22px 9999px !important; /* arredondado para o centro */
-  margin-right: calc(-1 * var(--slice-pad));         /* encosta na borda direita */
-}
-/* ======== TIPOGRAFIA MAIS FORTE NOS SLICES ======== */
-.diff-deep .copy h3{
-  font-size: clamp(24px, 3.2vw, 34px);
-  letter-spacing: .2px;
-}
-.diff-deep .copy p{
-  font-size: clamp(16px, 2vw, 20px);
-  line-height: 1.65;
-}
-
-/* Lista de argumentos (Diferencial x Mercado x Por que) */
-.points{ margin: 10px 0 0; padding:0; list-style:none; display:grid; gap:8px; }
-.points li{ font-size: clamp(14px, 1.8vw, 18px); line-height:1.55; }
-.badge{
-  display:inline-block; font-weight:800; padding:2px 8px; border-radius:999px;
-  margin-right:8px; font-size:.85em; letter-spacing:.2px;
-}
-.badge.good   { background: rgba(34,211,238,.18); color:#dffaff; border:1px solid rgba(34,211,238,.35); }
-.badge.neutral{ background: rgba(255,255,255,.08); color:#eef5ff; border:1px solid rgba(255,255,255,.18); }
-.badge.why    { background: rgba(124,58,237,.18); color:#f1eaff; border:1px solid rgba(124,58,237,.35); }
-
-/* ======== LOGO-TRIO (duas fotos + logo no centro) ======== */
-.logo-band .logo-trio{
-  display:grid; grid-template-columns: 1fr auto 1fr; align-items:center;
-  gap: clamp(12px, 2vw, 22px);
-}
-.logo-trio .semi{
-  height: clamp(160px, 22vw, 260px);
-  background: var(--img) center/cover no-repeat;
-  box-shadow: 0 12px 28px rgba(0,0,0,.28);
-}
-.logo-trio .semi.left  { border-radius: 22px 9999px 9999px 22px; } /* curva para o centro */
-.logo-trio .semi.right { border-radius: 9999px 22px 22px 9999px; } /* curva para o centro */
-
-/* ======== SEMICÍRCULO “COLADO” NA BORDA NOS SLICES ======== */
-.diff-deep .slice{ --slice-pad: clamp(10px, 2vw, 16px); padding: var(--slice-pad) !important; }
-.diff-deep .slice.left  { padding-left: 0 !important; }
-.diff-deep .slice.right { padding-right: 0 !important; }
-
-/* LEFT: lado reto colado na esquerda; curva para o centro */
-.diff-deep .slice.left .ph{
-  border-radius: 22px 9999px 9999px 22px !important;
-  margin-left: calc(-1 * var(--slice-pad));
-}
-
-/* RIGHT: lado reto colado na direita; curva para o centro */
-.diff-deep .slice.right .ph{
-  border-radius: 9999px 22px 22px 9999px !important;
-  margin-right: calc(-1 * var(--slice-pad));
-}
-/* === MENU 100% TRANSPARENTE QUANDO O HEADER ESTÁ SOBRE VÍDEO === */
-.site-header.on-video {
-  /* Garante header sem fundo */
-  background: transparent !important;
-}
-
-/* Links do menu: sem fundo, sem borda, só o texto */
-.site-header.on-video nav.menu a,
-.site-header.on-video nav .menu a,
-.site-header.on-video .menu a{
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  color: #fff !important;
-  /* mantém área clicável confortável */
-  padding: 8px 12px;
-  /* melhora a leitura sobre o vídeo, mas é sutil */
-  text-shadow: 0 2px 10px rgba(0,0,0,.55);
-  transition: opacity .2s ease, text-shadow .2s ease;
-}
-
-/* Hover/focus: sem fundo; use sublinhado sutil para feedback */
-.site-header.on-video nav.menu a:hover,
-.site-header.on-video nav .menu a:hover,
-.site-header.on-video .menu a:hover,
-.site-header.on-video nav.menu a:focus-visible,
-.site-header.on-video nav .menu a:focus-visible,
-.site-header.on-video .menu a:focus-visible{
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  opacity: .95;
-}
-
-/* Marca e botão do globo: idem (sem caixinha) */
-.site-header.on-video .brand a{
-  color: #fff !important;
-  text-shadow: 0 2px 10px rgba(0,0,0,.55);
-}
-.site-header.on-video .lang .lang-toggle{
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  color: #fff !important;
-  text-shadow: 0 2px 10px rgba(0,0,0,.55);
-  padding: 6px 10px; /* mantém o alvo de clique */
-}
-
-/* Se você estiver usando "chips" nas outras páginas, garanta que só desliga aqui */
-.site-header.on-video nav.menu,
-.site-header.on-video nav .menu{
-  gap: 16px; /* preserva espaçamento entre itens */
-}
-/* ===== Header transparente só na página de Diferenciais ===== */
-.page-diferenciais .site-header{
-  background: transparent !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
-  position: fixed; top:0; left:0; right:0; z-index: 1000; /* mantém o menu por cima */
-}
-
-/* ===== HERO full-viewport com foto semicircular à esquerda ===== */
-.df-hero{
-  min-height: calc(100svh - var(--header-h));
-  padding-block: calc(var(--header-h) + 24px) clamp(24px, 6vh, 48px);
-  /* Azul um pouco mais claro */
-  background:
-    radial-gradient(900px 600px at 25% 10%, rgba(255,255,255,.10), transparent 60%),
-    linear-gradient(180deg, #2c6bb0, #1e4f87 60%, #1b4478);
-  color: #eaf1ff;
-}
-
-.df-hero-grid{
-  display: grid;
-  grid-template-columns: minmax(420px, 50%) 1fr;  /* foto ~metade, texto metade */
-  gap: clamp(16px, 3vw, 40px);
-  align-items: center;
-}
-
-/* Foto semicircular (lado reto para fora) */
-.df-semi{
-  background: center/cover no-repeat var(--img, none);
-  height: clamp(360px, 72vh, 760px);
-  box-shadow: 0 16px 40px rgba(0,0,0,.30);
-}
-.df-semi.left  { border-radius: 0 9999px 9999px 0; }
-.df-semi.right { border-radius: 9999px 0 0 9999px; }
-
-/* Cola a borda reta na lateral ESQUERDA do viewport */
-.df-semi.flush-left{
-  margin-left: calc(-1 * (max(0px, (100vw - 1240px) / 2) + 16px)); /* 16px = padding do .container */
-}
-
-/* Texto */
-.df-title{
-  margin: 0 0 10px;
-  font-weight: 800;
-  font-size: clamp(38px, 6vw, 64px);
-  color: #ffffff;                /* título branco */
-  letter-spacing: .2px;
-}
-.df-copy .lead{
-  font-size: clamp(15px, 2vw, 20px);
-  line-height: 1.6;
-  color: #eef5ff;
-  opacity: .98;
-}
-
-
