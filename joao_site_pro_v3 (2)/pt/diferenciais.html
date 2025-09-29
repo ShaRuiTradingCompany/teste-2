@@ -1,121 +1,92 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Diferenciais</title> — ShaRui</title>
-  <link rel="stylesheet" href="/assets/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Diferenciais — SHA RUI Trading Company</title>
 
-  <!-- ===== MENU UNIVERSAL (igual ao da Home) ===== -->
-  <!-- Fonte Montserrat usada no menu/brand -->
+  <!-- Fontes do menu/brand (igual à Home) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS global do site + CSS desta página -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/diferenciais.css">
+
+  <!-- Força o header transparente (como na Home) -->
   <style>
-    /* Header transparente (sem vidro) e sobreposto, como na Home */
-    header.site-header{
+    .site-header{
       position:fixed; top:0; left:0; right:0; z-index:1000;
       background:transparent !important;
       -webkit-backdrop-filter:none !important;
       backdrop-filter:none !important;
       border:0 !important; box-shadow:none !important;
     }
-
-    /* Mesma família tipográfica do menu da Home (só no header) */
-    .site-header, .site-header *{
-      font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
-    }
-
-    /* Chips do menu: aro branco, sem preenchimento */
-    .site-header .menu{ display:flex; gap:14px; align-items:center }
-    .site-header .menu a{
-      display:inline-flex; align-items:center;
-      padding:8px 12px;
-      border:1px solid rgba(255,255,255,.9);
-      border-radius:999px;
-      background:transparent !important;
-      color:#fff !important;
-      text-decoration:none;
-      text-shadow:0 2px 10px rgba(0,0,0,.55);
-      box-shadow:none !important;
-      opacity:1 !important;
-      filter:none !important;
-    }
-    /* Hover/foco: realce apenas no contorno (sem “branco fosco”) */
-    .site-header .menu a:hover,
-    .site-header .menu a:focus-visible{
-      background:transparent !important;
-      border-color:#fff !important;
-      box-shadow:0 0 0 2px rgba(255,255,255,.32) inset !important;
-      text-decoration:none !important;
-      outline:none;
-    }
-    /* Ativo (Quem somos): aro reforçado, SEM fundo */
-    .site-header .menu a[aria-current="page"],
-    .site-header .menu a.active{
-      background:transparent !important;
-      border-color:#fff !important;
-      box-shadow:0 0 0 2px rgba(255,255,255,.38) inset !important;
-    }
-
-    /* Marca com aro (igual à Home) */
-    .site-header .brand-logo{
-      display:inline-flex; flex-direction:column; align-items:flex-start;
-      padding:8px 12px;
-      border:1px solid rgba(255,255,255,.9);
-      border-radius:999px;
-      background:transparent !important;
-      color:#fff; text-decoration:none;
-      text-shadow:0 2px 10px rgba(0,0,0,.55);
-      line-height:1;
-    }
-    .site-header .brand-logo .brand-top{ font-weight:700; letter-spacing:.6px }
-    .site-header .brand-logo .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
   </style>
-  
 </head>
 
-  <!-- HERO: foto semicircular à esquerda + texto à direita (full viewport) -->
-<section class="df-hero">
-  <div class="container df-hero-grid">
-    <!-- Foto semicircular com lado reto colado à ESQUERDA do viewport -->
-    <figure
-      class="df-semi left flush-left"
-      style="--img:url('/assets/diferenciais-hero.jpg')"
-      aria-hidden="true"
-    ></figure>
-
-    <!-- Texto -->
-    <div class="df-copy">
-      <h1 class="df-title">Diferenciais</h1>
-      <p class="lead">
-        Na SHA RUI, transformar um projeto em produto entregue no Brasil
-        é um processo <strong>transparente, técnico e previsível</strong>.
-        Unimos <em>sourcing</em>, engenharia, inspeção e logística em um
-        fluxo único para que você controle <strong>custo, prazo e qualidade</strong>
-        — do pedido à reposição.
-      </p>
-      <p class="lead">
-        Com equipe própria na China, realizamos <strong>validação presencial
-        de fábrica</strong>, emitimos <strong>ficha técnica contratual PT‑ZH</strong>,
-        negociamos em chinês e monitoramos cada marco até o embarque.
-        Antes de fechar, você já enxerga o <strong>preço no Brasil</strong>
-        com tributos e despesas estimadas. Menos risco, mais resultado.
-      </p>
+<body class="page-diferenciais">
+  <!-- ===== Header padrão (igual ao da Home) ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="/pt/index.html" class="brand-logo">
+        <span class="brand-top">SHA RUI</span>
+        <span class="brand-sub">TRADING COMPANY</span>
+      </a>
+      <nav class="menu">
+        <a href="/pt/quem-somos.html">Quem somos</a>
+        <a href="/pt/diferenciais.html" aria-current="page">Diferenciais</a>
+        <a href="/pt/plataforma.html">Plataforma</a>
+        <a href="/pt/contato.html">Contato</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-    <!-- Intro curta (opcional; pode manter para SEO/escaneabilidade) -->
+  <main id="diferenciais-page">
+    <!-- HERO: foto semicircular à esquerda + texto à direita -->
+    <section class="df-hero">
+      <div class="container df-hero-grid">
+        <!-- Foto semicircular com lado reto colado à ESQUERDA do viewport -->
+        <figure
+          class="df-semi left flush-left"
+          style="--img:url('/assets/diferenciais-hero.jpg')"
+          aria-hidden="true"
+        ></figure>
+
+        <!-- Texto -->
+        <div class="df-copy">
+          <h1 class="df-title">Diferenciais</h1>
+          <p class="lead">
+            Na SHA RUI, transformar um projeto em produto entregue no Brasil
+            é um processo <strong>transparente, técnico e previsível</strong>.
+            Unimos <em>sourcing</em>, engenharia, inspeção e logística em um
+            fluxo único para que você controle <strong>custo, prazo e qualidade</strong>
+            — do pedido à reposição.
+          </p>
+          <p class="lead">
+            Com equipe própria na China, realizamos <strong>validação presencial
+            de fábrica</strong>, emitimos <strong>ficha técnica contratual PT‑ZH</strong>,
+            negociamos em chinês e monitoramos cada marco até o embarque.
+            Antes de fechar, você já enxerga o <strong>preço no Brasil</strong>
+            com tributos e despesas estimadas. Menos risco, mais resultado.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro curta (opcional) -->
     <section class="df-intro">
       <div class="container narrow">
         <p>
-          Somos obcecados por repetibilidade: especificação clara, controle por evidências, timeline de marcos e
-          documentação acessível. O resultado é <strong>qualidade reprodutível</strong>, <strong>prazos firmes</strong>
+          Somos obcecados por repetibilidade: especificação clara, controle por evidências,
+          timeline de marcos e documentação acessível. O resultado é
+          <strong>qualidade reprodutível</strong>, <strong>prazos firmes</strong>
           e <strong>custo total otimizado</strong> — mesmo em lotes menores.
         </p>
       </div>
     </section>
 
-    <!-- DETALHAMENTO: 2 itens por tela, alternando foto/descrição -->
+    <!-- Detalhamento: 2 por tela, alternando imagem/descrição -->
     <section class="diff-deep">
 
       <article class="slice right">
@@ -180,7 +151,7 @@
 
     </section>
 
-    <!-- CTA / prova social (pode manter) -->
+    <!-- CTA / prova social -->
     <section class="diff-cta">
       <div class="container">
         <div class="kpi-row">
@@ -191,14 +162,17 @@
         <a class="cta primary" href="/pt/contato.html">Quero ver na prática</a>
       </div>
     </section>
-
   </main>
 
-  <!-- Rodapé padrão -->
+  <!-- Rodapé -->
   <footer class="footer">
     <div class="container footer-row">
       <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
-      <address class="corp-address">Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>Fortune Plaza – Panyu<br>Postal code: 51150 – Guangzhou, China.</address>
+      <address class="corp-address">
+        Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>
+        Fortune Plaza – Panyu<br>
+        Postal code: 51150 – Guangzhou, China.
+      </address>
       <nav class="foot-social">
         <a href="https://www.instagram.com/sharui_trading/" target="_blank" class="ic ig" aria-label="Instagram"></a>
         <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" class="ic tk" aria-label="TikTok"></a>
@@ -208,7 +182,7 @@
     </div>
   </footer>
 
-  <!-- JS: pode manter seu /assets/diferenciais.js; não há mais dependências da animação -->
+  <!-- JS desta página (sem a animação antiga) -->
   <script src="/assets/diferenciais.js" defer></script>
 </body>
 </html>
