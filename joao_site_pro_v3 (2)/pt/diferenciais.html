@@ -13,16 +13,91 @@
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/diferenciais.css">
 
-  <!-- Força o header transparente (como na Home) -->
-  <style>
-    .site-header{
-      position:fixed; top:0; left:0; right:0; z-index:1000;
-      background:transparent !important;
-      -webkit-backdrop-filter:none !important;
-      backdrop-filter:none !important;
-      border:0 !important; box-shadow:none !important;
-    }
-  </style>
+ <style id="fix-header-and-hero">
+  /* ========= MENU TRANSPARENTE (override forte) ========= */
+  .site-header,
+  .site-header::before,
+  .site-header .nav-wrap {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  /* Se o tema troca a classe ao rolar, mantém transparente */
+  .site-header.is-glass,
+  .site-header.scrolled,
+  .site-header.sticky,
+  .site-header[data-state="glass"] {
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Links do menu sempre legíveis no fundo escuro */
+  .site-header .menu a { color: #fff !important; }
+  .site-header .menu a:hover {
+    background: rgba(255,255,255,.08);
+    border-radius: 999px;
+  }
+
+  /* “Circulado” no item atual (anel/borda) */
+  .site-header .menu a[aria-current="page"]{
+    color:#fff !important;
+    border:1px solid rgba(255,255,255,.65);
+    border-radius:999px;
+    padding:8px 12px;
+    background: transparent !important;
+    box-shadow:none !important;
+  }
+
+  /* ========= PRIMEIRA DOBRA (hero) NA COR ORIGINAL ========= */
+  /* Fundo azul original em degradê (página) */
+  body.page-diferenciais{
+    /* fallback */
+    background-color:#0e2746;
+    /* degrade suave no topo */
+    background-image:
+      radial-gradient(900px 600px at 50% 18%, rgba(255,255,255,.06), transparent 60%),
+      linear-gradient(180deg, #143352 0%, #0f294a 55%, #0d2340 100%);
+    color:#eaf1ff;
+  }
+
+  /* Grade do hero ocupando a viewport e respeitando o header fixo */
+  .df-hero{
+    min-height: calc(100dvh - var(--header-h, 72px));
+    padding-top: calc(var(--header-h, 72px) + 24px); /* tira o texto debaixo do menu */
+    display: grid;
+    place-items: center;
+  }
+
+  /* Título “Diferenciais” branco */
+  .df-title{ color:#ffffff; }
+
+  /* Foto semicircular à esquerda colada na borda (mantém padrão das outras) */
+  .df-hero-grid{ display:grid; grid-template-columns: 1.1fr 1fr; gap:clamp(16px, 2.4vw, 28px); align-items:center; }
+  .df-semi{
+    aspect-ratio: 16/10;
+    background: var(--img) center/cover no-repeat;
+    box-shadow: 0 10px 28px rgba(0,0,0,.25);
+  }
+  .df-semi.left{ border-radius: 9999px 18px 18px 9999px; }
+  /* cola a parte reta na borda da tela */
+  .df-semi.flush-left{ margin-left: max(-6vw, -40px); }
+
+  .df-copy .lead{ font-size: clamp(16px, 1.8vw, 19px); line-height: 1.65; }
+
+  /* Responsivo */
+  @media (max-width: 980px){
+    .df-hero-grid{ grid-template-columns: 1fr; }
+    .df-semi.flush-left{ margin-left: 0; }
+  }
+</style>
 </head>
 
 <body class="page-diferenciais">
