@@ -1,6 +1,7 @@
-<<!doctype html>
+<!doctype html>
 <html lang="pt-BR" dir="ltr">
-<head>AJUSTE MENU
+<head>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>ShaRui Trading Company — Escritório em Ganzhou, visitamos fábricas em toda a China</title>
   <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra com fotos e vídeos e preço estimado antes do pedido. Ficha técnica em português e chinês. Sem valor mínimo.">
@@ -23,15 +24,15 @@
     }
     body{font-family:var(--font-sans)}
 
-    /* Header transparente sobre o vídeo */
+    /* Header transparente sobre o vídeo (posição fixa) */
     .site-header{position:fixed; top:0; left:0; right:0; z-index:1000; background:transparent; border:none;}
     .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
-   .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{
-  color:#fff;
-  text-shadow: 0 2px 10px rgba(0,0,0,.55); /* melhora contraste no vídeo */
-}
+
+    .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{
+      color:#fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55); /* melhora contraste no vídeo */
+    }
     nav .menu{display:flex; gap:16px; align-items:center}
-    nav .menu a:hover{opacity:1}
 
     /* Marca empilhada */
     .brand-logo{display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;}
@@ -94,732 +95,719 @@
     .modal-body iframe{width:100%; height:100%; border:0}
     .btn-close{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:6px 10px; cursor:pointer}
   </style>
-<!-- AJUSTE 2: Logo redondo (Home) -->
-<style id="ajuste-logo-redondo-home">
-  /* Núcleo redondo na seção radial da Home (não altera o raio/órbita) */
-  #diferenciais.diffs-radial .core{
-    border-radius: 50%;
-    overflow: hidden;
-    background: #fff;
-  }
-  #diferenciais.diffs-radial .core img{
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover; /* preenche o círculo */
-  }
-</style>
 
-<!-- HEADER transparente -->
-<header class="site-header on-video" id="siteHeader">
-  <div class="container nav-wrap">
-    <div class="brand">
-      <a href="index.html" class="brand-logo" aria-label="ShaRui Trading Company">
-        <span class="brand-top">SHA RUI</span>
-        <span class="brand-sub">TRADING COMPANY</span>
-      </a>
-    </div>
-<nav>
-  <div class="menu">
-    <a href="/pt/quem-somos.html">Quem somos</a>
-    <a href="/pt/diferenciais.html">Diferenciais</a>
-    <a href="/pt/plataforma.html">Plataforma</a>
-    <a href="/pt/contato.html">Contato</a>  
-  </div>
-</nav>
-    
-    <div class="lang" id="lang">
-      <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
-      <ul class="lang-menu" id="langMenu">
-        <li><a href="/pt/index.html">Português (PT)</a></li>
-        <li><a href="/en/index.html">English (EN)</a></li>
-        <li><a href="/es/index.html">Español (ES)</a></li>
-        <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
-      </ul>
-    </div>
-  </div>
-
-  /* Home (header sobre vídeo): desliga qualquer vidro, blur e opacidade */
-  .site-header.on-video .menu a,
-  .site-header.on-video .lang .lang-toggle{
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-    filter: none !important;
-    opacity: 1 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-  }
-
-  /* Devolve nitidez/contraste ao texto no vídeo */
-  .site-header.on-video .menu a,
-  .site-header.on-video .brand a,
-  .site-header.on-video .lang .lang-toggle{
-    color: #fff !important;
-    text-shadow: 0 2px 10px rgba(0,0,0,.55) !important;
-  }
-</style>
-
-<style id="fix-header-home-video">
-/* Header da HOME sobre o vídeo: 100% transparente e sem blur/vidro */
-header.site-header.on-video{
-  background: transparent !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  z-index: 1000 !important;
-}
-
-/* Texto nítido (sem opacidade reduzida, sem filtros) */
-header.site-header.on-video .brand a,
-header.site-header.on-video nav .menu a,
-header.site-header.on-video .lang .lang-toggle{
-  color: #fff !important;
-  text-shadow: 0 2px 10px rgba(0,0,0,.55) !important;
-  opacity: 1 !important;
-  filter: none !important;
-}
-
-/* CHIPS (aros brancos) – sem fundo, só a borda arredondada */
-header.site-header.on-video nav .menu a{
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 12px !important;
-  border: 1px solid rgba(255,255,255,.9) !important;
-  border-radius: 999px !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Hover/focus: leve realce */
-header.site-header.on-video nav .menu a:hover,
-header.site-header.on-video nav .menu a:focus-visible{
-  background: rgba(255,255,255,.12) !important;
-  text-decoration: none !important;
-}
-
-/* Botão de idioma (globo) no mesmo estilo dos chips */
-header.site-header.on-video .lang .lang-toggle{
-  border: 1px solid rgba(255,255,255,.9) !important;
-  border-radius: 999px !important;
-  background: transparent !important;
-}
-
-/* Por garantia, anula QUALQUER regra que deixa os links “lavados” */
-nav .menu a{ opacity: 1 !important; }
-</style>
-
-</header>
-
-<main>
-  <!-- HERO com vídeo tela inteira -->
-  <section class="hero-video-wrap">
-    <!-- TRANSIÇÃO: faixa com ticker -->
-<section class="brand-ticker" aria-hidden="true">
-  <div class="ticker">
-    <ul class="ticker-track">
-      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
-      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
-      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
-    </ul>
-    <!-- clone para rolagem contínua -->
-    <ul class="ticker-track" aria-hidden="true">
-      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
-      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
-      <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
-    </ul>
-  </div>
-</section>
-  <video class="hero-video" autoplay muted playsinline preload="metadata" poster="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4">
-    <!-- versão mobile 720p -->
-    <source
-      src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4"
-      type="video/mp4"
-      media="(max-width: 768px)">
-
-    <!-- versão desktop 1080p -->
-    <source
-      src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4"
-      type="video/mp4">
-
-    <!-- fallback simples -->
-    Seu navegador não suporta vídeo HTML5.
-  </video>
-</section>
-  
-<!-- FAIXA / MARQUEE: após o vídeo -->
-<section class="brand-band light" aria-hidden="true">
-  <div class="marquee">
-    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
-  </div>
-</section>
-
-<!-- (1) QUEM SOMOS -->
-<section id="quem-somos" class="section clean">
-  <div class="container who-split">
-    <!-- Foto à esquerda -->
-    <figure class="who-photo">
-      <img src="/assets/socio.jpg" alt="Sócio da ShaRui">
-    </figure>
-
-    <!-- Texto à direita -->
-    <div class="who-copy">
-      <h2>Quem somos</h2>
-      <p><b>Somos uma empresa com mais de 30 anos de experiência</b> em comércio internacional. Nossa sede é em <b>Guangzhou</b>, participamos da <b>Canton Fair</b> e visitamos fábricas em toda a China.</p>
-      <p>Conectamos sua empresa a fornecedores confiáveis, integrando engenharia, qualidade e finanças para reduzir risco e custo total — com presença dentro da fábrica.</p>
-    </div>
-  </div>
-</section>
-  
-<!-- Reel de fotos (abaixo do conteúdo de Quem somos) -->
-  <!-- Galeria contínua (abaixo do “Quem somos”) -->
-<section class="who-gallery">
-  <div class="strip">
-    <!-- sequência principal -->
-    <img src="/assets/qs1.jpg?v=2" alt="">
-    <img src="/assets/qs2.jpg?v=2" alt="">
-    <img src="/assets/qs3.jpg?v=2" alt="">
-    <img src="/assets/qs4.jpg?v=2" alt="">
-<img src="/assets/qs5.jpg?v=3" alt="Foto 5">
-<img src="/assets/qs6.jpg?v=3" alt="Foto 6">
-
-
-
-    <!-- duplicadas na MESMA ordem para o loop -->
-    <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true">
-    <img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
-    <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true">
-    <img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
-    <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true">
-    <img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
-  </div>
-</section>
-  
-<!-- FAIXA / MARQUEE: antes da Plataforma -->
-<section class="brand-band" aria-hidden="true">
-  <div class="marquee">
-    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
-  </div>
-</section>
-
-<!-- DIFERENCIAIS – radar com logo central e nós sequenciais -->
-<section id="diferenciais" class="section diffs-radial">
-  <div class="container">
-    <h2 class="dif-title">Nossos Diferenciais</h2>
-    <p class="dif-sub">MAIS PREVISIBILIDADE E CONTROLE</p>
-
-    <div class="radial-stage">
-      <!-- Núcleo (logo) -->
-      <div class="core" aria-hidden="true">
-        <!-- troque o src se o arquivo tiver outro nome/extensão -->
-        <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company">
-      </div>
-
-      <!-- Nós (cada um tem um ângulo --a e o lado para encaixe do balão) -->
-      <!-- Ângulos em graus: 0° aponta para a direita; positivos no sentido horário -->
-      <div class="node right" style="--a:-18deg">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Inspeção com fotos e vídeos</b>
-          <small>Amostragem, testes e aprovação/reprovação — sem surpresa na entrega.</small>
-        </div>
-      </div>
-
-      <div class="node right" style="--a:18deg">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Ficha técnica PT‑ZH</b>
-          <small>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</small>
-        </div>
-      </div>
-
-      <div class="node right" style="--a:60deg">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Fornecedor certo, lugar certo</b>
-          <small>Estamos em Ganzhou e visitamos qualquer fábrica na China.</small>
-        </div>
-      </div>
-
-      <div class="node left" style="--a:110deg">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Visita à fábrica em até 48h</b>
-          <small>Com registro visual (fotos e vídeos) e relatório.</small>
-        </div>
-      </div>
-
-      <div class="node left" style="--a:162deg">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Menos risco e custo total</b>
-          <small>Integração engenharia + qualidade + finanças — presença dentro da fábrica.</small>
-        </div>
-      </div>
-
-      <div class="node left" style="--a:-160deg">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Negociação com nativos</b>
-          <small>Equipe local chinesa negocia direto na fábrica por melhores condições.</small>
-        </div>
-      </div>
-
-      <div class="node left" style="--a:-110deg">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Sem valor mínimo</b>
-          <small>Comece por amostras/pilotos; quando fizer sentido, compartilhe contêiner.</small>
-        </div>
-      </div>
-
-      <div class="node right" style="--a:-60deg">
-        <span class="dot"></span>
-        <div class="bubble">
-          <b>Preço no Brasil</b>
-          <small>Estimativa transparente de impostos e despesas antes do pedido.</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  
-<!-- FAIXA / MARQUEE: de Nossos Diferenciais para a Plataforma -->
-<section class="brand-band" aria-hidden="true">
-  <div class="marquee">
-    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
-  </div>
-</section>
-
-
-
-  <!-- PLATAFORMA (scroll horizontal) -->
- <!-- PLATAFORMA DO CLIENTE — tablet com slides -->
-<section id="plataforma" class="section platform full">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:6px">Plataforma do Cliente</h2>
-    <p class="lead" style="text-align:center;margin-bottom:16px">Acompanhe tudo em um só lugar</p>
-
-    <div class="tablet" aria-label="Prévia da plataforma">
-      <div class="bezel"></div>
-
-      <!-- Tela do tablet (slides) -->
-      <div class="slides" id="platSlides">
-        <!-- Troque as imagens nas variáveis --bg (você pode usar /assets/plat1.jpg etc. ou sua URL do Cloudinary) -->
-        <div class="slide active" style="--bg:url('/assets/plat0.jpg')">
-  <div class="balloon">
-    <h3>Plataforma do Cliente</h3>
-    <p>Visão geral do app: status das compras, documentos, custos estimados, prazos e alertas — tudo em um só lugar.</p>
-  </div>
-</div>
-        <div class="slide" style="--bg:url('/assets/plat1.jpg')">
-          <div class="balloon">
-            <h3>Acompanhamento de carga</h3>
-            <p>Check‑points por etapa e <b>mapa</b> quando disponível (marítimo, aéreo e rodoviário).</p>
-          </div>
-        </div>
-
-        <div class="slide" style="--bg:url('/assets/plat2.jpg')">
-          <div class="balloon">
-            <h3>Linha do tempo</h3>
-            <p>Do pedido à entrega, com responsáveis, prazos e <b>confirmações</b> por etapa.</p>
-          </div>
-        </div>
-
-        <div class="slide" style="--bg:url('/assets/plat3.jpg')">
-          <div class="balloon">
-            <h3>Custos detalhados</h3>
-            <p><b>Preço no Brasil (estimado)</b>, impostos e despesas com memória de cálculo.</p>
-          </div>
-        </div>
-
-        <div class="slide" style="--bg:url('/assets/plat4.jpg')">
-          <div class="balloon">
-            <h3>Documentos</h3>
-            <p>Invoice, Packing List, BL/AWB, laudos de inspeção, relatórios e <b>histórico de versões</b>.</p>
-          </div>
-        </div>
-
-        <div class="slide" style="--bg:url('/assets/plat5.jpg')">
-          <div class="balloon">
-            <h3>Alertas &amp; prazos</h3>
-            <p>Lembretes de embarque/desembaraço e <b>SLA de 48h</b> para visita à fábrica.</p>
-          </div>
-        </div>
-
-        <div class="slide" style="--bg:url('/assets/plat6.jpg')">
-          <div class="balloon">
-            <h3>Acessos &amp; histórico</h3>
-            <p>Perfis por área (Compras, Financeiro, Diretoria), <b>permissões</b> e trilha de auditoria.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Controles -->
-    <div class="plat-controls">
-      <button class="nav prev" aria-label="Anterior">‹</button>
-      <div class="dots" aria-label="Indicador de páginas"></div>
-      <button class="nav next" aria-label="Próximo">›</button>
-    </div>
-    <div class="plat-hint">Passe o mouse para pausar • Toque/Use as setas para controlar</div>
-  </div>
-</section>
-  
-<section class="brand-band" aria-hidden="true">
-  <div class="marquee">
-    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
-  </div>
-</section>
-
-  <section id="faq" class="section faq">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:6px">Perguntas frequentes</h2>
-    <p class="lead" style="text-align:center;margin-bottom:16px">Do primeiro pedido ao acompanhamento no Brasil.</p>
-
-    <div class="faq-list">
-      <details>
-        <summary>Como funciona o contêiner compartilhado (LCL) com a ShaRui?</summary>
-        <div>
-          Trabalhamos com <b>LCL (Less than Container Load)</b> para quem não tem volume para um contêiner cheio.
-          Você pode começar com <b>amostras</b> e <b>pilotos</b>; quando fizer sentido, compartilhamos o contêiner para
-          <b>otimizar o frete</b>. Na plataforma, você acompanha etapas e custo estimado por m³/tonelada, além de prazos.
-        </div>
-      </details>
-
-      <details>
-        <summary>Existe pedido mínimo?</summary>
-        <div>
-          <b>Não.</b> Você pode iniciar com amostras e pilotos. A decisão de consolidar cargas e compartilhar contêiner
-          é feita caso a caso para equilibrar <b>frete</b>, <b>risco</b> e <b>prazo</b>.
-        </div>
-      </details>
-
-      <details>
-        <summary>Quais são as etapas do processo — do pedido à entrega no Brasil?</summary>
-        <div>
-          1) Definição do produto + <b>Ficha técnica PT‑ZH</b> &nbsp;→&nbsp; 
-          2) Cotação/negociação com fábrica &nbsp;→&nbsp;
-          3) <b>Amostras</b> (se aplicável) &nbsp;→&nbsp;
-          4) Pedido + <b>inspeção</b> (fotos e vídeos) &nbsp;→&nbsp;
-          5) Embarque (LCL/FCL) &nbsp;→&nbsp;
-          6) <b>Desembaraço</b> (com estimativa prévia de tributos/despesas) &nbsp;→&nbsp;
-          7) Entrega.  
-          Tudo é rastreado na <b>Plataforma</b> (linha do tempo, documentos, alertas e custos).
-        </div>
-      </details>
-
-      <details>
-        <summary>O que é a Ficha técnica PT‑ZH e por que é importante?</summary>
-        <div>
-          Documento bilíngue (português e chinês) com: <b>foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta</b>.
-          Serve como <b>contrato técnico</b> com a fábrica — reduz ruído de tradução, estabiliza custo e facilita a inspeção.
-        </div>
-      </details>
-
-      <details>
-        <summary>Como é feita a inspeção? O que acontece se houver reprovação?</summary>
-        <div>
-          Fazemos <b>inspeção por amostragem</b> com <b>fotos e vídeos</b>. Se reprovar, alinhamos com a fábrica <b>reparo ou reprocesso</b>.
-          O objetivo é <b>evitar surpresas</b> na chegada ao Brasil. Tudo fica registrado na Plataforma.
-        </div>
-      </details>
-
-      <details>
-        <summary>Quanto vou pagar no Brasil? Vocês antecipam impostos e despesas?</summary>
-        <div>
-          Sim. Antes do pedido você recebe <b>estimativa transparente</b> de: II, IPI, PIS/COFINS‑Importação, ICMS, AFRMM,
-          capatazias, armazenagem, despacho etc. É uma <b>estimativa</b>, pois câmbio e tabelas variam, mas ajuda a decidir com segurança.
-        </div>
-      </details>
-
-      <details>
-        <summary>Quais Incoterms vocês trabalham? O que recomendam?</summary>
-        <div>
-          Trabalhamos com <b>EXW</b>, <b>FOB</b>, <b>CIF</b> e <b>DDP</b> (em alguns casos). Em geral, <b>FOB</b> dá bom controle
-          do frete e seguro; EXW pode fazer sentido em fornecedores sem expertise logística. Avaliamos caso a caso.
-        </div>
-      </details>
-
-      <details>
-        <summary>Quais são os prazos típicos (produção, trânsito e desembaraço)?</summary>
-        <div>
-          Varia por categoria, mas como referência: produção <b>15–45 dias</b>, trânsito marítimo para o Brasil <b>30–45+ dias</b>,
-          desembaraço <b>3–10 dias úteis</b>. Temos <b>48h</b> para visitar fábrica na região de atuação e <b>alertas</b> na plataforma.
-        </div>
-      </details>
-
-      <details>
-        <summary>Como tratam certificações e normas (INMETRO, Anvisa, Anatel etc.)?</summary>
-        <div>
-          Validamos requisitos regulatórios desde a especificação. Se o produto exigir <b>certificação</b>/registro,
-          combinamos escopo e laboratório antes do pedido, incluindo <b>testes</b>, <b>amostras</b> e documentação no cronograma.
-        </div>
-      </details>
-
-      <details>
-        <summary>O que consigo acompanhar na Plataforma do Cliente?</summary>
-        <div>
-          <b>Timeline</b> por etapa, <b>checkpoints</b> de carga, <b>documentos</b> (Invoice, PL, BL/AWB, laudos e relatórios),
-          <b>custos estimados</b> com memória de cálculo, <b>alertas e prazos</b>, e <b>acessos</b> por perfil/área com trilha de auditoria.
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-
-<!-- Modal Calendly -->
-<div id="calendly-modal" class="modal" onclick="closeCalendly()">
-  <div class="modal-card" onclick="event.stopPropagation()">
-    <div class="modal-head">
-      <strong>Agendar conversa</strong>
-      <button class="btn-close" onclick="closeCalendly()">Fechar</button>
-    </div>
-    <div class="modal-body"><iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe></div>
-  </div>
-</div>
-
-<!-- WhatsApp flutuante -->
-<a class="wp-float" href="https://wa.me/551193381008" target="_blank" rel="noopener">WhatsApp</a>
-
-</main>
-  
-<footer class="footer">
-  <div class="container footer-row">
-    <div>
-      <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
-      <address class="corp-address">
-        Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>
-        Fortune Plaza – Panyu<br>
-        Postal code: 51150 – Guangzhou, China.
-      </address>
-    </div>
-
-    <nav class="foot-social" aria-label="Redes sociais">
-      <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
-      <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
-      <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
-     <a href="https://wa.me/551193381008" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa" title="WhatsApp"></a>
-    </nav>
-  </div>
-</footer>
-
-
-<!-- Scripts de revelação/digitação (mantidos) -->
-<script>
-/* Observa quando os elementos entram na tela */
-(function(){
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
-      const el = e.target;
-      if(el.classList.contains('reveal')) el.classList.add('visible');
-      if(el.classList.contains('type-target') && !el.classList.contains('done')){
-        typeLine(el, el.dataset.text || el.textContent || '', 18);
-      }
-      io.unobserve(el);
-    });
-  }, { threshold: 0.3 });
-
-  document.querySelectorAll('.reveal, .type-target').forEach(el=> io.observe(el));
-
-  function typeLine(el, text, speed){
-    el.textContent = '';
-    let i = 0;
-    (function tick(){
-      el.textContent += text.charAt(i++);
-      if(i <= text.length){ setTimeout(tick, speed); }
-      else{ el.classList.add('done'); }
-    })();
-  }
-})();
-</script>
-
-<script>
-  // Dispara animação quando "Quem somos" entra na tela
-  (function () {
-    const section = document.getElementById('quem-somos');
-    if (!section) return;
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          const img = section.querySelector('.about-photo.reveal-start');
-          if (img) img.classList.add('reveal-in');
-          section.querySelectorAll('.type-live').forEach((el, idx) => {
-            typeParagraph(el, idx * 300);
-          });
-          io.unobserve(section);
-        }
-      });
-    }, { threshold: 0.45 });
-
-    io.observe(section);
-
-    function typeParagraph(el, delay = 0) {
-      const full = el.textContent.trim();
-      el.textContent = '';
-      let i = 0;
-      setTimeout(function step() {
-        el.textContent += full.charAt(i);
-        i++;
-        if (i <= full.length) {
-          const ch = full.charAt(i - 1);
-          const base = 16;
-          const extra = ch === '.' ? 140 : ch === ',' ? 80 : 0;
-          setTimeout(step, base + extra);
-        }
-      }, delay);
+  <!-- AJUSTE 2: Logo redondo (Home) -->
+  <style id="ajuste-logo-redondo-home">
+    /* Núcleo redondo na seção radial da Home (não altera o raio/órbita) */
+    #diferenciais.diffs-radial .core{
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
     }
-  })();
-</script>
+    #diferenciais.diffs-radial .core img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; /* preenche o círculo */
+    }
+  </style>
 
-<script>
-  // Revelação suave ao entrar na tela
-  const ioReveal = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        ioReveal.unobserve(e.target);
-      }
-    });
-  }, {threshold: .2});
+  <!-- FIX: Header sobre o vídeo (transparente + chips + marca com aro) -->
+  <style id="fix-header-home-video">
+    /* Home: header 100% transparente e sem “vidro/blur” */
+    header.site-header.on-video{
+      background: transparent !important;
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      z-index: 1000 !important;
+    }
 
-  document.querySelectorAll('#quem-somos .reveal').forEach(el => ioReveal.observe(el));
+    /* Texto nítido */
+    header.site-header.on-video .brand a,
+    header.site-header.on-video nav .menu a,
+    header.site-header.on-video .lang .lang-toggle{
+      color: #fff !important;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55) !important;
+      opacity: 1 !important;
+      filter: none !important;
+    }
 
-  // Digitação por parágrafo
-  function typeText(el, speed=18){
-    const text = el.dataset.text || el.textContent;
-    el.textContent = '';
-    let i = 0;
-    (function tick(){
-      el.textContent = text.slice(0, i++);
-      if(i <= text.length){ setTimeout(tick, speed); }
-    })();
-  }
+    /* CHIPS (aros brancos) nos links do menu */
+    header.site-header.on-video nav .menu a{
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px !important;
+      border: 1px solid rgba(255,255,255,.9) !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    header.site-header.on-video nav .menu a:hover,
+    header.site-header.on-video nav .menu a:focus-visible{
+      background: rgba(255,255,255,.12) !important;
+      text-decoration: none !important;
+    }
 
-  const ioType = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        const p = e.target;
-        const extra = p.classList.contains('delay') ? 400 : 120;
-        setTimeout(()=> typeText(p), extra);
-        ioType.unobserve(p);
-      }
-    });
-  }, {threshold: .25});
+    /* Botão de idioma (globo) com aro */
+    header.site-header.on-video .lang .lang-toggle{
+      border: 1px solid rgba(255,255,255,.9) !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+    }
 
-  document.querySelectorAll('#quem-somos .typewrite').forEach(el => ioType.observe(el));
-</script>
+    /* ARO também na MARCA (nome da empresa) */
+    header.site-header.on-video .brand .brand-logo{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 8px 12px !important;
+      border: 1px solid rgba(255,255,255,.9) !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER transparente -->
+  <header class="site-header on-video" id="siteHeader">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <a href="index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+          <span class="brand-top">SHA RUI</span>
+          <span class="brand-sub">TRADING COMPANY</span>
+        </a>
+      </div>
+
+      <nav>
+        <div class="menu">
+          <a href="/pt/quem-somos.html">Quem somos</a>
+          <a href="/pt/diferenciais.html">Diferenciais</a>
+          <a href="/pt/plataforma.html">Plataforma</a>
+          <a href="/pt/contato.html">Contato</a>
+        </div>
+      </nav>
+
+      <div class="lang" id="lang">
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
+        <ul class="lang-menu" id="langMenu">
+          <li><a href="/pt/index.html">Português (PT)</a></li>
+          <li><a href="/en/index.html">English (EN)</a></li>
+          <li><a href="/es/index.html">Español (ES)</a></li>
+          <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO com vídeo tela inteira -->
+    <section class="hero-video-wrap">
+      <!-- TRANSIÇÃO: faixa com ticker -->
+      <section class="brand-ticker" aria-hidden="true">
+        <div class="ticker">
+          <ul class="ticker-track">
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+          </ul>
+          <!-- clone para rolagem contínua -->
+          <ul class="ticker-track" aria-hidden="true">
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+          </ul>
+        </div>
+      </section>
+
+      <video class="hero-video" autoplay muted playsinline preload="metadata" poster="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4">
+        <!-- versão mobile 720p -->
+        <source
+          src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4"
+          type="video/mp4"
+          media="(max-width: 768px)">
+
+        <!-- versão desktop 1080p -->
+        <source
+          src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4"
+          type="video/mp4">
+
+        <!-- fallback simples -->
+        Seu navegador não suporta vídeo HTML5.
+      </video>
+    </section>
+
+    <!-- FAIXA / MARQUEE: após o vídeo -->
+    <section class="brand-band light" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+    <!-- (1) QUEM SOMOS -->
+    <section id="quem-somos" class="section clean">
+      <div class="container who-split">
+        <!-- Foto à esquerda -->
+        <figure class="who-photo">
+          <img src="/assets/socio.jpg" alt="Sócio da ShaRui">
+        </figure>
+
+        <!-- Texto à direita -->
+        <div class="who-copy">
+          <h2>Quem somos</h2>
+          <p><b>Somos uma empresa com mais de 30 anos de experiência</b> em comércio internacional. Nossa sede é em <b>Guangzhou</b>, participamos da <b>Canton Fair</b> e visitamos fábricas em toda a China.</p>
+          <p>Conectamos sua empresa a fornecedores confiáveis, integrando engenharia, qualidade e finanças para reduzir risco e custo total — com presença dentro da fábrica.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galeria contínua (abaixo do “Quem somos”) -->
+    <section class="who-gallery">
+      <div class="strip">
+        <!-- sequência principal -->
+        <img src="/assets/qs1.jpg?v=2" alt="">
+        <img src="/assets/qs2.jpg?v=2" alt="">
+        <img src="/assets/qs3.jpg?v=2" alt="">
+        <img src="/assets/qs4.jpg?v=2" alt="">
+        <img src="/assets/qs5.jpg?v=3" alt="Foto 5">
+        <img src="/assets/qs6.jpg?v=3" alt="Foto 6">
+
+        <!-- duplicadas na MESMA ordem para o loop -->
+        <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
+      </div>
+    </section>
+
+    <!-- FAIXA / MARQUEE: antes da Plataforma -->
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS – radar com logo central e nós sequenciais -->
+    <section id="diferenciais" class="section diffs-radial">
+      <div class="container">
+        <h2 class="dif-title">Nossos Diferenciais</h2>
+        <p class="dif-sub">MAIS PREVISIBILIDADE E CONTROLE</p>
+
+        <div class="radial-stage">
+          <!-- Núcleo (logo) -->
+          <div class="core" aria-hidden="true">
+            <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company">
+          </div>
+
+          <!-- Nós (cada um tem um ângulo --a e o lado para encaixe do balão) -->
+          <!-- Ângulos em graus: 0° aponta para a direita; positivos no sentido horário -->
+          <div class="node right" style="--a:-18deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Inspeção com fotos e vídeos</b>
+              <small>Amostragem, testes e aprovação/reprovação — sem surpresa na entrega.</small>
+            </div>
+          </div>
+
+          <div class="node right" style="--a:18deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Ficha técnica PT‑ZH</b>
+              <small>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</small>
+            </div>
+          </div>
+
+          <div class="node right" style="--a:60deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Fornecedor certo, lugar certo</b>
+              <small>Estamos em Ganzhou e visitamos qualquer fábrica na China.</small>
+            </div>
+          </div>
+
+          <div class="node left" style="--a:110deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Visita à fábrica em até 48h</b>
+              <small>Com registro visual (fotos e vídeos) e relatório.</small>
+            </div>
+          </div>
+
+          <div class="node left" style="--a:162deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Menos risco e custo total</b>
+              <small>Integração engenharia + qualidade + finanças — presença dentro da fábrica.</small>
+            </div>
+          </div>
+
+          <div class="node left" style="--a:-160deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Negociação com nativos</b>
+              <small>Equipe local chinesa negocia direto na fábrica por melhores condições.</small>
+            </div>
+          </div>
+
+          <div class="node left" style="--a:-110deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Sem valor mínimo</b>
+              <small>Comece por amostras/pilotos; quando fizer sentido, compartilhe contêiner.</small>
+            </div>
+          </div>
+
+          <div class="node right" style="--a:-60deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Preço no Brasil</b>
+              <small>Estimativa transparente de impostos e despesas antes do pedido.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAIXA / MARQUEE: de Nossos Diferenciais para a Plataforma -->
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+    <!-- PLATAFORMA DO CLIENTE — tablet com slides -->
+    <section id="plataforma" class="section platform full">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:6px">Plataforma do Cliente</h2>
+        <p class="lead" style="text-align:center;margin-bottom:16px">Acompanhe tudo em um só lugar</p>
+
+        <div class="tablet" aria-label="Prévia da plataforma">
+          <div class="bezel"></div>
+
+          <!-- Tela do tablet (slides) -->
+          <div class="slides" id="platSlides">
+            <div class="slide active" style="--bg:url('/assets/plat0.jpg')">
+              <div class="balloon">
+                <h3>Plataforma do Cliente</h3>
+                <p>Visão geral do app: status das compras, documentos, custos estimados, prazos e alertas — tudo em um só lugar.</p>
+              </div>
+            </div>
+
+            <div class="slide" style="--bg:url('/assets/plat1.jpg')">
+              <div class="balloon">
+                <h3>Acompanhamento de carga</h3>
+                <p>Check‑points por etapa e <b>mapa</b> quando disponível (marítimo, aéreo e rodoviário).</p>
+              </div>
+            </div>
+
+            <div class="slide" style="--bg:url('/assets/plat2.jpg')">
+              <div class="balloon">
+                <h3>Linha do tempo</h3>
+                <p>Do pedido à entrega, com responsáveis, prazos e <b>confirmações</b> por etapa.</p>
+              </div>
+            </div>
+
+            <div class="slide" style="--bg:url('/assets/plat3.jpg')">
+              <div class="balloon">
+                <h3>Custos detalhados</h3>
+                <p><b>Preço no Brasil (estimado)</b>, impostos e despesas com memória de cálculo.</p>
+              </div>
+            </div>
+
+            <div class="slide" style="--bg:url('/assets/plat4.jpg')">
+              <div class="balloon">
+                <h3>Documentos</h3>
+                <p>Invoice, Packing List, BL/AWB, laudos de inspeção, relatórios e <b>histórico de versões</b>.</p>
+              </div>
+            </div>
+
+            <div class="slide" style="--bg:url('/assets/plat5.jpg')">
+              <div class="balloon">
+                <h3>Alertas &amp; prazos</h3>
+                <p>Lembretes de embarque/desembaraço e <b>SLA de 48h</b> para visita à fábrica.</p>
+              </div>
+            </div>
+
+            <div class="slide" style="--bg:url('/assets/plat6.jpg')">
+              <div class="balloon">
+                <h3>Acessos &amp; histórico</h3>
+                <p>Perfis por área (Compras, Financeiro, Diretoria), <b>permissões</b> e trilha de auditoria.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles -->
+        <div class="plat-controls">
+          <button class="nav prev" aria-label="Anterior">‹</button>
+          <div class="dots" aria-label="Indicador de páginas"></div>
+          <button class="nav next" aria-label="Próximo">›</button>
+        </div>
+        <div class="plat-hint">Passe o mouse para pausar • Toque/Use as setas para controlar</div>
+      </div>
+    </section>
+
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+    <section id="faq" class="section faq">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:6px">Perguntas frequentes</h2>
+        <p class="lead" style="text-align:center;margin-bottom:16px">Do primeiro pedido ao acompanhamento no Brasil.</p>
+
+        <div class="faq-list">
+          <details>
+            <summary>Como funciona o contêiner compartilhado (LCL) com a ShaRui?</summary>
+            <div>
+              Trabalhamos com <b>LCL (Less than Container Load)</b> para quem não tem volume para um contêiner cheio.
+              Você pode começar com <b>amostras</b> e <b>pilotos</b>; quando fizer sentido, compartilhamos o contêiner para
+              <b>otimizar o frete</b>. Na plataforma, você acompanha etapas e custo estimado por m³/tonelada, além de prazos.
+            </div>
+          </details>
+
+          <details>
+            <summary>Existe pedido mínimo?</summary>
+            <div>
+              <b>Não.</b> Você pode iniciar com amostras e pilotos. A decisão de consolidar cargas e compartilhar contêiner
+              é feita caso a caso para equilibrar <b>frete</b>, <b>risco</b> e <b>prazo</b>.
+            </div>
+          </details>
+
+          <details>
+            <summary>Quais são as etapas do processo — do pedido à entrega no Brasil?</summary>
+            <div>
+              1) Definição do produto + <b>Ficha técnica PT‑ZH</b> → 
+              2) Cotação/negociação com fábrica →
+              3) <b>Amostras</b> (se aplicável) →
+              4) Pedido + <b>inspeção</b> (fotos e vídeos) →
+              5) Embarque (LCL/FCL) →
+              6) <b>Desembaraço</b> (com estimativa prévia de tributos/despesas) →
+              7) Entrega.  
+              Tudo é rastreado na <b>Plataforma</b> (linha do tempo, documentos, alertas e custos).
+            </div>
+          </details>
+
+          <details>
+            <summary>O que é a Ficha técnica PT‑ZH e por que é importante?</summary>
+            <div>
+              Documento bilíngue (português e chinês) com: <b>foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta</b>.
+              Serve como <b>contrato técnico</b> com a fábrica — reduz ruído de tradução, estabiliza custo e facilita a inspeção.
+            </div>
+          </details>
+
+          <details>
+            <summary>Como é feita a inspeção? O que acontece se houver reprovação?</summary>
+            <div>
+              Fazemos <b>inspeção por amostragem</b> com <b>fotos e vídeos</b>. Se reprovar, alinhamos com a fábrica <b>reparo ou reprocesso</b>.
+              O objetivo é <b>evitar surpresas</b> na chegada ao Brasil. Tudo fica registrado na Plataforma.
+            </div>
+          </details>
+
+          <details>
+            <summary>Quanto vou pagar no Brasil? Vocês antecipam impostos e despesas?</summary>
+            <div>
+              Sim. Antes do pedido você recebe <b>estimativa transparente</b> de: II, IPI, PIS/COFINS‑Importação, ICMS, AFRMM,
+              capatazias, armazenagem, despacho etc. É uma <b>estimativa</b>, pois câmbio e tabelas variam, mas ajuda a decidir com segurança.
+            </div>
+          </details>
+
+          <details>
+            <summary>Quais Incoterms vocês trabalham? O que recomendam?</summary>
+            <div>
+              Trabalhamos com <b>EXW</b>, <b>FOB</b>, <b>CIF</b> e <b>DDP</b> (em alguns casos). Em geral, <b>FOB</b> dá bom controle
+              do frete e seguro; EXW pode fazer sentido em fornecedores sem expertise logística. Avaliamos caso a caso.
+            </div>
+          </details>
+
+          <details>
+            <summary>Quais são os prazos típicos (produção, trânsito e desembaraço)?</summary>
+            <div>
+              Varia por categoria, mas como referência: produção <b>15–45 dias</b>, trânsito marítimo para o Brasil <b>30–45+ dias</b>,
+              desembaraço <b>3–10 dias úteis</b>. Temos <b>48h</b> para visitar fábrica na região de atuação e <b>alertas</b> na plataforma.
+            </div>
+          </details>
+
+          <details>
+            <summary>Como tratam certificações e normas (INMETRO, Anvisa, Anatel etc.)?</summary>
+            <div>
+              Validamos requisitos regulatórios desde a especificação. Se o produto exigir <b>certificação</b>/registro,
+              combinamos escopo e laboratório antes do pedido, incluindo <b>testes</b>, <b>amostras</b> e documentação no cronograma.
+            </div>
+          </details>
+
+          <details>
+            <summary>O que consigo acompanhar na Plataforma do Cliente?</summary>
+            <div>
+              <b>Timeline</b> por etapa, <b>checkpoints</b> de carga, <b>documentos</b> (Invoice, PL, BL/AWB, laudos e relatórios),
+              <b>custos estimados</b> com memória de cálculo, <b>alertas e prazos</b>, e <b>acessos</b> por perfil/área com trilha de auditoria.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Calendly -->
+    <div id="calendly-modal" class="modal" onclick="closeCalendly()">
+      <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-head">
+          <strong>Agendar conversa</strong>
+          <button class="btn-close" onclick="closeCalendly()">Fechar</button>
+        </div>
+        <div class="modal-body"><iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe></div>
+      </div>
+    </div>
+
+    <!-- WhatsApp flutuante -->
+    <a class="wp-float" href="https://wa.me/551193381008" target="_blank" rel="noopener">WhatsApp</a>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>
+        <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+        <address class="corp-address">
+          Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>
+          Fortune Plaza – Panyu<br>
+          Postal code: 51150 – Guangzhou, China.
+        </address>
+      </div>
+
+      <nav class="foot-social" aria-label="Redes sociais">
+        <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
+        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
+        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
+        <a href="https://wa.me/551193381008" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa" title="WhatsApp"></a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Scripts de revelação/digitação (mantidos) -->
   <script>
-/* Ativa o slide-in quando a seção entrar na viewport */
-(function(){
-  const section = document.getElementById('quem-somos');
-  if(!section) return;
-
-  const items = section.querySelectorAll('.slide-in-right');
-
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach((e)=>{
-      if(!e.isIntersecting) return;
-      const el = e.target;
-      /* respeita o pequeno atraso definido no data-delay */
-      const d = el.getAttribute('data-delay') || '0s';
-      el.style.transitionDelay = d;
-      el.classList.add('in');
-      io.unobserve(el);
-    });
-  }, { threshold: 0.25 });
-
-  items.forEach(el => io.observe(el));
-})();
-</script>
-<script>
+  /* Observa quando os elementos entram na tela */
   (function(){
-    const sec = document.querySelector('#diferenciais.diffs-radial');
-    if(!sec) return;
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const el = e.target;
+        if(el.classList.contains('reveal')) el.classList.add('visible');
+        if(el.classList.contains('type-target') && !el.classList.contains('done')){
+          typeLine(el, el.dataset.text || el.textContent || '', 18);
+        }
+        io.unobserve(el);
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.reveal, .type-target').forEach(el=> io.observe(el));
+
+    function typeLine(el, text, speed){
+      el.textContent = '';
+      let i = 0;
+      (function tick(){
+        el.textContent += text.charAt(i++);
+        if(i <= text.length){ setTimeout(tick, speed); }
+        else{ el.classList.add('done'); }
+      })();
+    }
+  })();
+  </script>
+
+  <script>
+    // Dispara animação quando "Quem somos" entra na tela
+    (function () {
+      const section = document.getElementById('quem-somos');
+      if (!section) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const img = section.querySelector('.about-photo.reveal-start');
+            if (img) img.classList.add('reveal-in');
+            section.querySelectorAll('.type-live').forEach((el, idx) => {
+              typeParagraph(el, idx * 300);
+            });
+            io.unobserve(section);
+          }
+        });
+      }, { threshold: 0.45 });
+
+      io.observe(section);
+
+      function typeParagraph(el, delay = 0) {
+        const full = el.textContent.trim();
+        el.textContent = '';
+        let i = 0;
+        setTimeout(function step() {
+          el.textContent += full.charAt(i);
+          i++;
+          if (i <= full.length) {
+            const ch = full.charAt(i - 1);
+            const base = 16;
+            const extra = ch === '.' ? 140 : ch === ',' ? 80 : 0;
+            setTimeout(step, base + extra);
+          }
+        }, delay);
+      }
+    })();
+  </script>
+
+  <script>
+    // Revelação suave ao entrar na tela
+    const ioReveal = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
         if(e.isIntersecting){
-          sec.classList.add('play');
-          io.unobserve(sec);
+          e.target.classList.add('in');
+          ioReveal.unobserve(e.target);
         }
       });
-    }, {threshold:.35});
-    io.observe(sec);
-  })();
-</script>
+    }, {threshold: .2});
 
-<script>
-/* Animação sequencial: da direita (0°) para a esquerda */
-(function(){
-  const section = document.querySelector('#diferenciais.diffs-radial');
-  if(!section) return;
+    document.querySelectorAll('#quem-somos .reveal').forEach(el => ioReveal.observe(el));
 
-  const nodes = Array.from(section.querySelectorAll('.node'))
-    .sort((a,b)=> (a.dataset.step|0) - (b.dataset.step|0));
-
-  // dispara quando a seção entra na tela
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
+    // Digitação por parágrafo
+    function typeText(el, speed=18){
+      const text = el.dataset.text || el.textContent;
+      el.textContent = '';
       let i = 0;
-      const tick = ()=> {
-        nodes[i]?.classList.add('on');
-        i++;
-        if(i < nodes.length) setTimeout(tick, 420);
-      };
-      tick();
-      io.unobserve(section);
-    });
-  }, {threshold:.35});
+      (function tick(){
+        el.textContent = text.slice(0, i++);
+        if(i <= text.length){ setTimeout(tick, speed); }
+      })();
+    }
 
-  io.observe(section);
-})();
-</script>
-<script>
+    const ioType = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const p = e.target;
+          const extra = p.classList.contains('delay') ? 400 : 120;
+          setTimeout(()=> typeText(p), extra);
+          ioType.unobserve(p);
+        }
+      });
+    }, {threshold: .25});
 
-<!-- MODAL: captação para envio de e‑books -->
-<div id="leads-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="leads-title" onclick="closeLeads()">
-  <div class="modal-card leads" onclick="event.stopPropagation()">
-    <h3 id="leads-title">Receba os materiais por e‑mail</h3>
-    <form id="leads-form" onsubmit="return submitLeads(event)">
-      <div class="form-row">
-        <label>Nome completo</label>
-        <input type="text" name="name" required>
-      </div>
-      <div class="form-row">
-        <label>E‑mail</label>
-        <input type="email" name="email" required>
-      </div>
-      <div class="form-row">
-        <label>Telefone (WhatsApp)</label>
-        <input type="tel" name="phone" placeholder="+55 (__) _____‑____" required>
-      </div>
-      <label class="chk">
-        <input type="checkbox" name="consent" required>
-        <span>Aceito receber e‑mails promocionais e comunicações da ShaRui.</span>
-      </label>
-      <div class="form-actions">
-        <button type="button" class="cta" onclick="closeLeads()">Cancelar</button>
-        <button type="submit" class="cta primary">Enviar</button>
-      </div>
-      <p id="leads-msg" class="msg" aria-live="polite"></p>
-    </form>
+    document.querySelectorAll('#quem-somos .typewrite').forEach(el => ioType.observe(el));
+  </script>
+
+  <script>
+  /* Ativa o slide-in quando a seção entrar na viewport */
+  (function(){
+    const section = document.getElementById('quem-somos');
+    if(!section) return;
+
+    const items = section.querySelectorAll('.slide-in-right');
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((e)=>{
+        if(!e.isIntersecting) return;
+        const el = e.target;
+        /* respeita o pequeno atraso definido no data-delay */
+        const d = el.getAttribute('data-delay') || '0s';
+        el.style.transitionDelay = d;
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { threshold: 0.25 });
+
+    items.forEach(el => io.observe(el));
+  })();
+  </script>
+
+  <script>
+    (function(){
+      const sec = document.querySelector('#diferenciais.diffs-radial');
+      if(!sec) return;
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            sec.classList.add('play');
+            io.unobserve(sec);
+          }
+        });
+      }, {threshold:.35});
+      io.observe(sec);
+    })();
+  </script>
+
+  <script>
+  /* Animação sequencial: da direita (0°) para a esquerda */
+  (function(){
+    const section = document.querySelector('#diferenciais.diffs-radial');
+    if(!section) return;
+
+    const nodes = Array.from(section.querySelectorAll('.node'))
+      .sort((a,b)=> (a.dataset.step|0) - (b.dataset.step|0));
+
+    // dispara quando a seção entra na tela
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        let i = 0;
+        const tick = ()=> {
+          nodes[i]?.classList.add('on');
+          i++;
+          if(i < nodes.length) setTimeout(tick, 420);
+        };
+        tick();
+        io.unobserve(section);
+      });
+    }, {threshold:.35});
+
+    io.observe(section);
+  })();
+  </script>
+
+  <!-- MODAL: captação para envio de e‑books -->
+  <div id="leads-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="leads-title" onclick="closeLeads()">
+    <div class="modal-card leads" onclick="event.stopPropagation()">
+      <h3 id="leads-title">Receba os materiais por e‑mail</h3>
+      <form id="leads-form" onsubmit="return submitLeads(event)">
+        <div class="form-row">
+          <label>Nome completo</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-row">
+          <label>E‑mail</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="form-row">
+          <label>Telefone (WhatsApp)</label>
+          <input type="tel" name="phone" placeholder="+55 (__) _____‑____" required>
+        </div>
+        <label class="chk">
+          <input type="checkbox" name="consent" required>
+          <span>Aceito receber e‑mails promocionais e comunicações da ShaRui.</span>
+        </label>
+        <div class="form-actions">
+          <button type="button" class="cta" onclick="closeLeads()">Cancelar</button>
+          <button type="submit" class="cta primary">Enviar</button>
+        </div>
+        <p id="leads-msg" class="msg" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
-</div>
-    <script>
-(function(){
-  const header = document.getElementById('siteHeader');
-  if(!header) return;
-  function setOffset(){
-    const h = header.offsetHeight || 72;
-    document.documentElement.style.setProperty('--header-h', h + 'px');
-  }
-  setOffset();
-  window.addEventListener('resize', setOffset);
-})();
-</script>
 
+  <script>
+  (function(){
+    const header = document.getElementById('siteHeader');
+    if(!header) return;
+    function setOffset(){
+      const h = header.offsetHeight || 72;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    setOffset();
+    window.addEventListener('resize', setOffset);
+  })();
+  </script>
 </body>
+</html>
