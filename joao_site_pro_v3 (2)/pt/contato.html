@@ -77,17 +77,45 @@
 
   <!-- ===== CSS ESPECÍFICO DA PÁGINA DE CONTATO (escopado, não afeta o menu) ===== -->
   <style>
-    .sr-contact.wrap{max-width:1200px;margin:0 auto;padding:120px 20px 48px;} /* 120px compensa o header fixo */
-    .sr-contact h1{color:#0f172a;}
-    .sr-contact-lead{margin-top:6px;color:#475569;}
+    :root{ --sr-left-shift: 60px; } /* valor único p/ alinhar tudo */
+
+    .sr-contact.wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:120px 20px 56px; /* 120px compensa o header fixo */
+    }
+
+    /* Cabeçalho da seção com o MESMO deslocamento do grid */
+    .sr-contact-head{ margin-left:0; }
+    @media (min-width:1100px){ .sr-contact-head{ margin-left:calc(var(--sr-left-shift) * -1); } }
+
+    .sr-title{
+      margin:0 0 6px;
+      color:#0f172a;
+      line-height:1.15;
+      font-weight:700;
+      font-size:clamp(28px, 3.6vw, 48px); /* reduz o h1 gigante do print */
+    }
+    .sr-contact-lead{
+      margin:0 0 18px;
+      color:#475569;
+      font-size:1rem;
+      background:transparent !important; /* garante que não vai aparecer barra azul */
+      display:block;
+    }
 
     .sr-contact-grid{
       display:grid;
       grid-template-columns: 1.25fr .75fr; /* form maior à esquerda */
       gap:28px; align-items:start;
+      margin-left:0;
     }
-    @media (min-width:1100px){ .sr-contact-grid{ margin-left:-60px; } } /* puxa à esquerda */
-    @media (max-width:900px){ .sr-contact-grid{ grid-template-columns:1fr; margin-left:0; } }
+    /* Puxa o CONTEÚDO à esquerda em telas largas */
+    @media (min-width:1100px){ .sr-contact-grid{ margin-left:calc(var(--sr-left-shift) * -1); } }
+    @media (max-width:900px){
+      .sr-contact-grid{ grid-template-columns:1fr; margin-left:0; }
+      .sr-contact-head{ margin-left:0; }
+    }
 
     .sr-card{
       background:#fff; border-radius:16px;
@@ -112,7 +140,7 @@
     .sr-form-msg{margin-top:10px;font-size:.95rem;color:#0f172a;}
 
     /* Redes sociais (empilhadas) */
-    .sr-social-stack h2{margin-bottom:10px;color:#0f172a;}
+    .sr-social-stack h2{margin-bottom:10px;color:#0f172a;font-size:clamp(20px,2.2vw,32px);}
     .sr-social-item{
       display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;text-decoration:none;
       transition:transform .15s ease, background .15s ease;
@@ -131,12 +159,16 @@
 <body>
 
   <!-- ======= AQUI ENTRA O SEU HTML DO MENU (header.site-header ...) ======= -->
-  <!-- (Use o mesmo header/nav da sua Home. Não repliquei aqui porque você já o tem pronto.) -->
+  <!-- Cole o mesmo header/nav da Home. Mantive o CSS acima exatamente como você passou. -->
 
   <main>
     <section class="sr-contact wrap" id="contato">
-      <h1>Fale com a ShaRui</h1>
-      <p class="sr-contact-lead">Envie sua mensagem e retornamos em breve.</p>
+
+      <!-- Cabeçalho da seção (agora alinhado com o grid) -->
+      <div class="sr-contact-head">
+        <h1 class="sr-title">Fale com a ShaRui</h1>
+        <p class="sr-contact-lead">Envie sua mensagem e retornamos em breve.</p>
+      </div>
 
       <div class="sr-contact-grid">
         <!-- COLUNA ESQUERDA: FORM -->
