@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Diferenciais — SHA RUI Trading Company</title>
 
-  <!-- Fonte do menu/brand (igual à Home) -->
+  <!-- Fontes e CSS globais -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS global + CSS desta página -->
   <link rel="stylesheet" href="/assets/styles.css">
+
+  <!-- CSS desta página -->
   <link rel="stylesheet" href="/assets/diferenciais.css">
 </head>
 
 <body class="page-diferenciais">
-  <!-- ===== Header padrão (transparente nesta página) ===== -->
+  <!-- Header padrão (o styles.css controla todo o visual do menu) -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
       <a href="/pt/index.html" class="brand-logo">
@@ -32,113 +32,103 @@
   </header>
 
   <main id="diferenciais-page">
-    <!-- HERO: foto semicircular à ESQUERDA e colada na borda; texto à DIREITA -->
+    <!-- HERO: foto semicircular à esquerda + texto à direita -->
     <section class="df-hero">
       <div class="container df-hero-grid">
-        <figure class="df-semi left flush-left"
-                style="--img:url('/assets/diferenciais-hero.jpg')"
-                aria-hidden="true"></figure>
+        <!-- Foto semicircular: lado reto colado na esquerda -->
+        <figure
+          class="df-semi left flush-left"
+          style="--img:url('/assets/diferenciais-hero.jpg')"
+          aria-hidden="true"></figure>
 
+        <!-- Texto -->
         <div class="df-copy">
           <h1 class="df-title">Diferenciais</h1>
           <p class="lead">
-            Na SHA RUI, transformar um projeto em produto entregue no Brasil
-            é um processo <strong>transparente, técnico e previsível</strong>.
-            Unimos <em>sourcing</em>, engenharia, inspeção e logística em
-            um fluxo único para que você controle <strong>custo, prazo
-            e qualidade</strong> — do pedido à reposição.
+            Na SHA RUI, transformar um projeto em produto entregue no Brasil é um
+            processo <strong>transparente, técnico e previsível</strong>.
+            Unimos <em>sourcing</em>, engenharia, inspeção e logística em um fluxo
+            único para que você controle <strong>custo, prazo e qualidade</strong>.
           </p>
           <p class="lead">
-            Com equipe própria na China, realizamos <strong>validação
-            presencial de fábrica</strong>, emitimos <strong>ficha técnica
-            contratual PT‑ZH</strong>, negociamos em chinês e monitoramos
-            cada marco até o embarque. Antes de fechar, você já enxerga
-            o <strong>preço no Brasil</strong> com tributos e despesas
-            estimadas. <strong>Menos risco, mais resultado.</strong>
+            Com equipe própria na China, realizamos <strong>validação presencial de fábrica</strong>,
+            emitimos <strong>ficha técnica contratual</strong>, negociamos em chinês com
+            nativos e monitoramos cada marco até o embarque.
+            <strong> Menos risco, mais resultado.</strong>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- (Opcional) Intro curta -->
+    <!-- (Opcional) Intro curta para SEO e escaneabilidade -->
     <section class="df-intro">
       <div class="container narrow">
+        <p>
+          Especificação clara, controle por evidências, timeline de marcos e documentação acessível.
+          O resultado é <strong>qualidade reprodutível</strong>, <strong>prazos firmes</strong> e
+          <strong>custo total otimizado</strong> — mesmo em lotes menores.
+        </p>
       </div>
     </section>
 
-    <!-- Detalhamento (2 por tela, foto alternando lados) -->
+    <!-- Detalhamento (2 por tela, alternando imagem/descrição) -->
     <section class="diff-deep">
-
       <article class="slice right">
         <figure class="ph" style="--ph:url('/assets/visita.jpg')"></figure>
         <div class="copy">
-          <h3 class="type">Visita à fábrica em até 48h</h3>
-          <p class="type delay">
-            Time local vai ao chão de fábrica, registra fotos/vídeos e emite
-            relatório técnico para validar capacidade real antes de qualquer
-            compromisso.
-          </p>
+          <h3>Visita à fábrica em até 48h</h3>
+          <p>Time local vai ao chão de fábrica, registra fotos/vídeos e emite relatório técnico
+             para validar capacidade real antes de qualquer compromisso.</p>
         </div>
       </article>
 
       <article class="slice left">
         <figure class="ph" style="--ph:url('/assets/ficha-tecnica.jpg')"></figure>
         <div class="copy">
-          <h3 class="type">Ficha técnica PT‑ZH contratual</h3>
-          <p class="type delay">
-            Materiais, medidas, tolerâncias e embalagem descritos em contrato
-            bilíngue. Base objetiva para inspeção e estabilidade de custo.
-          </p>
+          <h3>Ficha técnica contratual</h3>
+          <p>Materiais, medidas, tolerâncias e embalagem descritos em documento bilíngue.
+             Base objetiva para inspeção e estabilidade de custo.</p>
         </div>
       </article>
 
       <article class="slice right">
         <figure class="ph" style="--ph:url('/assets/negociacao.jpg')"></figure>
         <div class="copy">
-          <h3 class="type">Negociação local, em chinês</h3>
-          <p class="type delay">
-            Sem intermediários: tratativa direta com a diretoria da fábrica
-            para melhor preço total, prazo e condições comerciais.
-          </p>
+          <h3>Negociação local, em chinês</h3>
+          <p>Sem intermediários: tratativa direta com a diretoria da fábrica para melhor
+             preço total, prazo e condições comerciais.</p>
         </div>
       </article>
 
       <article class="slice left">
         <figure class="ph" style="--ph:url('/assets/inspecao.jpg')"></figure>
         <div class="copy">
-          <h3 class="type">Amostra & inspeção com evidências</h3>
-          <p class="type delay">
-            Teste por amostragem, fotos/vídeos e checklist. Não‑conformidades
-            geram correção na origem — antes do embarque.
-          </p>
+          <h3>Amostra & inspeção com evidências</h3>
+          <p>Teste por amostragem, fotos/vídeos e checklist. Não‑conformidades são corrigidas
+             na origem — antes do embarque.</p>
         </div>
       </article>
 
       <article class="slice right">
         <figure class="ph" style="--ph:url('/assets/embarque.jpg')"></figure>
         <div class="copy">
-          <h3 class="type">Embarque visível (LCL/FCL)</h3>
-          <p class="type delay">
-            Check‑points e documentação acessível (booking, BL, packing,
-            certificados). Mais previsibilidade para o seu planejamento.
-          </p>
+          <h3>Embarque visível (LCL/FCL)</h3>
+          <p>Check‑points e documentação acessível (booking, BL, packing, certificados).
+             Mais previsibilidade para o seu planejamento.</p>
         </div>
       </article>
 
       <article class="slice left">
         <figure class="ph" style="--ph:url('/assets/preco-br.jpg')"></figure>
         <div class="copy">
-          <h3 class="type">Preço no Brasil, antes do pedido</h3>
-          <p class="type delay">
-            Estimativa completa de tributos e despesas antes de fechar.
-            Decisão segura e margem preservada.
-          </p>
+          <h3>Preço no Brasil antes do pedido</h3>
+          <p>Estimativa completa de tributos e despesas antes de fechar.
+             Decisão segura e margem preservada.</p>
         </div>
       </article>
-
     </section>
 
-    <!-- CTA / Prova social -->
+    <!-- CTA / prova social -->
     <section class="diff-cta">
       <div class="container">
         <div class="kpi-row">
@@ -169,7 +159,7 @@
     </div>
   </footer>
 
-  <!-- JS da página (se precisar) -->
   <script src="/assets/diferenciais.js" defer></script>
 </body>
 </html>
+
