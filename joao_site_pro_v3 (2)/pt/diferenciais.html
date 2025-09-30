@@ -5,115 +5,199 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Diferenciais — SHA RUI Trading Company</title>
 
-  <!-- CSS base + scripts globais -->
+  <!-- (opcional) seu CSS global -->
   <link rel="stylesheet" href="/assets/styles.css">
-  <script src="/assets/config.js"></script>
-  <script defer src="/assets/main.js"></script>
 
-  <!-- ===== MENU TRANSPARENTE (igual ao da Home) ===== -->
+  <!-- Montserrat (mesma do header das outras páginas) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    /* Header transparente fixo */
-    header.site-header{
+    /* ===========================
+       VARIÁVEIS & CONTAINER
+       =========================== */
+    :root{
+      --header-h: 72px;
+      --container-w: 1240px;
+      --container-pad: 16px;
+    }
+    .container{ max-width:var(--container-w); margin:0 auto; padding:0 var(--container-pad); }
+
+    /* ===========================
+       HEADER — IGUAL AO "QUEM SOMOS"
+       Transparente, com aro branco nos itens ("chips")
+       =========================== */
+    .page-diferenciais .site-header,
+    .page-diferenciais .site-header::before,
+    .page-diferenciais .site-header .nav-wrap{
       position:fixed; top:0; left:0; right:0; z-index:1000;
       background:transparent !important;
       -webkit-backdrop-filter:none !important;
       backdrop-filter:none !important;
       border:0 !important; box-shadow:none !important;
+      font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif !important;
     }
-    /* Montserrat apenas no header */
-    .site-header, .site-header *{
-      font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+    .page-diferenciais .nav-wrap{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px var(--container-pad);
     }
-
-    /* Layout da faixa do header */
-    .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
 
     /* Marca com aro branco */
-    .site-header .brand-logo{
+    .page-diferenciais .brand-logo{
       display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;
-      padding:8px 12px;
+      padding:8px 12px; border-radius:999px; text-decoration:none;
       border:1px solid rgba(255,255,255,.9);
-      border-radius:999px; background:transparent !important; color:#fff; text-decoration:none;
+      color:#fff; background:transparent !important;
       text-shadow:0 2px 10px rgba(0,0,0,.55);
     }
-    .site-header .brand-logo .brand-top{ font-weight:700; letter-spacing:.6px }
-    .site-header .brand-logo .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
+    .page-diferenciais .brand-logo .brand-top{ font-weight:800; letter-spacing:.6px }
+    .page-diferenciais .brand-logo .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
 
-    /* Menu “chips” com aro branco */
-    .site-header .menu{ display:flex; gap:14px; align-items:center }
-    .site-header .menu a{
-      display:inline-flex; align-items:center; padding:8px 12px;
-      border:1px solid rgba(255,255,255,.9); border-radius:999px;
+    /* Menu com aro branco (todos os itens) */
+    .page-diferenciais .menu{ display:flex; gap:14px; align-items:center }
+    .page-diferenciais .menu a{
+      display:inline-flex; align-items:center; padding:8px 12px; font-weight:800;
+      border-radius:999px; border:1px solid rgba(255,255,255,.9);
       background:transparent !important; color:#fff !important; text-decoration:none;
-      text-shadow:0 2px 10px rgba(0,0,0,.55); box-shadow:none !important; opacity:1 !important; filter:none !important;
-      font-weight:800;
+      text-shadow:0 2px 10px rgba(0,0,0,.55);
+      box-shadow:none !important; opacity:1 !important; filter:none !important;
     }
-    .site-header .menu a:hover,
-    .site-header .menu a:focus-visible{
-      background:rgba(255,255,255,.12) !important; text-decoration:none !important;
-      box-shadow:none !important; outline:none;
+    .page-diferenciais .menu a:hover,
+    .page-diferenciais .menu a:focus-visible{
+      background:rgba(255,255,255,.10) !important; outline:none; text-decoration:none;
     }
-    .site-header .menu a[aria-current="page"],
-    .site-header .menu a.active{
+    /* Sem “vidro” quando ativo/clicado */
+    .page-diferenciais .menu a[aria-current="page"],
+    .page-diferenciais .menu a.active{
       background:transparent !important;
       border-color:#fff !important;
-      box-shadow:0 0 0 2px rgba(255,255,255,.38) inset !important;
+      box-shadow:0 0 0 2px rgba(255,255,255,.35) inset !important;
     }
 
-    /* Compensação do header fixo e âncoras */
-    :root{ --header-h: 72px; }
+    /* Compensação do header fixo */
     html{ scroll-padding-top: calc(var(--header-h) + 10px); }
 
-    /* Hero desta página precisa desse padding no topo */
-    .df-hero{ padding-top: calc(var(--header-h,72px) + 16px); }
-  </style>
-
-  <!-- ===== FIGURA SEMICIRCULAR (meia-lua, lado reto à esquerda) ===== -->
-  <style id="df-semicircle-shape">
-    /* Grid do herói (mantém seu layout 1.1fr / .9fr) */
-    .df-hero .df-hero-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: clamp(16px,3vw,26px);
-      align-items:center;
+    /* ===========================
+       HERO — FOTO SEMICIRCULAR À ESQUERDA
+       Gradiente azul original do site
+       =========================== */
+    .df-hero{
+      min-height: calc(100svh - var(--header-h));
+      padding-top: calc(var(--header-h) + 24px);
+      padding-bottom: clamp(24px, 5vh, 56px);
+      background:
+        radial-gradient(820px 560px at 50% 15%, rgba(255,255,255,.07), transparent 60%),
+        linear-gradient(180deg,#214a83,#183a69 55%, #17335f);
+      color:#eaf1ff;
+      display:grid; align-items:center;
+    }
+    .df-hero-grid{
+      display:grid; align-items:center; gap: clamp(18px,3vw,36px);
+      grid-template-columns: 1.05fr .95fr;   /* foto ~texto */
     }
 
-    /* Figura base */
+    /* Foto semicircular colada na borda esquerda do viewport */
     .df-semi{
-      --size: clamp(260px, 44vw, 560px);
-      width: var(--size);
-      aspect-ratio: 1 / 1;
-      background: var(--img) center / cover no-repeat;
-      position: relative;
-      justify-self: start;
-      filter: drop-shadow(0 18px 44px rgba(0,0,0,.35));
+      background: center/cover no-repeat var(--img, none);
+      height: min(560px, calc(100svh - var(--header-h) - 64px));
+      box-shadow: 0 16px 40px rgba(0,0,0,.30);
+    }
+    .df-semi.left{  border-radius: 0 9999px 9999px 0; }
+    .df-semi.right{ border-radius: 9999px 0 0 9999px; }
+    .df-semi.flush-left{
+      /* cola o lado reto na borda da página */
+      margin-left: calc(-1 * (max(0px, (100vw - var(--container-w)) / 2) + var(--container-pad)));
     }
 
-    /* Meia‑lua abrindo para a direita (lado reto colado na esquerda) */
-    .df-semi.left{
-      /* Máscara principal (Chrome/Safari/Firefox atuais) */
-      -webkit-mask-image: radial-gradient(closest-side at 0% 50%, #000 99.6%, transparent 100%);
-              mask-image: radial-gradient(closest-side at 0% 50%, #000 99.6%, transparent 100%);
-      -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
-      -webkit-mask-size:100% 100%;   mask-size:100% 100%;
+    /* Texto do hero */
+    .df-title{
+      margin:0 0 10px; font-weight:800;
+      font-size: clamp(38px, 6vw, 64px); color:#fff; letter-spacing:.2px;
+    }
+    .df-copy .lead{
+      margin:0 0 10px;
+      font-size: clamp(16px, 2vw, 20px); line-height: 1.65; color:#eef5ff;
     }
 
-    /* Encostar a figura ao limite do container (se seu .container tiver 20px de padding) */
-    .df-semi.flush-left{ margin-left: -20px; }
+    /* ===========================
+       “INTRO” curta
+       =========================== */
+    .df-intro{ color:#eaf1ff; background:transparent; padding: 10px 0 0; }
+    .df-intro .narrow{ max-width: 980px; }
 
-    /* Responsivo: empilha e centraliza a meia‑lua */
-    @media (max-width: 720px){
-      .df-hero .df-hero-grid{ grid-template-columns: 1fr; }
-      .df-semi{ margin: 0 auto 8px; }
-      .df-semi.flush-left{ margin-left: 0; }
+    /* ===========================
+       SLICES — 2 por tela, foto semicircular alternando lados
+       (AQUI está o uso de background-image: var(--ph))
+       =========================== */
+    .diff-deep{ padding: 10px 0 6px; color:#eaf1ff; }
+    .diff-deep .slice{
+      --slice-pad: clamp(10px, 2vw, 16px);
+      min-height: 50vh;
+      display:grid; align-items:center;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(14px, 2.6vw, 24px);
+      margin: 12px 0; padding: var(--slice-pad);
+      background: transparent; border:0; box-shadow:none;
+    }
+
+    .diff-deep .slice.right .ph{ order:2 }
+    .diff-deep .slice.right .copy{ order:1; padding-right: clamp(6px,1vw,10px) }
+    .diff-deep .slice.left  .ph{ order:1 }
+    .diff-deep .slice.left  .copy{ order:2; padding-left:  clamp(6px,1vw,10px) }
+
+    .diff-deep .ph{
+      aspect-ratio: 16/9;
+      background: #0b0e10 center/cover no-repeat;
+      background-image: var(--ph, none);     /* <<<<<< ESSENCIAL p/ exibir as fotos */
+      box-shadow: 0 10px 28px rgba(0,0,0,.25);
+      overflow: hidden;
+    }
+    /* Semicírculo e “colar” na borda */
+    .diff-deep .slice.left  .ph{  border-radius: 22px 9999px 9999px 22px; margin-left:  calc(-1 * var(--slice-pad)); }
+    .diff-deep .slice.right .ph{  border-radius: 9999px 22px 22px 9999px; margin-right: calc(-1 * var(--slice-pad)); }
+
+    .diff-deep .copy h3{
+      margin:0 0 6px; font-weight:800;
+      font-size: clamp(24px, 3.2vw, 34px); color:#fff; letter-spacing:.2px;
+    }
+    .diff-deep .copy p{
+      margin:0; font-size: clamp(16px, 2vw, 20px); line-height: 1.65; color:#e7efff;
+    }
+
+    /* ===========================
+       CTA
+       =========================== */
+    .diff-cta{ padding: 10px 0 24px; text-align:center }
+    .diff-cta .kpi-row{
+      display:grid; gap:12px; grid-template-columns: repeat(3,1fr);
+      max-width:860px; margin:0 auto 12px;
+    }
+    .diff-cta .kpi{
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+      border-radius:12px; padding:14px; color:#eaf1ff;
+    }
+    .diff-cta .kpi b{ display:block; font-size: clamp(22px,4.4vw,34px) }
+    .diff-cta .kpi span{ opacity:.95 }
+    .diff-cta .cta.primary{
+      display:inline-block; padding:12px 16px; border-radius:12px; font-weight:800; text-decoration:none; color:#051018;
+      background:linear-gradient(90deg,#7C3AED,#22D3EE); box-shadow:0 0 20px rgba(34,211,238,.35),0 0 48px rgba(124,58,237,.25);
+    }
+
+    /* ===========================
+       RESPONSIVO
+       =========================== */
+    @media (max-width: 980px){
+      .df-hero-grid{ grid-template-columns: 1fr; }
+      .df-semi{ height: min(52vh, 520px); margin-left:0; }
+      .diff-deep .slice{ grid-template-columns: 1fr; }
+      .diff-deep .slice .copy{ order:2; padding:0 }
+      .diff-deep .slice .ph{ order:1; margin:0; border-radius: 16px; }
     }
   </style>
 </head>
 
 <body class="page-diferenciais">
-  <!-- Header com o mesmo visual da Home -->
+  <!-- ===== Header (igual às outras páginas) ===== -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
       <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
@@ -130,35 +214,29 @@
   </header>
 
   <main id="diferenciais-page">
-    <!-- HERO: foto semicircular à esquerda + texto à direita -->
+    <!-- ===== HERO: foto semicircular à ESQUERDA + texto à DIREITA ===== -->
     <section class="df-hero">
       <div class="container df-hero-grid">
-        <!-- Foto semicircular: lado reto colado na esquerda -->
-        <figure
-          class="df-semi left flush-left"
-          style="--img:url('/assets/diferenciais-hero.jpg')"
-          aria-hidden="true"></figure>
+        <figure class="df-semi left flush-left" style="--img:url('/assets/diferenciais-hero.jpg')" aria-hidden="true"></figure>
 
-        <!-- Texto -->
         <div class="df-copy">
           <h1 class="df-title">Diferenciais</h1>
           <p class="lead">
             Na SHA RUI, transformar um projeto em produto entregue no Brasil é um
-            processo <strong>transparente, técnico e previsível</strong>.
-            Unimos <em>sourcing</em>, engenharia, inspeção e logística em um fluxo
-            único para que você controle <strong>custo, prazo e qualidade</strong>.
+            processo <strong>transparente, técnico e previsível</strong>. Unimos <em>sourcing</em>,
+            engenharia, inspeção e logística em um fluxo único para que você controle
+            <strong> custo, prazo e qualidade</strong>.
           </p>
           <p class="lead">
             Com equipe própria na China, realizamos <strong>validação presencial de fábrica</strong>,
-            emitimos <strong>ficha técnica contratual</strong>, negociamos em chinês com
-            nativos e monitoramos cada marco até o embarque.
-            <strong> Menos risco, mais resultado.</strong>
+            emitimos <strong>ficha técnica contratual</strong>, negociamos em chinês com nativos e
+            monitoramos cada marco até o embarque. <strong>Menos risco, mais resultado.</strong>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- (Opcional) Intro curta para SEO e escaneabilidade -->
+    <!-- Intro curta (opcional) -->
     <section class="df-intro">
       <div class="container narrow">
         <p>
@@ -169,10 +247,11 @@
       </div>
     </section>
 
-    <!-- Detalhamento (2 por tela, alternando imagem/descrição) -->
+    <!-- ===== Detalhamento (slices) ===== -->
     <section class="diff-deep">
+
       <article class="slice right">
-        <figure class="ph" style="--ph:url('/assets/visita.jpg')"></figure>
+        <figure class="ph" style="--ph:url('/assets/visita.jpg')" aria-hidden="true"></figure>
         <div class="copy">
           <h3>Visita à fábrica em até 48h</h3>
           <p>Time local vai ao chão de fábrica, registra fotos/vídeos e emite relatório técnico
@@ -181,7 +260,7 @@
       </article>
 
       <article class="slice left">
-        <figure class="ph" style="--ph:url('/assets/ficha-tecnica.jpg')"></figure>
+        <figure class="ph" style="--ph:url('/assets/ficha-tecnica.jpg')" aria-hidden="true"></figure>
         <div class="copy">
           <h3>Ficha técnica contratual</h3>
           <p>Materiais, medidas, tolerâncias e embalagem descritos em documento bilíngue.
@@ -190,7 +269,7 @@
       </article>
 
       <article class="slice right">
-        <figure class="ph" style="--ph:url('/assets/negociacao.jpg')"></figure>
+        <figure class="ph" style="--ph:url('/assets/negociacao.jpg')" aria-hidden="true"></figure>
         <div class="copy">
           <h3>Negociação local, em chinês</h3>
           <p>Sem intermediários: tratativa direta com a diretoria da fábrica para melhor
@@ -199,7 +278,7 @@
       </article>
 
       <article class="slice left">
-        <figure class="ph" style="--ph:url('/assets/inspecao.jpg')"></figure>
+        <figure class="ph" style="--ph:url('/assets/inspecao.jpg')" aria-hidden="true"></figure>
         <div class="copy">
           <h3>Amostra & inspeção com evidências</h3>
           <p>Teste por amostragem, fotos/vídeos e checklist. Não‑conformidades são corrigidas
@@ -208,7 +287,7 @@
       </article>
 
       <article class="slice right">
-        <figure class="ph" style="--ph:url('/assets/embarque.jpg')"></figure>
+        <figure class="ph" style="--ph:url('/assets/embarque.jpg')" aria-hidden="true"></figure>
         <div class="copy">
           <h3>Embarque visível (LCL/FCL)</h3>
           <p>Check‑points e documentação acessível (booking, BL, packing, certificados).
@@ -217,16 +296,17 @@
       </article>
 
       <article class="slice left">
-        <figure class="ph" style="--ph:url('/assets/preco-br.jpg')"></figure>
+        <figure class="ph" style="--ph:url('/assets/preco-br.jpg')" aria-hidden="true"></figure>
         <div class="copy">
           <h3>Preço no Brasil antes do pedido</h3>
           <p>Estimativa completa de tributos e despesas antes de fechar.
              Decisão segura e margem preservada.</p>
         </div>
       </article>
+
     </section>
 
-    <!-- CTA / prova social -->
+    <!-- ===== CTA ===== -->
     <section class="diff-cta">
       <div class="container">
         <div class="kpi-row">
@@ -239,7 +319,7 @@
     </section>
   </main>
 
-  <!-- Rodapé -->
+  <!-- ===== Rodapé padrão ===== -->
   <footer class="footer">
     <div class="container footer-row">
       <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
@@ -257,7 +337,7 @@
     </div>
   </footer>
 
-  <!-- Ajuste automático da altura do header (mantém a métrica das outras páginas) -->
+  <!-- Ajuste automático da altura do header para --header-h -->
   <script>
     (function(){
       const header = document.getElementById('siteHeader');
@@ -269,8 +349,5 @@
       setOffset(); window.addEventListener('resize', setOffset);
     })();
   </script>
-
-  <!-- JS específico (seu) -->
-  <script src="/assets/diferenciais.js" defer></script>
 </body>
 </html>
