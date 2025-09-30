@@ -1,131 +1,37 @@
-// ===== Diferenciais — hero + navio com balão + digitação =====
+// /assets/diferenciais.js
 (function(){
-  // Header -> CSS var
-  const header = document.getElementById('siteHeader');
-  function syncHeader(){
-    const h = (header?.offsetHeight || 72) + 'px';
-    document.documentElement.style.setProperty('--header-h', h);
-  }
-  syncHeader(); addEventListener('resize', syncHeader);
+  // Seleciona somente as seções abaixo do herói
+  const slices = document.querySelectorAll('.diff-deep .slice');
+  if (!slices.length) return;
 
-  // ===== ROTA / NAVIO =====
-  const board  = document.querySelector('#rota-branca .board');
-  const path   = document.getElementById('rwPath');
-  const prog   = document.getElementById('rwProg');
-  const ship   = document.getElementById('rwShip');
-  const speech = document.getElementById('rwSpeech');
-  const btnPrev   = document.getElementById('rwPrev');
-  const btnNext   = document.getElementById('rwNext');
-  const arrowPrev = document.getElementById('rwArrowPrev');
-  const arrowNext = document.getElementById('rwArrowNext');
-  const live      = document.getElementById('rwLive');
+  // Respeita usuários que preferem menos movimento
+  const reduceMotion = window.matchMedia &&
+                       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if(board && path && prog && ship && speech){
-    const VBW = 1200, VBH = 420;
-    const L   = path.getTotalLength();
-    prog.setAttribute('d', path.getAttribute('d') || '');
-    prog.style.strokeDasharray = L + 'px';
-
-    const steps = [
-      { title:'Visita 48h',          text:'Vamos até a fábrica em até 48h, com fotos e vídeos no local.',                     p:.04 },
-      { title:'Ficha técnica',       text:'Contrato técnico PT‑ZH (materiais, medidas, tolerâncias, embalagem).',            p:.22 },
-      { title:'Negociação',          text:'Equipe nativa negocia direto em chinês para melhores condições.',                 p:.38 },
-      { title:'Amostra & inspeção',  text:'Amostra aprovada e inspeção por amostragem com evidências visuais.',             p:.54 },
-      { title:'Embarque',            text:'Check‑points LCL/FCL e documentos na plataforma.',                                p:.74 },
-      { title:'Desembaraço',         text:'Estimativa de tributos/despesas antes do pedido — sem susto no Brasil.',          p:.88 },
-      { title:'Entrega',             text:'Chegou. Acompanhamos performance e aceleramos reposições quando necessário.',     p:1.00 }
-    ];
-
-    let idx = 0, raf = null;
-    const clamp = (v,a,b)=> Math.max(a, Math.min(b, v));
-    const ease  = (t)=> t<.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
-
-    function placeSpeech(pt){
-      const r = board.getBoundingClientRect();
-      const sx = r.width / VBW, sy = r.height / VBH;
-      const w = speech.offsetWidth || 240, h = speech.offsetHeight || 90;
-
-      let left = pt.x * sx + 18;      // um pouco à direita do navio
-      let top  = pt.y * sy - (h + 16);// acima do navio
-      left = clamp(left, 8, r.width  - w - 8);
-      top  = clamp(top,  8, r.height - h - 8);
-
-      speech.style.transform = `translate(${left}px, ${top}px)`;
-    }
-
-    function renderAt(pct){
-      const d = L * pct;
-      // progresso
-      prog.style.strokeDashoffset = (L - d) + 'px';
-      // posição e ângulo do navio
-      const pt   = path.getPointAtLength(d);
-      const prev = path.getPointAtLength(Math.max(0, d-1));
-      const ang  = Math.atan2(pt.y - prev.y, pt.x - prev.x) * 180/Math.PI;
-      ship.setAttribute('transform', `translate(${pt.x},${pt.y}) rotate(${ang})`);
-      // balão seguindo o navio
-      placeSpeech(pt);
-    }
-
-    function setStep(i, animate=true){
-      const newIdx = clamp(i, 0, steps.length-1);
-      const from = steps[idx].p;
-      const to   = steps[newIdx].p;
-      idx = newIdx;
-
-      const s = steps[idx];
-      speech.innerHTML = `<b>${s.title}</b><p>${s.text}</p>`;
-      if(live) live.textContent = `Etapa ${idx+1} de ${steps.length}`;
-
-      if(!animate){ renderAt(to); return; }
-
-      const t0 = performance.now(), dur = 900;
-      cancelAnimationFrame(raf);
-      (function tick(now){
-        const t = Math.min(1, (now - t0)/dur);
-        const k = from + (to - from) * ease(t);
-        renderAt(k);
-        if(t < 1) raf = requestAnimationFrame(tick);
-      })(t0);
-    }
-
-    // Controles
-    btnPrev?.addEventListener('click', ()=> setStep(idx-1));
-    btnNext?.addEventListener('click', ()=> setStep(idx+1));
-    arrowPrev?.addEventListener('click', ()=> setStep(idx-1));
-    arrowNext?.addEventListener('click', ()=> setStep(idx+1));
-    addEventListener('keydown', (e)=>{
-      if(e.key==='ArrowRight' || e.key==='Enter') setStep(idx+1);
-      if(e.key==='ArrowLeft')                     setStep(idx-1);
-    });
-    addEventListener('resize', ()=> renderAt(steps[idx].p));
-
-    // Start
-    setStep(0, false);
+  // Se não houver IntersectionObserver ou usuário pedir menos movimento,
+  // mostramos tudo de uma vez (sem animação).
+  if (!('IntersectionObserver' in window) || reduceMotion) {
+    slices.forEach(s => s.classList.add('in-view'));
+    return;
   }
 
-  // ===== Digitação ao rolar (blocos de detalhamento) =====
-  (function(){
-    const items = Array.from(document.querySelectorAll('.diff-deep .type'));
-    if(!items.length) return;
-
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(!e.isIntersecting) return;
-        typeIn(e.target, e.target.classList.contains('delay') ? 220 : 0);
-        io.unobserve(e.target);
-      });
-    }, { threshold:.35 });
-
-    items.forEach(el=> io.observe(el));
-
-    function typeIn(el, delay){
-      const txt = el.dataset.text || el.textContent;
-      el.textContent = '';
-      let i = 0;
-      setTimeout(function step(){
-        el.textContent += txt.charAt(i++);
-        if(i <= txt.length) setTimeout(step, 16);
-      }, delay);
+  // Observa entrada e saída de cada slice na janela de visualização
+  const io = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      // Quando 22% do bloco estiver visível, consideramos "em cena"
+      if (entry.intersectionRatio > 0.22) {
+        entry.target.classList.add('in-view');
+      } else {
+        // Ao sair do viewport, volta ao estado inicial (para animar novamente)
+        entry.target.classList.remove('in-view');
+      }
     }
-  })();
+  }, {
+    // Vários thresholds dão suavidade na troca
+    threshold: [0, 0.12, 0.22, 0.32, 0.5, 0.75, 1],
+    rootMargin: '0px 0px -8% 0px' // liga um pouco antes do fim do viewport
+  });
+
+  slices.forEach(s => io.observe(s));
 })();
+
