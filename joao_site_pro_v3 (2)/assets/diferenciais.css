@@ -130,3 +130,38 @@
   .diff-deep .slice .copy{ order:2; padding:0 }
   .diff-deep .slice .ph{ order:1; margin:0; }
 }
+/* === REVEAL NO SCROLL (slices) ===================================== */
+/* Estado inicial (fora de cena) */
+.diff-deep .slice .ph,
+.diff-deep .slice .copy{
+  opacity: 0;
+  transform: translateY(16px) scale(.98);
+  transition:
+    transform 600ms cubic-bezier(.2,.7,.2,1),
+    opacity 600ms cubic-bezier(.2,.7,.2,1);
+  will-change: transform, opacity;
+}
+
+/* Empurra a foto a partir da lateral correta */
+.diff-deep .slice.left  .ph{  transform: translate(-44px, 12px) scale(.98); }
+.diff-deep .slice.right .ph{  transform: translate( 44px, 12px) scale(.98); }
+
+/* Leve “stagger” no texto depois da foto */
+.diff-deep .slice .copy{ transition-delay: 80ms; }
+
+/* Quando a seção está visível no viewport */
+.diff-deep .slice.in-view .ph,
+.diff-deep .slice.in-view .copy{
+  opacity: 1;
+  transform: none;
+}
+
+/* Menos animação para usuários que pedem redução de movimento */
+@media (prefers-reduced-motion: reduce){
+  .diff-deep .slice .ph,
+  .diff-deep .slice .copy{
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
