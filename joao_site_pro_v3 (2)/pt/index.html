@@ -841,5 +841,154 @@
     window.addEventListener('resize', setOffset);
   })();
   </script>
+<script>
+(function(){
+  const log   = document.getElementById('aiChatLog');
+  const form  = document.getElementById('aiChatForm');
+  const ta    = document.getElementById('aiPrompt');
+  const stat  = document.getElementById('aiStatus');
+  const store = 'ai:log:v1';
+
+  // Restaura histórico (se quiser, remova)
+  let history = [];
+  try{ history = JSON.parse(localStorage.getItem(store) || '[]'); }catch(e){}
+  history.forEach(m => render(m));
+
+  // Auto-grow do textarea
+  function autogrow(){
+    ta.style.height='auto';
+    ta.style.height = Math.min(ta.scrollHeight, 160) + 'px';
+  }
+  ta.addEventListener('input', autogrow);
+  autogrow();
+
+  // Enter envia / Shift+Enter quebra linha
+  ta.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' && !e.shiftKey){
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  // Envia
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const q = (ta.value || '').trim();
+    if(!q) return;
+    add({ role:'user', content:q });
+    ta.value=''; autogrow();
+
+    // “digitando…”
+    const typingId = showTyping();
+
+    try{
+      const reply = await askAI(history);
+      hideTyping(typingId);
+      add({ role:'assistant', content: reply });
+    }catch(err){
+      hideTyping(typingId);
+      add({ role:'assistant', content: mockAnswer(q) });
+    }
+  });
+
+  // Renderiza uma mensagem no log
+  function render({role, content}){
+    const row = document.createElement('div');
+    row.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.innerHTML = sanitize(content);
+    row.appendChild(b);
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  // Adiciona ao histórico + salva
+  function add(m){
+    history.push(m);
+    localStorage.setItem(store, JSON.stringify(history.slice(-30))); // guarda últimas 30
+    render(m);
+  }
+
+  // Indicador "digitando"
+  function showTyping(){
+    const row = document.createElement('div');
+    row.className = 'msg bot typing';
+    const b = document.createElement('div'); b.className='bubble';
+    for(let i=0;i<3;i++){ const d=document.createElement('span'); d.className='dot-anim'; b.appendChild(d); }
+    row.appendChild(b);
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
+    return row;
+  }
+  function hideTyping(node){ if(node && node.parentNode){ node.parentNode.removeChild(node); } }
+
+  // Chama o back-end se houver /api/ia; senão lança erro -> cai no mock
+  async function askAI(messages){
+    stat.textContent = 'pensando…';
+    const res = await fetch('/api/ia', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ messages: messages.map(m => ({ role:m.role, content:m.content })) })
+    });
+    stat.textContent = 'online';
+    if(!res.ok) throw new Error('no-backend');
+    const data = await res.json();
+    const text = (data.reply || data.output || data.message || '').toString().trim();
+    if(!text) throw new Error('empty-reply');
+    return text;
+  }
+
+  // Mock: respostas úteis quando não há backend
+  function mockAnswer(q=''){
+    const s = q.toLowerCase();
+    if(s.includes('incoterm') || s.includes('fob') || s.includes('cif') || s.includes('exw')){
+      return `Resumo rápido de Incoterms:
+• EXW: comprador assume retirada e fretes desde a fábrica.
+• FOB: vendedor entrega a bordo; comprador assume frete internacional e seguro.
+• CIF: vendedor paga frete e seguro até o porto de destino.
+• DDP: vendedor entrega desembaraçado no destino (nem sempre viável).
+Se quiser, posso sugerir o melhor para o seu caso.`;
+    }
+    if(s.includes('imposto') || s.includes('tribut') || s.includes('preço no brasil')){
+      return `Estimativa de “Preço no Brasil”:
+1) Valor mercadoria + frete/seguro internacional;
+2) II, IPI, PIS/COFINS-Import., ICMS (varia por NCM/UF);
+3) AFRMM (se marítimo), taxas portuárias/ARMAZÉM, despachante;
+4) Frete interno.
+Na nossa plataforma, você vê a memória de cálculo antes de fechar o pedido.`;
+    }
+    if(s.includes('lcl') || s.includes('fcl') || s.includes('contêiner') || s.includes('container')){
+      return `LCL x FCL:
+• LCL (carga fracionada): bom para volumes menores; custo por m³/ton e prazos um pouco maiores.
+• FCL (contêiner cheio): melhor custo por unidade e menos manuseio.
+Começar em LCL e migrar depois costuma ser uma boa estratégia.`;
+    }
+    return `Entendi. Posso ajudar com:
+• especificação técnica PT‑ZH (ficha/contrato),
+• validação de fábrica (48h),
+• inspeção com fotos e vídeos,
+• timeline e documentos,
+• estimativa de tributos.
+Pode detalhar sua dúvida?`;
+  }
+
+  // Saneamento simples (permite <b>, <br>, listas)
+  function sanitize(html){
+    const div = document.createElement('div');
+    div.textContent = html;
+    let t = div.innerHTML;
+    // permite algumas tags básicas
+    t = t.replace(/&lt;(\/?)(b|br|ul|ol|li)&gt;/g, '<$1$2>');
+    return t;
+  }
+
+  // Status online/offline (visual)
+  function updateStatus(){ stat.textContent = navigator.onLine ? 'online' : 'offline'; }
+  updateStatus(); window.addEventListener('online', updateStatus); window.addEventListener('offline', updateStatus);
+})();
+</script>
+
+  
 </body>
 </html>
