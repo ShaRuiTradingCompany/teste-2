@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- ===== CSS do MENU (mesmo que você usava) ===== -->
+  <!-- ===== CSS do MENU (igual ao que você enviou) ===== -->
   <style>
     header.site-header{
       position:fixed; top:0; left:0; right:0; z-index:1000;
@@ -72,13 +72,13 @@
       display:flex; align-items:center; justify-content:space-between; }
   </style>
 
-  <!-- ===== CSS da página de CONTATO (escopado) ===== -->
+  <!-- ===== CSS da página de CONTATO (escopado, não interfere no menu) ===== -->
   <style>
     :root{ --sr-left-shift: 60px; }
 
     body{
-      /* fundo suave estilo hero (se seu tema já define, pode remover esta linha) */
-      background: radial-gradient(1200px 600px at 80% -200px, #1f6aa1 0%, transparent 60%) ,
+      /* fundo suave estilo hero */
+      background: radial-gradient(1200px 600px at 80% -200px, #1f6aa1 0%, transparent 60%),
                   linear-gradient(180deg, #0f2344 0%, #0d2247 40%, #0e2f55 100%);
       min-height:100vh;
     }
@@ -102,15 +102,15 @@
     }
     .sr-contact-lead{
       margin:0 0 18px;
-      color:#e2e8f0; /* fica legível sobre o fundo */
+      color:#e2e8f0; /* legível sobre o fundo */
       background:transparent !important;
       display:inline-block;
-      padding:6px 10px 6px 0; /* remove “barrinha azul” */
+      padding:6px 10px 6px 0; /* evita faixa colorida ao fundo */
     }
 
     .sr-contact-grid{
       display:grid;
-      grid-template-columns: 1.25fr .75fr;
+      grid-template-columns: 1.25fr .75fr; /* form maior à esquerda */
       gap:28px; align-items:start; margin-left:0;
     }
     @media (min-width:1100px){ .sr-contact-grid{ margin-left:calc(var(--sr-left-shift) * -1); } }
@@ -157,7 +157,7 @@
     .sr-btn-ghost{padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.35);text-decoration:none;font-weight:700;color:#e2e8f0;}
     .sr-btn-ghost:hover{background:rgba(255,255,255,.06);}
 
-    /* ===== Footer ===== */
+    /* ===== Rodapé (igual ao que você enviou) ===== */
     .sr-footer{ color:#e5e7eb; background:rgba(10,17,30,.6); border-top:1px solid rgba(255,255,255,.08); }
     .sr-footer-inner{ max-width:1200px; margin:0 auto; padding:28px 20px; display:grid; gap:20px;
       grid-template-columns: 1.1fr .9fr .9fr; }
@@ -175,7 +175,7 @@
 </head>
 <body>
 
-  <!-- ===== Header / Menu ===== -->
+  <!-- ===== Header / Menu (padronizado) ===== -->
   <header class="site-header">
     <div class="sr-header-inner">
       <a href="/" class="brand-logo">
@@ -266,7 +266,7 @@
     </section>
   </main>
 
-  <!-- ===== Rodapé ===== -->
+  <!-- ===== Rodapé (padronizado) ===== -->
   <footer class="sr-footer">
     <div class="sr-footer-inner">
       <div>
@@ -290,7 +290,7 @@
     <div class="sr-footer-bottom">© <span id="yr"></span> ShaRui Trading Company — Todos os direitos reservados.</div>
   </footer>
 
-  <!-- JS do formulário (feedback sem sair da página) + ano do rodapé -->
+  <!-- JS do formulário (feedback) + ano do rodapé -->
   <script>
   (function(){
     const form = document.getElementById('contatoForm');
