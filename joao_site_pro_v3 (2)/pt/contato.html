@@ -122,3 +122,88 @@
 <script src="/assets/main.js" defer></script>
 </body></html>
 
+<section class="contato wrap">
+  <h1>Fale com a ShaRui Trading</h1>
+  <p class="lead">Preencha o formulário e respondemos por e-mail. Ou fale pelas nossas redes:</p>
+
+  <div class="grid-contact">
+    <!-- COLUNA 1: FORMULÁRIO -->
+    <form id="contatoForm" class="card contact-form"
+          action="https://formspree.io/f/SEU_ID" method="POST">
+      <!-- Dica ao Formspree: assunto do e-mail -->
+      <input type="hidden" name="_subject" value="Novo contato via site — ShaRui Trading">
+      <!-- URL de redirecionamento opcional após sucesso -->
+      <!-- <input type="hidden" name="_next" value="https://seu-dominio.com/obrigado.html"> -->
+
+      <label>
+        Nome*
+        <input type="text" name="nome" required placeholder="Seu nome completo">
+      </label>
+
+      <label>
+        E-mail*
+        <input type="email" name="email" required placeholder="voce@empresa.com">
+      </label>
+
+      <label>
+        WhatsApp
+        <input type="tel" name="whatsapp" placeholder="+55 11 90000-0000">
+      </label>
+
+      <label>
+        Empresa
+        <input type="text" name="empresa" placeholder="Nome da empresa">
+      </label>
+
+      <label>
+        Assunto*
+        <input type="text" name="assunto" required placeholder="Ex.: Cotação, Parceria, Dúvida">
+      </label>
+
+      <label>
+        Mensagem*
+        <textarea name="mensagem" required rows="5" placeholder="Conte seu caso em poucas linhas"></textarea>
+      </label>
+
+      <!-- anti-spam simples -->
+      <input type="text" name="_gotcha" style="display:none">
+
+      <button type="submit" class="btn-primary">Enviar mensagem</button>
+
+      <!-- feedback -->
+      <p id="formMsg" class="form-msg" aria-live="polite" hidden></p>
+    </form>
+
+    <!-- COLUNA 2: REDES SOCIAIS -->
+    <aside class="card social-stack">
+      <h2>Redes sociais</h2>
+
+      <a class="social-item yt" href="https://www.youtube.com/@SharuiTrading" target="_blank" rel="noopener">
+        <!-- YouTube SVG -->
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#FF0000" d="M23.5 6.2a4.6 4.6 0 0 0-3.2-3.2C18.5 2.5 12 2.5 12 2.5s-6.5 0-8.3.5A4.6 4.6 0 0 0 .5 6.2 47 47 0 0 0 0 12a47 47 0 0 0 .5 5.8 4.6 4.6 0 0 0 3.2 3.2c1.8.5 8.3.5 8.3.5s6.5 0 8.3-.5a4.6 4.6 0 0 0 3.2-3.2A47 47 0 0 0 24 12a47 47 0 0 0-.5-5.8z"/>
+          <path fill="#fff" d="M9.75 15.02V8.98L15.5 12z"/>
+        </svg>
+        <span class="handle">@SharuiTrading</span>
+      </a>
+
+      <a class="social-item ig" href="https://www.instagram.com/Sharui_trading" target="_blank" rel="noopener">
+        <!-- Instagram ícone simples (cor sólida) -->
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#E1306C" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 7.2a1 1 0 1 0-1-1 1 1 0 0 0 1 1z"/>
+        </svg>
+        <span class="handle">@Sharui_trading</span>
+      </a>
+
+      <a class="social-item tt" href="https://www.tiktok.com/@Sharui_trading" target="_blank" rel="noopener">
+        <!-- TikTok (duas cores) -->
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#25F4EE" d="M9 8.5v9a4 4 0 1 1-2-3.5v-2.2A6 6 0 1 0 15 18v-8.9a6.6 6.6 0 0 0 4 1.4V8A5.7 5.7 0 0 1 15 6.3V18a6 6 0 1 1-9-5.2V8.5z"/>
+          <path fill="#FE2C55" d="M15 18v-8.9a6 6 0 0 0 4 1.3V8a5.7 5.7 0 0 1-4-1.7V18a6 6 0 1 1-9-5.2v2A4 4 0 1 0 15 18z"/>
+        </svg>
+        <span class="handle">@Sharui_trading</span>
+      </a>
+    </aside>
+  </div>
+</section>
+
