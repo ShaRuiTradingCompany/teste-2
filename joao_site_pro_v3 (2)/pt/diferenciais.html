@@ -26,34 +26,37 @@
     .site-header, .site-header *{
       font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
     }
+
     /* Layout da faixa do header */
     .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
-    .site-header .brand .brand-logo{
+
+    /* Marca com aro branco */
+    .site-header .brand-logo{
       display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;
       padding:8px 12px;
       border:1px solid rgba(255,255,255,.9);
       border-radius:999px; background:transparent !important; color:#fff; text-decoration:none;
       text-shadow:0 2px 10px rgba(0,0,0,.55);
     }
-    .site-header .brand-top{ font-weight:700; letter-spacing:.6px }
-    .site-header .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
+    .site-header .brand-logo .brand-top{ font-weight:700; letter-spacing:.6px }
+    .site-header .brand-logo .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
 
     /* Menu “chips” com aro branco */
-    .site-header nav .menu{ display:flex; gap:16px; align-items:center }
-    .site-header nav .menu a{
+    .site-header .menu{ display:flex; gap:14px; align-items:center }
+    .site-header .menu a{
       display:inline-flex; align-items:center; padding:8px 12px;
       border:1px solid rgba(255,255,255,.9); border-radius:999px;
       background:transparent !important; color:#fff !important; text-decoration:none;
       text-shadow:0 2px 10px rgba(0,0,0,.55); box-shadow:none !important; opacity:1 !important; filter:none !important;
       font-weight:800;
     }
-    .site-header nav .menu a:hover,
-    .site-header nav .menu a:focus-visible{
+    .site-header .menu a:hover,
+    .site-header .menu a:focus-visible{
       background:rgba(255,255,255,.12) !important; text-decoration:none !important;
       box-shadow:none !important; outline:none;
     }
-    .site-header nav .menu a[aria-current="page"],
-    .site-header nav .menu a.active{
+    .site-header .menu a[aria-current="page"],
+    .site-header .menu a.active{
       background:transparent !important;
       border-color:#fff !important;
       box-shadow:0 0 0 2px rgba(255,255,255,.38) inset !important;
@@ -67,9 +70,9 @@
     .df-hero{ padding-top: calc(var(--header-h,72px) + 16px); }
   </style>
 
-  <!-- ===== FIGURA SEMICIRCULAR (restaura a meia-lua) ===== -->
+  <!-- ===== FIGURA SEMICIRCULAR (meia-lua, lado reto à esquerda) ===== -->
   <style id="df-semicircle-shape">
-    /* Grid do herói (mantém seu layout) */
+    /* Grid do herói (mantém seu layout 1.1fr / .9fr) */
     .df-hero .df-hero-grid{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
@@ -77,7 +80,7 @@
       align-items:center;
     }
 
-    /* Figura semicircular com fallback */
+    /* Figura base */
     .df-semi{
       --size: clamp(260px, 44vw, 560px);
       width: var(--size);
@@ -86,35 +89,25 @@
       position: relative;
       justify-self: start;
       filter: drop-shadow(0 18px 44px rgba(0,0,0,.35));
-      will-change: transform;
     }
-    /* Lado reto à esquerda (abre para a direita) */
+
+    /* Meia‑lua abrindo para a direita (lado reto colado na esquerda) */
     .df-semi.left{
-      /* Fallback se mask não estiver disponível */
-      clip-path: circle(50% at 0% 50%);
-      /* Máscara principal (melhor antialiasing) */
+      /* Máscara principal (Chrome/Safari/Firefox atuais) */
       -webkit-mask-image: radial-gradient(closest-side at 0% 50%, #000 99.6%, transparent 100%);
               mask-image: radial-gradient(closest-side at 0% 50%, #000 99.6%, transparent 100%);
-      -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-      -webkit-mask-size: 100% 100%;   mask-size: 100% 100%;
-    }
-    /* (Opcional) Lado reto à direita */
-    .df-semi.right{
-      clip-path: circle(50% at 100% 50%);
-      -webkit-mask-image: radial-gradient(closest-side at 100% 50%, #000 99.6%, transparent 100%);
-              mask-image: radial-gradient(closest-side at 100% 50%, #000 99.6%, transparent 100%);
-      -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-      -webkit-mask-size: 100% 100%;   mask-size: 100% 100%;
+      -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+      -webkit-mask-size:100% 100%;   mask-size:100% 100%;
     }
 
-    /* Encostar a figura ao limite (compensa padding de 20px do .container) */
+    /* Encostar a figura ao limite do container (se seu .container tiver 20px de padding) */
     .df-semi.flush-left{ margin-left: -20px; }
 
-    /* Responsivo */
+    /* Responsivo: empilha e centraliza a meia‑lua */
     @media (max-width: 720px){
       .df-hero .df-hero-grid{ grid-template-columns: 1fr; }
-      .df-semi{ margin: 0 auto 8px; }       /* centraliza no mobile */
-      .df-semi.flush-left{ margin-left: 0; } /* remove sangria no mobile */
+      .df-semi{ margin: 0 auto 8px; }
+      .df-semi.flush-left{ margin-left: 0; }
     }
   </style>
 </head>
@@ -123,29 +116,16 @@
   <!-- Header com o mesmo visual da Home -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
-      <div class="brand">
-        <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
-          <span class="brand-top">SHA RUI</span>
-          <span class="brand-sub">TRADING COMPANY</span>
-        </a>
-      </div>
-      <nav>
-        <div class="menu">
-          <a href="/pt/quem-somos.html">Quem somos</a>
-          <a href="/pt/diferenciais.html" aria-current="page">Diferenciais</a>
-          <a href="/pt/plataforma.html">Plataforma</a>
-          <a href="/pt/contato.html">Contato</a>
-        </div>
+      <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+        <span class="brand-top">SHA RUI</span>
+        <span class="brand-sub">TRADING COMPANY</span>
+      </a>
+      <nav class="menu">
+        <a href="/pt/quem-somos.html">Quem somos</a>
+        <a href="/pt/diferenciais.html" aria-current="page">Diferenciais</a>
+        <a href="/pt/plataforma.html">Plataforma</a>
+        <a href="/pt/contato.html">Contato</a>
       </nav>
-      <!-- (Opcional) seletor de idioma -->
-      <div class="lang" id="lang">
-        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
-        <ul class="lang-menu" id="langMenu">
-          <li><a href="/pt/index.html">Português (PT)</a></li>
-          <li><a href="/en/index.html">English (EN)</a></li>
-          <li><a href="/es/index.html">Español (ES)</a></li>
-        </ul>
-      </div>
     </div>
   </header>
 
@@ -153,11 +133,13 @@
     <!-- HERO: foto semicircular à esquerda + texto à direita -->
     <section class="df-hero">
       <div class="container df-hero-grid">
+        <!-- Foto semicircular: lado reto colado na esquerda -->
         <figure
           class="df-semi left flush-left"
           style="--img:url('/assets/diferenciais-hero.jpg')"
           aria-hidden="true"></figure>
 
+        <!-- Texto -->
         <div class="df-copy">
           <h1 class="df-title">Diferenciais</h1>
           <p class="lead">
@@ -170,13 +152,13 @@
             Com equipe própria na China, realizamos <strong>validação presencial de fábrica</strong>,
             emitimos <strong>ficha técnica contratual</strong>, negociamos em chinês com
             nativos e monitoramos cada marco até o embarque.
-            <strong>Menos risco, mais resultado.</strong>
+            <strong> Menos risco, mais resultado.</strong>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Intro curta -->
+    <!-- (Opcional) Intro curta para SEO e escaneabilidade -->
     <section class="df-intro">
       <div class="container narrow">
         <p>
@@ -275,7 +257,7 @@
     </div>
   </footer>
 
-  <!-- Ajuste automático da altura do header -->
+  <!-- Ajuste automático da altura do header (mantém a métrica das outras páginas) -->
   <script>
     (function(){
       const header = document.getElementById('siteHeader');
