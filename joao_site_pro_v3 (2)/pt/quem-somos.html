@@ -111,6 +111,63 @@
   #socios .partner-row.reverse .photo{ order:-1; }
   #socios .partner-row .photo img{ aspect-ratio: 16 / 10; } /* mantém destaque sem ficar alto demais */
 }
+/* ===== SÓCIOS — foto um pouco mais larga (sem mexer na altura) ===== */
+/* Antes estava 1fr 2fr; agora 1.15fr 1.85fr (pouco mais larga) */
+#socios .partner-row{
+  display:grid;
+  grid-template-columns: 1.15fr 1.85fr;
+  gap: clamp(14px, 3vw, 28px);
+  align-items: stretch;
+  margin-bottom: clamp(14px, 3vw, 22px);
+}
+
+/* Linha alternada (foto do outro lado) */
+#socios .partner-row.reverse{
+  grid-template-columns: 1.85fr 1.15fr;
+}
+
+/* A foto mantém a mesma ALTURA relativa via aspect-ratio */
+#socios .partner-row .photo{
+  border-radius:16px; overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+}
+#socios .partner-row .photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+  aspect-ratio: 4 / 5; /* mantém “altura” visual proporcional */
+  display:block;
+}
+
+/* ===== Animações (entrar ao descer / sair ao subir) ===== */
+#socios .partner-row .photo,
+#socios .partner-row .info{
+  opacity:0;
+  will-change: transform, opacity;
+  transition: transform .55s cubic-bezier(.2,.7,.2,1), opacity .55s;
+}
+
+/* Bloco normal: foto entra da ESQ → DIR, texto da DIR → ESQ */
+#socios .partner-row:not(.reverse) .photo{ transform: translateX(-28px); }
+#socios .partner-row:not(.reverse) .info { transform: translateX( 28px); }
+
+/* Bloco “reverse”: invertido */
+#socios .partner-row.reverse .photo{ transform: translateX( 28px); }
+#socios .partner-row.reverse .info { transform: translateX(-28px); }
+
+/* Quando visível na tela */
+#socios .partner-row.in .photo,
+#socios .partner-row.in .info{
+  opacity:1; transform:none;
+}
+
+/* Acessibilidade: reduz animações */
+@media (prefers-reduced-motion: reduce){
+  #socios .partner-row .photo,
+  #socios .partner-row .info{
+    transition:none; transform:none; opacity:1;
+  }
+}
 
 
     /* ---------- BASTIDORES: FAIXA CONTÍNUA (mais alta) ---------- */
@@ -275,36 +332,37 @@
       </div>
     </section>
 
-    <!-- (2) SÓCIOS — foto grande + texto alternado -->
-    <section id="socios" class="section about-partners">
-      <div class="container">
-        <h2 class="reveal">Sócios</h2>
+  <section id="socios" class="section about-partners">
+  <div class="container">
+    <h2 class="reveal">Nossa Equipe</h2>
 
-        <!-- Linha 1: foto à esquerda -->
-        <article class="partner-row reveal">
-          <figure class="photo">
-            <img src="/assets/team-socio-1.jpg" alt="Rogério Takeshita — Sócio-Diretor" loading="lazy" decoding="async" width="760" height="950">
-          </figure>
-          <div class="info">
-            <h3>Rogério Takeshita</h3>
-            <p class="role">Sócio‑Diretor</p>
-            <p class="bio">Integra engenharia, qualidade e finanças para reduzir risco e custo total, cuidando da tomada de decisão no Brasil.</p>
-          </div>
-        </article>
-
-        <!-- Linha 2: foto à direita -->
-        <article class="partner-row reverse reveal">
-          <div class="info">
-            <h3>Sandra de Almeida</h3>
-            <p class="role">Sócia — Operações e Compliance</p>
-            <p class="bio">Lidera a equipe local e negociações na fábrica para garantir prazos, padrão de qualidade e comunicação direta.</p>
-          </div>
-          <figure class="photo">
-            <img src="/assets/team-socio-2.jpg" alt="Sandra de Almeida — Sócia, Operações e Compliance" loading="lazy" decoding="async" width="760" height="950">
-          </figure>
-        </article>
+    <!-- Bloco 1 -->
+    <div class="partner-row">
+      <figure class="photo">
+        <img src="/assets/team-socio-1.jpg" alt="Rogério Takeshita — Sócio-Diretor" loading="lazy" decoding="async" width="760" height="950">
+      </figure>
+      <div class="info">
+        <h3>Rogério Takeshita</h3>
+        <p class="role">Sócio‑Diretor</p>
+        <p>Com trajetória em comércio internacional e indústria, conecta a visão de <b>engenharia</b> ao <b>financeiro</b> para reduzir <b>risco</b> e <b>custo total</b>. Estruturou processos de <b>especificação técnica</b> (ficha PT‑ZH) e validação de fornecedores na China e no Brasil.</p>
+        <p>Atua no desenho de cenários de <b>preço no Brasil</b>, <b>governança</b> de projetos e decisões de <b>make/buy</b>. Lidera <b>due diligence</b> de fornecedores, planejamento de <b>inspeções por amostragem</b> e o alinhamento com os times do cliente.</p>
       </div>
-    </section>
+    </div>
+
+    <!-- Bloco 2 (invertido) -->
+    <div class="partner-row reverse">
+      <div class="info">
+        <h3>Sandra de Almeida</h3>
+        <p class="role">Sócia — Operações e Compliance</p>
+        <p>Especialista em <b>operações</b> na China, com forte atuação no <b>chão de fábrica</b>. Conduz negociações com nativos, <b>contratos bilíngues</b> e cronogramas, garantindo <b>prazos</b> e <b>padrão de qualidade</b> acordados.</p>
+        <p>Orienta <b>inspeções</b> com registro em <b>foto e vídeo</b>, acompanha ajustes com a produção e cuida do <b>compliance documental</b> para embarque. Foco em <b>comunicação direta</b>, <b>previsibilidade</b> e <b>execução</b>.</p>
+      </div>
+      <figure class="photo">
+        <img src="/assets/team-socio-2.jpg" alt="Sandra de Almeida — Operações e Compliance" loading="lazy" decoding="async" width="760" height="950">
+      </figure>
+    </div>
+  </div>
+</section>
 
     <!-- (3) BASTIDORES — faixa contínua (mais alta) -->
     <section id="bastidores" class="section about-culture">
@@ -483,3 +541,20 @@
   </script>
 </body>
 </html>
+<script>
+/* Sócios: anima entrar/ sair conforme visibilidade */
+(function(){
+  const rows = document.querySelectorAll('#socios .partner-row');
+  if(!rows.length) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      const el = e.target;
+      if(e.isIntersecting){ el.classList.add('in'); }
+      else{ el.classList.remove('in'); } // sai ao subir
+    });
+  }, { threshold: 0.35 });
+
+  rows.forEach(r => io.observe(r));
+})();
+</script>
