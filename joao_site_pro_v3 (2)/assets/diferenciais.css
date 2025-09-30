@@ -5,7 +5,9 @@
   --container-pad: 16px;
 }
 
-/* ===== Header desta página SEMPRE transparente (como na Home) ===== */
+/* ===== Header nesta página SEMPRE transparente (mesmo visual das outras) ===== */
+/* Importante: NÃO mexemos nos links do menu. Quem define o estilo dos itens
+   é o styles.css global. Aqui só garantimos que o fundo do header fica transparente. */
 .page-diferenciais .site-header,
 .page-diferenciais .site-header::before,
 .page-diferenciais .site-header .nav-wrap,
@@ -21,28 +23,7 @@
   box-shadow: none !important;
 }
 
-/* Links do menu SEMPRE sem caixinha (só contorno no item ativo) */
-.page-diferenciais .site-header .menu a{
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  color: #fff !important;
-  text-shadow: 0 2px 10px rgba(0,0,0,.55);
-  padding: 8px 12px;
-}
-.page-diferenciais .site-header .menu a:hover,
-.page-diferenciais .site-header .menu a:focus-visible{
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.page-diferenciais .site-header .menu a[aria-current="page"]{
-  background: transparent !important;
-  border: 1px solid rgba(255,255,255,.55) !important;
-  border-radius: 999px !important;
-  box-shadow: none !important;
-}
-
-/* ===== Utilitário container (mantém o padrão do site) ===== */
+/* ===== Utilitário container (mesmo padrão do site) ===== */
 .container{ max-width: var(--container-w); margin:0 auto; padding:0 var(--container-pad); }
 
 /* ===== HERO (topo) — foto semicircular à ESQUERDA + texto à DIREITA ===== */
@@ -65,8 +46,8 @@
 /* Foto semicircular: lado RETO colado na lateral ESQUERDA do viewport */
 .df-semi{
   background: center/cover no-repeat var(--img, none);
-  /* altura “igual às outras” (responsiva e consistente) */
-  height: min(560px, calc(100svh - var(--header-h) - 64px));
+  /* Altura no mesmo “peso” dos demais heróis (responsiva) */
+  height: clamp(420px, calc(100svh - var(--header-h) - 80px), 720px);
   box-shadow: 0 16px 40px rgba(0,0,0,.30);
 }
 .df-semi.left{  border-radius: 0 9999px 9999px 0; }
@@ -149,19 +130,3 @@
   .diff-deep .slice .copy{ order:2; padding:0 }
   .diff-deep .slice .ph{ order:1; margin:0; }
 }
-/* === MENU IGUAL AO DAS OUTRAS PÁGINAS ====================== */
-/* Header só fica transparente enquanto está sobre o herói.
-   Não mudamos estilo dos links; quem manda é o styles.css global. */
-.page-diferenciais .site-header{
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: transparent !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* Não estilize .site-header .menu a aqui!
-   (sem border, sem underline, sem chips forçados)
-   O styles.css global vai aplicar exatamente o mesmo visual
-   que você já tem na página Quem somos. */
