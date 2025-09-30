@@ -10,16 +10,11 @@
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Fonte (se já usa no menu, pode manter) -->
+  <!-- Fonte usada no site/menu -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
 
-  <!-- =========== MENU UNIVERSAL (NÃO ALTERAR) =========== -->
-  <!-- Fonte Montserrat usada no menu/brand -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- =================== MENU UNIVERSAL (SEU CSS, INALTERADO) =================== -->
   <style>
     /* Header transparente (sem vidro) e sobreposto, como na Home */
     header.site-header{
@@ -29,12 +24,10 @@
       backdrop-filter:none !important;
       border:0 !important; box-shadow:none !important;
     }
-
     /* Mesma família tipográfica do menu da Home (só no header) */
     .site-header, .site-header *{
       font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
     }
-
     /* Chips do menu: aro branco, sem preenchimento */
     .site-header .menu{ display:flex; gap:14px; align-items:center }
     .site-header .menu a{
@@ -50,7 +43,7 @@
       opacity:1 !important;
       filter:none !important;
     }
-    /* Hover/foco: realce apenas no contorno (sem “branco fosco”) */
+    /* Hover/foco */
     .site-header .menu a:hover,
     .site-header .menu a:focus-visible{
       background:transparent !important;
@@ -59,15 +52,14 @@
       text-decoration:none !important;
       outline:none;
     }
-    /* Ativo (Quem somos): aro reforçado, SEM fundo */
+    /* Ativo */
     .site-header .menu a[aria-current="page"],
     .site-header .menu a.active{
       background:transparent !important;
       border-color:#fff !important;
       box-shadow:0 0 0 2px rgba(255,255,255,.38) inset !important;
     }
-
-    /* Marca com aro (igual à Home) */
+    /* Marca com aro */
     .site-header .brand-logo{
       display:inline-flex; flex-direction:column; align-items:flex-start;
       padding:8px 12px;
@@ -81,11 +73,66 @@
     .site-header .brand-logo .brand-top{ font-weight:700; letter-spacing:.6px }
     .site-header .brand-logo .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
   </style>
-  
-</head>
-  <!-- =========== FIM DO MENU UNIVERSAL =========== -->
+  <!-- ================= FIM DO BLOCO DO MENU UNIVERSAL (CSS) ================== -->
 
-  <!-- =========== SEÇÃO DE CONTATO (NOVA) =========== -->
+  <!-- ===== CSS ESPECÍFICO DA PÁGINA DE CONTATO (escopado, não afeta o menu) ===== -->
+  <style>
+    .sr-contact.wrap{max-width:1200px;margin:0 auto;padding:120px 20px 48px;} /* 120px compensa o header fixo */
+    .sr-contact h1{color:#0f172a;}
+    .sr-contact-lead{margin-top:6px;color:#475569;}
+
+    .sr-contact-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr; /* form maior à esquerda */
+      gap:28px; align-items:start;
+    }
+    @media (min-width:1100px){ .sr-contact-grid{ margin-left:-60px; } } /* puxa à esquerda */
+    @media (max-width:900px){ .sr-contact-grid{ grid-template-columns:1fr; margin-left:0; } }
+
+    .sr-card{
+      background:#fff; border-radius:16px;
+      box-shadow:0 8px 24px rgba(0,0,0,.06); padding:20px;
+    }
+
+    /* Form com contraste alto (texto preto) */
+    .sr-contact-form label{display:block;font-weight:700;color:#0f172a;margin:12px 0 6px;}
+    .sr-contact-form input,.sr-contact-form textarea{
+      width:100%; border:1px solid #e5e7eb; border-radius:12px; padding:12px 14px; font:inherit;
+      color:#0f172a; background:#fff;
+    }
+    .sr-contact-form input::placeholder,.sr-contact-form textarea::placeholder{color:#6b7280;opacity:1;}
+    .sr-contact-form input:focus,.sr-contact-form textarea:focus{
+      outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.25);
+    }
+    .sr-btn-primary{
+      margin-top:14px; display:inline-block; border:0; cursor:pointer;
+      background:linear-gradient(90deg,#7C3AED,#3B82F6,#06B6D4);
+      color:#fff; font-weight:800; padding:12px 18px; border-radius:12px;
+    }
+    .sr-form-msg{margin-top:10px;font-size:.95rem;color:#0f172a;}
+
+    /* Redes sociais (empilhadas) */
+    .sr-social-stack h2{margin-bottom:10px;color:#0f172a;}
+    .sr-social-item{
+      display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;text-decoration:none;
+      transition:transform .15s ease, background .15s ease;
+    }
+    .sr-social-item + .sr-social-item{margin-top:8px;}
+    .sr-social-item:hover{background:#f3f4f6;transform:translateY(-1px);}
+    .sr-social-item svg{flex:0 0 28px;}
+    .sr-social-item .handle{font-weight:800;color:#0f172a;}
+
+    /* CTA WhatsApp */
+    .sr-contact-whats{margin-top:22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:#0f172a;}
+    .sr-btn-ghost{padding:10px 16px;border-radius:12px;border:1px solid rgba(15,23,42,.15);text-decoration:none;font-weight:700;color:#0f172a;}
+    .sr-btn-ghost:hover{background:#f8fafc;}
+  </style>
+</head>
+<body>
+
+  <!-- ======= AQUI ENTRA O SEU HTML DO MENU (header.site-header ...) ======= -->
+  <!-- (Use o mesmo header/nav da sua Home. Não repliquei aqui porque você já o tem pronto.) -->
+
   <main>
     <section class="sr-contact wrap" id="contato">
       <h1>Fale com a ShaRui</h1>
@@ -152,10 +199,6 @@
       </div>
     </section>
   </main>
-  <!-- =========== FIM DA SEÇÃO DE CONTATO =========== -->
-
-  <!-- Rodapé (se houver) -->
-  <!-- <footer> ... </footer> -->
 
   <!-- JS do formulário (feedback sem sair da página) -->
   <script>
@@ -179,4 +222,3 @@
   </script>
 </body>
 </html>
-
