@@ -1474,3 +1474,44 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
   @media (max-width: 760px){
     .site-header .menu a{ padding: 8px 10px; } /* dá uma folguinha no mobile */
   }
+/* Layout básico da seção de contato */
+.contato.wrap { max-width: 1080px; margin: 0 auto; padding: 64px 20px; }
+.contato .lead { margin-top: 6px; color: #6b7280; }
+
+.grid-contact {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 28px;
+}
+@media (max-width: 900px){
+  .grid-contact { grid-template-columns: 1fr; }
+}
+
+.card { background: #fff; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.06); padding: 20px; }
+
+.contact-form label { display: block; font-weight: 600; margin: 12px 0 6px; }
+.contact-form input, .contact-form textarea {
+  width: 100%; border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px 14px; font: inherit;
+}
+.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96,165,250,.25); }
+
+.btn-primary {
+  margin-top: 14px; display: inline-block; border: 0; cursor: pointer;
+  background: linear-gradient(90deg,#0ea5e9,#3b82f6);
+  color: #fff; font-weight: 700; padding: 12px 18px; border-radius: 12px;
+}
+.form-msg { margin-top: 10px; font-size: 0.95rem; }
+
+/* Redes sociais (empilhadas, ícones coloridos + @) */
+.social-stack h2 { margin-bottom: 10px; }
+.social-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px; border-radius: 12px; transition: transform .15s ease, background .15s ease;
+}
+.social-item + .social-item { margin-top: 8px; }
+.social-item:hover { background: #f3f4f6; transform: translateY(-1px); }
+.social-item svg { flex: 0 0 28px; }
+.social-item .handle { font-weight: 700; color: #111827; }
+
+/* Cores de foco por rede (borda brilhinho ao focar com teclado) */
+.social-item:focus { outline: none; box-shadow: 0 0 0 4px rgba(99,102,241,.25); }
