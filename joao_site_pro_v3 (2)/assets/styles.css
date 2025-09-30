@@ -1515,3 +1515,62 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
 
 /* Cores de foco por rede (borda brilhinho ao focar com teclado) */
 .social-item:focus { outline: none; box-shadow: 0 0 0 4px rgba(99,102,241,.25); }
+
+/* GRID: formulário à esquerda, redes à direita */
+.contact-grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr; /* força o form a ocupar mais espaço à esquerda */
+  gap:28px;
+  align-items:start;
+  /* Truque pra "puxar" o conjunto visualmente à esquerda no container central */
+  max-width: 1080px;
+  margin: 0;              /* tira centralização automática */
+}
+
+/* Se sua seção .wrap centraliza, sobreponha só aqui: */
+.contato.wrap { max-width: 1200px; margin: 0 auto; padding: 48px 20px; }
+@media (min-width: 1100px){
+  /* desloca o grid um pouco à esquerda dentro do wrap */
+  .contact-grid { margin-left: -60px; }
+}
+@media (max-width: 900px){
+  .contact-grid { grid-template-columns: 1fr; margin-left: 0; }
+}
+
+/* Cartões base */
+.card { background:#fff; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,.06); padding:20px; }
+
+/* CONTRASTE: labels e textos do form em preto */
+.contact-form label { display:block; font-weight:700; color:#0f172a; margin:12px 0 6px; }
+.contact-form input,
+.contact-form textarea {
+  width:100%; border:1px solid #e5e7eb; border-radius:12px; padding:12px 14px; font:inherit;
+  color:#0f172a; background:#fff;            /* texto preto */
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+  color:#6b7280; opacity:1;                  /* placeholder mais legível */
+}
+.contact-form input:focus,
+.contact-form textarea:focus{
+  outline:none; border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,.25);
+}
+
+.btn-primary{
+  margin-top:14px; display:inline-block; border:0; cursor:pointer;
+  background:linear-gradient(90deg,#7C3AED,#3B82F6,#06B6D4);
+  color:#fff; font-weight:800; padding:12px 18px; border-radius:12px;
+}
+.form-msg{ margin-top:10px; font-size:.95rem; color:#0f172a; }
+
+/* REDES (empilhadas) */
+.social-stack h2{ margin-bottom:10px; color:#0f172a; }
+.social-item{
+  display:flex; align-items:center; gap:12px;
+  padding:12px; border-radius:12px; transition:transform .15s ease, background .15s ease;
+  text-decoration:none;
+}
+.social-item + .social-item{ margin-top:8px; }
+.social-item:hover{ background:#f3f4f6; transform: translateY(-1px); }
+.social-item svg{ flex:0 0 28px; }
+.social-item .handle{ font-weight:800; color:#0f172a; }
