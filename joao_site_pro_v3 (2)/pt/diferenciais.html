@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Diferenciais — SHA RUI Trading Company</title>
 
+  <!-- CSS base + scripts globais -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/config.js"></script>
+  <script defer src="/assets/main.js"></script>
 
-     <!-- ===== MENU UNIVERSAL (igual ao da Home) ===== -->
-  <!-- Fonte Montserrat usada no menu/brand -->
+  <!-- ===== MENU TRANSPARENTE (igual ao da Home) ===== -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Header transparente (sem vidro) e sobreposto, como na Home */
+    /* Header transparente fixo */
     header.site-header{
       position:fixed; top:0; left:0; right:0; z-index:1000;
       background:transparent !important;
@@ -19,73 +22,79 @@
       backdrop-filter:none !important;
       border:0 !important; box-shadow:none !important;
     }
-
-    /* Mesma família tipográfica do menu da Home (só no header) */
+    /* Montserrat apenas no header */
     .site-header, .site-header *{
       font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
     }
-
-    /* Chips do menu: aro branco, sem preenchimento */
-    .site-header .menu{ display:flex; gap:14px; align-items:center }
-    .site-header .menu a{
-      display:inline-flex; align-items:center;
+    /* Layout da faixa do header */
+    .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
+    .site-header .brand .brand-logo{
+      display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;
       padding:8px 12px;
       border:1px solid rgba(255,255,255,.9);
-      border-radius:999px;
-      background:transparent !important;
-      color:#fff !important;
-      text-decoration:none;
+      border-radius:999px; background:transparent !important; color:#fff; text-decoration:none;
       text-shadow:0 2px 10px rgba(0,0,0,.55);
-      box-shadow:none !important;
-      opacity:1 !important;
-      filter:none !important;
     }
-    /* Hover/foco: realce apenas no contorno (sem “branco fosco”) */
-    .site-header .menu a:hover,
-    .site-header .menu a:focus-visible{
-      background:transparent !important;
-      border-color:#fff !important;
-      box-shadow:0 0 0 2px rgba(255,255,255,.32) inset !important;
-      text-decoration:none !important;
-      outline:none;
+    .site-header .brand-top{ font-weight:700; letter-spacing:.6px }
+    .site-header .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
+
+    /* Menu “chips” com aro branco */
+    .site-header nav .menu{ display:flex; gap:16px; align-items:center }
+    .site-header nav .menu a{
+      display:inline-flex; align-items:center; padding:8px 12px;
+      border:1px solid rgba(255,255,255,.9); border-radius:999px;
+      background:transparent !important; color:#fff !important; text-decoration:none;
+      text-shadow:0 2px 10px rgba(0,0,0,.55); box-shadow:none !important; opacity:1 !important; filter:none !important;
+      font-weight:800;
     }
-    /* Ativo (Quem somos): aro reforçado, SEM fundo */
-    .site-header .menu a[aria-current="page"],
-    .site-header .menu a.active{
+    .site-header nav .menu a:hover,
+    .site-header nav .menu a:focus-visible{
+      background:rgba(255,255,255,.12) !important; text-decoration:none !important;
+      box-shadow:none !important; outline:none;
+    }
+    .site-header nav .menu a[aria-current="page"],
+    .site-header nav .menu a.active{
       background:transparent !important;
       border-color:#fff !important;
       box-shadow:0 0 0 2px rgba(255,255,255,.38) inset !important;
     }
 
-    /* Marca com aro (igual à Home) */
-    .site-header .brand-logo{
-      display:inline-flex; flex-direction:column; align-items:flex-start;
-      padding:8px 12px;
-      border:1px solid rgba(255,255,255,.9);
-      border-radius:999px;
-      background:transparent !important;
-      color:#fff; text-decoration:none;
-      text-shadow:0 2px 10px rgba(0,0,0,.55);
-      line-height:1;
-    }
-    .site-header .brand-logo .brand-top{ font-weight:700; letter-spacing:.6px }
-    .site-header .brand-logo .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
-  </style>
+    /* Compensação do header fixo e âncoras */
+    :root{ --header-h: 72px; }
+    html{ scroll-padding-top: calc(var(--header-h) + 10px); }
 
-  <body class="page-diferenciais">
-  <!-- Header padrão (o styles.css controla todo o visual do menu) -->
+    /* Hero desta página precisa desse padding no topo */
+    .df-hero{ padding-top: calc(var(--header-h,72px) + 16px); }
+  </style>
+</head>
+
+<body class="page-diferenciais">
+  <!-- Header com o mesmo visual da Home -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
-      <a href="/pt/index.html" class="brand-logo">
-        <span class="brand-top">SHA RUI</span>
-        <span class="brand-sub">TRADING COMPANY</span>
-      </a>
-      <nav class="menu">
-        <a href="/pt/quem-somos.html">Quem somos</a>
-        <a href="/pt/diferenciais.html" aria-current="page">Diferenciais</a>
-        <a href="/pt/plataforma.html">Plataforma</a>
-        <a href="/pt/contato.html">Contato</a>
+      <div class="brand">
+        <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+          <span class="brand-top">SHA RUI</span>
+          <span class="brand-sub">TRADING COMPANY</span>
+        </a>
+      </div>
+      <nav>
+        <div class="menu">
+          <a href="/pt/quem-somos.html">Quem somos</a>
+          <a href="/pt/diferenciais.html" aria-current="page">Diferenciais</a>
+          <a href="/pt/plataforma.html">Plataforma</a>
+          <a href="/pt/contato.html">Contato</a>
+        </div>
       </nav>
+      <!-- (Opcional) seletor de idioma -->
+      <div class="lang" id="lang">
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
+        <ul class="lang-menu" id="langMenu">
+          <li><a href="/pt/index.html">Português (PT)</a></li>
+          <li><a href="/en/index.html">English (EN)</a></li>
+          <li><a href="/es/index.html">Español (ES)</a></li>
+        </ul>
+      </div>
     </div>
   </header>
     
@@ -93,13 +102,11 @@
     <!-- HERO: foto semicircular à esquerda + texto à direita -->
     <section class="df-hero">
       <div class="container df-hero-grid">
-        <!-- Foto semicircular: lado reto colado na esquerda -->
         <figure
           class="df-semi left flush-left"
           style="--img:url('/assets/diferenciais-hero.jpg')"
           aria-hidden="true"></figure>
 
-        <!-- Texto -->
         <div class="df-copy">
           <h1 class="df-title">Diferenciais</h1>
           <p class="lead">
@@ -118,7 +125,7 @@
       </div>
     </section>
 
-    <!-- (Opcional) Intro curta para SEO e escaneabilidade -->
+    <!-- Intro curta -->
     <section class="df-intro">
       <div class="container narrow">
         <p>
@@ -217,7 +224,22 @@
     </div>
   </footer>
 
+  <!-- Ajuste automático da altura do header (mesma lógica das outras páginas) -->
+  <script>
+    (function(){
+      const header = document.getElementById('siteHeader');
+      if(!header) return;
+      function setOffset(){
+        const h = header.offsetHeight || 72;
+        document.documentElement.style.setProperty('--header-h', h + 'px');
+      }
+      setOffset(); window.addEventListener('resize', setOffset);
+    })();
+  </script>
+
+  <!-- JS específico (seu) -->
   <script src="/assets/diferenciais.js" defer></script>
 </body>
 </html>
+
 
