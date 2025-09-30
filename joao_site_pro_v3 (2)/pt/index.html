@@ -460,7 +460,39 @@
         <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
       </div>
     </section>
+<!-- IA • Chat entre Plataforma do Cliente e FAQ -->
+<section id="ia" class="section ai-chat">
+  <div class="container">
+    <h2 class="ai-title">Somos a primeira trading do Brasil a ter gestão com IA integrada</h2>
 
+    <div class="chat-card" aria-live="polite">
+      <header class="chat-head">
+        <strong class="chat-brand">Sharui Trading &amp; Co.</strong>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="status" id="aiStatus">online</span>
+      </header>
+
+      <div class="chat-messages" id="aiChatLog">
+        <!-- Mensagem de boas‑vindas (bot) -->
+        <div class="msg bot">
+          <div class="bubble">
+            Olá! Posso ajudar com <b>incoterms</b>, <b>estimativa de impostos</b>, diferença entre <b>LCL/FCL</b>,
+            <b>ficha técnica PT‑ZH</b> e muito mais. Como posso ajudar?
+          </div>
+        </div>
+      </div>
+
+      <form class="chat-input" id="aiChatForm" autocomplete="off">
+        <textarea id="aiPrompt" rows="1" placeholder="Tire sua dúvida sobre importação"></textarea>
+        <button class="send" type="submit" aria-label="Enviar">➤</button>
+      </form>
+
+      <p class="disclaimer">Respostas geradas por IA para apoio. Confirme decisões com nosso time.</p>
+    </div>
+  </div>
+</section>
+
+    
     <section id="faq" class="section faq">
       <div class="container">
         <h2 style="text-align:center;margin-bottom:6px">Perguntas frequentes</h2>
