@@ -149,3 +149,19 @@
   .diff-deep .slice .copy{ order:2; padding:0 }
   .diff-deep .slice .ph{ order:1; margin:0; }
 }
+/* === MENU IGUAL AO DAS OUTRAS PÁGINAS ====================== */
+/* Header só fica transparente enquanto está sobre o herói.
+   Não mudamos estilo dos links; quem manda é o styles.css global. */
+.page-diferenciais .site-header{
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Não estilize .site-header .menu a aqui!
+   (sem border, sem underline, sem chips forçados)
+   O styles.css global vai aplicar exatamente o mesmo visual
+   que você já tem na página Quem somos. */
