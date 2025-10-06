@@ -384,41 +384,86 @@
     </section>
 
 <!-- PLATAFORMA DO CLIENTE — Diagonal (2 fotos + textos opostos) -->
+<!-- PLATAFORMA DO CLIENTE — Diagonal (2 fotos + textos opostos) -->
 <section id="plataforma" class="section platform-diag">
   <style>
-    /* ===== Plataforma (local, só nesta seção) ===== */
-    .platform-diag{ min-height: clamp(560px, 88vh, 820px); display:flex; align-items:center; }
-    .platform-diag .diag-stage{ position:relative; width:min(1100px,94vw); margin:0 auto; aspect-ratio:16/9; }
-    .platform-diag .pic{
-      position:absolute; width:58%; aspect-ratio:4/3; border-radius:16px;
-      background:#0b0e10 center/cover no-repeat; background-image:var(--ph, none);
-      box-shadow:0 22px 60px rgba(0,0,0,.35);
-      opacity:0; transform: translate(var(--tx,0), var(--ty,0)) scale(.94) rotate(var(--rot,0));
-      transition: transform .7s cubic-bezier(.2,.6,.2,1), opacity .7s;
+    /* ===== Plataforma (escopo local desta seção) ===== */
+    .platform-diag{ min-height: clamp(520px, 82vh, 820px); display:flex; align-items:center; }
+    .platform-diag .diag-stage{
+      position:relative;
+      width:min(1040px, 94vw);
+      margin:0 auto;
+      aspect-ratio: 16 / 9;
     }
-    .platform-diag .pic.pic--tl{ left:2%; top:2%; --tx:-40px; --ty:-40px; --rot:-2.2deg; z-index:2; }
-    .platform-diag .pic.pic--br{ right:2%; bottom:-2%; --tx:40px; --ty:40px; --rot: 2.2deg; z-index:1; }
 
+    /* Fotos — MENOR tamanho e leve sobreposição */
+    .platform-diag .pic{
+      position:absolute;
+      width: 46%;                     /* ↓ era 58% — reduz o tamanho */
+      aspect-ratio: 4 / 3;
+      border-radius: 16px;
+      background:#0b0e10 center/cover no-repeat;
+      background-image: var(--ph, none);
+      box-shadow: 0 22px 60px rgba(0,0,0,.35);
+      opacity:0;
+      transform: translate(var(--tx,0), var(--ty,0)) scale(.96) rotate(var(--rot,0));
+      transition: transform .7s cubic-bezier(.2,.6,.2,1), opacity .7s;
+      pointer-events: none;
+    }
+    .platform-diag .pic.pic--tl{
+      left: 4%; top: 8%;
+      --tx: -24px; --ty: -24px; --rot: -1.4deg;   /* entrada suave */
+      z-index: 2;
+    }
+    .platform-diag .pic.pic--br{
+      right: 4%; bottom: -2%;
+      --tx: 24px; --ty: 24px; --rot: 1.6deg;
+      z-index: 1;
+    }
+
+    /* Balões de texto — sempre por cima das fotos */
     .platform-diag .copy{
-      position:absolute; max-width:40%; padding:14px 16px; border-radius:14px;
-      background:rgba(13,30,52,.92); color:#eaf1ff; border:1px solid rgba(255,255,255,.16);
-      box-shadow:0 14px 30px rgba(0,0,0,.28);
-      opacity:0; transform: translate(var(--tx,0), var(--ty,0)) scale(.98);
+      position:absolute;
+      max-width: 42%;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: rgba(13,30,52,.92);
+      color: #eaf1ff;
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 14px 30px rgba(0,0,0,.28);
+      opacity: 0;
+      transform: translate(var(--tx,0), var(--ty,0)) scale(.98);
       transition: transform .6s cubic-bezier(.2,.6,.2,1), opacity .6s;
+      z-index: 5;                    /* <<< textos acima das fotos */
     }
     .platform-diag .copy h3{ margin:0 0 6px; font-weight:800; font-size:clamp(18px,2.2vw,22px) }
     .platform-diag .copy p{ margin:0; font-size:clamp(14px,1.25vw,17px); line-height:1.55 }
-    .platform-diag .copy.copy--tr{ top:6%; right:-2%; --tx:40px; --ty:-40px; }
-    .platform-diag .copy.copy--bl{ bottom:6%; left:-2%; --tx:-40px; --ty:40px; }
 
+    /* Posições opostas aos respectivos cards */
+    .platform-diag .copy.copy--tr{ top: 6%; right: 3%; --tx: 22px; --ty: -22px; }
+    .platform-diag .copy.copy--bl{ bottom: 6%; left: 3%; --tx: -22px; --ty: 22px; }
+
+    /* Quando a seção entra em tela, tira os offsets */
     .platform-diag .diag-stage.in .pic,
-    .platform-diag .diag-stage.in .copy{ opacity:1; transform: translate(0,0) scale(1) rotate(var(--rot,0)); }
+    .platform-diag .diag-stage.in .copy{
+      opacity:1;
+      transform: translate(0,0) scale(1) rotate(var(--rot,0));
+    }
 
-    @media (max-width:880px){
+    /* Responsivo: empilha no mobile (sem sobrepor) */
+    @media (max-width: 880px){
       .platform-diag{ min-height:auto; }
-      .platform-diag .diag-stage{ aspect-ratio:auto; display:grid; grid-template-columns:1fr; gap:12px; }
-      .platform-diag .pic{ position:relative; width:100%; transform:none; opacity:1; rotate:0; }
-      .platform-diag .copy{ position:relative; max-width:none; transform:none; opacity:1; left:auto; right:auto; top:auto; bottom:auto; }
+      .platform-diag .diag-stage{
+        aspect-ratio:auto;
+        display:grid; grid-template-columns:1fr; gap:12px;
+      }
+      .platform-diag .pic{
+        position:relative; width:100%; transform:none; opacity:1; rotate:0; z-index:1;
+      }
+      .platform-diag .copy{
+        position:relative; max-width:none; transform:none; opacity:1; z-index:2;
+        left:auto; right:auto; top:auto; bottom:auto;
+      }
     }
   </style>
 
@@ -429,12 +474,13 @@
     <div class="diag-stage" id="platDiag">
       <!-- Foto 1 (entra da diagonal superior esquerda) -->
       <figure class="pic pic--tl" style="--ph:url('/assets/plat1.jpg')" aria-hidden="true"></figure>
+
       <!-- Foto 2 (entra da diagonal inferior direita) -->
       <figure class="pic pic--br" style="--ph:url('/assets/plat4.jpg')" aria-hidden="true"></figure>
 
       <!-- Texto oposto à Foto 1 -->
       <div class="copy copy--tr">
-        <h3>Carteira & documentos</h3>
+        <h3>Carteira &amp; documentos</h3>
         <p>Acompanhe <b>suas transações, documentos e o histórico completo de pedidos</b> numa única carteira.
            Versões de invoice/packing, aprovações de amostras e prazos por etapa — <b>tudo organizado e pesquisável</b>.</p>
       </div>
@@ -449,7 +495,7 @@
   </div>
 
   <script>
-    /* Dispara a entrada diagonal quando a seção ficar visível */
+    /* Dispara a animação quando a área entra na viewport */
     (function(){
       const stage = document.getElementById('platDiag');
       if(!stage) return;
