@@ -1748,3 +1748,22 @@ html, body{ max-width:100%; overflow-x:hidden; }
   .diag-text{ order:2 }
   .diag-photo{ order:1 }
 }
+/* Hide mobile menu icon on desktop */
+@media (min-width: 980px){
+  /* seletores abrangentes para qualquer variação do botão */
+  #menuFab,
+  .menu-fab,
+  .menu-fab-wrap,
+  .floating-menu,
+  .mobile-menu-button,
+  .nav-toggle,
+  .menu-toggle,
+  .hamburger,
+  .hamb,
+  [data-role="mobile-menu"]{
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
