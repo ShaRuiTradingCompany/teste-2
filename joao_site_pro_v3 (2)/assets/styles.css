@@ -1674,3 +1674,26 @@ html{ scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + 10px); 
   #ia .chat-card{ padding: 12px }
   #ia .msg .bubble{ max-width: 86% }
 }
+/* ===== HOTFIX MOBILE/TABLET — evita cortes/overflow ===== */
+html, body{ max-width:100%; overflow-x:hidden; }
+
+/* iOS/Android: evita bug de background-attachment: fixed cortando o fundo */
+@media (max-width: 1024px){
+  .bg-cover{ background-attachment: scroll; }
+}
+
+/* Diferenciais/radial e seções altas: liberam altura no mobile */
+@media (max-width: 880px){
+  .radial-stage,
+  #diferenciais .radial-stage{
+    min-height:auto; padding: 10px 0 6px;
+  }
+}
+
+/* Respeita “notch”/borda segura do iPhone */
+.site-header{ padding-top:max(10px, env(safe-area-inset-top)); }
+.wp-float   { right:max(22px, env(safe-area-inset-right));
+              bottom:max(22px, env(safe-area-inset-bottom)); }
+
+/* Qualquer seção com animações/translates não “empurra” a tela para os lados */
+.section{ overflow-x:hidden; }
