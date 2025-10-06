@@ -1748,3 +1748,39 @@ html, body{ max-width:100%; overflow-x:hidden; }
   .diag-text{ order:2 }
   .diag-photo{ order:1 }
 }
+/* ===== Corrige o ícone do Instagram =====
+   Funciona em qualquer <a class="ic ig"> tanto no rodapé quanto na página de Contato */
+.ic.ig{
+  --size: 28px;               /* ajuste se quiser maior/menor */
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  /* remove qualquer máscara/imagem antiga que possa estar aplicada */
+  -webkit-mask: none !important;
+  mask: none !important;
+  background-size: cover;
+}
+
+/* anel (lente) */
+.ic.ig::before{
+  content:"";
+  position:absolute; inset:22%;
+  border-radius:50%;
+  border: 2.5px solid #fff;
+}
+
+/* pontinho do canto */
+.ic.ig::after{
+  content:"";
+  position:absolute;
+  width: 5px; height: 5px;
+  right: 22%; top: 22%;
+  border-radius:50%;
+  background:#fff;
+}
+
+/* se precisar maior no bloco de Contato, aumente só ali */
+.contact .ic.ig{ --size: 32px; }
