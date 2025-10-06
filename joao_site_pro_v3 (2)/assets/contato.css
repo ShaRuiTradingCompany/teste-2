@@ -1,76 +1,84 @@
-/* ===== contato.css (escopado) ===== */
-.page-contato { --header-h: 72px; }
-@media (max-width:880px){ .page-contato{ --header-h: 64px; } }
+/* ===== CONTATO (página) — fundo 100% foto + header transparente ===== */
 
-/* Hero de fundo ocupando a tela TODA abaixo do header */
-.page-contato .contact-hero{
-  position: fixed;
-  z-index: -1;                     /* fica atrás do conteúdo */
-  inset: var(--header-h) 0 0 0;    /* começa logo após o header */
-  background-image: var(--img, none);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: brightness(.86) saturate(1.04);
+/* 1) Nesta página NÃO queremos o gradiente padrão do site */
+.page-contato{
+  background: none !important;         /* mata o fundo azul do styles.css */
+  --header-h: 72px;                     /* atualizado no JS da página */
 }
-.page-contato .contact-hero::after{
+
+/* 2) A foto de fundo cobre a janela toda e fica FIXA por trás do conteúdo */
+.contact-hero{
+  position: fixed;                      /* fica atrás de tudo */
+  inset: 0;                             /* left:0; top:0; right:0; bottom:0 */
+  background: var(--img) center/cover no-repeat;
+  z-index: 0;                           /* atrás do restante */
+}
+
+/* 3) Tudo o que é “conteúdo” vem por cima da foto */
+.site-header,
+.contact-wrap,
+.footer{
+  position: relative;
+  z-index: 1;
+}
+
+/* 4) Espaçamento do conteúdo: empurra abaixo do header fixo */
+.contact-wrap{
+  padding-top: calc(var(--header-h,72px) + 18px);
+  padding-bottom: clamp(28px, 7vh, 64px);
+}
+
+/* 5) Grid do conteúdo (form + coluna de apoio). Se não tiver a coluna, tudo flui ok */
+.contact-grid{
+  width: min(1240px, 100% - 32px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 640px) 1fr;
+  gap: clamp(16px, 2.5vw, 28px);
+  align-items: start;
+}
+
+/* 6) Cartão “glass” do formulário */
+.c-card{
+  background: rgba(255,255,255,.86);
+  -webkit-backdrop-filter: saturate(1.05) blur(6px);
+          backdrop-filter: saturate(1.05) blur(6px);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 14px;
+  padding: clamp(14px, 2vw, 18px);
+  box-shadow: 0 18px 44px rgba(0,0,0,.25);
+  color: #0b1f3d;
+}
+.c-card h2{ margin:0 0 6px; font-weight:800; font-size: clamp(18px, 2.6vw, 22px) }
+.contact-lead{ margin:0 0 12px; opacity:.9 }
+
+/* 7) Campos do formulário */
+.c-form label{ font-weight:700; margin-top:10px; display:block }
+.c-form input,
+.c-form textarea{
+  width:100%; margin-top:6px;
+  border:1px solid #dfe7f3; border-radius:10px;
+  padding:12px 12px; font: inherit; color:#0b1f3d;
+  background:#fff;
+}
+.c-form textarea{ resize: vertical; min-height: 120px }
+
+.c-btn{
+  margin-top:12px; cursor:pointer; font-weight:800;
+  border:0; border-radius:12px; padding:12px 16px; color:#051018;
+  background:linear-gradient(90deg,#7C3AED,#22D3EE);
+  box-shadow: 0 0 20px rgba(34,211,238,.35), 0 0 48px rgba(124,58,237,.25);
+}
+.form-msg{ margin-top:8px; font-weight:700 }
+
+/* 8) Responsivo */
+@media (max-width: 980px){
+  .contact-grid{ grid-template-columns: 1fr; }
+}
+
+/* 9) (Opcional) leve vinheta no rodapé para legibilidade do footer sobre a foto */
+.contact-hero::after{
   content:"";
-  position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38));
+  position:absolute; left:0; right:0; bottom:0; height:22vh;
+  background: linear-gradient(to top, rgba(0,0,0,.28), transparent 60%);
 }
-
-/* Área do conteúdo sobre o fundo */
-.page-contato .contact-wrap{
-  min-height: calc(100vh - var(--header-h));
-  display:flex; align-items:center;
-  padding: calc(var(--header-h) + 12px) 20px 36px;
-}
-
-/* Grid: formulário maior à esquerda, redes à direita */
-.page-contato .contact-grid{
-  width:min(1200px, 100%);
-  margin:0 auto;
-  display:grid; gap:28px;
-  grid-template-columns: 1.2fr .8fr;
-}
-@media (max-width:900px){
-  .page-contato .contact-grid{ grid-template-columns:1fr; }
-}
-
-/* Cartões */
-.page-contato .c-card{
-  background:#fff; color:#0f172a;
-  border-radius:16px; padding:20px;
-  box-shadow:0 8px 24px rgba(0,0,0,.12);
-  border:1px solid #e5e7eb;
-}
-
-/* Formulário */
-.page-contato .c-form h2{ margin:0 0 6px; font-weight:800; }
-.page-contato .contact-lead{ margin:0 0 12px; color:#475569; }
-.page-contato .c-form label{ display:block; font-weight:700; margin:12px 0 6px; }
-.page-contato .c-form input,
-.page-contato .c-form textarea{
-  width:100%; border:1px solid #e5e7eb; border-radius:12px;
-  padding:12px 14px; font:inherit; color:#0f172a; background:#fff;
-}
-.page-contato .c-form input:focus,
-.page-contato .c-form textarea:focus{
-  outline:none; border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,.25);
-}
-.page-contato .c-btn{
-  margin-top:14px; display:inline-block; border:0; cursor:pointer;
-  background:linear-gradient(90deg,#7C3AED,#3B82F6,#06B6D4);
-  color:#fff; font-weight:800; padding:12px 18px; border-radius:12px;
-}
-
-/* Redes Sociais (lado direito) */
-.page-contato .c-social h2{ margin:0 0 10px; font-weight:800; }
-.page-contato .c-social .item{
-  display:flex; align-items:center; gap:12px;
-  padding:12px; border-radius:12px; text-decoration:none; color:#0f172a;
-  transition:.15s transform ease, .15s background ease;
-}
-.page-contato .c-social .item + .item{ margin-top:8px; }
-.page-contato .c-social .item:hover{ background:#f3f4f6; transform:translateY(-1px); }
-.page-contato .c-social svg{ flex:0 0 28px; }
