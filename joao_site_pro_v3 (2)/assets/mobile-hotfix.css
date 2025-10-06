@@ -1,0 +1,150 @@
+/* ===== SHA RUI — Mobile Hotfix (menu + hero + perf) ===== */
+
+:root{
+  --header-h: 72px;
+  --container-w: 1240px;
+  --container-pad: 16px;
+}
+
+/* ===== HEADER sempre transparente (como nas outras páginas) ===== */
+.page-diferenciais .site-header,
+.page-diferenciais .site-header::before,
+.page-diferenciais .site-header .nav-wrap{
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ===== HAMBÚRGUER (aparece só em telas <= 960px) ===== */
+.menu-toggle{
+  display:none;
+  width:42px; height:42px; border-radius:10px;
+  background: rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.menu-toggle svg{ width:22px; height:22px; display:block }
+
+@media (max-width: 960px){
+  /* Mostra botão; empurra menu para overlay */
+  .menu-toggle{ display:inline-flex; }
+  .site-header .nav-wrap{ gap:12px }
+
+  .site-header .menu{
+    position: fixed; inset: 0 0 0 30%;
+    background: rgba(11,31,61,.96);
+    transform: translateX(100%);
+    transition: transform .25s ease;
+    display:flex; flex-direction:column; gap:10px;
+    padding: calc(var(--header-h) + 12px) 16px 16px;
+  }
+  .site-header.menu-open .menu{ transform: translateX(0); }
+
+  .site-header .menu a{
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #eaf1ff !important;
+    padding: 12px 10px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+  .site-header .menu a[aria-current="page"]{
+    border-bottom-color: rgba(34,211,238,.45);
+  }
+
+  html.no-scroll, body.no-scroll{ height:100%; overflow:hidden; }
+}
+
+/* ===== HERO (foto semicircular à esquerda) — responsivo ===== */
+.df-hero{
+  min-height: calc(100svh - var(--header-h));
+  padding-top: calc(var(--header-h) + 20px);
+  padding-bottom: clamp(20px, 5vh, 50px);
+  background:
+    radial-gradient(820px 560px at 50% 15%, rgba(255,255,255,.07), transparent 60%),
+    linear-gradient(180deg,#214a83,#183a69 55%, #17335f);
+  color:#eaf1ff; display:grid; align-items:center;
+}
+.df-hero-grid{
+  display:grid; grid-template-columns: 1.1fr .9fr; align-items:center;
+  gap: clamp(16px, 3vw, 32px);
+}
+
+/* Foto semicircular com lado reto colado na ESQUERDA */
+.df-semi{
+  --size: clamp(260px, 44vw, 560px);
+  width: var(--size);
+  height: min(560px, calc(100svh - var(--header-h) - 64px));
+  background: var(--img) center / cover no-repeat;
+  filter: drop-shadow(0 18px 44px rgba(0,0,0,.35));
+}
+.df-semi.left{  border-radius: 0 9999px 9999px 0; }
+.df-semi.flush-left{
+  /* cola no limite do container (usa o padding do container global) */
+  margin-left: calc(-1 * (max(0px, (100vw - var(--container-w)) / 2) + var(--container-pad)));
+}
+
+.df-title{
+  margin:0 0 10px; font-weight:800;
+  font-size: clamp(36px, 5.6vw, 60px);
+  color:#fff;
+}
+.df-copy .lead{
+  margin:0 0 10px;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.65; color:#eef5ff;
+}
+
+/* ===== Seções “diff-deep” (fotos se ajustam e encostam na borda) ===== */
+.diff-deep{ padding: 10px 0 6px; color:#eaf1ff; }
+.diff-deep .slice{
+  --slice-pad: clamp(10px, 2vw, 16px);
+  min-height: 50vh; display:grid; align-items:center;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 2.6vw, 24px);
+  margin: 12px 0; padding: var(--slice-pad);
+  background: transparent; border: 0; box-shadow: none;
+}
+.diff-deep .slice.left  { padding-left:  0 !important; }
+.diff-deep .slice.right { padding-right: 0 !important; }
+.diff-deep .slice.right .ph{ order:2 }
+.diff-deep .slice.right .copy{ order:1; padding-right: clamp(6px,1vw,10px) }
+.diff-deep .slice.left  .ph{ order:1 }
+.diff-deep .slice.left  .copy{ order:2; padding-left:  clamp(6px,1vw,10px) }
+
+/* Foto padrão */
+.diff-deep .ph{
+  aspect-ratio: 16/9;
+  background: #0b0e10 center/cover no-repeat; background-image: var(--ph, none);
+  box-shadow: 0 10px 28px rgba(0,0,0,.25); overflow:hidden;
+}
+.diff-deep .slice.left  .ph{  border-radius: 22px 9999px 9999px 22px; margin-left:  calc(-1 * var(--slice-pad)); }
+.diff-deep .slice.right .ph{  border-radius: 9999px 22px 22px 9999px; margin-right: calc(-1 * var(--slice-pad)); }
+
+/* Tipografia das seções (um pouco maior no mobile também) */
+.diff-deep .copy h3{
+  margin:0 0 6px; font-weight:800;
+  font-size: clamp(22px, 4.4vw, 34px); color:#fff; letter-spacing:.2px;
+}
+.diff-deep .copy p{
+  margin:0; font-size: clamp(15px, 3.8vw, 20px); line-height: 1.65; color:#e7efff;
+}
+
+/* ===== Redução de efeitos pesados no mobile ===== */
+@media (max-width: 960px){
+  .df-semi{ height: min(50vh, 460px); }
+  .df-hero-grid{ grid-template-columns: 1fr; }
+  .df-semi.flush-left{ margin-left: 0; }
+  /* Se houver varreduras/blur de fundo em outras seções, desligue aqui */
+  .tech-journey .bg::after{ animation: none !important; }
+}
+
+/* Acessibilidade (redução de movimento) */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
