@@ -566,9 +566,13 @@
       </div>
     </div>
 
-    <!-- WhatsApp flutuante -->
-    <a href="https://api.whatsapp.com/send?phone=5511993381008&text=Ol%C3%A1%20ShaRui%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar."></a>
-  </main>
+  <!-- WhatsApp flutuante -->
+<a id="whatsFloat"
+   class="whats-float"
+   href="#"
+   target="_blank" rel="noopener"
+   aria-label="Abrir conversa no WhatsApp">
+</a>
 
   <footer class="footer">
     <div class="container footer-row">
@@ -585,7 +589,11 @@
         <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
         <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
         <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
-        <a href="https://api.whatsapp.com/send?phone=5511993381008&text=Ol%C3%A1%20ShaRui%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar."></a>
+        <a id="whatsFooter"
+   href="#"
+   target="_blank" rel="noopener"
+   aria-label="WhatsApp"
+   class="ic wa" title="WhatsApp"></a>
       </nav>
     </div>
   </footer>
@@ -988,6 +996,35 @@ Pode detalhar sua dúvida?`;
 
   items.forEach(el => io.observe(el));
 })();
+</script>
+<script>
+  (function(){
+    // ======================================================
+    // DEFINA AQUI SEU NÚMERO — APENAS DÍGITOS (DDI+DDD+NÚMERO)
+    // Ex.: (11) 9 9338-1008  =>  5511993381008
+    // ======================================================
+    const WHATS_NUMBER = '5511993381008';
+
+    // Mensagem inicial (pode editar livremente)
+    const defaultText = 'Olá ShaRui, vim pelo site e gostaria de falar.';
+
+    // Monta URL estável (funciona no desktop e no mobile)
+    const base = 'https://api.whatsapp.com/send';
+    const url  = base + '?phone=' + WHATS_NUMBER + '&text=' + encodeURIComponent(defaultText);
+
+    // Preenche todos os destinos de WhatsApp existentes
+    const ids = ['whatsFloat','whatsFooter'];
+    ids.forEach(id => {
+      const a = document.getElementById(id);
+      if (a) a.href = url;
+    });
+
+    // Segurança extra: se existir qualquer <a data-whats="true">, também atualiza
+    document.querySelectorAll('a[data-whats="true"]').forEach(a => a.href = url);
+
+    // Diagnóstico simples no console (pode remover):
+    console.log('[WhatsApp] Link aplicado:', url);
+  })();
 </script>
 
 </body>
