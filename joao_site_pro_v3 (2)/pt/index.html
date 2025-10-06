@@ -173,6 +173,25 @@
       text-decoration: none;
     }
   </style>
+
+  <!-- Unificar tipografia: tudo com Montserrat -->
+<style>
+  :root{
+    --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  /* Base */
+  html, body, button, input, select, textarea { font-family: var(--font-sans) !important; }
+
+  /* Títulos, marca e elementos que antes usavam Inter/Space Grotesk */
+  h1,h2,h3,h4,h5,h6,
+  .brand a, .brand-top, .brand-sub,
+  .pill-head, .dif-title, .dif-sub,
+  #plataforma h2, #plataforma .lead,
+  .card h3 {
+    font-family: var(--font-sans) !important;
+  }
+</style>
+
 </head>
 
 <body>
@@ -462,7 +481,29 @@
       }
     }
   </style>
+<style>
+  /* Paleta azul dos balões da Plataforma */
+  :root{
+    --plat-blue-1: #0e3d88; /* topo do gradiente */
+    --plat-blue-2: #0b2f6a; /* base do gradiente */
+  }
 
+  /* Balões azuis + tipografia unificada */
+  #plataforma .p-card,
+  .tablet .balloon{
+    background: linear-gradient(180deg, var(--plat-blue-1), var(--plat-blue-2)) !important;
+    border: 1px solid rgba(255,255,255,.20) !important;
+    color: #fff;
+    font-family: var(--font-sans) !important;
+  }
+
+  #plataforma .p-card h3, #plataforma .p-card p,
+  .tablet .balloon h3, .tablet .balloon p{
+    font-family: var(--font-sans) !important;
+  }
+</style>
+
+  
   <div class="p-wrap">
     <h2 style="text-align:center;margin-bottom:6px">Plataforma do Cliente</h2>
     <p class="lead" style="text-align:center;margin-bottom:16px">Acompanhe tudo em um só lugar</p>
@@ -923,12 +964,12 @@
   const form  = document.getElementById('aiChatForm');
   const ta    = document.getElementById('aiPrompt');
   const stat  = document.getElementById('aiStatus');
-  const store = 'ai:log:v1';
 
-  // Restaura histórico (se quiser, remova)
+  // RESET: garante que versões antigas não fiquem salvas
+  try{ localStorage.removeItem('ai:log:v1'); }catch(e){}
+
+  // Histórico só em memória (zera a cada entrada no site/página)
   let history = [];
-  try{ history = JSON.parse(localStorage.getItem(store) || '[]'); }catch(e){}
-  history.forEach(m => render(m));
 
   // Auto-grow do textarea
   function autogrow(){
@@ -946,7 +987,7 @@
     }
   });
 
-  // Envia
+  // Enviar
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const q = (ta.value || '').trim();
@@ -954,9 +995,7 @@
     add({ role:'user', content:q });
     ta.value=''; autogrow();
 
-    // “digitando…”
     const typingId = showTyping();
-
     try{
       const reply = await askAI(history);
       hideTyping(typingId);
@@ -967,7 +1006,7 @@
     }
   });
 
-  // Renderiza uma mensagem no log
+  // Renderização das mensagens
   function render({role, content}){
     const row = document.createElement('div');
     row.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
@@ -978,15 +1017,9 @@
     log.appendChild(row);
     log.scrollTop = log.scrollHeight;
   }
+  function add(m){ history.push(m); render(m); }
 
-  // Adiciona ao histórico + salva
-  function add(m){
-    history.push(m);
-    localStorage.setItem(store, JSON.stringify(history.slice(-30))); // guarda últimas 30
-    render(m);
-  }
-
-  // Indicador "digitando"
+  // “digitando…”
   function showTyping(){
     const row = document.createElement('div');
     row.className = 'msg bot typing';
@@ -999,7 +1032,7 @@
   }
   function hideTyping(node){ if(node && node.parentNode){ node.parentNode.removeChild(node); } }
 
-  // Chama o back-end se houver /api/ia; senão lança erro -> cai no mock
+  // Backend (cai no mock se /api/ia não existir)
   async function askAI(messages){
     stat.textContent = 'pensando…';
     const res = await fetch('/api/ia', {
@@ -1015,7 +1048,7 @@
     return text;
   }
 
-  // Mock: respostas úteis quando não há backend
+  // Mock útil
   function mockAnswer(q=''){
     const s = q.toLowerCase();
     if(s.includes('incoterm') || s.includes('fob') || s.includes('cif') || s.includes('exw')){
@@ -1049,17 +1082,16 @@ Começar em LCL e migrar depois costuma ser uma boa estratégia.`;
 Pode detalhar sua dúvida?`;
   }
 
-  // Saneamento simples (permite <b>, <br>, listas)
+  // Saneamento simples
   function sanitize(html){
     const div = document.createElement('div');
     div.textContent = html;
     let t = div.innerHTML;
-    // permite algumas tags básicas
     t = t.replace(/&lt;(\/?)(b|br|ul|ol|li)&gt;/g, '<$1$2>');
     return t;
   }
 
-  // Status online/offline (visual)
+  // Status visual
   function updateStatus(){ stat.textContent = navigator.onLine ? 'online' : 'offline'; }
   updateStatus(); window.addEventListener('online', updateStatus); window.addEventListener('offline', updateStatus);
 })();
