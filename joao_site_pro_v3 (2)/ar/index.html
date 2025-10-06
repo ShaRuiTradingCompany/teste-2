@@ -3,195 +3,389 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>الاستيراد من الصين بأمان — نحن داخل المصنع.</title>
-  <meta name="description" content="توريد موثوق، تدقيق في المصدر وتكلفة إجمالية متوقعة.">
+  <title>شركة شا روي للتجارة — مكتبنا في قوانغتشو ونزور المصانع في أنحاء الصين</title>
+  <meta name="description" content="زيارة المصنع خلال 48 ساعة، فحص بالعَيّنة مع صور وفيديو وسعر تقديري قبل الطلب. مواصفة فنية بالبرتغالية/الصينية. بدون حد أدنى.">
 
-  <!-- إعادة توجيه حسب لغة المتصفح (أول زيارة) -->
-  <script>
-  (function(){
-    const SUPP=['pt','en','es','ar'], KEY='langChosen';
-    try{
-      const saved=localStorage.getItem(KEY);
-      if(!saved){
-        const list=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en']).map(x=>(x||'').toLowerCase());
-        let pref='en';
-        for(const l of list){ if(l.startsWith('pt')){pref='pt';break}
-                              if(l.startsWith('es')){pref='es';break}
-                              if(l.startsWith('ar')){pref='ar';break}
-                              if(l.startsWith('en')){pref='en';break}}
-        localStorage.setItem(KEY,pref);
-        const seg=(location.pathname.split('/')[1]||'').toLowerCase();
-        if(!SUPP.includes(seg) || seg!==pref){ location.replace('/'+pref+'/index.html'); }
-      }
-    }catch(e){}
-  })();
-  </script>
+  <!-- خطوط -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{ --font-ar:'Tajawal',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif }
+    body{ font-family:var(--font-ar) }
+  </style>
 
-  <!-- hreflang -->
-  <link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
-  <link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
-  <link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
-  <link rel="alternate" href="https://seusite.com/ar/" hreflang="ar" />
-  <link rel="alternate" href="https://seusite.com/ar/" hreflang="x-default" />
-  <link rel="canonical" href="https://seusite.com/ar/" />
-
-  <!-- Assets -->
+  <!-- CSS/JS الأساس -->
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/video_hero.css?v=3">
+  <link rel="stylesheet" href="/assets/mobile-hotfix.css">
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- تحسين بسيط لـ RTL إن لزم -->
+  <!-- إخفاء زر قائمة الهاتف على الحاسوب -->
+  <style id="hide-mobile-menu-desktop">
+  @media (min-width: 980px){
+    #menuFab,.menu-fab,.menu-fab-wrap,.floating-menu,.mobile-menu-button,
+    .nav-toggle,.menu-toggle,.hamburger,.hamb,[data-role="mobile-menu"]{
+      display:none!important; visibility:hidden!important; opacity:0!important; pointer-events:none!important;
+    }
+  }
+  </style>
+
+  <!-- ترويسة شفافة مع حلقات -->
   <style>
-    nav .menu a{ margin-inline: 0 16px; } /* يحافظ على المسافات في RTL */
+    header.site-header.on-video{
+      position:fixed; inset:0 0 auto 0; z-index:1000;
+      background:transparent!important; -webkit-backdrop-filter:none!important; backdrop-filter:none!important;
+      border:0!important; box-shadow:none!important;
+    }
+    .container.nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+    .brand-logo{
+      display:inline-flex;flex-direction:column;align-items:flex-start;padding:8px 12px;border:1px solid rgba(255,255,255,.9);
+      border-radius:999px;color:#fff;text-decoration:none;text-shadow:0 2px 10px rgba(0,0,0,.55)
+    }
+    .brand-logo .brand-top{font-weight:800;letter-spacing:.06em}
+    .brand-logo .brand-sub{font-size:12px;opacity:.92;margin-top:-2px;letter-spacing:.12em}
+    nav .menu{display:flex;gap:14px;align-items:center}
+    nav .menu a{
+      display:inline-flex;align-items:center;padding:8px 12px;border:1px solid rgba(255,255,255,.9);
+      border-radius:999px;color:#fff!important;text-decoration:none;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,.55);
+      background:transparent!important; box-shadow:none!important;
+    }
+    nav .menu a:hover, nav .menu a:focus-visible{background:rgba(255,255,255,.12)!important;text-decoration:none!important}
+    .lang .lang-toggle{
+      color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.9); border-radius:999px; background:transparent; padding:8px 10px;
+    }
+  </style>
+
+  <!-- فيديو -->
+  <style>
+    .hero-video-wrap{position:relative;height:100vh;min-height:100vh;overflow:hidden}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(1.34) contrast(1.08) saturate(1.06)}
+    .brand-band .marquee{white-space:nowrap;overflow:hidden}
+    .brand-band .marquee span{display:inline-block;padding:8px 0;animation:marq 18s linear infinite;opacity:.9;letter-spacing:.2em}
+    @keyframes marq{to{transform:translateX(-50%)}}
+  </style>
+
+  <!-- شعار دائري داخل الرادار -->
+  <style>
+    #diffs.diffs-radial .core{border-radius:50%;overflow:hidden;background:#fff}
+    #diffs.diffs-radial .core img{width:100%;height:100%;object-fit:cover;display:block}
+  </style>
+
+  <!-- المنصة: صور مستقيمة + تراكب خفيف + بطاقات -->
+  <style>
+    section.platform .container{position:relative}
+    .plat-block{position:relative;max-width:1240px;margin:0 auto}
+    .shot{
+      position:relative; width:min(820px,92%); aspect-ratio:16/9;
+      background:#0b0e10 center/cover no-repeat; border-radius:16px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35)
+    }
+    .shot.top{ background-image:var(--ph1); margin:0 0 -110px 0 }
+    .shot.bottom{ background-image:var(--ph2); margin:0 0 0 min(260px,18vw); transform:translate(28px,34px) }
+
+    .platform .card{
+      position:absolute; background:rgba(3,10,18,.86); border:1px solid rgba(255,255,255,.16);
+      color:#fff; border-radius:16px; padding:16px 18px; width:min(560px,88%); box-shadow:0 10px 28px rgba(0,0,0,.25);
+      text-align:right;
+    }
+    .platform .card h3{margin:0 0 6px}
+    .platform .card.c1{ top:42px; left: min(32px,3vw); }    /* RTL: النص على اليمين لكن البطاقة على اليسار */
+    .platform .card.c2{ bottom:-12px; right: min(32px,3vw); }
+    @media (max-width:980px){
+      .shot.top{margin:0 0 10px 0}
+      .shot.bottom{margin:0;transform:none}
+      .platform .card{position:relative;width:100%;margin:10px 0}
+    }
+  </style>
+
+  <!-- أقسام عامة -->
+  <style>
+    .section{padding: clamp(18px,5vw,34px) 0}
+    .section h2{text-align:center;margin:0 0 6px;color:#fff}
+    .section .lead{text-align:center;opacity:.9;margin:0 auto 12px;max-width:900px;color:#eaf1ff}
+    .who-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+    .who-photo{border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14)}
+    .who-photo img{width:100%;height:auto;display:block}
+    .who-copy p{color:#eaf1ff;margin:.4rem 0;line-height:1.9}
+    @media (max-width:980px){ .who-split{grid-template-columns:1fr} }
+    .who-gallery{position:relative;overflow:hidden;height: clamp(180px, 28vh, 320px);
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent);
+              mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent);
+      border:1px solid rgba(255,255,255,.12); border-radius:12px; background:rgba(0,0,0,.10)}
+    .who-gallery .strip{position:absolute;inset:0 auto 0 0;display:inline-flex;gap:12px;align-items:center;padding:8px 12px;
+      will-change:transform;width:max-content;animation:stripMove 25s linear infinite}
+    .who-gallery img{height:100%;width:auto;object-fit:cover;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.15)}
+    @keyframes stripMove{to{transform:translateX(-50%)}}
   </style>
 </head>
 
 <body>
-<header>
-  <div class="container">
-    <nav>
+  <!-- الترويسة -->
+  <header class="site-header on-video" id="siteHeader">
+    <div class="container nav-wrap">
       <div class="brand">
-        <a href="index.html" class="brand-logo" aria-label="Sha Rui Trading Company">
+        <a href="/ar/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
           <span class="brand-top">SHA RUI</span>
           <span class="brand-sub">TRADING COMPANY</span>
         </a>
       </div>
 
-      <div class="menu">
-        <a href="#services">الخدمات</a>
-        <a href="#sectors">القطاعات</a>
-        <a href="#process">العملية</a>
-        <a href="#materials">المواد</a>
-        <a href="#about">من نحن</a>
-        <a href="#contact">اتصال</a>
-      </div>
+      <nav>
+        <div class="menu">
+          <a href="/ar/quem-somos.html">من نحن</a>
+          <a href="/ar/diferenciais.html">مميزاتنا</a>
+          <a href="/ar/plataforma.html">المنصة</a>
+          <a href="/ar/contato.html">اتصل بنا</a>
+        </div>
+      </nav>
 
       <div class="lang" id="lang">
-        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="اختر اللغة">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.27a15.6 15.6 0 00-.9-5.02A8.02 8.02 0 0119.93 11zM12 4c.9 0 2.3 1.97 2.9 6H9.1c.6-4.03 2-6 2.9-6zM7.24 5.98A15.6 15.6 0 006.34 11H3.07a8.02 8.02 0 014.17-5.02zM4.07 13h3.27c.22 1.77.66 3.52 1.33 5.02A8.02 8.02 0 014.07 13zM12 20c-.9 0-2.3-1.97-2.9-6h5.8c-.6 4.03-2 6-2.9 6zm4.76-1.98A15.6 15.6 0 0017.66 13h3.27a8.02 8.02 0 01-4.17 5.02z"></path></svg>
-        </button>
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="اختيار اللغة">🌐</button>
         <ul class="lang-menu" id="langMenu">
           <li><a href="/pt/index.html">Português (PT)</a></li>
           <li><a href="/en/index.html">English (EN)</a></li>
           <li><a href="/es/index.html">Español (ES)</a></li>
-          <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
+          <li><a href="/ar/index.html" aria-current="page" dir="rtl">العربية (AR)</a></li>
         </ul>
       </div>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- HERO بالفيديو -->
-  <section class="hero-video-wrap">
-    <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
-      <source src="/assets/company_web_720p.mp4?v=8" type="video/mp4" media="(max-width: 768px)">
-      <source src="/assets/company.mp4?v=8" type="video/mp4">
-    </video>
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-bar">
-      <button class="hero-btn" id="heroPlayPause" aria-label="تشغيل/إيقاف" title="تشغيل/إيقاف">▶︎</button>
-      <button class="hero-btn" id="heroMute" aria-label="الصوت" title="الصوت">🔇</button>
-      <a class="hero-cta" data-contact="whatsapp">واتساب</a>
-      <a class="hero-cta" href="#contact">حجز موعد</a>
     </div>
+  </header>
 
-    <div class="hero-content hidden">
-      <h1 class="hero-title">نعمل من داخل المصنع في جانغجو</h1>
-      <p class="hero-sub">تدقيق خلال 48 ساعة • فحص مباشر • Spec‑Lock &amp; AQL • تكلفة إجمالية متوقعة</p>
-    </div>
-  </section>
+  <main>
+    <!-- فيديو -->
+    <section class="hero-video-wrap" aria-label="فيديو الخلفية">
+      <section class="brand-ticker" aria-hidden="true">
+        <div class="ticker">
+          <ul class="ticker-track">
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+          </ul>
+          <ul class="ticker-track" aria-hidden="true">
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+          </ul>
+        </div>
+      </section>
 
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="container">
-      <h2>من نحن</h2>
-      <p>نحن في جانغجو (الصين)، نربط شركتك بمورّدين موثوقين. ندمج الهندسة والجودة والمالية لتقليل المخاطر والتكلفة الإجمالية.</p>
-    </div>
-  </section>
+      <video class="hero-video" autoplay muted playsinline preload="metadata"
+             poster="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4">
+        <source src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4" type="video/mp4">
+        متصفحك لا يدعم فيديو HTML5.
+      </video>
+    </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <div class="container">
-      <h2>الخدمات</h2>
-      <div class="grid">
-        <a class="card" href="#services">
-          <h3>جميع الخدمات والتميّز</h3>
-          <p>تدقيق 48 ساعة، فحص مباشر، Spec‑Lock، AQL، محاكاة، مواد خطرة/بطاريات، مكوّنات والمزيد.</p>
-        </a>
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee"><span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span></div>
+    </section>
+
+    <!-- من نحن -->
+    <section id="about" class="section">
+      <div class="container who-split">
+        <figure class="who-photo"><img src="/assets/socio.jpg" alt="شريك شركة شا روي"></figure>
+        <div class="who-copy">
+          <h2>من نحن</h2>
+          <p><b>لدينا أكثر من 30 عامًا</b> في التجارة الدولية. مقرنا في <b>قوانغتشو</b> ونزور المصانع في جميع أنحاء الصين ونشارك في <b>معرض كانتون</b>.</p>
+          <p>نربط شركتك بموردين موثوقين، مع دمج <b>الهندسة</b> و<b>الجودة</b> و<b>المالية</b> لتقليل <b>المخاطر</b> و<b>التكلفة الكلية</b> — مع وجود فعلي داخل المصنع.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- شريط صور مستمر -->
+    <section class="who-gallery" aria-label="الكواليس">
+      <div class="strip">
+        <img src="/assets/qs1.jpg?v=2" alt=""><img src="/assets/qs2.jpg?v=2" alt="">
+        <img src="/assets/qs3.jpg?v=2" alt=""><img src="/assets/qs4.jpg?v=2" alt="">
+        <img src="/assets/qs5.jpg?v=3" alt=""><img src="/assets/qs6.jpg?v=3" alt="">
+        <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
+      </div>
+    </section>
+
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee"><span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span></div>
+    </section>
+
+    <!-- المميزات (رادار) -->
+    <section id="diffs" class="section diffs-radial">
+      <div class="container">
+        <h2>مميزاتنا</h2>
+        <p class="lead">مزيد من الوضوح والتحكم.</p>
+
+        <div class="radial-stage">
+          <div class="core" aria-hidden="true"><img src="/assets/logo-sharui.jpg" alt="ShaRui"></div>
+
+          <div class="node right" style="--a:-18deg"><span class="dot"></span><div class="bubble"><b>فحص بالصور والفيديو</b><small>عَيّنة واختبارات وموافقة/رفض — دون مفاجآت عند التسليم.</small></div></div>
+          <div class="node right" style="--a:22deg"><span class="dot"></span><div class="bubble"><b>المواصفة الفنية PT‑ZH</b><small>صورة/رسم، مواد، أبعاد، سماحيات، تغليف وملصق — مُتفق ومُوقع عليه.</small></div></div>
+          <div class="node right" style="--a:73deg"><span class="dot"></span><div class="bubble"><b>المورد الصحيح في المكان الصحيح</b><small>مقرنا في قوانغتشو ونزور أي مصنع داخل الصين.</small></div></div>
+          <div class="node left"  style="--a:110deg"><span class="dot"></span><div class="bubble"><b>زيارة المصنع خلال ٤٨ ساعة</b><small>مع تقرير وصور/فيديو.</small></div></div>
+          <div class="node left"  style="--a:162deg"><span class="dot"></span><div class="bubble"><b>مخاطر أقل وتكلفة كلية أقل</b><small>تكامل الهندسة والجودة والمالية — وجود داخل المصنع.</small></div></div>
+          <div class="node left"  style="--a:-160deg"><span class="dot"></span><div class="bubble"><b>تفاوض محلي باللغة الصينية</b><small>فريق محلي يتفاوض مباشرة مع الإدارة في المصنع.</small></div></div>
+          <div class="node left"  style="--a:-110deg"><span class="dot"></span><div class="bubble"><b>بدون حد أدنى للطلب</b><small>يمكن البدء بعَيّنات/مشروعات تجريبية؛ ومشاركة الحاوية عند الحاجة.</small></div></div>
+          <div class="node right" style="--a:-80deg"><span class="dot"></span><div class="bubble"><b>السعر في البرازيل</b><small>تقدير شفاف للضرائب والمصاريف قبل الطلب.</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee"><span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span></div>
+    </section>
+
+    <!-- المنصة -->
+    <section id="platform" class="section platform">
+      <div class="container plat-block">
+        <h2>منصة العميل</h2>
+        <p class="lead">تابع كل شيء في مكان واحد</p>
+
+        <figure class="shot top"    style="--ph1:url('/assets/plat-diag-1.jpg?v=2')" aria-label="المحفظة والوثائق"></figure>
+        <figure class="shot bottom" style="--ph2:url('/assets/plat-diag-2.jpg?v=2')" aria-label="تتبع الشحنة"></figure>
+
+        <div class="card c1">
+          <h3>المحفظة والوثائق</h3>
+          <p>تابع <b>المعاملات</b> و<b>الوثائق</b> و<b>السجل الكامل للطلبات</b> في محفظة واحدة — مع إصدارات وتعليقات وتأكيدات.</p>
+        </div>
+
+        <div class="card c2">
+          <h3>تتبع الشحنة</h3>
+          <p>اطّلع على حالة شحنتك في كل مرحلة، مع <b>نقاط التحقق</b> المخطط لها/المنجزة و<b>خريطة فورية</b> عند توفرها (بحري، جوي وبري).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- شريط قبل الذكاء الاصطناعي -->
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee"><span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span></div>
+    </section>
+
+    <!-- الذكاء الاصطناعي -->
+    <section id="ai" class="section ai-chat">
+      <div class="container">
+        <h2 class="ai-title">نحن أول شركة ترِيدينغ في البرازيل بإدارة متكاملة بالذكاء الاصطناعي</h2>
+
+        <div class="chat-card" aria-live="polite">
+          <header class="chat-head">
+            <strong class="chat-brand">Sharui Trading &amp; Co.</strong>
+            <span class="dot" aria-hidden="true"></span><span class="status" id="aiStatus">متصل</span>
+          </header>
+
+          <div class="chat-messages" id="aiChatLog">
+            <div class="msg bot"><div class="bubble">مرحبًا! أساعدك في <b>Incoterms</b>، و<b>تقدير الضرائب</b>، والفرق بين <b>LCL/FCL</b>، و<b>المواصفة PT‑ZH</b> وأكثر. كيف أساعدك؟</div></div>
+          </div>
+
+          <form class="chat-input" id="aiChatForm" autocomplete="off">
+            <textarea id="aiPrompt" rows="1" placeholder="اكتب سؤالك عن الاستيراد"></textarea>
+            <button class="send" type="submit" aria-label="إرسال">➤</button>
+          </form>
+
+          <p class="disclaimer">إجابات تولدها الذكاء الاصطناعي لأغراض مساعدة القرار. يُرجى التأكيد مع فريقنا.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section id="faq" class="section faq">
+      <div class="container">
+        <h2>الأسئلة الشائعة</h2>
+        <p class="lead">من الطلب الأول حتى المتابعة داخل البرازيل.</p>
+
+        <div class="faq-list">
+          <details><summary>كيف تعمل الحاوية المشتركة (LCL) مع شا روي؟</summary>
+            <div>نعمل بنظام <b>LCL</b> لمن لا يملك حجمًا يكفي لحاوية كاملة. يمكنك البدء بعَيّنات ومشروعات تجريبية؛ وعند الحاجة نشارك الحاوية ل<b>تحسين تكلفة الشحن</b>. تتابع المراحل والتكلفة التقديرية داخل المنصة.</div>
+          </details>
+          <details><summary>هل هناك حد أدنى للطلب؟</summary>
+            <div><b>لا.</b> يمكنك البدء صغيرًا. قرار الدمج ومشاركة الحاوية يتم حسب الحالة لتحقيق أفضل توازن بين <b>الشحن</b> و<b>المخاطر</b> و<b>المدة</b>.</div>
+          </details>
+          <details><summary>ما هي المراحل حتى التسليم في البرازيل؟</summary>
+            <div>١) تحديد المنتج + <b>المواصفة PT‑ZH</b> → ٢) تسعير/تفاوض مع المصنع → ٣) <b>عينات</b> (إن وجدت) → ٤) طلب + <b>فحص</b> (صور/فيديو) → ٥) الشحن (LCL/FCL) → ٦) <b>التخليص</b> (مع تقدير مسبق للضرائب/المصاريف) → ٧) التسليم. كل ذلك داخل <b>المنصة</b>.</div>
+          </details>
+          <details><summary>هل تقدّمون تقديرًا للسعر في البرازيل مسبقًا؟</summary>
+            <div>نعم — تقدير شفاف للضرائب والمصاريف (II, IPI, PIS/COFINS‑Import, ICMS, AFRMM، رسوم الميناء/المستودع، التخليص… إلخ). هو <b>تقدير</b> لأن سعر الصرف والجداول تتغير، لكنه يساعد على قرار آمن.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- نافذة Calendly -->
+    <div id="calendly-modal" class="modal" onclick="closeCalendly()">
+      <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-head"><strong>حجز مكالمة</strong><button class="btn-close" onclick="closeCalendly()">إغلاق</button></div>
+        <div class="modal-body"><iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe></div>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- SECTORS -->
-  <section id="sectors" class="section">
-    <div class="container">
-      <h2>القطاعات</h2>
-      <div class="grid">
-        <div class="card"><h3>المغناطيس والعناصر النادرة — جانغجو</h3><p>التخصّص حيث يولد المنتج.</p></div>
-        <div class="card"><h3>الأثاث — نانكانغ</h3><p>الطاقة الإنتاجية والتشطيب والمواعيد من أكبر مركز للأثاث.</p></div>
-        <div class="card"><h3>قطاعات أخرى</h3><p>تواصل معنا عبر واتساب بخصوص فئتك.</p></div>
+  <!-- واتساب عائم -->
+  <a id="whatsFloat" class="whats-float" href="#" target="_blank" rel="noopener" aria-label="فتح واتساب"></a>
+
+  <!-- ذيل الصفحة -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>
+        <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+        <address class="corp-address">
+          Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>
+          Fortune Plaza – Panyu<br>
+          Postal code: 51150 – Guangzhou, China.
+        </address>
       </div>
+      <nav class="foot-social" aria-label="الشبكات">
+        <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
+        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
+        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
+        <a id="whatsFooter" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa" title="WhatsApp"></a>
+      </nav>
     </div>
-  </section>
+  </footer>
 
-  <!-- PROCESS -->
-  <section id="process" class="section">
-    <div class="container">
-      <h2>العملية</h2>
-      <ol><li>الموجز</li><li>البحث عن الموردين</li><li>العيّنات</li><li>التفاوض والإنكوترمز</li><li>الفحص</li><li>الشحن والتخليص</li></ol>
-    </div>
-  </section>
+  <script defer src="/assets/chat.js"></script>
 
-  <!-- MATERIALS -->
-  <section id="materials" class="section">
-    <div class="container">
-      <h2>مواد</h2>
-      <div class="grid">
-        <a class="card" href="/pt/materiais/checklist.html"><h3>قائمة ما قبل الاستيراد</h3><p>ما يجب تنسيقه قبل الشراء.</p></a>
-        <a class="card" href="/pt/materiais/relatorio-amostra.html"><h3>نموذج تقرير</h3><p>شاهد كيف نسلّم السبرنت.</p></a>
-      </div>
-    </div>
-  </section>
+  <script>
+  (function(){ const h=document.getElementById('siteHeader'); if(!h) return;
+    const set=()=>document.documentElement.style.setProperty('--header-h',(h.offsetHeight||72)+'px');
+    set(); addEventListener('resize',set); })();
+  </script>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>اتصال</h2>
-      <p>تحدّث عبر واتساب، أرسل بريدًا إلكترونيًا، أضِفنا على وي تشات أو احجز موعدًا:</p>
-      <div style="margin:16px 0">
-        <a class="cta primary" data-contact="whatsapp">واتساب</a>
-        <a class="cta" data-contact="email">إرسال بريد</a>
-        <a class="cta" onclick="openQR()">WeChat — عرض QR</a>
-      </div>
-      <iframe id="calendly-embed" class="iframe-wrap" src="about:blank" frameborder="0"></iframe>
-    </div>
-  </section>
-</main>
+  <!-- رابط واتساب -->
+  <script>
+  (function(){
+    const WHATS_NUMBER='5511993381008';
+    const defaultText='مرحبًا شا روي، أود التحدث — قادم من الموقع.';
+    const url='https://api.whatsapp.com/send?phone='+WHATS_NUMBER+'&text='+encodeURIComponent(defaultText);
+    ['whatsFloat','whatsFooter'].forEach(id=>{const a=document.getElementById(id); if(a) a.href=url;});
+  })();
+  </script>
 
-<footer class="footer">
-  <div class="container">
-    <div>© <span data-text="brand">ShaRui Trading Company</span> — عمليات الاستيراد الصين ↔ البرازيل</div>
-    <div class="contact-row" style="margin-top:8px">
-      <a class="badge" data-contact="facebook">Facebook</a>
-      <a class="badge" data-contact="instagram">Instagram</a>
-      <a class="badge" data-contact="tiktok">TikTok</a>
-    </div>
-  </div>
-</footer>
+  <!-- منطق بسيط للذكاء الاصطناعي (احتياطي) -->
+  <script>
+  (function(){
+    const log=document.getElementById('aiChatLog');
+    const form=document.getElementById('aiChatForm');
+    const ta=document.getElementById('aiPrompt');
+    const stat=document.getElementById('aiStatus');
+    if(!log||!form||!ta) return;
 
-<div id="qr-modal" class="modal" onclick="closeQR()">
-  <div class="modal-card" onclick="event.stopPropagation()">
-    <h3>WeChat QR</h3>
-    <img src="/assets/wechat-qr.svg" alt="WeChat QR">
-    <div><button class="cta modal-close" onclick="closeQR()">إغلاق</button></div>
-  </div>
-</div>
-
-<a class="wp-float" data-contact="whatsapp">WhatsApp</a>
+    function render(role,html){
+      const r=document.createElement('div'); r.className='msg '+(role==='user'?'user':'bot');
+      const b=document.createElement('div'); b.className='bubble'; b.innerHTML=html; r.appendChild(b); log.appendChild(r); log.scrollTop=log.scrollHeight;
+    }
+    ta.addEventListener('input',()=>{ ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,160)+'px';});
+    form.addEventListener('submit',async (e)=>{ e.preventDefault(); const q=(ta.value||'').trim(); if(!q) return; render('user',q); ta.value=''; ta.dispatchEvent(new Event('input'));
+      const typing=document.createElement('div'); typing.className='msg bot typing'; typing.innerHTML='<div class="bubble"><span class="dot-anim"></span><span class="dot-anim"></span><span class="dot-anim"></span></div>'; log.appendChild(typing); log.scrollTop=log.scrollHeight;
+      try{
+        stat.textContent='يفكر…';
+        const r=await fetch('/api/ia',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:q}]})});
+        stat.textContent='متصل';
+        if(!r.ok) throw 0; const j=await r.json(); const t=(j.reply||j.output||j.message||'').toString().trim(); if(!t) throw 0;
+        typing.remove(); render('assistant',t);
+      }catch(e){
+        typing.remove();
+        render('assistant','ملخص Incoterms:<br>• EXW: المشتري يستلم من المصنع.<br>• FOB: التسليم على ظهر السفينة؛ المشتري يتحمل الشحن/التأمين.<br>• CIF: البائع يدفع الشحن والتأمين حتى ميناء الوصول.<br>• DDP: تسليم مُخلّص في الوجهة (حالات محددة).<br><br>يمكننا أيضًا تقدير <b>السعر في البرازيل</b> والحديث عن <b>LCL/FCL</b>.');
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
-
