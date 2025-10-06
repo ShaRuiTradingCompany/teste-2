@@ -499,6 +499,34 @@
   </div>
 </section>
 
+<!-- ===== FAIXA ANIMADA entre Plataforma e IA ===== -->
+<section id="band-plat-ia" aria-hidden="true">
+  <div class="track">
+    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+  </div>
+</section>
+
+<style>
+  /* estilos isolados só para esta faixa */
+  #band-plat-ia{
+    overflow:hidden;
+    padding: 10px 0;
+    background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+    border-block: 1px solid rgba(255,255,255,.12);
+  }
+  #band-plat-ia .track{
+    white-space: nowrap;
+    animation: srband 28s linear infinite;
+  }
+  #band-plat-ia .track span{
+    display:inline-block;
+    padding-left: 100%;
+    font-weight: 800;
+    letter-spacing: .08em;
+    color: #eaf1ff;
+  }
+  @keyframes srband{ to{ transform: translateX(-100%); } }
+</style>
 
 <!-- IA • Chat entre Plataforma do Cliente e FAQ -->
 <section id="ia" class="section ai-chat">
@@ -1101,6 +1129,33 @@ Pode detalhar sua dúvida?`;
   })();
 </script>
 <script defer src="/assets/mobile-nav.js"></script>
+<!-- ===== HOTFIX: Plataforma com fotos retas ===== -->
+<style id="plat-retas-override">
+  /* remove qualquer rotação */
+  #plataforma .p-shot{ transform: none !important; }
+
+  /* posições mantendo a leve sobreposição */
+  #plataforma .p-shot.top{
+    left: 0;
+    top: 0;
+  }
+  #plataforma .p-shot.bottom{
+    right: 0;
+    /* ajuste fino da sobreposição (aumente/diminua se quiser mais/menos sobreposição) */
+    top: clamp(110px, 9.6vw, 160px);
+  }
+
+  /* os cartões (textos) continuam por cima; não altera */
+  #plataforma .p-card{ z-index: 6; }
+
+  /* mobile continua empilhado (nada muda) */
+  @media (max-width: 980px){
+    #plataforma .p-shot.top,
+    #plataforma .p-shot.bottom{
+      top: auto;
+    }
+  }
+</style>
 
 </body>
 </html>
