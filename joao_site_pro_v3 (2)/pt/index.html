@@ -384,44 +384,115 @@
       </div>
     </section>
 
-<!-- PLATAFORMA DO CLIENTE — Diagonal (2 fotos + textos opostos) -->
-<!-- PLATAFORMA DO CLIENTE — par diagonal (fotos + textos) -->
+<!-- ===== PLATAFORMA DO CLIENTE — diagonal com sobreposição leve + cartões de texto ===== -->
 <section id="plataforma" class="section platform plat-diag">
+  <style>
+    /* ===== Estilos apenas desta seção ===== */
+    #plataforma.plat-diag{position:relative}
+    #plataforma .container{position:relative}
+
+    /* Fotos em diagonal (com leve sobreposição) */
+    #plataforma .shot{
+      position:relative;
+      width:min(780px, 92vw);
+      aspect-ratio:16/10;
+      background:#0b0e10 center/cover no-repeat;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 18px 60px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    #plataforma .shot.top{
+      background-image:var(--ph1);
+      transform:rotate(-6.5deg);
+      margin: 10px auto 0 0;        /* encosta mais à esquerda */
+      z-index:3;
+    }
+    #plataforma .shot.bottom{
+      background-image:var(--ph2);
+      transform:rotate(6.5deg);
+      margin:-110px 0 20px auto;    /* sobe um pouco e vai à direita */
+      z-index:2;
+    }
+
+    /* Selo/ícone nas fotos (abre a imagem em nova aba) */
+    #plataforma .shot .badge{
+      position:absolute; left:10px; top:10px;
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 9px; border-radius:999px;
+      background:rgba(0,0,0,.65);
+      color:#fff; font-weight:800; font-size:13px; text-decoration:none;
+      border:1px solid rgba(255,255,255,.28);
+    }
+    #plataforma .shot .badge svg{width:16px; height:16px; display:block}
+
+    /* Cartões de texto (contraste alto como antes) */
+    #plataforma .card{
+      position:absolute;
+      width:min(520px, 46vw);
+      background:rgba(10,16,24,.92);
+      color:#eaf1ff;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      padding:18px;
+      box-shadow:0 16px 46px rgba(0,0,0,.45);
+    }
+    #plataforma .card h3{
+      margin:0 0 6px;
+      font-size:clamp(18px,2.4vw,24px);
+      letter-spacing:.2px
+    }
+    #plataforma .card p{
+      margin:0; line-height:1.6; font-size:clamp(14px,1.6vw,18px)
+    }
+    #plataforma .card.c1{ top:60px; right:18px; }   /* texto oposto à foto de cima */
+    #plataforma .card.c2{ bottom:-8px; left:18px; } /* texto oposto à foto de baixo */
+
+    /* Responsivo — empilha mantendo a ordem visual */
+    @media (max-width: 980px){
+      #plataforma .shot.top{ transform:rotate(-5.2deg); margin:0 auto 0 0; }
+      #plataforma .shot.bottom{ transform:rotate(5.2deg); margin:-70px 0 12px auto; }
+      #plataforma .card{
+        position:relative; width:auto; left:auto; right:auto; top:auto; bottom:auto;
+        margin:12px 0;
+      }
+    }
+  </style>
+
   <div class="container">
     <h2 style="text-align:center;margin-bottom:6px">Plataforma do Cliente</h2>
     <p class="lead" style="text-align:center;margin-bottom:16px">Acompanhe tudo em um só lugar</p>
 
-    <!-- Fotos (com sobreposição leve) -->
-    <figure class="shot top"
-            style="--ph1: url('/assets/plat-diag-1.jpg?v=2');"
-            aria-label="Carteira &amp; documentos"></figure>
+    <!-- Foto 1 -->
+    <figure class="shot top" style="--ph1:url('/assets/plat-diag-1.jpg?v=2')" aria-label="Carteira &amp; documentos">
+      <a class="badge" href="/assets/plat-diag-1.jpg?v=2" target="_blank" rel="noopener">
+        <!-- ícone câmera -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 4l1.5-2h3L15 4h3a3 3 0 013 3v10a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h3zm3 3a6 6 0 100 12 6 6 0 000-12zm0 2.2A3.8 3.8 0 1112 17.8 3.8 3.8 0 0112 9.2z"/></svg>
+        Ver foto
+      </a>
+    </figure>
 
-    <figure class="shot bottom"
-            style="--ph2: url('/assets/plat-diag-2.jpg?v=2');"
-            aria-label="Rastreamento da carga"></figure>
+    <!-- Foto 2 -->
+    <figure class="shot bottom" style="--ph2:url('/assets/plat-diag-2.jpg?v=2')" aria-label="Rastreamento da carga">
+      <a class="badge" href="/assets/plat-diag-2.jpg?v=2" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 4l1.5-2h3L15 4h3a3 3 0 013 3v10a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h3zm3 3a6 6 0 100 12 6 6 0 000-12zm0 2.2A3.8 3.8 0 1112 17.8 3.8 3.8 0 0112 9.2z"/></svg>
+        Ver foto
+      </a>
+    </figure>
 
-    <!-- Cartões de texto -->
+    <!-- Textos (alto contraste, como antes) -->
     <div class="card c1">
       <h3>Carteira &amp; documentos</h3>
-      <p>Acompanhe suas <b>transações</b>, <b>documentos</b> e o
-        <b>histórico completo de pedidos</b> em uma única carteira —
-        com versões, comentários e confirmações.</p>
+      <p>Acompanhe suas <b>transações</b>, <b>documentos</b> e o <b>histórico completo de pedidos</b> em uma única carteira — com versões, comentários e confirmações.</p>
     </div>
 
     <div class="card c2">
       <h3>Rastreamento da carga</h3>
-      <p>Veja por etapa o status da sua carga, <b>check‑points</b>
-        previstos/realizados e <b>mapa em tempo real</b> quando
-        disponível (marítimo, aéreo e rodoviário).</p>
+      <p>Veja por etapa o status da sua carga, <b>check‑points</b> previstos/realizados e <b>mapa em tempo real</b> quando disponível (marítimo, aéreo e rodoviário).</p>
     </div>
   </div>
 </section>
 
-    <section class="brand-band" aria-hidden="true">
-      <div class="marquee">
-        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
-      </div>
-    </section>
 <!-- IA • Chat entre Plataforma do Cliente e FAQ -->
 <section id="ia" class="section ai-chat">
   <div class="container">
