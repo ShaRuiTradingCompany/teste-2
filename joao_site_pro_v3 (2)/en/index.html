@@ -3,204 +3,536 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Import from China safely — we are on the factory floor.</title>
-  <meta name="description" content="Validated sourcing, on‑site audits and predictable total landed cost.">
+  <title>ShaRui Trading Company — Office in Guangzhou, factory visits across China</title>
+  <meta name="description" content="Factory visit within 48h, sample inspection with photos & videos, and landed cost estimate before the order. Bilingual PT‑ZH technical spec. No minimum order.">
 
-  <!-- hreflang (ajuste o domínio definitivo depois) -->
-  <link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
-  <link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
-  <link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
-  <link rel="alternate" href="https://seusite.com/ar/" hreflang="ar" />
-  <link rel="alternate" href="https://seusite.com/en/" hreflang="x-default" />
-  <link rel="canonical" href="https://seusite.com/en/" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS / JS (caminhos absolutos para funcionar em qualquer idioma) -->
+  <!-- Base CSS/JS (mesmos assets da versão PT) -->
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/video_hero.css?v=3">
+  <link rel="stylesheet" href="/assets/mobile-hotfix.css">
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
+
+  <!-- Ajustes locais -->
+  <style>
+    :root{
+      --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    body{ font-family: var(--font-sans); }
+
+    /* HEADER transparente sobre o vídeo */
+    header.site-header.on-video{
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      background:transparent !important;
+      -webkit-backdrop-filter:none !important;
+      backdrop-filter:none !important;
+      border:0 !important; box-shadow:none !important;
+    }
+    header.site-header.on-video .container.nav-wrap{
+      display:flex; align-items:center; justify-content:space-between; padding:12px 16px;
+    }
+    header.site-header.on-video .menu{ display:flex; gap:14px; align-items:center; }
+    header.site-header.on-video .menu a{
+      display:inline-flex; align-items:center; padding:8px 12px; font-weight:800;
+      border-radius:999px; border:1px solid rgba(255,255,255,.9);
+      background:transparent !important; color:#fff !important; text-decoration:none;
+      text-shadow:0 2px 10px rgba(0,0,0,.55);
+    }
+    header.site-header.on-video .menu a:hover,
+    header.site-header.on-video .menu a:focus-visible{
+      background:rgba(255,255,255,.12) !important; outline:none; text-decoration:none;
+    }
+    header.site-header.on-video .brand .brand-logo{
+      display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;
+      padding:8px 12px; border-radius:999px; text-decoration:none;
+      border:1px solid rgba(255,255,255,.9);
+      color:#fff; background:transparent !important;
+      text-shadow:0 2px 10px rgba(0,0,0,.55);
+    }
+    header.site-header.on-video .brand-logo .brand-top{ font-weight:700; letter-spacing:.6px }
+    header.site-header.on-video .brand-logo .brand-sub{ font-size:12px; opacity:.92; margin-top:-2px; letter-spacing:.8px }
+
+    /* Esconde o botão/flutuante de menu mobile no DESKTOP */
+    @media (min-width: 980px){
+      .menu-fab, .mobile-only, .nav-toggle, .menu-toggle, .hamburger, .hamb, #menuFab, #navToggle{
+        display:none !important; opacity:0 !important; visibility:hidden !important;
+      }
+    }
+
+    /* HERO vídeo tela cheia */
+    .hero-video-wrap{ position:relative; height:100vh; min-height:100vh; overflow:hidden; }
+    .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(1.34) contrast(1.08) saturate(1.06); }
+    .hero-overlay{ display:none !important; }
+
+    /* Bandas/marquee */
+    .brand-band{ padding:8px 0; background:linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10)); border-block:1px solid rgba(255,255,255,.22); }
+    .brand-band.light{ background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); }
+    .brand-band .marquee{ white-space:nowrap; overflow:hidden; }
+    .brand-band .marquee span{ display:inline-block; padding-left:100%; animation:marq 22s linear infinite; letter-spacing:.1em; color:#eaf1ff; }
+    @keyframes marq{ to{ transform:translateX(-100%);} }
+
+    /* WHO (50/50) */
+    .section.clean{ padding: clamp(24px, 6vw, 60px) 0; }
+    .who-split{ display:grid; grid-template-columns: 1.05fr .95fr; gap: clamp(18px, 3vw, 36px); align-items:center; }
+    .who-photo img{ width:100%; height:auto; display:block; border-radius:16px; border:1px solid rgba(255,255,255,.14); box-shadow:0 16px 40px rgba(0,0,0,.35); }
+    @media (max-width: 980px){ .who-split{ grid-template-columns: 1fr; } }
+
+    /* DIFERENCIAIS radial */
+    #differentials.diffs-radial .core{
+      width:min(280px, 36vw); aspect-ratio:1/1; margin:0 auto 12px; border-radius:50%;
+      overflow:hidden; background:#fff; box-shadow:0 10px 32px rgba(0,0,0,.35), inset 0 0 40px rgba(255,255,255,.06);
+      display:grid; place-items:center; border:1px solid rgba(255,255,255,.22);
+    }
+    #differentials.diffs-radial .core img{ width:76%; height:76%; object-fit:cover; border-radius:50%; display:block; }
+    #differentials .radial-stage{ position:relative; max-width:980px; margin:0 auto; }
+    #differentials .node{ position:absolute; transform-origin:center; opacity:0; transition:opacity .35s ease, transform .35s ease; }
+    #differentials.play .node{ opacity:1; }
+    /* posicionamento por ângulo --a (em graus) */
+    #differentials .node{ --R: 280px; left:50%; top:50%; transform: translate(-50%,-50%) rotate(var(--a)) translate(var(--R)) rotate(calc(-1 * var(--a))); }
+    #differentials .node .bubble{
+      background:rgba(0,0,0,.62); color:#eaf1ff; border:1px solid rgba(255,255,255,.16);
+      border-radius:12px; padding:10px 12px; width:min(320px, 46vw); box-shadow:0 10px 26px rgba(0,0,0,.35);
+    }
+    #differentials .node .dot{ width:10px; height:10px; border-radius:50%; background:#22D3EE; display:inline-block; margin-right:8px; }
+
+    /* PLATAFORMA — fotos retas (sem rotação) + cartões */
+    #platform.section{ padding: clamp(24px, 5vw, 48px) 0; }
+    #platform .container{ position:relative; }
+    #platform h2{ text-align:center; margin:0 0 6px; }
+    #platform .lead{ text-align:center; margin:0 0 16px; opacity:.95; }
+
+    #platform .shot{
+      position:absolute; border-radius:18px; overflow:hidden;
+      box-shadow:0 22px 60px rgba(0,0,0,.36); border:1px solid rgba(0,0,0,.25);
+      background:#0b0e10 center/cover no-repeat;
+    }
+    #platform .shot.top{ left:0; top:0; width:min(760px, 62vw); height:min(460px, 42vw); background-image:var(--ph1); transform:none; }
+    #platform .shot.bottom{
+      right:-18px; top: clamp(160px, 12.5vw, 230px);
+      width:min(760px, 62vw); height:min(460px, 42vw);
+      background-image:var(--ph2); transform:none;
+    }
+
+    /* Cartões */
+    #platform .card{
+      position:relative; z-index:2; background:rgba(0,0,0,.78); color:#eaf1ff;
+      border:1px solid rgba(255,255,255,.18); border-radius:16px; box-shadow:0 16px 40px rgba(0,0,0,.35);
+      padding:16px; max-width:580px;
+    }
+    #platform .c1{ margin-left: min(52vw, 640px); margin-top: 8px; }
+    #platform .c2{ margin-top: clamp(320px, 32vw, 380px); }
+
+    /* Remove qualquer scroll interno na seção plataforma */
+    #platform, #platform .container, #platform .plat-diag, #platform .plat-diag > *{
+      overflow: visible !important; max-height:none !important; -webkit-overflow-scrolling: auto !important;
+    }
+    #platform *::-webkit-scrollbar{ display:none !important; }
+    #platform{ scrollbar-width: none !important; }
+
+    /* IA (chat) */
+    .ai-chat .chat-card{ background:#0b0e10; border:1px solid rgba(255,255,255,.16); border-radius:12px; max-width:840px; margin:0 auto; overflow:hidden; }
+    .ai-chat .chat-head{ display:flex; align-items:center; gap:8px; padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.12); }
+    .ai-chat .chat-head .dot{ width:8px; height:8px; border-radius:50%; background:#22D3EE; display:inline-block; }
+    .ai-chat .chat-messages{ max-height:420px; overflow:auto; padding:12px; }
+    .ai-chat .msg{ display:flex; margin:8px 0; }
+    .ai-chat .msg.user{ justify-content:flex-end; }
+    .ai-chat .msg .bubble{ background:#11161b; color:#eaf1ff; padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.12); max-width:78%; }
+    .ai-chat .msg.user .bubble{ background:#17335f; }
+    .ai-chat .chat-input{ display:flex; gap:8px; border-top:1px solid rgba(255,255,255,.12); padding:8px; }
+    .ai-chat .chat-input textarea{ flex:1; min-height:42px; max-height:160px; resize:vertical; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#0b0e10; color:#fff; padding:8px 10px; }
+    .ai-chat .chat-input .send{ border-radius:10px; border:1px solid rgba(255,255,255,.35); background:transparent; color:#fff; padding:8px 12px; cursor:pointer; }
+    .ai-chat .disclaimer{ font-size:.9rem; opacity:.85; padding:8px 12px; }
+
+    /* Footer (usa os mesmos ícones de /assets/styles.css) */
+  </style>
 </head>
 
 <body>
-<header>
-  <div class="container">
-    <nav>
-      <!-- Brand stacked -->
+  <!-- HEADER -->
+  <header class="site-header on-video" id="siteHeader">
+    <div class="container nav-wrap">
       <div class="brand">
-        <a href="index.html" class="brand-logo" aria-label="Sha Rui Trading Company">
+        <a href="/en/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
           <span class="brand-top">SHA RUI</span>
           <span class="brand-sub">TRADING COMPANY</span>
         </a>
       </div>
 
-      <!-- Menu -->
-      <div class="menu">
-        <a href="solutions.html">Solutions</a>
-        <a href="#services">Services</a>
-        <a href="#sectors">Sectors</a>
-        <a href="#process">Process</a>
-        <a href="#materials">Materials</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
+      <nav>
+        <div class="menu">
+          <a href="/en/about.html">About</a>
+          <a href="/en/differentials.html">Differentials</a>
+          <a href="/en/platform.html">Platform</a>
+          <a href="/en/contact.html">Contact</a>
+        </div>
+      </nav>
 
-      <!-- Language globe -->
       <div class="lang" id="lang">
-        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Select language">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.27a15.6 15.6 0 00-.9-5.02A8.02 8.02 0 0119.93 11zM12 4c.9 0 2.3 1.97 2.9 6H9.1c.6-4.03 2-6 2.9-6zM7.24 5.98A15.6 15.6 0 006.34 11H3.07a8.02 8.02 0 014.17-5.02zM4.07 13h3.27c.22 1.77.66 3.52 1.33 5.02A8.02 8.02 0 014.07 13zM12 20c-.9 0-2.3-1.97-2.9-6h5.8c-.6 4.03-2 6-2.9 6zm4.76-1.98A15.6 15.6 0 0017.66 13h3.27a8.02 8.02 0 01-4.17 5.02z"></path>
-          </svg>
-        </button>
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Select language">🌐</button>
         <ul class="lang-menu" id="langMenu">
           <li><a href="/pt/index.html">Português (PT)</a></li>
-          <li><a href="/en/index.html">English (EN)</a></li>
+          <li><a href="/en/index.html" aria-current="page">English (EN)</a></li>
           <li><a href="/es/index.html">Español (ES)</a></li>
           <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
         </ul>
       </div>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- HERO with your video + control bar (same as PT) -->
-  <section class="hero-video-wrap">
-    <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
-      <source src="/assets/company_web_720p.mp4?v=8" type="video/mp4" media="(max-width: 768px)">
-      <source src="/assets/company.mp4?v=8" type="video/mp4">
-    </video>
-
-    <div class="hero-overlay"></div>
-
-    <!-- control bar -->
-    <div class="hero-bar">
-      <button class="hero-btn" id="heroPlayPause" aria-label="Play/Pause" title="Play/Pause">▶︎</button>
-      <button class="hero-btn" id="heroMute" aria-label="Sound" title="Sound">🔇</button>
-      <a class="hero-cta" data-contact="whatsapp">WhatsApp</a>
-      <a class="hero-cta" href="#contact">Schedule</a>
     </div>
+  </header>
 
-    <!-- keep the text hidden; remove .hidden if you want headings -->
-    <div class="hero-content hidden">
-      <h1 class="hero-title">We operate on the factory floor in Ganzhou</h1>
-      <p class="hero-sub">48h Audit • QC Live • Spec‑Lock &amp; AQL • Predictable total cost</p>
-      <div class="hero-ctas">
-        <a class="cta primary" data-contact="whatsapp">Talk on WhatsApp</a>
-        <a class="cta" href="#contact">Book a diagnostic</a>
-      </div>
-      <p class="badge-min">No minimum order — samples and pilots welcome.</p>
-    </div>
-  </section>
-
-  <!-- ABOUT (text only) -->
-  <section class="section" id="about">
-    <div class="container">
-      <h2>About</h2>
-      <p>We are based in Ganzhou (China), connecting your company with reliable suppliers. We integrate engineering, quality and finance to reduce risk and total landed cost.</p>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <div class="container">
-      <h2>Services</h2>
-      <div class="grid">
-        <a class="card" href="#services">
-          <h3>All services &amp; differentiators</h3>
-          <p>48h Audit, QC Live, Spec‑Lock, AQL, Simulator, DG/Batteries, Components and more.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTORS -->
-  <section id="sectors" class="section">
-    <div class="container">
-      <h2>Sectors</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Magnets &amp; Rare Earths — Ganzhou</h3>
-          <p>Specialization where the product is born.</p>
+  <main>
+    <!-- HERO com vídeo -->
+    <section class="hero-video-wrap">
+      <section class="brand-ticker" aria-hidden="true">
+        <div class="ticker">
+          <ul class="ticker-track">
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+          </ul>
+          <ul class="ticker-track" aria-hidden="true">
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+          </ul>
         </div>
-        <div class="card">
-          <h3>Furniture — Nankang</h3>
-          <p>Capacity, finishing and lead times from the largest furniture hub.</p>
-        </div>
-        <div class="card">
-          <h3>Other sectors</h3>
-          <p>Talk to us on WhatsApp about your category.</p>
+      </section>
+
+      <video class="hero-video" autoplay muted playsinline preload="metadata" poster="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4">
+        <source src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4" type="video/mp4" media="(max-width: 768px)">
+        <source src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </section>
+
+    <!-- Banda após o vídeo -->
+    <section class="brand-band light" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+    <!-- WHO -->
+    <section id="who" class="section clean">
+      <div class="container who-split">
+        <figure class="who-photo">
+          <img src="/assets/socio.jpg" alt="ShaRui partner">
+        </figure>
+        <div class="who-copy">
+          <h2>Who we are</h2>
+          <p><b>We are a company with 30+ years</b> in international trade. Our base is in <b>Guangzhou</b>, we attend the <b>Canton Fair</b> and visit factories all over China.</p>
+          <p>We connect your company to reliable suppliers, integrating engineering, quality and finance to reduce <b>risk</b> and <b>total landed cost</b> — with presence <b>inside the factory</b>.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROCESS -->
-  <section id="process" class="section">
-    <div class="container">
-      <h2>Process</h2>
-      <ol>
-        <li>Brief</li>
-        <li>Sourcing</li>
-        <li>Samples</li>
-        <li>Negotiation &amp; Incoterm</li>
-        <li>QC</li>
-        <li>Shipment &amp; Customs clearance</li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- MATERIALS -->
-  <section id="materials" class="section">
-    <div class="container">
-      <h2>Materials</h2>
-      <div class="grid">
-        <a class="card" href="/pt/materiais/checklist.html">
-          <h3>Pre‑Import Checklist</h3>
-          <p>What to align before buying.</p>
-        </a>
-        <a class="card" href="/pt/materiais/relatorio-amostra.html">
-          <h3>Sample Report</h3>
-          <p>See how we deliver the Sprint.</p>
-        </a>
+    <!-- Faixa/galeria (se usar no EN também) -->
+    <section class="who-gallery" aria-label="Behind the scenes — scrolling photos">
+      <div class="strip">
+        <img src="/assets/qs1.jpg?v=2" alt=""><img src="/assets/qs2.jpg?v=2" alt="">
+        <img src="/assets/qs3.jpg?v=2" alt=""><img src="/assets/qs4.jpg?v=2" alt="">
+        <img src="/assets/qs5.jpg?v=3" alt="Photo 5"><img src="/assets/qs6.jpg?v=3" alt="Photo 6">
+        <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Talk on WhatsApp, send an e‑mail, add us on WeChat or schedule:</p>
-      <div style="margin:16px 0">
-        <a class="cta primary" data-contact="whatsapp">Talk on WhatsApp</a>
-        <a class="cta" data-contact="email">Send e‑mail</a>
-        <a class="cta" onclick="openQR()">WeChat — Show QR</a>
+    <!-- Banda -->
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
       </div>
-      <iframe id="calendly-embed" class="iframe-wrap" src="about:blank" frameborder="0"></iframe>
+    </section>
+
+    <!-- DIFFERENTIALS radial -->
+    <section id="differentials" class="section diffs-radial">
+      <div class="container">
+        <h2 style="text-align:center;margin:0 0 6px">Our Differentials</h2>
+        <p style="text-align:center;margin:0 0 12px;opacity:.9">MORE PREDICTABILITY & CONTROL</p>
+
+        <div class="radial-stage">
+          <div class="core" aria-hidden="true"><img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company"></div>
+
+          <div class="node right" style="--a:-18deg">
+            <span class="dot"></span>
+            <div class="bubble"><b>Inspection with photos & videos</b><br><small>Sampling, tests and pass/fail — no surprises at delivery.</small></div>
+          </div>
+
+          <div class="node right" style="--a:22deg">
+            <span class="dot"></span>
+            <div class="bubble"><b>Bilingual technical spec (PT–ZH)</b><br><small>Photo/drawing, materials, dimensions, tolerances, packaging & label — all agreed and signed.</small></div>
+          </div>
+
+          <div class="node right" style="--a:73deg">
+            <span class="dot"></span>
+            <div class="bubble"><b>The right supplier in the right place</b><br><small>Based in Guangzhou; we visit any factory in China.</small></div>
+          </div>
+
+          <div class="node left" style="--a:110deg">
+            <span class="dot"></span>
+            <div class="bubble"><b>Factory visit within 48h</b><br><small>With visual records (photos & videos) and a report.</small></div>
+          </div>
+
+          <div class="node left" style="--a:162deg">
+            <span class="dot"></span>
+            <div class="bubble"><b>Lower risk and total cost</b><br><small>Engineering + quality + finance, with presence inside the factory.</small></div>
+          </div>
+
+          <div class="node left" style="--a:-160deg">
+            <span class="dot"></span>
+            <div class="bubble"><b>Local negotiation in Chinese</b><br><small>Native team negotiates directly with the factory for better terms.</small></div>
+          </div>
+
+          <div class="node left" style="--a:-110deg">
+            <span class="dot"></span>
+            <div class="bubble"><b>No minimum order</b><br><small>Start with samples/pilots; when it makes sense, consolidate in shared container.</small></div>
+          </div>
+
+          <div class="node right" style="--a:-80deg">
+            <span class="dot"></span>
+            <div class="bubble"><b>Landed cost in Brazil — before the order</b><br><small>Transparent estimate of taxes & expenses.</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banda antes da Plataforma -->
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+    <!-- PLATFORM (fotos retas + cartões) -->
+    <section id="platform" class="section">
+      <div class="container">
+        <h2>Client Platform</h2>
+        <p class="lead">Follow everything in one place</p>
+
+        <figure class="shot top" style="--ph1:url('/assets/plat-diag-1.jpg?v=2')" aria-label="Wallet & documents"></figure>
+        <figure class="shot bottom" style="--ph2:url('/assets/plat-diag-2.jpg?v=2')" aria-label="Shipment tracking"></figure>
+
+        <div class="card c1">
+          <h3>Wallet & documents</h3>
+          <p>Follow your <b>transactions</b>, <b>documents</b> and the <b>complete order history</b> in a single wallet — with versions, comments and confirmations.</p>
+        </div>
+
+        <div class="card c2">
+          <h3>Shipment tracking</h3>
+          <p>See the status of your shipment at each step, <b>checkpoints</b> planned/completed and a <b>live map</b> when available (sea, air and road).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banda ANTES da IA (pedido seu) -->
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+    <!-- IA CHAT -->
+    <section id="ai" class="section ai-chat">
+      <div class="container">
+        <h2 style="text-align:center;margin:0 0 12px">We are the first trading company in Brazil with integrated AI management</h2>
+
+        <div class="chat-card" aria-live="polite">
+          <header class="chat-head">
+            <strong class="chat-brand">ShaRui Trading &amp; Co.</strong>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="status" id="aiStatus">online</span>
+          </header>
+
+          <div class="chat-messages" id="aiChatLog">
+            <div class="msg bot">
+              <div class="bubble">
+                Hi! I can help with <b>Incoterms</b>, <b>tax estimate</b>, <b>LCL/FCL</b>, <b>PT–ZH technical specs</b> and more. How can I help you?
+              </div>
+            </div>
+          </div>
+
+          <form class="chat-input" id="aiChatForm" autocomplete="off">
+            <textarea id="aiPrompt" rows="1" placeholder="Ask anything about importing"></textarea>
+            <button class="send" type="submit" aria-label="Send">➤</button>
+          </form>
+
+          <p class="disclaimer">AI‑generated responses are for guidance. Please confirm decisions with our team.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- WhatsApp floating (mesma lógica do PT) -->
+  <a id="whatsFloat" class="whats-float" href="#" target="_blank" rel="noopener" aria-label="Open WhatsApp"></a>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>
+        <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+        <address class="corp-address">
+          Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>
+          Fortune Plaza – Panyu<br>
+          Postal code: 51150 – Guangzhou, China.
+        </address>
+      </div>
+      <nav class="foot-social" aria-label="Social">
+        <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
+        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
+        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
+        <a id="whatsFooter" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa" title="WhatsApp"></a>
+      </nav>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="footer">
-  <div class="container">
-    <div>© <span data-text="brand">ShaRui Trading Company</span> — China ↔ Brazil import operations</div>
-    <div class="contact-row" style="margin-top:8px">
-      <a class="badge" data-contact="facebook">Facebook</a>
-      <a class="badge" data-contact="instagram">Instagram</a>
-      <a class="badge" data-contact="tiktok">TikTok</a>
-    </div>
-  </div>
-</footer>
+  <!-- ====== Scripts locais ====== -->
+  <script>
+    // Ajusta --header-h para compensar cabeçalho fixo
+    (function(){
+      const header = document.getElementById('siteHeader');
+      if(!header) return;
+      function setOffset(){ document.documentElement.style.setProperty('--header-h', (header.offsetHeight || 72) + 'px'); }
+      setOffset(); window.addEventListener('resize', setOffset);
+    })();
+  </script>
 
-<!-- WeChat Modal -->
-<div id="qr-modal" class="modal" onclick="closeQR()">
-  <div class="modal-card" onclick="event.stopPropagation()">
-    <h3>WeChat QR</h3>
-    <img src="/assets/wechat-qr.svg" alt="WeChat QR">
-    <div><button class="cta modal-close" onclick="closeQR()">Close</button></div>
-  </div>
-</div>
+  <script>
+    // Remove selo "View photo" / "Ver foto" da primeira imagem (se existir)
+    (function(){
+      const fig = document.querySelector('#platform .shot.top');
+      if(!fig) return;
+      fig.querySelectorAll('*').forEach(el=>{
+        const t = (el.textContent || '').trim();
+        if(/view photo|ver foto/i.test(t)) el.remove();
+      });
+      fig.querySelectorAll('[data-lightbox],[data-view],[aria-label*="view" i],[aria-label*="foto" i]').forEach(el=> el.remove());
+    })();
+  </script>
 
-<a class="wp-float" data-contact="whatsapp">WhatsApp</a>
+  <!-- Chat IA (usa /api/ia) -->
+  <script>
+  (function(){
+    const log   = document.getElementById('aiChatLog');
+    const form  = document.getElementById('aiChatForm');
+    const ta    = document.getElementById('aiPrompt');
+    const stat  = document.getElementById('aiStatus');
+    const store = 'ai:log:v1';
+
+    let history = [];
+    try{ history = JSON.parse(localStorage.getItem(store) || '[]'); }catch(e){}
+    history.forEach(m => render(m));
+
+    function autogrow(){ ta.style.height='auto'; ta.style.height = Math.min(ta.scrollHeight, 160) + 'px'; }
+    ta.addEventListener('input', autogrow); autogrow();
+
+    ta.addEventListener('keydown', (e)=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); form.requestSubmit(); } });
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const q = (ta.value || '').trim();
+      if(!q) return;
+      add({ role:'user', content:q });
+      ta.value=''; autogrow();
+      const typingId = showTyping();
+      try{
+        const reply = await askAI(history);
+        hideTyping(typingId);
+        add({ role:'assistant', content: reply });
+      }catch(err){
+        hideTyping(typingId);
+        add({ role:'assistant', content: mockAnswer(q) });
+      }
+    });
+
+    function render({role, content}){
+      const row = document.createElement('div');
+      row.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+      const b = document.createElement('div');
+      b.className = 'bubble';
+      b.innerHTML = sanitize(content);
+      row.appendChild(b);
+      log.appendChild(row);
+      log.scrollTop = log.scrollHeight;
+    }
+    function add(m){
+      history.push(m);
+      localStorage.setItem(store, JSON.stringify(history.slice(-30)));
+      render(m);
+    }
+    function showTyping(){
+      const row = document.createElement('div');
+      row.className = 'msg bot typing';
+      const b = document.createElement('div'); b.className='bubble';
+      for(let i=0;i<3;i++){ const d=document.createElement('span'); d.className='dot-anim'; b.appendChild(d); }
+      row.appendChild(b); log.appendChild(row); log.scrollTop = log.scrollHeight; return row;
+    }
+    function hideTyping(node){ if(node && node.parentNode){ node.parentNode.removeChild(node); } }
+
+    async function askAI(messages){
+      stat.textContent = 'thinking…';
+      const res = await fetch('/api/ia', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ messages: messages.map(m => ({ role:m.role, content:m.content })) })
+      });
+      stat.textContent = 'online';
+      if(!res.ok) throw new Error('no-backend');
+      const data = await res.json();
+      const text = (data.reply || data.output || data.message || '').toString().trim();
+      if(!text) throw new Error('empty-reply');
+      return text;
+    }
+
+    function mockAnswer(q=''){
+      const s = q.toLowerCase();
+      if(s.includes('incoterm') || s.includes('fob') || s.includes('cif') || s.includes('exw')){
+        return `Quick Incoterms summary:
+• EXW: buyer handles pickup and all freight from factory.
+• FOB: seller delivers on board; buyer handles ocean freight & insurance.
+• CIF: seller pays ocean freight & insurance to destination port.
+• DDP: seller delivers customs‑cleared at destination (not always feasible).`;
+      }
+      if(s.includes('tax') || s.includes('landed') || s.includes('price in brazil')){
+        return `Landed cost estimate includes:
+1) goods value + international freight/insurance;
+2) import taxes (II, IPI, PIS/COFINS‑Import, ICMS);
+3) AFRMM (if ocean), port/warehouse/handling, customs broker;
+4) domestic freight.`;
+      }
+      if(s.includes('lcl') || s.includes('fcl') || s.includes('container')){
+        return `LCL vs FCL:
+• LCL: good for small volumes; cost per m³/ton and slightly longer lead times.
+• FCL: better unit cost and less handling. Starting with LCL and migrating later often works well.`;
+      }
+      return `I can help with PT–ZH specs, factory validation (48h), inspection with photos & videos, timeline & documents, and tax estimates. What would you like to know?`;
+    }
+
+    function sanitize(html){
+      const div = document.createElement('div'); div.textContent = html; let t = div.innerHTML;
+      t = t.replace(/&lt;(\/?)(b|br|ul|ol|li)&gt;/g, '<$1$2>');
+      return t;
+    }
+
+    function updateStatus(){ stat.textContent = navigator.onLine ? 'online' : 'offline'; }
+    updateStatus(); window.addEventListener('online', updateStatus); window.addEventListener('offline', updateStatus);
+  })();
+  </script>
+
+  <!-- WhatsApp helper -->
+  <script>
+    (function(){
+      const WHATS_NUMBER = '5511993381008'; // ajuste seu número aqui
+      const defaultText = 'Hello ShaRui, I came from the website and would like to talk.';
+      const url = 'https://api.whatsapp.com/send?phone=' + WHATS_NUMBER + '&text=' + encodeURIComponent(defaultText);
+      ['whatsFloat','whatsFooter'].forEach(id => { const a = document.getElementById(id); if(a) a.href = url; });
+      document.querySelectorAll('a[data-whats="true"]').forEach(a => a.href = url);
+    })();
+  </script>
+
+  <script defer src="/assets/mobile-nav.js"></script>
 </body>
 </html>
