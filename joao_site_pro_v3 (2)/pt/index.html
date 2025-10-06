@@ -383,106 +383,43 @@
       </div>
     </section>
 
-    <!-- PLATAFORMA DO CLIENTE — tablet com slides -->
-    <section id="plataforma" class="section platform full">
-      <div class="container">
-        <h2 style="text-align:center;margin-bottom:6px">Plataforma do Cliente</h2>
-        <p class="lead" style="text-align:center;margin-bottom:16px">Acompanhe tudo em um só lugar</p>
+ <!-- ===== PLATAFORMA DO CLIENTE (apenas 2 cards diagonais) ===== -->
+  
+<section id="plataforma" class="section">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:6px">Plataforma do Cliente</h2>
+    <p class="lead" style="text-align:center;margin-bottom:16px">Acompanhe tudo em um só lugar</p>
 
-        <div class="tablet" aria-label="Prévia da plataforma">
-          <div class="bezel"></div>
-
-          <!-- Tela do tablet (slides) -->
-          <div class="slides" id="platSlides">
-            <div class="slide active" style="--bg:url('/assets/plat0.jpg')">
-              <div class="balloon">
-                <h3>Plataforma do Cliente</h3>
-                <p>Visão geral do app: status das compras, documentos, custos estimados, prazos e alertas — tudo em um só lugar.</p>
-              </div>
-            </div>
-
-            <div class="slide" style="--bg:url('/assets/plat1.jpg')">
-              <div class="balloon">
-                <h3>Acompanhamento de carga</h3>
-                <p>Check‑points por etapa e <b>mapa</b> quando disponível (marítimo, aéreo e rodoviário).</p>
-              </div>
-            </div>
-
-            <div class="slide" style="--bg:url('/assets/plat2.jpg')">
-              <div class="balloon">
-                <h3>Linha do tempo</h3>
-                <p>Do pedido à entrega, com responsáveis, prazos e <b>confirmações</b> por etapa.</p>
-              </div>
-            </div>
-
-            <div class="slide" style="--bg:url('/assets/plat3.jpg')">
-              <div class="balloon">
-                <h3>Custos detalhados</h3>
-                <p><b>Preço no Brasil (estimado)</b>, impostos e despesas com memória de cálculo.</p>
-              </div>
-            </div>
-
-            <div class="slide" style="--bg:url('/assets/plat4.jpg')">
-              <div class="balloon">
-                <h3>Documentos</h3>
-                <p>Invoice, Packing List, BL/AWB, laudos de inspeção, relatórios e <b>histórico de versões</b>.</p>
-              </div>
-            </div>
-
-            <div class="slide" style="--bg:url('/assets/plat5.jpg')">
-              <div class="balloon">
-                <h3>Alertas &amp; prazos</h3>
-                <p>Lembretes de embarque/desembaraço e <b>SLA de 48h</b> para visita à fábrica.</p>
-              </div>
-            </div>
-
-            <div class="slide" style="--bg:url('/assets/plat6.jpg')">
-              <div class="balloon">
-                <h3>Acessos &amp; histórico</h3>
-                <p>Perfis por área (Compras, Financeiro, Diretoria), <b>permissões</b> e trilha de auditoria.</p>
-              </div>
-            </div>
-          </div>
+    <div class="plat-diag">
+      <!-- Card 1: entra da diagonal superior-esquerda -->
+      <article class="diag-item up-left reveal-diag">
+        <figure class="diag-photo" style="--img:url('/assets/plat-diag-1.jpg')"></figure>
+        <div class="diag-text">
+          <h3>Carteira do Cliente</h3>
+          <p>
+            Veja <b>todas as transações</b> em um só lugar: cotações, pedidos, inspeções,
+            embarques e <b>documentos</b> com histórico de versões. Cada etapa tem
+            responsáveis, datas e evidências (fotos/vídeos) para dar <b>clareza e rastreabilidade</b>
+            desde o primeiro contato até a entrega no Brasil.
+          </p>
         </div>
+      </article>
 
-        <!-- Controles -->
-        <div class="plat-controls">
-          <button class="nav prev" aria-label="Anterior">‹</button>
-          <div class="dots" aria-label="Indicador de páginas"></div>
-          <button class="nav next" aria-label="Próximo">›</button>
+      <!-- Card 2: entra da diagonal inferior-direita -->
+      <article class="diag-item down-right reveal-diag">
+        <figure class="diag-photo" style="--img:url('/assets/plat-diag-2.jpg')"></figure>
+        <div class="diag-text">
+          <h3>Rastreamento em tempo real</h3>
+          <p>
+            Acompanhe sua carga no <b>mapa</b> quando o GPS estiver disponível: posição,
+            etapa atual e <b>previsão de chegada</b> atualizada. Receba <b>alertas</b>
+            a cada mudança relevante — do embarque ao desembaraço.
+          </p>
         </div>
-        <div class="plat-hint">Passe o mouse para pausar • Toque/Use as setas para controlar</div>
-      </div>
-      <!-- === NOVO BLOCO: 2 cards com fotos diagonais + textos === -->
-<div class="plat-diag">
-  <!-- Card 1: entra da diagonal superior-esquerda -->
-  <article class="diag-item up-left reveal-diag">
-    <figure class="diag-photo" style="--img:url('/assets/plat-diag-1.jpg')"></figure>
-    <div class="diag-text">
-      <h3>Carteira do Cliente</h3>
-      <p>
-        Veja <b>todas as transações</b> em um só lugar: cotações, pedidos, inspeções,
-        embarques e <b>documentos</b> com histórico de versões. Cada etapa tem
-        responsáveis, datas e evidências (fotos/vídeos) para dar <b>clareza e rastreabilidade</b>
-        desde o primeiro contato até a entrega no Brasil.
-      </p>
+      </article>
     </div>
-  </article>
-
-  <!-- Card 2: entra da diagonal inferior-direita -->
-  <article class="diag-item down-right reveal-diag">
-    <figure class="diag-photo" style="--img:url('/assets/plat-diag-2.jpg')"></figure>
-    <div class="diag-text">
-      <h3>Rastreamento em tempo real</h3>
-      <p>
-        Acompanhe sua carga no <b>mapa</b> quando o GPS estiver disponível: posição,
-        etapa atual e <b>previsão de chegada</b> atualizada. Receba <b>alertas</b>
-        a cada mudança relevante — do embarque ao desembaraço.
-      </p>
-    </div>
-  </article>
-</div>
-    </section>
+  </div>
+</section>
 
     <section class="brand-band" aria-hidden="true">
       <div class="marquee">
@@ -1020,6 +957,7 @@ Pode detalhar sua dúvida?`;
 
  <script defer src="/assets/chat.js"></script>
  <script>
+   
 /* Plataforma: anima as fotos/textos em diagonal ao entrar/sair da viewport */
 (function(){
   const items = document.querySelectorAll('.plat-diag .reveal-diag');
@@ -1029,6 +967,22 @@ Pode detalhar sua dúvida?`;
     entries.forEach(e=>{
       if(e.isIntersecting){ e.target.classList.add('in'); }
       else                { e.target.classList.remove('in'); } // “sai” ao rolar para cima
+    });
+  }, { threshold:.22, rootMargin:'-8% 0px -8% 0px' });
+
+  items.forEach(el => io.observe(el));
+})();
+</script>
+<script>
+/* Plataforma: anima as fotos/textos em diagonal ao entrar/sair da viewport */
+(function(){
+  const items = document.querySelectorAll('.plat-diag .reveal-diag');
+  if(!items.length) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+      else                { e.target.classList.remove('in'); }
     });
   }, { threshold:.22, rootMargin:'-8% 0px -8% 0px' });
 
