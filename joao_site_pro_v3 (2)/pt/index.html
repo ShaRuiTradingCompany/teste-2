@@ -1156,6 +1156,60 @@ Pode detalhar sua dúvida?`;
     }
   }
 </style>
+<!-- ===== AJUSTES FINOS — Plataforma ===== -->
+<style id="plat-ajustes-finos">
+  /* 1) Foto de baixo: mais para BAIXO e para a DIREITA */
+  /* (funciona com .shot.bottom ou .p-shot.bottom, conforme o CSS atual) */
+  #plataforma .shot.bottom,
+  #plataforma .p-shot.bottom{
+    top: clamp(160px, 12.5vw, 230px) !important; /* ↓ descer */
+    right: -18px !important;                      /* → empurrar à direita */
+  }
+  /* Garantia: topo permanece fixo no canto, sem rotação */
+  #plataforma .shot.top,
+  #plataforma .p-shot.top{
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+
+  /* 3) Remove qualquer scroll interno na seção da plataforma */
+  #plataforma,
+  #plataforma .container,
+  #plataforma .plat-diag,
+  #plataforma .plat-diag > *{
+    overflow: visible !important;
+    max-height: none !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
+  /* Caso haja wrappers “scroll/scrollable” injetados por CSS/JS */
+  #plataforma .scroll,
+  #plataforma .scrollable,
+  #plataforma [data-scroll]{
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  /* Só por garantia, oculta resquícios de barra de rolagem interna */
+  #plataforma *::-webkit-scrollbar{ display:none !important; }
+  #plataforma{ scrollbar-width: none !important; }
+</style>
+
+<script>
+  // 2) Remove o selo “Ver foto” da 1ª imagem da plataforma (apenas ali)
+  (function(){
+    const fig = document.querySelector('#plataforma .shot.top, #plataforma .p-shot.top');
+    if(!fig) return;
+
+    // Remove qualquer elemento cujo texto seja “ver foto”
+    fig.querySelectorAll('*').forEach(el=>{
+      const t = (el.textContent || '').trim();
+      if(/ver foto/i.test(t)) el.remove();
+    });
+
+    // Remove também elementos típicos de lightbox/selo
+    fig.querySelectorAll('[data-lightbox],[data-view],[aria-label*="ver foto" i]').forEach(el=> el.remove());
+  })();
+</script>
 
 </body>
 </html>
