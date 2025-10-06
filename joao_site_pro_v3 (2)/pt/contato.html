@@ -172,10 +172,11 @@
       .sr-footer-inner{ grid-template-columns:1fr; }
     }
   </style>
+  <link rel="stylesheet" href="/assets/contato.css?v=1">
 </head>
-<body>
-
+<body class="page-contato">
  <header class="site-header" id="siteHeader">
+   <section class="contact-hero" style="--img:url('/assets/contato-hero.jpg')"></section>
   <div class="container nav-wrap">
     <div class="brand">
       <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
@@ -204,77 +205,57 @@
 
   <!-- ===== Página: Contato ===== -->
   <main>
-    <section class="sr-contact wrap" id="contato">
-      <!-- Cabeçalho da seção (alinhado com o grid) -->
-      <div class="sr-contact-head">
-        <h1 class="sr-title">Fale com a ShaRui</h1>
-        <p class="sr-contact-lead">Envie sua mensagem e retornamos em breve.</p>
-      </div>
+    <main class="contact-wrap">
+  <div class="contact-grid">
+    <!-- Formulário -->
+    <form class="c-card c-form" action="https://formspree.io/f/SEU_ID" method="POST">
+      <h2>Fale com a ShaRui</h2>
+      <p class="contact-lead">Envie sua mensagem e retornamos em breve.</p>
 
-      <div class="sr-contact-grid">
-        <!-- COLUNA ESQUERDA: FORM -->
-        <form id="contatoForm"
-              class="sr-card sr-contact-form"
-              action="https://formspree.io/f/SEU_ID"
-              method="POST">
-          <input type="hidden" name="_subject" value="Novo contato via site — ShaRui Trading">
+      <label for="c-nome">Nome*</label>
+      <input id="c-nome" type="text" name="nome" required placeholder="Seu nome completo">
 
-          <label for="nome">Nome*</label>
-          <input id="nome" type="text" name="nome" required placeholder="Seu nome completo">
+      <label for="c-email">E‑mail*</label>
+      <input id="c-email" type="email" name="email" required placeholder="voce@empresa.com">
 
-          <label for="email">E-mail*</label>
-          <input id="email" type="email" name="email" required placeholder="voce@empresa.com">
+      <label for="c-whats">Telefone (WhatsApp)</label>
+      <input id="c-whats" type="tel" name="whatsapp" placeholder="+55 (__) _____‑____">
 
-          <label for="whats">Telefone (WhatsApp)</label>
-          <input id="whats" type="tel" name="whatsapp" placeholder="+55 (__) _____-____">
+      <label for="c-msg">Mensagem*</label>
+      <textarea id="c-msg" name="mensagem" rows="5" required placeholder="Conte seu caso"></textarea>
 
-          <label for="msg">Mensagem*</label>
-          <textarea id="msg" name="mensagem" rows="5" required placeholder="Conte seu caso"></textarea>
+      <button type="submit" class="c-btn">Enviar</button>
+    </form>
 
-          <input type="text" name="_gotcha" style="display:none">
-          <button type="submit" class="sr-btn-primary">Enviar</button>
-          <p id="formMsg" class="sr-form-msg" aria-live="polite" hidden></p>
-        </form>
+    <!-- Redes (balão) -->
+    <aside class="c-card c-social" aria-label="Nossas redes">
+      <h2>Siga a ShaRui</h2>
 
-        <!-- COLUNA DIREITA: REDES SOCIAIS -->
-        <aside class="sr-card sr-social-stack" aria-label="Nossas redes">
-          <h2>Siga a ShaRui</h2>
+      <a class="item" href="https://www.youtube.com/@ShaRuiTrading" target="_blank" rel="noopener">
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#FF0000" d="M23.5 6.2a4.6 4.6 0 0 0-3.2-3.2C18.5 2.5 12 2.5 12 2.5s-6.5 0-8.3.5A4.6 4.6 0 0 0 .5 6.2 47 47 0 0 0 0 12a47 47 0 0 0 .5 5.8 4.6 4.6 0 0 0 3.2 3.2c1.8.5 8.3.5 8.3.5s6.5 0 8.3-.5a4.6 4.6 0 0 0 3.2-3.2A47 47 0 0 0 24 12a47 47 0 0 0-.5-5.8z"/>
+          <path fill="#fff" d="M9.75 15.02V8.98L15.5 12z"/>
+        </svg>
+        <span>@ShaRuiTrading</span>
+      </a>
 
-          <a class="sr-social-item yt" href="https://www.youtube.com/@SharuiTrading" target="_blank" rel="noopener">
-            <!-- YouTube -->
-            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="#FF0000" d="M23.5 6.2a4.6 4.6 0 0 0-3.2-3.2C18.5 2.5 12 2.5 12 2.5s-6.5 0-8.3.5A4.6 4.6 0 0 0 .5 6.2 47 47 0 0 0 0 12a47 47 0 0 0 .5 5.8 4.6 4.6 0 0 0 3.2 3.2c1.8.5 8.3.5 8.3.5s6.5 0 8.3-.5a4.6 4.6 0 0 0 3.2-3.2A47 47 0 0 0 24 12a47 47 0 0 0-.5-5.8z"/>
-              <path fill="#fff" d="M9.75 15.02V8.98L15.5 12z"/>
-            </svg>
-            <span class="handle">@SharuiTrading</span>
-          </a>
+      <a class="item" href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener">
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#E1306C" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm6-1.3a1 1 0 1 0-1-1 1 1 0 0 0 1 1z"/>
+        </svg>
+        <span>@sharui_trading</span>
+      </a>
 
-          <a class="sr-social-item ig" href="https://www.instagram.com/Sharui_trading" target="_blank" rel="noopener">
-            <!-- Instagram -->
-            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="#E1306C" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm6-1.3a1 1 0 1 0-1-1 1 1 0 0 0 1 1z"/>
-            </svg>
-            <span class="handle">@Sharui_trading</span>
-          </a>
-
-          <a class="sr-social-item tt" href="https://www.tiktok.com/@Sharui_trading" target="_blank" rel="noopener">
-            <!-- TikTok -->
-            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="#25F4EE" d="M9 8.5v9a4 4 0 1 1-2-3.5v-2.2A6 6 0 1 0 15 18v-8.9a6.6 6.6 0 0 0 4 1.4V8A5.7 5.7 0 0 1 15 6.3V18a6 6 0 1 1-9-5.2V8.5z"/>
-              <path fill="#FE2C55" d="M15 18v-8.9a6 6 0 0 0 4 1.3V8a5.7 5.7 0 0 1-4-1.7V18a6 6 0 1 1-9-5.2v2A4 4 0 1 0 15 18z"/>
-            </svg>
-            <span class="handle">@Sharui_trading</span>
-          </a>
-        </aside>
-      </div>
-
-      <!-- CTA WhatsApp -->
-      <div class="sr-contact-whats">
-        <span>Ou fale agora pelo WhatsApp:</span>
-        <a class="sr-btn-ghost" href="https://wa.me/SEUNUMERO" target="_blank" rel="noopener">Abrir conversa</a>
-      </div>
-    </section>
-  </main>
+      <a class="item" href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener">
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#25F4EE" d="M16 3c.3 1.7 1.4 3.1 3 3.7V10c-1.2 0-2.4-.3-3.5-.9v5.5a5.6 5.6 0 1 1-5.6-5.6c.2 0 .4 0 .6.1v3.2a2.5 2.5 0 1 0 1.8 2.4V2.5h3.7z"/>
+          <path fill="#FE2C55" d="M15 18v-8.9a6 6 0 0 0 4 1.3V8a5.7 5.7 0 0 1-4-1.7V18a6 6 0 1 1-9-5.2v2A4 4 0 1 0 15 18z"/>
+        </svg>
+        <span>@sharui_trading</span>
+      </a>
+    </aside>
+  </div>
+</main>
 
   <!-- ===== Rodapé (padronizado) ===== -->
   <footer class="sr-footer">
