@@ -3,189 +3,412 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Importar desde China con seguridad — estamos dentro de la fábrica.</title>
-  <meta name="description" content="Abastecimiento validado, auditorías en origen y costo total previsible.">
+  <title>ShaRui Trading Company — Oficina en Guangzhou, visitamos fábricas en toda China</title>
+  <meta name="description" content="Visita a fábrica en 48h, inspección por muestreo con fotos y videos y precio estimado antes del pedido. Ficha técnica en PT‑ZH. Sin pedido mínimo.">
 
-  <!-- Redirección por idioma (1er acceso) -->
-  <script>
-  (function(){
-    const SUPP=['pt','en','es','ar'], KEY='langChosen';
-    try{
-      const saved=localStorage.getItem(KEY);
-      if(!saved){
-        const list=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en']).map(x=>(x||'').toLowerCase());
-        let pref='en';
-        for(const l of list){ if(l.startsWith('pt')){pref='pt';break}
-                              if(l.startsWith('es')){pref='es';break}
-                              if(l.startsWith('ar')){pref='ar';break}
-                              if(l.startsWith('en')){pref='en';break}}
-        localStorage.setItem(KEY,pref);
-        const seg=(location.pathname.split('/')[1]||'').toLowerCase();
-        if(!SUPP.includes(seg) || seg!==pref){ location.replace('/'+pref+'/index.html'); }
-      }
-    }catch(e){}
-  })();
-  </script>
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- SEO -->
-  <link rel="alternate" href="https://seusite.com/pt/" hreflang="pt-br" />
-  <link rel="alternate" href="https://seusite.com/en/" hreflang="en" />
-  <link rel="alternate" href="https://seusite.com/es/" hreflang="es" />
-  <link rel="alternate" href="https://seusite.com/ar/" hreflang="ar" />
-  <link rel="alternate" href="https://seusite.com/es/" hreflang="x-default" />
-  <link rel="canonical" href="https://seusite.com/es/" />
-
-  <!-- Assets -->
+  <!-- CSS/JS base -->
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/video_hero.css?v=3">
+  <link rel="stylesheet" href="/assets/mobile-hotfix.css">
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
+
+  <!-- Ocultar ícone de menú móvil en escritorio -->
+  <style id="hide-mobile-menu-desktop">
+  @media (min-width: 980px){
+    #menuFab,.menu-fab,.menu-fab-wrap,.floating-menu,.mobile-menu-button,
+    .nav-toggle,.menu-toggle,.hamburger,.hamb,[data-role="mobile-menu"]{
+      display:none!important; visibility:hidden!important; opacity:0!important; pointer-events:none!important;
+    }
+  }
+  </style>
+
+  <!-- Header transparente con “chips” + marca con aro (igual PT/EN) -->
+  <style>
+    :root{ --font-sans:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; --accent:#66e0c2; }
+    body{font-family:var(--font-sans)}
+
+    header.site-header.on-video{
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      background:transparent!important; -webkit-backdrop-filter:none!important; backdrop-filter:none!important;
+      border:0!important; box-shadow:none!important;
+    }
+    .container.nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;}
+    .site-header .brand-logo{
+      display:inline-flex;flex-direction:column;align-items:flex-start;padding:8px 12px;border:1px solid rgba(255,255,255,.9);
+      border-radius:999px;color:#fff;text-decoration:none;text-shadow:0 2px 10px rgba(0,0,0,.55);
+    }
+    .brand-logo .brand-top{font-weight:800;letter-spacing:.6px}
+    .brand-logo .brand-sub{font-size:12px;opacity:.92;margin-top:-2px;letter-spacing:.8px}
+    nav .menu{display:flex;gap:14px;align-items:center}
+    nav .menu a{
+      display:inline-flex;align-items:center;padding:8px 12px;border:1px solid rgba(255,255,255,.9);
+      border-radius:999px;color:#fff!important;text-decoration:none;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,.55);
+      background:transparent!important; box-shadow:none!important;
+    }
+    nav .menu a:hover, nav .menu a:focus-visible{background:rgba(255,255,255,.12)!important;text-decoration:none!important}
+    .lang .lang-toggle{
+      color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.9); border-radius:999px; background:transparent; padding:8px 10px;
+    }
+  </style>
+
+  <!-- Hero: vídeo pantalla completa -->
+  <style>
+    .hero-video-wrap{position:relative;height:100vh;min-height:100vh;overflow:hidden}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(1.34) contrast(1.08) saturate(1.06)}
+    .brand-band,.brand-ticker{background:transparent}
+    .brand-band .marquee{white-space:nowrap;overflow:hidden}
+    .brand-band .marquee span{display:inline-block;padding:8px 0;animation:marq 18s linear infinite;opacity:.9;letter-spacing:.2em}
+    @keyframes marq{to{transform:translateX(-50%)}}
+  </style>
+
+  <!-- “Logo redondo” do radial de Diferenciales -->
+  <style>
+    #diferenciales.diffs-radial .core{border-radius:50%;overflow:hidden;background:#fff}
+    #diferenciales.diffs-radial .core img{width:100%;height:100%;object-fit:cover;display:block}
+  </style>
+
+  <!-- Plataforma: fotos retas + leve sobreposição + cartões fixos -->
+  <style>
+    section.platform .container{position:relative}
+    .plat-block{position:relative;max-width:1240px;margin:0 auto}
+    .shot{
+      position:relative; width:min(820px,92%); aspect-ratio:16/9;
+      background:#0b0e10 center/cover no-repeat; border-radius:16px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+    }
+    .shot.top{ background-image:var(--ph1); margin: 0 0 -110px 0; }          /* fica por cima */
+    .shot.bottom{ background-image:var(--ph2); margin: 0 0 0 min(260px,18vw); transform: translate(28px,34px); }
+
+    .platform .card{
+      position:absolute; background:rgba(3,10,18,.86); border:1px solid rgba(255,255,255,.16);
+      color:#fff; border-radius:16px; padding:16px 18px; width:min(560px,88%); box-shadow:0 10px 28px rgba(0,0,0,.25)
+    }
+    .platform .card h3{margin:0 0 6px}
+    .platform .card.c1{ top: 42px; right: min(32px,3vw); }
+    .platform .card.c2{ bottom: -12px; left:  min(32px,3vw); }
+    @media (max-width: 980px){
+      .shot.top{ margin:0 0 10px 0 }
+      .shot.bottom{ margin:0; transform:none }
+      .platform .card{position:relative;width:100%;margin:10px 0}
+    }
+  </style>
+
+  <!-- Seções padrão -->
+  <style>
+    .section{padding: clamp(18px,5vw,34px) 0}
+    .section h2{text-align:center;margin:0 0 6px;color:#fff}
+    .section .lead{text-align:center;opacity:.9;margin:0 auto 12px;max-width:900px;color:#eaf1ff}
+    .who-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+    .who-photo{border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14)}
+    .who-photo img{width:100%;height:auto;display:block}
+    .who-copy p{color:#eaf1ff;margin:.4rem 0;line-height:1.7}
+    @media (max-width:980px){ .who-split{grid-template-columns:1fr} }
+    .who-gallery{position:relative;overflow:hidden;height: clamp(180px, 28vh, 320px);
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent);
+              mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent);
+      border:1px solid rgba(255,255,255,.12); border-radius:12px; background:rgba(0,0,0,.10)}
+    .who-gallery .strip{position:absolute;inset:0 auto 0 0;display:inline-flex;gap:12px;align-items:center;padding:8px 12px;
+      will-change:transform;width:max-content;animation:stripMove 25s linear infinite}
+    .who-gallery img{height:100%;width:auto;object-fit:cover;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.15)}
+    @keyframes stripMove{to{transform:translateX(-50%)}}
+  </style>
 </head>
 
 <body>
-<header>
-  <div class="container">
-    <nav>
+  <!-- HEADER -->
+  <header class="site-header on-video" id="siteHeader">
+    <div class="container nav-wrap">
       <div class="brand">
-        <a href="index.html" class="brand-logo" aria-label="Sha Rui Trading Company">
+        <a href="/es/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
           <span class="brand-top">SHA RUI</span>
           <span class="brand-sub">TRADING COMPANY</span>
         </a>
       </div>
 
-      <div class="menu">
-        <a href="#services">Servicios</a>
-        <a href="#sectors">Sectores</a>
-        <a href="#process">Proceso</a>
-        <a href="#materials">Materiales</a>
-        <a href="#about">Sobre nosotros</a>
-        <a href="#contact">Contacto</a>
-      </div>
+      <nav>
+        <div class="menu">
+          <a href="/es/quem-somos.html">Quiénes somos</a>
+          <a href="/es/diferenciales.html">Diferenciales</a>
+          <a href="/es/plataforma.html">Plataforma</a>
+          <a href="/es/contacto.html">Contacto</a>
+        </div>
+      </nav>
 
       <div class="lang" id="lang">
-        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Seleccionar idioma">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.27a15.6 15.6 0 00-.9-5.02A8.02 8.02 0 0119.93 11zM12 4c.9 0 2.3 1.97 2.9 6H9.1c.6-4.03 2-6 2.9-6zM7.24 5.98A15.6 15.6 0 006.34 11H3.07a8.02 8.02 0 014.17-5.02zM4.07 13h3.27c.22 1.77.66 3.52 1.33 5.02A8.02 8.02 0 014.07 13zM12 20c-.9 0-2.3-1.97-2.9-6h5.8c-.6 4.03-2 6-2.9 6zm4.76-1.98A15.6 15.6 0 0017.66 13h3.27a8.02 8.02 0 01-4.17 5.02z"></path></svg>
-        </button>
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Seleccionar idioma">🌐</button>
         <ul class="lang-menu" id="langMenu">
           <li><a href="/pt/index.html">Português (PT)</a></li>
           <li><a href="/en/index.html">English (EN)</a></li>
-          <li><a href="/es/index.html">Español (ES)</a></li>
+          <li><a href="/es/index.html" aria-current="page">Español (ES)</a></li>
           <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
         </ul>
       </div>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- HERO con video -->
-  <section class="hero-video-wrap">
-    <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-poster.jpg">
-      <source src="/assets/company_web_720p.mp4?v=8" type="video/mp4" media="(max-width: 768px)">
-      <source src="/assets/company.mp4?v=8" type="video/mp4">
-    </video>
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-bar">
-      <button class="hero-btn" id="heroPlayPause" aria-label="Reproducir/Pausar" title="Reproducir/Pausar">▶︎</button>
-      <button class="hero-btn" id="heroMute" aria-label="Sonido" title="Sonido">🔇</button>
-      <a class="hero-cta" data-contact="whatsapp">WhatsApp</a>
-      <a class="hero-cta" href="#contact">Agendar</a>
     </div>
+  </header>
 
-    <div class="hero-content hidden">
-      <h1 class="hero-title">Operamos dentro de la fábrica en Ganzhou</h1>
-      <p class="hero-sub">Auditoría 48h • QC Live • Spec‑Lock &amp; AQL • Costo total previsible</p>
-    </div>
-  </section>
+  <main>
+    <!-- HERO: video -->
+    <section class="hero-video-wrap" aria-label="Video de fondo">
+      <section class="brand-ticker" aria-hidden="true">
+        <div class="ticker">
+          <ul class="ticker-track">
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+          </ul>
+          <ul class="ticker-track" aria-hidden="true">
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+          </ul>
+        </div>
+      </section>
 
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="container">
-      <h2>Sobre nosotros</h2>
-      <p>Estamos en Ganzhou (China), conectando su empresa con proveedores confiables. Integramos ingeniería, calidad y finanzas para reducir riesgo y costo total.</p>
-    </div>
-  </section>
+      <video class="hero-video" autoplay muted playsinline preload="metadata"
+             poster="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4">
+        <source src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+    </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <div class="container">
-      <h2>Servicios</h2>
-      <div class="grid">
-        <a class="card" href="#services">
-          <h3>Todos los servicios y diferenciales</h3>
-          <p>Auditoría 48h, QC Live, Spec‑Lock, AQL, Simulador, DG/Baterías, Componentes y más.</p>
-        </a>
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section id="quienes" class="section">
+      <div class="container who-split">
+        <figure class="who-photo"><img src="/assets/socio.jpg" alt="Socio de ShaRui"></figure>
+        <div class="who-copy">
+          <h2>Quiénes somos</h2>
+          <p><b>Somos una empresa con más de 30 años</b> en comercio internacional. Con base en <b>Guangzhou</b>, participamos en la <b>Feria de Cantón</b> y visitamos fábricas en toda China.</p>
+          <p>Conectamos a tu empresa con proveedores confiables, integrando <b>ingeniería</b>, <b>calidad</b> y <b>finanzas</b> para reducir <b>riesgo</b> y <b>costo total</b> — con presencia dentro de la fábrica.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galería continua -->
+    <section class="who-gallery" aria-label="Bastidores">
+      <div class="strip">
+        <img src="/assets/qs1.jpg?v=2" alt=""><img src="/assets/qs2.jpg?v=2" alt="">
+        <img src="/assets/qs3.jpg?v=2" alt=""><img src="/assets/qs4.jpg?v=2" alt="">
+        <img src="/assets/qs5.jpg?v=3" alt="Foto 5"><img src="/assets/qs6.jpg?v=3" alt="Foto 6">
+        <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
+      </div>
+    </section>
+
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee"><span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span></div>
+    </section>
+
+    <!-- DIFERENCIALES (radial) -->
+    <section id="diferenciales" class="section diffs-radial">
+      <div class="container">
+        <h2>Diferenciales</h2>
+        <p class="lead">Más previsibilidad y control.</p>
+
+        <div class="radial-stage">
+          <div class="core" aria-hidden="true"><img src="/assets/logo-sharui.jpg" alt="ShaRui"></div>
+
+          <div class="node right" style="--a:-18deg"><span class="dot"></span><div class="bubble"><b>Inspección con fotos y videos</b><small>Muestreo, pruebas y aprobación/reprobación — sin sorpresas en la entrega.</small></div></div>
+          <div class="node right" style="--a:22deg"><span class="dot"></span><div class="bubble"><b>Ficha técnica PT‑ZH</b><small>Foto/dibujo, materiales, medidas, tolerancias, empaque y etiqueta — acordado y firmado.</small></div></div>
+          <div class="node right" style="--a:73deg"><span class="dot"></span><div class="bubble"><b>Proveedor correcto, lugar correcto</b><small>Con base en Guangzhou y visitas a cualquier fábrica en China.</small></div></div>
+          <div class="node left"  style="--a:110deg"><span class="dot"></span><div class="bubble"><b>Visita a fábrica en hasta 48h</b><small>Con registro visual y reporte técnico.</small></div></div>
+          <div class="node left"  style="--a:162deg"><span class="dot"></span><div class="bubble"><b>Menos riesgo y costo total</b><small>Ingeniería + calidad + finanzas integradas, presencia en planta.</small></div></div>
+          <div class="node left"  style="--a:-160deg"><span class="dot"></span><div class="bubble"><b>Negociación con nativos</b><small>Equipo local chino negocia directamente con la fábrica.</small></div></div>
+          <div class="node left"  style="--a:-110deg"><span class="dot"></span><div class="bubble"><b>Sin pedido mínimo</b><small>Empieza con muestras/pilotos; comparte contenedor cuando convenga.</small></div></div>
+          <div class="node right" style="--a:-80deg"><span class="dot"></span><div class="bubble"><b>Precio en Brasil</b><small>Estimación transparente de impuestos y gastos antes del pedido.</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee"><span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span></div>
+    </section>
+
+    <!-- PLATAFORMA DEL CLIENTE -->
+    <section id="plataforma" class="section platform">
+      <div class="container plat-block">
+        <h2>Plataforma del Cliente</h2>
+        <p class="lead">Sigue todo en un solo lugar</p>
+
+        <figure class="shot top"    style="--ph1:url('/assets/plat-diag-1.jpg?v=2')" aria-label="Cartera & documentos"></figure>
+        <figure class="shot bottom" style="--ph2:url('/assets/plat-diag-2.jpg?v=2')" aria-label="Rastreo de la carga"></figure>
+
+        <div class="card c1">
+          <h3>Cartera & documentos</h3>
+          <p>Sigue tus <b>transacciones</b>, <b>documentos</b> y el
+          <b>historial completo de pedidos</b> en una sola cartera — con
+          versiones, comentarios y confirmaciones.</p>
+        </div>
+
+        <div class="card c2">
+          <h3>Rastreo de la carga</h3>
+          <p>Consulta por etapa el estado de tu carga, <b>check‑points</b> previstos/realizados
+          y <b>mapa en tiempo real</b> cuando esté disponible (marítimo, aéreo y carretero).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faixa antes da IA -->
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+    <!-- IA -->
+    <section id="ia" class="section ai-chat">
+      <div class="container">
+        <h2 class="ai-title">Somos la primera trading de Brasil con gestión integrada por IA</h2>
+
+        <div class="chat-card" aria-live="polite">
+          <header class="chat-head">
+            <strong class="chat-brand">Sharui Trading &amp; Co.</strong>
+            <span class="dot" aria-hidden="true"></span><span class="status" id="aiStatus">online</span>
+          </header>
+
+          <div class="chat-messages" id="aiChatLog">
+            <div class="msg bot">
+              <div class="bubble">¡Hola! Puedo ayudar con <b>Incoterms</b>, <b>estimación de impuestos</b>, diferencia entre <b>LCL/FCL</b>, <b>ficha técnica PT‑ZH</b> y más. ¿En qué te ayudo?</div>
+            </div>
+          </div>
+
+          <form class="chat-input" id="aiChatForm" autocomplete="off">
+            <textarea id="aiPrompt" rows="1" placeholder="Haz tu consulta sobre importación"></textarea>
+            <button class="send" type="submit" aria-label="Enviar">➤</button>
+          </form>
+
+          <p class="disclaimer">Respuestas generadas por IA con fines informativos. Confirma decisiones con nuestro equipo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section faq">
+      <div class="container">
+        <h2>Preguntas frecuentes</h2>
+        <p class="lead">Del primer pedido al seguimiento en Brasil.</p>
+
+        <div class="faq-list">
+          <details>
+            <summary>¿Cómo funciona el contenedor compartido (LCL) con ShaRui?</summary>
+            <div>Trabajamos con <b>LCL (Less than Container Load)</b> para quien no tiene volumen para un contenedor completo.
+              Puedes comenzar con <b>muestras</b> y <b>pilotos</b>; cuando convenga, compartimos contenedor para <b>optimizar flete</b>.
+              En la plataforma ves etapas y costo estimado por m³/tonelada, además de plazos.</div>
+          </details>
+
+          <details>
+            <summary>¿Existe pedido mínimo?</summary>
+            <div><b>No.</b> Puedes iniciar con muestras y pilotos. Decidimos consolidar y compartir contenedor caso por caso para equilibrar <b>flete</b>, <b>riesgo</b> y <b>plazo</b>.</div>
+          </details>
+
+          <details>
+            <summary>¿Cuáles son las etapas del proceso hasta la entrega en Brasil?</summary>
+            <div>1) Definición del producto + <b>Ficha técnica PT‑ZH</b> → 2) Cotización/negociación con fábrica → 3) <b>Muestras</b> (si aplica) → 4) Pedido + <b>inspección</b> (fotos y videos) → 5) Embarque (LCL/FCL) → 6) <b>Despacho</b> (con estimación previa de tributos/gastos) → 7) Entrega. Todo queda trazado en la <b>Plataforma</b>.</div>
+          </details>
+
+          <details>
+            <summary>¿Qué es la Ficha técnica PT‑ZH?</summary>
+            <div>Documento bilingüe con: <b>foto/dibujo, materiales, medidas, tolerancias, empaque y etiqueta</b>. Sirve como <b>contrato técnico</b> con la fábrica — reduce ruido de traducción, estabiliza costo y facilita la inspección.</div>
+          </details>
+
+          <details>
+            <summary>¿Anticipan impuestos y gastos (precio en Brasil)?</summary>
+            <div>Sí. Antes del pedido recibes una <b>estimación transparente</b> de II, IPI, PIS/COFINS‑Import., ICMS, AFRMM, tasas portuarias/almacén, despacho, etc. Es <b>estimación</b> (cambio/tablas varían), pero ayuda a decidir con seguridad.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Calendly -->
+    <div id="calendly-modal" class="modal" onclick="closeCalendly()">
+      <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-head"><strong>Agendar conversación</strong><button class="btn-close" onclick="closeCalendly()">Cerrar</button></div>
+        <div class="modal-body"><iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe></div>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- SECTORS -->
-  <section id="sectors" class="section">
-    <div class="container">
-      <h2>Sectores</h2>
-      <div class="grid">
-        <div class="card"><h3>Imanes &amp; Tierras Raras — Ganzhou</h3><p>Especialización donde nace el producto.</p></div>
-        <div class="card"><h3>Muebles — Nankang</h3><p>Capacidad, acabado y plazos del mayor polo mueblero.</p></div>
-        <div class="card"><h3>Otros sectores</h3><p>Hable con nosotros por WhatsApp sobre su categoría.</p></div>
+  <!-- WhatsApp flotante (link dinâmico) -->
+  <a id="whatsFloat" class="whats-float" href="#" target="_blank" rel="noopener" aria-label="Abrir WhatsApp"></a>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>
+        <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+        <address class="corp-address">
+          Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>
+          Fortune Plaza – Panyu<br>
+          Postal code: 51150 – Guangzhou, China.
+        </address>
       </div>
+      <nav class="foot-social" aria-label="Redes">
+        <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
+        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
+        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
+        <a id="whatsFooter" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa" title="WhatsApp"></a>
+      </nav>
     </div>
-  </section>
+  </footer>
 
-  <!-- PROCESS -->
-  <section id="process" class="section">
-    <div class="container">
-      <h2>Proceso</h2>
-      <ol><li>Brief</li><li>Sourcing</li><li>Muestras</li><li>Negociación &amp; Incoterm</li><li>QC</li><li>Embarque &amp; Despacho</li></ol>
-    </div>
-  </section>
+  <!-- Chat + scripts pequenos -->
+  <script defer src="/assets/chat.js"></script>
 
-  <!-- MATERIALS -->
-  <section id="materials" class="section">
-    <div class="container">
-      <h2>Materiales</h2>
-      <div class="grid">
-        <a class="card" href="/pt/materiais/checklist.html"><h3>Checklist de Pre‑Importación</h3><p>Qué alinear antes de comprar.</p></a>
-        <a class="card" href="/pt/materiais/relatorio-amostra.html"><h3>Ejemplo de Informe</h3><p>Vea cómo entregamos el Sprint.</p></a>
-      </div>
-    </div>
-  </section>
+  <script>
+  (function(){ const h=document.getElementById('siteHeader'); if(!h) return;
+    const set=()=>document.documentElement.style.setProperty('--header-h',(h.offsetHeight||72)+'px');
+    set(); addEventListener('resize',set); })();
+  </script>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contacto</h2>
-      <p>Hable por WhatsApp, envíe un e‑mail, agregue en WeChat o agende:</p>
-      <div style="margin:16px 0">
-        <a class="cta primary" data-contact="whatsapp">Hablar por WhatsApp</a>
-        <a class="cta" data-contact="email">Enviar e‑mail</a>
-        <a class="cta" onclick="openQR()">WeChat — Ver QR</a>
-      </div>
-      <iframe id="calendly-embed" class="iframe-wrap" src="about:blank" frameborder="0"></iframe>
-    </div>
-  </section>
-</main>
+  <!-- WhatsApp builder -->
+  <script>
+  (function(){
+    const WHATS_NUMBER='5511993381008';
+    const defaultText='Hola ShaRui, vengo del sitio y me gustaría hablar.';
+    const url='https://api.whatsapp.com/send?phone='+WHATS_NUMBER+'&text='+encodeURIComponent(defaultText);
+    ['whatsFloat','whatsFooter'].forEach(id=>{const a=document.getElementById(id); if(a) a.href=url;});
+  })();
+  </script>
 
-<footer class="footer">
-  <div class="container">
-    <div>© <span data-text="brand">ShaRui Trading Company</span> — Operaciones de importación China ↔ Brasil</div>
-    <div class="contact-row" style="margin-top:8px">
-      <a class="badge" data-contact="facebook">Facebook</a>
-      <a class="badge" data-contact="instagram">Instagram</a>
-      <a class="badge" data-contact="tiktok">TikTok</a>
-    </div>
-  </div>
-</footer>
+  <!-- IA simple (fallback si no hay backend /api/ia) -->
+  <script>
+  (function(){
+    const log=document.getElementById('aiChatLog');
+    const form=document.getElementById('aiChatForm');
+    const ta=document.getElementById('aiPrompt');
+    const stat=document.getElementById('aiStatus');
+    if(!log||!form||!ta) return;
 
-<div id="qr-modal" class="modal" onclick="closeQR()">
-  <div class="modal-card" onclick="event.stopPropagation()">
-    <h3>WeChat QR</h3>
-    <img src="/assets/wechat-qr.svg" alt="WeChat QR">
-    <div><button class="cta modal-close" onclick="closeQR()">Cerrar</button></div>
-  </div>
-</div>
-
-<a class="wp-float" data-contact="whatsapp">WhatsApp</a>
+    function render(role,html){
+      const r=document.createElement('div'); r.className='msg '+(role==='user'?'user':'bot');
+      const b=document.createElement('div'); b.className='bubble'; b.innerHTML=html; r.appendChild(b); log.appendChild(r); log.scrollTop=log.scrollHeight;
+    }
+    ta.addEventListener('input',()=>{ ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,160)+'px';});
+    form.addEventListener('submit',async (e)=>{ e.preventDefault(); const q=(ta.value||'').trim(); if(!q) return; render('user',q); ta.value=''; ta.dispatchEvent(new Event('input'));
+      const typing=document.createElement('div'); typing.className='msg bot typing'; typing.innerHTML='<div class="bubble"><span class="dot-anim"></span><span class="dot-anim"></span><span class="dot-anim"></span></div>'; log.appendChild(typing); log.scrollTop=log.scrollHeight;
+      try{
+        stat.textContent='pensando…';
+        const r=await fetch('/api/ia',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:q}]})});
+        stat.textContent='online';
+        if(!r.ok) throw 0; const j=await r.json(); const t=(j.reply||j.output||j.message||'').toString().trim(); if(!t) throw 0;
+        typing.remove(); render('assistant',t);
+      }catch(e){
+        typing.remove();
+        render('assistant','Resumen rápido de Incoterms:<br>• EXW: el comprador retira en fábrica.<br>• FOB: el vendedor entrega a bordo; comprador asume flete/seguro.<br>• CIF: vendedor paga flete y seguro hasta destino.<br>• DDP: entrega en destino con despacho (casos puntuales).<br><br>También puedo estimar <b>precio en Brasil</b> y hablar de <b>LCL/FCL</b>.');
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
