@@ -10,11 +10,11 @@
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Fonte do menu (igual às demais páginas) -->
+  <!-- Fonte do menu -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Header com “chips” (aro branco) como nas outras páginas -->
+  <!-- Header “chips” -->
   <style>
     header.site-header{
       position:fixed; top:0; left:0; right:0; z-index:1000;
@@ -63,14 +63,13 @@
     </div>
   </header>
 
-  <!-- FOTO DE FUNDO (tela cheia abaixo do menu) -->
-  <!-- Troque o caminho se a sua imagem tiver outro nome -->
-  <section class="contact-hero" style="--img:url('/assets/contato-hero.jpg')">
-  </section>
+  <!-- FOTO DE FUNDO (tela cheia) -->
+  <section class="contact-hero" style="--img:url('/assets/contato-hero.jpg')"></section>
 
   <!-- CONTEÚDO -->
   <main class="contact-wrap">
     <div class="contact-grid">
+
       <!-- Formulário -->
       <form id="contatoForm" class="c-card c-form" action="https://formspree.io/f/SEU_ID" method="POST">
         <h2>Fale com a ShaRui</h2>
@@ -92,7 +91,10 @@
         <p id="formMsg" class="form-msg" aria-live="polite" hidden></p>
       </form>
 
-  <!-- Rodapé já segue o styles.css do site -->
+    </div><!-- /contact-grid -->
+  </main><!-- /contact-wrap -->
+
+  <!-- Rodapé -->
   <footer class="footer">
     <div class="container footer-row">
       <div>
@@ -112,7 +114,7 @@
     </div>
   </footer>
 
-  <!-- JS: ajusta --header-h e feedback do formulário -->
+  <!-- JS: mede o header e feedback do formulário -->
   <script>
   (function(){
     const header = document.getElementById('siteHeader');
