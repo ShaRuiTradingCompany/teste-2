@@ -383,42 +383,82 @@
       </div>
     </section>
 
- <!-- ===== PLATAFORMA DO CLIENTE (apenas 2 cards diagonais) ===== -->
-  
-<section id="plataforma" class="section">
+<!-- PLATAFORMA DO CLIENTE — Diagonal (2 fotos + textos opostos) -->
+<section id="plataforma" class="section platform-diag">
+  <style>
+    /* ===== Plataforma (local, só nesta seção) ===== */
+    .platform-diag{ min-height: clamp(560px, 88vh, 820px); display:flex; align-items:center; }
+    .platform-diag .diag-stage{ position:relative; width:min(1100px,94vw); margin:0 auto; aspect-ratio:16/9; }
+    .platform-diag .pic{
+      position:absolute; width:58%; aspect-ratio:4/3; border-radius:16px;
+      background:#0b0e10 center/cover no-repeat; background-image:var(--ph, none);
+      box-shadow:0 22px 60px rgba(0,0,0,.35);
+      opacity:0; transform: translate(var(--tx,0), var(--ty,0)) scale(.94) rotate(var(--rot,0));
+      transition: transform .7s cubic-bezier(.2,.6,.2,1), opacity .7s;
+    }
+    .platform-diag .pic.pic--tl{ left:2%; top:2%; --tx:-40px; --ty:-40px; --rot:-2.2deg; z-index:2; }
+    .platform-diag .pic.pic--br{ right:2%; bottom:-2%; --tx:40px; --ty:40px; --rot: 2.2deg; z-index:1; }
+
+    .platform-diag .copy{
+      position:absolute; max-width:40%; padding:14px 16px; border-radius:14px;
+      background:rgba(13,30,52,.92); color:#eaf1ff; border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 14px 30px rgba(0,0,0,.28);
+      opacity:0; transform: translate(var(--tx,0), var(--ty,0)) scale(.98);
+      transition: transform .6s cubic-bezier(.2,.6,.2,1), opacity .6s;
+    }
+    .platform-diag .copy h3{ margin:0 0 6px; font-weight:800; font-size:clamp(18px,2.2vw,22px) }
+    .platform-diag .copy p{ margin:0; font-size:clamp(14px,1.25vw,17px); line-height:1.55 }
+    .platform-diag .copy.copy--tr{ top:6%; right:-2%; --tx:40px; --ty:-40px; }
+    .platform-diag .copy.copy--bl{ bottom:6%; left:-2%; --tx:-40px; --ty:40px; }
+
+    .platform-diag .diag-stage.in .pic,
+    .platform-diag .diag-stage.in .copy{ opacity:1; transform: translate(0,0) scale(1) rotate(var(--rot,0)); }
+
+    @media (max-width:880px){
+      .platform-diag{ min-height:auto; }
+      .platform-diag .diag-stage{ aspect-ratio:auto; display:grid; grid-template-columns:1fr; gap:12px; }
+      .platform-diag .pic{ position:relative; width:100%; transform:none; opacity:1; rotate:0; }
+      .platform-diag .copy{ position:relative; max-width:none; transform:none; opacity:1; left:auto; right:auto; top:auto; bottom:auto; }
+    }
+  </style>
+
   <div class="container">
     <h2 style="text-align:center;margin-bottom:6px">Plataforma do Cliente</h2>
     <p class="lead" style="text-align:center;margin-bottom:16px">Acompanhe tudo em um só lugar</p>
 
-    <div class="plat-diag">
-      <!-- Card 1: entra da diagonal superior-esquerda -->
-      <article class="diag-item up-left reveal-diag">
-        <figure class="diag-photo" style="--img:url('/assets/plat-diag-1.jpg')"></figure>
-        <div class="diag-text">
-          <h3>Carteira do Cliente</h3>
-          <p>
-            Veja <b>todas as transações</b> em um só lugar: cotações, pedidos, inspeções,
-            embarques e <b>documentos</b> com histórico de versões. Cada etapa tem
-            responsáveis, datas e evidências (fotos/vídeos) para dar <b>clareza e rastreabilidade</b>
-            desde o primeiro contato até a entrega no Brasil.
-          </p>
-        </div>
-      </article>
+    <div class="diag-stage" id="platDiag">
+      <!-- Foto 1 (entra da diagonal superior esquerda) -->
+      <figure class="pic pic--tl" style="--ph:url('/assets/plat1.jpg')" aria-hidden="true"></figure>
+      <!-- Foto 2 (entra da diagonal inferior direita) -->
+      <figure class="pic pic--br" style="--ph:url('/assets/plat4.jpg')" aria-hidden="true"></figure>
 
-      <!-- Card 2: entra da diagonal inferior-direita -->
-      <article class="diag-item down-right reveal-diag">
-        <figure class="diag-photo" style="--img:url('/assets/plat-diag-2.jpg')"></figure>
-        <div class="diag-text">
-          <h3>Rastreamento em tempo real</h3>
-          <p>
-            Acompanhe sua carga no <b>mapa</b> quando o GPS estiver disponível: posição,
-            etapa atual e <b>previsão de chegada</b> atualizada. Receba <b>alertas</b>
-            a cada mudança relevante — do embarque ao desembaraço.
-          </p>
-        </div>
-      </article>
+      <!-- Texto oposto à Foto 1 -->
+      <div class="copy copy--tr">
+        <h3>Carteira & documentos</h3>
+        <p>Acompanhe <b>suas transações, documentos e o histórico completo de pedidos</b> numa única carteira.
+           Versões de invoice/packing, aprovações de amostras e prazos por etapa — <b>tudo organizado e pesquisável</b>.</p>
+      </div>
+
+      <!-- Texto oposto à Foto 2 -->
+      <div class="copy copy--bl">
+        <h3>Rastreamento em tempo real</h3>
+        <p><b>Veja por GPS</b> (quando disponível) a localização da sua carga com <b>checkpoints previstos/realizados</b>
+           e alertas de rota ou atraso. Marítimo, aéreo e rodoviário.</p>
+      </div>
     </div>
   </div>
+
+  <script>
+    /* Dispara a entrada diagonal quando a seção ficar visível */
+    (function(){
+      const stage = document.getElementById('platDiag');
+      if(!stage) return;
+      const io = new IntersectionObserver((entries)=>{
+        if(entries[0].isIntersecting){ stage.classList.add('in'); io.disconnect(); }
+      }, { threshold:.35 });
+      io.observe(stage);
+    })();
+  </script>
 </section>
 
     <section class="brand-band" aria-hidden="true">
