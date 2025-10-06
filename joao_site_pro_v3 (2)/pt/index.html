@@ -1019,6 +1019,22 @@ Pode detalhar sua dúvida?`;
 </script>
 
  <script defer src="/assets/chat.js"></script>
- 
+ <script>
+/* Plataforma: anima as fotos/textos em diagonal ao entrar/sair da viewport */
+(function(){
+  const items = document.querySelectorAll('.plat-diag .reveal-diag');
+  if(!items.length) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+      else                { e.target.classList.remove('in'); } // “sai” ao rolar para cima
+    });
+  }, { threshold:.22, rootMargin:'-8% 0px -8% 0px' });
+
+  items.forEach(el => io.observe(el));
+})();
+</script>
+
 </body>
 </html>
