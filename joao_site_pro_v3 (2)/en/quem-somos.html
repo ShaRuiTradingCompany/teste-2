@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Quem somos — ShaRui Trading Company</title>
-  <meta name="description" content="Somos uma empresa que une integridade, prazos cumpridos e tecnologia para reduzir risco e custo total. Base em Guangzhou e visitas a fábricas em toda a China.">
+  <title>About us — ShaRui Trading Company</title>
+  <meta name="description" content="We combine integrity, on-time delivery, and technology to reduce risk and total cost. Based in Guangzhou and visiting factories across China.">
 
-  <!-- CSS base do site -->
+  <!-- Site base CSS -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- ===== Estilos locais desta página ===== -->
+  <!-- ===== Page-local styles ===== -->
   <style>
-    /* ---------- HERÓI (50/50) ---------- */
+    /* ---------- HERO (50/50) ---------- */
     #sobre.section{ padding-top: calc(var(--header-h, 72px) + 16px) }
     .title-row{ display:flex; align-items:center; gap:10px; margin-bottom:8px }
     .brand-badge{
@@ -24,7 +24,7 @@
     .brand-badge .brand-sub{ font-weight:700; letter-spacing:.18em; opacity:.85; font-size:clamp(9px,1vw,11px) }
     .title-row h1{ margin:0 }
 
-    /* ---------- LOGO CIRCULAR COM FEIXES ---------- */
+    /* ---------- CIRCULAR LOGO WITH BEAMS ---------- */
     .logo-orb{
       position:relative; display:grid; place-items:center;
       width:min(520px, 42vw); aspect-ratio:1/1; margin-inline:auto; border-radius:50%;
@@ -49,9 +49,9 @@
     @keyframes orbSpin { to { transform: rotate(360deg); } }
     @keyframes orbPulse { from { transform: scale(.98) } to { transform: scale(1.02) } }
 
-    /* ---------- FAIXA DE MÉTRICAS (NÃO FIXA) ---------- */
+    /* ---------- METRICS STRIP (NOT FIXED) ---------- */
     #stats-band{
-      position:relative; /* não é sticky/fixed */
+      position:relative; /* not sticky/fixed */
       top:auto; z-index:auto;
       background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
       border-block:1px solid rgba(255,255,255,.22);
@@ -68,20 +68,20 @@
     }
     #stats-band .metric span.label{ opacity:.95; font-size: clamp(13px, 2vw, 16px) }
 
-    /* ---------- Reveal utilitário ---------- */
+    /* ---------- Utility reveal ---------- */
     .reveal{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease }
     .reveal.in{ opacity:1; transform:none }
 
-    /* ---------- SÓCIOS — foto metade + texto ao lado (alternado) ---------- */
+    /* ---------- PARTNERS — half photo + side text (alternating) ---------- */
 #socios .partner-row{
   display:grid;
-  grid-template-columns: 1fr 2fr;       /* FOTO = 1  |  TEXTO = 2  (metade do texto) */
+  grid-template-columns: 1fr 2fr;       /* PHOTO = 1  |  TEXT = 2  (half the text) */
   gap: clamp(14px, 3vw, 28px);
   align-items: stretch;
   margin-bottom: clamp(14px, 3vw, 22px);
 }
 
-/* Linha alternada: foto à direita */
+/* Alternating row: photo on the right */
 #socios .partner-row.reverse{ grid-template-columns: 2fr 1fr; }
 
 #socios .partner-row .photo{
@@ -93,7 +93,7 @@
 #socios .partner-row .photo img{
   width:100%; height:100%;
   object-fit:cover;
-  aspect-ratio: 4 / 5;                  /* retrato */
+  aspect-ratio: 4 / 5;                  /* portrait */
   display:block;
 }
 
@@ -104,15 +104,15 @@
 #socios .partner-row .info .role{ opacity:.9; margin:0 0 10px }
 #socios .partner-row .info .bio{ margin:0 }
 
-/* Mobile: empilha; foto sempre vem primeiro */
+/* Mobile: stack; photo always first */
 @media (max-width: 1100px){
   #socios .partner-row,
   #socios .partner-row.reverse{ grid-template-columns: 1fr; }
   #socios .partner-row.reverse .photo{ order:-1; }
-  #socios .partner-row .photo img{ aspect-ratio: 16 / 10; } /* mantém destaque sem ficar alto demais */
+  #socios .partner-row .photo img{ aspect-ratio: 16 / 10; } /* keeps highlight without being too tall */
 }
-/* ===== SÓCIOS — foto um pouco mais larga (sem mexer na altura) ===== */
-/* Antes estava 1fr 2fr; agora 1.15fr 1.85fr (pouco mais larga) */
+/* ===== PARTNERS — photo slightly wider (no height change) ===== */
+/* Was 1fr 2fr; now 1.15fr 1.85fr (slightly wider) */
 #socios .partner-row{
   display:grid;
   grid-template-columns: 1.15fr 1.85fr;
@@ -121,12 +121,12 @@
   margin-bottom: clamp(14px, 3vw, 22px);
 }
 
-/* Linha alternada (foto do outro lado) */
+/* Alternating row (photo on the other side) */
 #socios .partner-row.reverse{
   grid-template-columns: 1.85fr 1.15fr;
 }
 
-/* A foto mantém a mesma ALTURA relativa via aspect-ratio */
+/* Photo keeps same relative HEIGHT via aspect-ratio */
 #socios .partner-row .photo{
   border-radius:16px; overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
@@ -135,11 +135,11 @@
 #socios .partner-row .photo img{
   width:100%; height:100%;
   object-fit:cover;
-  aspect-ratio: 4 / 5; /* mantém “altura” visual proporcional */
+  aspect-ratio: 4 / 5; /* keeps proportional visual “height” */
   display:block;
 }
 
-/* ===== Animações (entrar ao descer / sair ao subir) ===== */
+/* ===== Animations (enter on scroll down / exit on scroll up) ===== */
 #socios .partner-row .photo,
 #socios .partner-row .info{
   opacity:0;
@@ -147,21 +147,21 @@
   transition: transform .55s cubic-bezier(.2,.7,.2,1), opacity .55s;
 }
 
-/* Bloco normal: foto entra da ESQ → DIR, texto da DIR → ESQ */
+/* Normal block: photo enters from LEFT → RIGHT, text from RIGHT → LEFT */
 #socios .partner-row:not(.reverse) .photo{ transform: translateX(-28px); }
 #socios .partner-row:not(.reverse) .info { transform: translateX( 28px); }
 
-/* Bloco “reverse”: invertido */
+/* “reverse” block: inverted */
 #socios .partner-row.reverse .photo{ transform: translateX( 28px); }
 #socios .partner-row.reverse .info { transform: translateX(-28px); }
 
-/* Quando visível na tela */
+/* When visible on screen */
 #socios .partner-row.in .photo,
 #socios .partner-row.in .info{
   opacity:1; transform:none;
 }
 
-/* Acessibilidade: reduz animações */
+/* Accessibility: reduce animations */
 @media (prefers-reduced-motion: reduce){
   #socios .partner-row .photo,
   #socios .partner-row .info{
@@ -170,10 +170,10 @@
 }
 
 
-    /* ---------- BASTIDORES: FAIXA CONTÍNUA (mais alta) ---------- */
+    /* ---------- BEHIND THE SCENES: CONTINUOUS STRIP (taller) ---------- */
     #bastidores .who-gallery{
       position:relative; overflow:hidden; margin-top:8px;
-      height: clamp(180px, 28vh, 320px); /* ↑ mais altura para valorizar as fotos */
+      height: clamp(180px, 28vh, 320px); /* ↑ more height to showcase photos */
       -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
               mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
       border:1px solid rgba(255,255,255,.12);
@@ -184,7 +184,7 @@
       position:absolute; inset:0 auto 0 0;
       display:inline-flex; gap:12px; align-items:center; padding:8px 12px;
       will-change: transform; width:max-content;
-      animation: stripMove 25s linear infinite; /* mesma direção/velocidade da Home */
+      animation: stripMove 25s linear infinite; /* same direction/speed as Home */
     }
     #bastidores .who-gallery img{
       height:100%; width:auto; object-fit:cover; border-radius:12px;
@@ -193,9 +193,9 @@
     }
     @keyframes stripMove{ to{ transform: translateX(-50%); } }
 
-    /* ---------- BASTIDORES: texto maior e mais confortável ---------- */
+    /* ---------- BEHIND THE SCENES: larger and more comfortable text ---------- */
 #bastidores .section-note{
-  font-size: clamp(16px, 1.6vw, 20px);   /* maior que o padrão */
+  font-size: clamp(16px, 1.6vw, 20px);   /* larger than default */
   line-height: 1.75;
   letter-spacing: .2px;
 }
@@ -203,12 +203,12 @@
   </style>
   
 
-  <!-- ===== MENU UNIVERSAL (igual ao da Home) ===== -->
-  <!-- Fonte Montserrat usada no menu/brand -->
+  <!-- ===== UNIVERSAL MENU (same as Home) ===== -->
+  <!-- Montserrat font used in menu/brand -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Header transparente (sem vidro) e sobreposto, como na Home */
+    /* Transparent header (no glass) and overlaid, like Home */
     header.site-header{
       position:fixed; top:0; left:0; right:0; z-index:1000;
       background:transparent !important;
@@ -217,12 +217,12 @@
       border:0 !important; box-shadow:none !important;
     }
 
-    /* Mesma família tipográfica do menu da Home (só no header) */
+    /* Same type family as Home menu (header only) */
     .site-header, .site-header *{
       font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
     }
 
-    /* Chips do menu: aro branco, sem preenchimento */
+    /* Menu chips: white ring, no fill */
     .site-header .menu{ display:flex; gap:14px; align-items:center }
     .site-header .menu a{
       display:inline-flex; align-items:center;
@@ -237,7 +237,7 @@
       opacity:1 !important;
       filter:none !important;
     }
-    /* Hover/foco: realce apenas no contorno (sem “branco fosco”) */
+    /* Hover/focus: emphasize outline only (no “frosted white”) */
     .site-header .menu a:hover,
     .site-header .menu a:focus-visible{
       background:transparent !important;
@@ -246,7 +246,7 @@
       text-decoration:none !important;
       outline:none;
     }
-    /* Ativo (Quem somos): aro reforçado, SEM fundo */
+    /* Active (About us): stronger ring, NO fill */
     .site-header .menu a[aria-current="page"],
     .site-header .menu a.active{
       background:transparent !important;
@@ -254,7 +254,7 @@
       box-shadow:0 0 0 2px rgba(255,255,255,.38) inset !important;
     }
 
-    /* Marca com aro (igual à Home) */
+    /* Brand with ring (same as Home) */
     .site-header .brand-logo{
       display:inline-flex; flex-direction:column; align-items:flex-start;
       padding:8px 12px;
@@ -271,23 +271,23 @@
 </head>
 
 <body class="page-about">
-  <!-- HEADER global (marca visível para voltar à home) -->
+  <!-- Global HEADER (brand visible to go back to home) -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-wrap">
       <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
         <span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span>
       </a>
       <nav class="menu">
-        <a href="/pt/quem-somos.html" aria-current="page">Quem somos</a>
-        <a href="/pt/diferenciais.html">Diferenciais</a>
-        <a href="/pt/plataforma.html">Plataforma</a>
-        <a href="/pt/contato.html">Contato</a>
+        <a href="/pt/quem-somos.html" aria-current="page">About us</a>
+        <a href="/pt/diferenciais.html">Advantages</a>
+        <a href="/pt/plataforma.html">Platform</a>
+        <a href="/pt/contato.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="page-about">
-    <!-- (1) QUEM SOMOS — 50/50 texto + logo -->
+    <!-- (1) ABOUT US — 50/50 text + logo -->
     <section id="sobre" class="section about-hero">
       <div class="container hero-wrap">
         <div class="hero-copy reveal">
@@ -296,90 +296,90 @@
               <span class="brand-top">SHA RUI</span>
               <span class="brand-sub">TRADING COMPANY</span>
             </span>
-            <h1>Quem somos</h1>
+            <h1>About us</h1>
           </div>
 
-          <p><strong>Somos uma empresa</strong> com mais de três décadas em comércio internacional que escolheu a <b>integridade</b> como princípio diário. Nosso compromisso é fazer o certo — mesmo quando dá mais trabalho — para reduzir o seu risco, cuidar do <b>custo total</b> e defender o seu padrão de qualidade.</p>
-          <p><strong>Estar perto faz diferença.</strong> Com base em <b>Guangzhou</b> e presença em toda a China, visitamos a fábrica em até <b>48h</b> na região de atuação. Mantemos <em>olhar pessoal</em> no chão de fábrica e formalizamos <b>contratos bilíngues (PT‑ZH)</b> alinhados aos padrões aceitos pela <b>corte chinesa</b>, para dar segurança jurídica e expectativa clara.</p>
-          <p><strong>Conectados e transparentes.</strong> Você acompanha <b>timeline</b>, <b>documentos</b> e <b>checkpoints</b> com prazos realistas, comunicação ativa e registros em <b>foto e vídeo</b>. </p>
-          <p><strong>Tecnologia a serviço da decisão.</strong> Evoluímos continuamente o app, a coleta de evidências e a análise de custos para estimar o <b>preço no Brasil</b> antes do pedido. Dá para começar pequeno, com <b>amostras</b> e <b>pilotos</b>; quando fizer sentido, consolidamos em <b>carga fracionada</b> (compartilhamento de contêiner), sem abrir mão de <b>ética</b>, <b>sustentabilidade prática</b> e <b>seriedade</b>.</p>
+          <p><strong>We are a company</strong> with over three decades in international trade that chose <b>integrity</b> as a daily principle. Our commitment is to do the right thing — even when it takes more work — to reduce your <b>risk</b>, protect <b>total cost</b>, and uphold your quality standard.</p>
+          <p><strong>Being close matters.</strong> Based in <b>Guangzhou</b> and present across China, we visit the factory within <b>48h</b> in our coverage region. We keep a hands‑on presence on the shop floor and formalize <b>bilingual contracts (PT‑ZH)</b> aligned with standards accepted by the <b>Chinese courts</b>, providing legal certainty and clear expectations.</p>
+          <p><strong>Connected and transparent.</strong> You track the <b>timeline</b>, <b>documents</b>, and <b>checkpoints</b> with realistic deadlines, proactive communication, and <b>photo and video</b> records. </p>
+          <p><strong>Technology serving decisions.</strong> We continuously evolve the app, evidence collection, and cost analysis to estimate the <b>Brazil‑landed price</b> before the order. You can start small with <b>samples</b> and <b>pilots</b>; when it makes sense, we consolidate as <b>LCL</b> (shared container), without compromising <b>ethics</b>, <b>practical sustainability</b>, and <b>professionalism</b>.</p>
 
         </div>
 
-        <figure class="logo-orb reveal" aria-label="Logotipo ShaRui">
+        <figure class="logo-orb reveal" aria-label="ShaRui logo">
           <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company" width="1024" height="1024" decoding="async" loading="eager">
         </figure>
       </div>
     </section>
 
-    <!-- (1.1) FAIXA DE MÉTRICAS (NÃO FIXA) -->
-    <section id="stats-band" aria-label="Indicadores da ShaRui">
+    <!-- (1.1) METRICS STRIP (NOT FIXED) -->
+    <section id="stats-band" aria-label="ShaRui metrics">
       <div class="container metrics">
         <div class="metric">
-          <span class="prefix">+ de</span>
+          <span class="prefix">over</span>
           <span class="num" data-target="1000">0</span>
-          <span class="label">clientes em diversos segmentos</span>
+          <span class="label">clients across multiple sectors</span>
         </div>
         <div class="metric">
-          <span class="prefix">+ de</span>
+          <span class="prefix">over</span>
           <span class="num" data-target="30">0</span>
-          <span class="label">colaboradores em Guangzhou</span>
+          <span class="label">team members in Guangzhou</span>
         </div>
         <div class="metric">
           <span class="num" data-target="4">0</span>
-          <span class="label">bases: China, Itália, Brasil e Dubai</span>
+          <span class="label">bases: China, Italy, Brazil, and Dubai</span>
         </div>
       </div>
     </section>
 
   <section id="socios" class="section about-partners">
   <div class="container">
-    <h2 class="reveal">Nossa Equipe</h2>
+    <h2 class="reveal">Our Team</h2>
 
-    <!-- Bloco 1 -->
+    <!-- Block 1 -->
     <div class="partner-row">
       <figure class="photo">
-        <img src="/assets/team-socio-1.jpg" alt="Rogério Takeshita — Sócio-Diretor" loading="lazy" decoding="async" width="760" height="950">
+        <img src="/assets/team-socio-1.jpg" alt="Rogério Takeshita — Managing Partner" loading="lazy" decoding="async" width="760" height="950">
       </figure>
       <div class="info">
         <h3>Rogério Takeshita</h3>
-        <p class="role">Sócio‑Diretor</p>
-        <p>Com trajetória em comércio internacional e indústria, conecta a visão de <b>engenharia</b> ao <b>financeiro</b> para reduzir <b>risco</b> e <b>custo total</b>. Estruturou processos de <b>especificação técnica</b> e validação de fornecedores na China e no Brasil.</p>
-        <p>Atua no desenho de cenários de <b>preço no Brasil</b>, <b>governança</b> de projetos e decisões de <b>make/buy</b>. Lidera <b>due diligence</b> de fornecedores, planejamento de <b>inspeções por amostragem</b> e o alinhamento com os times do cliente.</p>
+        <p class="role">Managing Partner</p>
+        <p>With a background in international trade and industry, he connects <b>engineering</b> with <b>finance</b> to reduce <b>risk</b> and <b>total cost</b>. He structured <b>technical specification</b> processes and supplier validation in China and Brazil.</p>
+        <p>He works on Brazil‑landed <b>price</b> scenarios, project <b>governance</b>, and <b>make/buy</b> decisions. He leads supplier <b>due diligence</b>, planning of <b>sampling inspections</b>, and alignment with client teams.</p>
       </div>
     </div>
 
-    <!-- Bloco 2 (invertido) -->
+    <!-- Block 2 (reversed) -->
     <div class="partner-row reverse">
       <div class="info">
         <h3>Sandra de Almeida</h3>
-        <p class="role">Sócia — Operações e Compliance</p>
-        <p>Especialista em <b>operações</b> na China, com forte atuação no <b>chão de fábrica</b>. Conduz negociações com nativos, <b>contratos bilíngues</b> e cronogramas, garantindo <b>prazos</b> e <b>padrão de qualidade</b> acordados.</p>
-        <p>Orienta <b>inspeções</b> com registro em <b>foto e vídeo</b>, acompanha ajustes com a produção e cuida do <b>compliance documental</b> para embarque. Foco em <b>comunicação direta</b>, <b>previsibilidade</b> e <b>execução</b>.</p>
+        <p class="role">Partner — Operations & Compliance</p>
+        <p>Specialist in <b>operations</b> in China, with strong activity on the <b>shop floor</b>. She leads native‑language negotiations, <b>bilingual contracts</b>, and schedules, ensuring agreed <b>deadlines</b> and <b>quality standards</b>.</p>
+        <p>She guides <b>inspections</b> with <b>photo and video</b> records, follows up adjustments with production, and handles <b>document compliance</b> for shipment. Focus on <b>direct communication</b>, <b>predictability</b>, and <b>execution</b>.</p>
       </div>
       <figure class="photo">
-        <img src="/assets/team-socio-2.jpg" alt="Sandra de Almeida — Operações e Compliance" loading="lazy" decoding="async" width="760" height="950">
+        <img src="/assets/team-socio-2.jpg" alt="Sandra de Almeida — Operations & Compliance" loading="lazy" decoding="async" width="760" height="950">
       </figure>
     </div>
   </div>
 </section>
 
-    <!-- (3) BASTIDORES — faixa contínua (mais alta) -->
+    <!-- (3) BEHIND THE SCENES — continuous strip (taller) -->
     <section id="bastidores" class="section about-culture">
       <div class="container">
-        <h2 class="reveal">Bastidores</h2>
+        <h2 class="reveal">Behind the scenes</h2>
 
-        <!-- FAIXA / WHO-GALLERY -->
-        <section class="who-gallery" aria-label="Bastidores ShaRui — fotos em rolagem contínua">
+        <!-- STRIP / WHO-GALLERY -->
+        <section class="who-gallery" aria-label="ShaRui behind the scenes — continuous scrolling photos">
           <div class="strip">
-            <!-- sequência principal -->
+            <!-- main sequence -->
             <img src="/assets/qs1.jpg?v=2" alt="">
             <img src="/assets/qs2.jpg?v=2" alt="">
             <img src="/assets/qs3.jpg?v=2" alt="">
             <img src="/assets/qs4.jpg?v=2" alt="">
-            <img src="/assets/qs5.jpg?v=3" alt="Foto 5">
-            <img src="/assets/qs6.jpg?v=3" alt="Foto 6">
-            <!-- duplicadas para o loop perfeito -->
+            <img src="/assets/qs5.jpg?v=3" alt="Photo 5">
+            <img src="/assets/qs6.jpg?v=3" alt="Photo 6">
+            <!-- duplicated for a perfect loop -->
             <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true">
             <img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
             <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true">
@@ -389,71 +389,71 @@
           </div>
         </section>
 
-        <!-- Texto sob a faixa -->
+        <!-- Text under the strip -->
         <p class="section-note reveal" style="margin-top:10px">
-          Somos <b>30 colaboradores em Guangzhou</b>. Levamos a sério a <b>presença na fábrica</b> — visitas em até 48h na região de atuação,
-          <b>inspeção por amostragem</b> com fotos e vídeos, checagem de <b>embalagem/etiqueta</b> e alinhamento direto com a produção.
-          Contamos com <b>colaboradores nativos</b> e equipe bilíngue (ZH/EN/PT) integrada a engenharia, qualidade e finanças, o que
-          reduz ruído, dá <b>previsibilidade de prazos</b> e diminui o <b>custo total</b>.
+          We are <b>30 team members in Guangzhou</b>. We take <b>in‑factory presence</b> seriously — visits within 48h in our coverage region,
+          <b>sampling inspection</b> with photos and videos, checks of <b>packaging/labeling</b>, and direct alignment with production.
+          We count on <b>native staff</b> and a bilingual team (ZH/EN/PT) integrated with engineering, quality, and finance, which
+          reduces noise, adds <b>schedule predictability</b>, and lowers <b>total cost</b>.
         </p>
       </div>
     </section>
 
-    <!-- (4) ESTRUTURA -->
+    <!-- (4) STRUCTURE -->
     <section id="escritorios" class="section about-offices">
       <div class="container">
-        <h2 class="reveal">Estrutura</h2>
+        <h2 class="reveal">Structure</h2>
 
         <div class="offices-grid">
           <article class="office-card reveal">
-            <figure><img src="/assets/office-1.jpg" alt="Escritório — Guangzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <figure><img src="/assets/office-1.jpg" alt="Office — Guangzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
             <div class="meta"><h3>Guangzhou, China</h3><p>Yayun Avenue, 893 Building 23 Office 1404 – Jinlongcheng
                                                             Fortune Plaza – Panyu
                                                             Postal code: 51150 – Guangzhou, China</p></div>
           </article>
 
           <article class="office-card reveal">
-            <figure><img src="/assets/office-2.jpg" alt="Escritório — Guangzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <figure><img src="/assets/office-2.jpg" alt="Office — Guangzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
             <div class="meta"><h3>Guangzhou, China</h3><p>Yayun Avenue, 893 Building 25 Office 602 – Jinlongcheng
                                                             Fortune Plaza – Panyu
                                                             Postal code: 51150 – Guangzhou, China</p></div>
           </article>
 
           <article class="office-card reveal">
-            <figure><img src="/assets/office-3.jpg" alt="Ponto de apoio — Brasil" loading="lazy" decoding="async" width="900" height="600"></figure>
-            <div class="meta"><h3>Brasil</h3><p>Av. Chepli Tanus Daher, 609 - Jardim Acapulco
+            <figure><img src="/assets/office-3.jpg" alt="Support hub — Brazil" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta"><h3>Brazil</h3><p>Av. Chepli Tanus Daher, 609 - Jardim Acapulco
                                                 Londrina - PR, 86045-000.</p></div>
           </article>
         </div>
 
-        <!-- Texto sob os cards -->
+        <!-- Text under the cards -->
         <p class="section-note reveal" style="margin-top:10px">
-          Temos pontos de atendimento na <b>Itália</b> e em <b>Dubai</b>, e operamos com <b>dois escritórios na China</b> (Guangzhou)
-          e <b>um no Brasil</b>. Essa <b>estrutura</b> e <b>composição</b> nos dão autonomia e agilidade para acompanhar feiras e fornecedores,
-          responder no <b>fuso</b> do cliente e negociar, mantendo velocidade e controle de ponta a ponta.
+          We have service points in <b>Italy</b> and <b>Dubai</b>, and operate with <b>two offices in China</b> (Guangzhou)
+          and <b>one in Brazil</b>. This <b>structure</b> and <b>makeup</b> give us autonomy and agility to attend fairs and suppliers,
+          respond in the client’s <b>time zone</b>, and negotiate — keeping speed and end‑to‑end control.
         </p>
       </div>
     </section>
 
-    <!-- (5) CTA final -->
+    <!-- (5) Final CTA -->
     <section id="contato" class="section about-cta">
       <div class="container cta-wrap reveal">
-        <h2>Vamos tirar sua ideia do papel?</h2>
-        <p>Conte-nos seu produto e prazo. Em 48h visitamos a fábrica e alinhamos próximos passos.</p>
+        <h2>Shall we bring your idea to life?</h2>
+        <p>Tell us your product and timeline. Within 48h we visit the factory and align next steps.</p>
         <div class="contact-row" style="justify-content:center; margin-top:10px;">
-          <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">Talk on WhatsApp</a>
         </div>
       </div>
     </section>
 
-    <!-- LIGHTBOX nativo -->
+    <!-- Native LIGHTBOX -->
     <dialog id="lightbox">
-      <button class="close" aria-label="Fechar">×</button>
+      <button class="close" aria-label="Close">×</button>
       <img src="" alt="" id="lightbox-img">
     </dialog>
   </main>
 
-  <!-- Rodapé -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-row">
       <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
@@ -467,9 +467,9 @@
     </div>
   </footer>
 
-  <!-- ===== JS local desta página ===== -->
+  <!-- ===== Page-local JS ===== -->
   <script>
-  // Reveal genérico
+  // Generic reveal
   (function(){
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
@@ -479,7 +479,7 @@
     document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
   })();
 
-  // Lightbox (dialog nativo)
+  // Lightbox (native dialog)
   (function(){
     const dlg = document.getElementById('lightbox');
     if(!dlg) return;
@@ -494,7 +494,7 @@
     dlg.addEventListener('click', (e)=> { if(e.target === dlg) dlg.close(); });
   })();
 
-  // Calendly: usa modal global se existir; senão abre link direto
+  // Calendly: use global modal if available; otherwise open link directly
   document.querySelectorAll('[data-open-calendly]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       if(typeof window.openCalendly === 'function'){ window.openCalendly(); }
@@ -502,7 +502,7 @@
     });
   });
 
-  // Ajusta var(--header-h) para compensar o cabeçalho fixo
+  // Adjust var(--header-h) to compensate for fixed header
   (function(){
     const header = document.getElementById('siteHeader');
     if(!header) return;
@@ -513,7 +513,7 @@
     setOffset(); window.addEventListener('resize', setOffset);
   })();
 
-  // Count-up na faixa de métricas (uma vez)
+  // Count-up in the metrics strip (once)
   (function(){
     const band = document.getElementById('stats-band');
     const nums = band.querySelectorAll('.num');
@@ -542,7 +542,7 @@
 </body>
 </html>
 <script>
-/* Sócios: anima entrar/ sair conforme visibilidade */
+/* Partners: animate enter/exit based on visibility */
 (function(){
   const rows = document.querySelectorAll('#socios .partner-row');
   if(!rows.length) return;
@@ -551,7 +551,7 @@
     entries.forEach(e=>{
       const el = e.target;
       if(e.isIntersecting){ el.classList.add('in'); }
-      else{ el.classList.remove('in'); } // sai ao subir
+      else{ el.classList.remove('in'); } // exit on scroll up
     });
   }, { threshold: 0.35 });
 
