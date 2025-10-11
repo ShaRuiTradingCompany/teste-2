@@ -230,7 +230,36 @@
     }
   }
 </style>
+  
+<style id="who-mobile-fix">
+  /* Somente mobile */
+  @media (max-width: 980px){
+    /* Empilha imagem e texto, com respiro */
+    #quem-somos .who-split{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    /* A foto vem antes do texto no mobile */
+    #quem-somos .who-photo{
+      order: -1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    }
+    /* Evita achatamento: altura automática + corte elegante */
+    #quem-somos .who-photo img{
+      display: block;
+      width: 100%;
+      height: auto !important;      /* força altura natural */
+      aspect-ratio: 16 / 10;        /* proporção confortável em telefone */
+      object-fit: cover;            /* preenche sem distorcer */
+    }
+  }
+</style>
 
+  
 </head>
 
 <body>
