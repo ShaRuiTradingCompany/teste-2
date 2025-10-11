@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="es" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ShaRui Trading Company — Oficina en Guangzhou, visitamos fábricas en toda China</title>
-  <meta name="description" content="Visita a fábrica en 48h, inspección por muestreo con fotos y videos y precio estimado antes del pedido. Ficha técnica en PT‑ZH. Sin pedido mínimo.">
+  <title>ShaRui Trading Company — Escritório em Ganzhou, visitamos fábricas em toda a China</title>
+  <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra com fotos e vídeos e preço estimado antes do pedido. Ficha técnica em português e chinês. Sem valor mínimo.">
 
-  <!-- Fuentes -->
+  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS/JS base -->
   <link rel="stylesheet" href="/assets/styles.css">
@@ -17,116 +17,189 @@
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Ocultar ícone de menú móvil en escritorio -->
-  <style id="hide-mobile-menu-desktop">
-  @media (min-width: 980px){
-    #menuFab,.menu-fab,.menu-fab-wrap,.floating-menu,.mobile-menu-button,
-    .nav-toggle,.menu-toggle,.hamburger,.hamb,[data-role="mobile-menu"]{
-      display:none!important; visibility:hidden!important; opacity:0!important; pointer-events:none!important;
-    }
-  }
-  </style>
-
-  <!-- Header transparente con “chips” + marca con aro (igual PT/EN) -->
+  <!-- Estilos complementares (mantidos) -->
   <style>
-    :root{ --font-sans:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; --accent:#66e0c2; }
+    :root{
+      --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --accent: #66e0c2;
+    }
     body{font-family:var(--font-sans)}
 
+    /* Header transparente sobre o vídeo (posição fixa) */
+    .site-header{position:fixed; top:0; left:0; right:0; z-index:1000; background:transparent; border:none;}
+    .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
+
+    .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{
+      color:#fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55); /* melhora contraste no vídeo */
+    }
+    nav .menu{display:flex; gap:16px; align-items:center}
+
+    /* Marca empilhada */
+    .brand-logo{display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;}
+    .brand-logo .brand-top{display:block; font-weight:700; letter-spacing:.6px}
+    .brand-logo .brand-sub{display:block; font-size:12px; opacity:.92; margin-top:-2px; letter-spacing:.8px; padding-left:0}
+
+    /* HERO tela cheia (vídeo) */
+    .hero-video-wrap{position:relative; height:100vh; min-height:100vh; overflow:hidden;}
+    .hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(1.34) contrast(1.08) saturate(1.06);}
+    .hero-overlay{display:none !important;}
+
+    /* Faixa logo abaixo do vídeo */
+    .after-hero{min-height:60vh; display:flex; align-items:center; position:relative; background-image:url('/assets/bg-after-hero.jpg'); background-size:cover; background-position:center;}
+    .after-hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));}
+    .after-hero > .container{position:relative; z-index:1;}
+    .hero-box{max-width:1100px; width:100%; margin:0 auto; background:rgba(0,0,0,.26); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px;}
+    .hero-title{font-size:34px; margin:0 0 8px; text-align:center; color:#fff;}
+    .hero-sub{font-size:18px; opacity:.95; margin:0 0 14px; text-align:center}
+    .hero-ctas{display:none}
+    .kpi-bar{display:grid; grid-template-columns:repeat(3,minmax(260px,1fr)); gap:14px; margin-top:16px}
+    @media(max-width:1200px){ .kpi-bar{grid-template-columns:repeat(2,minmax(260px,1fr))} }
+    @media(max-width:760px){ .kpi-bar{grid-template-columns:1fr} }
+    .kpi{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:18px; text-align:center}
+    .kpi h4{margin:0 0 6px; font-size:18px}
+    .kpi p{margin:0; opacity:.98; line-height:1.45}
+
+    /* Seções com imagem de fundo */
+    .section h2{text-align:center; margin:0 0 6px; letter-spacing:.2px}
+    .section .lead{text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px}
+    .bg-cover{position:relative; background-size:cover; background-position:center; background-attachment:fixed;}
+    .bg-cover::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));}
+    .bg-cover > .container{position:relative; z-index:1;}
+    .bg-quem{background-image:url('/assets/bg-quem.jpg'); min-height:85vh; display:flex; align-items:center;}
+    .bg-diferenciais{background-image:url('/assets/bg-diferenciais.jpg');}
+    .bg-plataforma{background-image:url('/assets/bg-plataforma.jpg');}
+    .bg-ebooks{background-image:url('/assets/bg-ebooks.jpg');}
+
+    /* Grids/cards (+ ebooks) – mantidos */
+    .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+    @media(max-width:1100px){ .grid4{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:720px){ .grid4{grid-template-columns:1fr} }
+    .grid6{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    @media(max-width:1100px){ .grid6{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:720px){ .grid6{grid-template-columns:1fr} }
+    .card-min{background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px}
+    .ebooks-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    @media(max-width:1024px){ .ebooks-grid{grid-template-columns:1fr} }
+    .ebook-tile{display:block; position:relative; min-height:360px; border-radius:14px; overflow:hidden; border:2px solid rgba(255,255,255,.18); background:#0b0e10; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
+    .ebook-tile .ph{position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.9);}
+    .ebook-tile::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.6));}
+    .ebook-tile .label{position:absolute; left:16px; bottom:14px; right:16px; z-index:1; font-weight:700; font-size:19px; color:#fff;}
+    .ebook-tile:hover, .ebook-tile:focus-visible{transform: translateY(-4px) scale(1.015); border-color: rgba(255,255,255,.65); box-shadow:0 10px 26px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.22) inset; outline:none;}
+
+    /* Modal Calendly – mantido */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:2000;}
+    .modal.open{display:flex}
+    .modal-card{background:#0b0e10; border:1px solid rgba(255,255,255,.16); border-radius:12px; width:min(940px,92vw); height:min(80vh,720px); overflow:hidden; display:flex; flex-direction:column;}
+    .modal-head{display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.12)}
+    .modal-body{flex:1; min-height:0}
+    .modal-body iframe{width:100%; height:100%; border:0}
+    .btn-close{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:6px 10px; cursor:pointer}
+  </style>
+
+  <!-- AJUSTE 2: Logo redondo (Home) -->
+  <style id="ajuste-logo-redondo-home">
+    /* Núcleo redondo na seção radial da Home (não altera o raio/órbita) */
+    #diferenciais.diffs-radial .core{
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+    }
+    #diferenciais.diffs-radial .core img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; /* preenche o círculo */
+    }
+  </style>
+
+  <!-- FIX: Header sobre o vídeo (transparente + chips + marca com aro) -->
+  <style id="fix-header-home-video">
+    /* Home: header 100% transparente e sem “vidro/blur” */
     header.site-header.on-video{
-      position:fixed; top:0; left:0; right:0; z-index:1000;
-      background:transparent!important; -webkit-backdrop-filter:none!important; backdrop-filter:none!important;
-      border:0!important; box-shadow:none!important;
+      background: transparent !important;
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      z-index: 1000 !important;
     }
-    .container.nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;}
-    .site-header .brand-logo{
-      display:inline-flex;flex-direction:column;align-items:flex-start;padding:8px 12px;border:1px solid rgba(255,255,255,.9);
-      border-radius:999px;color:#fff;text-decoration:none;text-shadow:0 2px 10px rgba(0,0,0,.55);
+
+    /* Texto nítido */
+    header.site-header.on-video .brand a,
+    header.site-header.on-video nav .menu a,
+    header.site-header.on-video .lang .lang-toggle{
+      color: #fff !important;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55) !important;
+      opacity: 1 !important;
+      filter: none !important;
     }
-    .brand-logo .brand-top{font-weight:800;letter-spacing:.6px}
-    .brand-logo .brand-sub{font-size:12px;opacity:.92;margin-top:-2px;letter-spacing:.8px}
-    nav .menu{display:flex;gap:14px;align-items:center}
-    nav .menu a{
-      display:inline-flex;align-items:center;padding:8px 12px;border:1px solid rgba(255,255,255,.9);
-      border-radius:999px;color:#fff!important;text-decoration:none;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,.55);
-      background:transparent!important; box-shadow:none!important;
+
+    /* CHIPS (aros brancos) nos links do menu */
+    header.site-header.on-video nav .menu a{
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px !important;
+      border: 1px solid rgba(255,255,255,.9) !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      text-decoration: none;
+      font-weight: 800;
     }
-    nav .menu a:hover, nav .menu a:focus-visible{background:rgba(255,255,255,.12)!important;text-decoration:none!important}
-    .lang .lang-toggle{
-      color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.9); border-radius:999px; background:transparent; padding:8px 10px;
+    header.site-header.on-video nav .menu a:hover,
+    header.site-header.on-video nav .menu a:focus-visible{
+      background: rgba(255,255,255,.12) !important;
+      text-decoration: none !important;
+    }
+
+    /* Botão de idioma (globo) com aro */
+    header.site-header.on-video .lang .lang-toggle{
+      border: 1px solid rgba(255,255,255,.9) !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+    }
+
+    /* ARO também na MARCA (nome da empresa) */
+    header.site-header.on-video .brand .brand-logo{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 8px 12px !important;
+      border: 1px solid rgba(255,255,255,.9) !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      text-decoration: none;
     }
   </style>
 
-  <!-- Hero: vídeo pantalla completa -->
-  <style>
-    .hero-video-wrap{position:relative;height:100vh;min-height:100vh;overflow:hidden}
-    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(1.34) contrast(1.08) saturate(1.06)}
-    .brand-band,.brand-ticker{background:transparent}
-    .brand-band .marquee{white-space:nowrap;overflow:hidden}
-    .brand-band .marquee span{display:inline-block;padding:8px 0;animation:marq 18s linear infinite;opacity:.9;letter-spacing:.2em}
-    @keyframes marq{to{transform:translateX(-50%)}}
-  </style>
+  <!-- Unificar tipografia: tudo com Montserrat -->
+<style>
+  :root{
+    --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  /* Base */
+  html, body, button, input, select, textarea { font-family: var(--font-sans) !important; }
 
-  <!-- “Logo redondo” do radial de Diferenciales -->
-  <style>
-    #diferenciales.diffs-radial .core{border-radius:50%;overflow:hidden;background:#fff}
-    #diferenciales.diffs-radial .core img{width:100%;height:100%;object-fit:cover;display:block}
-  </style>
+  /* Títulos, marca e elementos que antes usavam Inter/Space Grotesk */
+  h1,h2,h3,h4,h5,h6,
+  .brand a, .brand-top, .brand-sub,
+  .pill-head, .dif-title, .dif-sub,
+  #plataforma h2, #plataforma .lead,
+  .card h3 {
+    font-family: var(--font-sans) !important;
+  }
+</style>
 
-  <!-- Plataforma: fotos retas + leve sobreposição + cartões fixos -->
-  <style>
-    section.platform .container{position:relative}
-    .plat-block{position:relative;max-width:1240px;margin:0 auto}
-    .shot{
-      position:relative; width:min(820px,92%); aspect-ratio:16/9;
-      background:#0b0e10 center/cover no-repeat; border-radius:16px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
-    .shot.top{ background-image:var(--ph1); margin: 0 0 -110px 0; }          /* fica por cima */
-    .shot.bottom{ background-image:var(--ph2); margin: 0 0 0 min(260px,18vw); transform: translate(28px,34px); }
-
-    .platform .card{
-      position:absolute; background:rgba(3,10,18,.86); border:1px solid rgba(255,255,255,.16);
-      color:#fff; border-radius:16px; padding:16px 18px; width:min(560px,88%); box-shadow:0 10px 28px rgba(0,0,0,.25)
-    }
-    .platform .card h3{margin:0 0 6px}
-    .platform .card.c1{ top: 42px; right: min(32px,3vw); }
-    .platform .card.c2{ bottom: -12px; left:  min(32px,3vw); }
-    @media (max-width: 980px){
-      .shot.top{ margin:0 0 10px 0 }
-      .shot.bottom{ margin:0; transform:none }
-      .platform .card{position:relative;width:100%;margin:10px 0}
-    }
-  </style>
-
-  <!-- Seções padrão -->
-  <style>
-    .section{padding: clamp(18px,5vw,34px) 0}
-    .section h2{text-align:center;margin:0 0 6px;color:#fff}
-    .section .lead{text-align:center;opacity:.9;margin:0 auto 12px;max-width:900px;color:#eaf1ff}
-    .who-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
-    .who-photo{border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14)}
-    .who-photo img{width:100%;height:auto;display:block}
-    .who-copy p{color:#eaf1ff;margin:.4rem 0;line-height:1.7}
-    @media (max-width:980px){ .who-split{grid-template-columns:1fr} }
-    .who-gallery{position:relative;overflow:hidden;height: clamp(180px, 28vh, 320px);
-      -webkit-mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent);
-              mask-image:linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent);
-      border:1px solid rgba(255,255,255,.12); border-radius:12px; background:rgba(0,0,0,.10)}
-    .who-gallery .strip{position:absolute;inset:0 auto 0 0;display:inline-flex;gap:12px;align-items:center;padding:8px 12px;
-      will-change:transform;width:max-content;animation:stripMove 25s linear infinite}
-    .who-gallery img{height:100%;width:auto;object-fit:cover;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,.25);
-      border:1px solid rgba(255,255,255,.15)}
-    @keyframes stripMove{to{transform:translateX(-50%)}}
-  </style>
 </head>
 
 <body>
-  <!-- HEADER -->
+  <!-- HEADER transparente -->
   <header class="site-header on-video" id="siteHeader">
     <div class="container nav-wrap">
       <div class="brand">
-        <a href="/es/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+        <a href="index.html" class="brand-logo" aria-label="ShaRui Trading Company">
           <span class="brand-top">SHA RUI</span>
           <span class="brand-sub">TRADING COMPANY</span>
         </a>
@@ -134,197 +207,339 @@
 
       <nav>
         <div class="menu">
-  <a href="/es/quienes-somos.html">Quiénes somos</a>
-  <a href="/es/ventajas.html" aria-current="page">Ventajas</a>
-  <a href="/es/plataforma.html">Plataforma</a>
-  <a href="/es/contacto.html">Contacto</a>
+      <a href="about-us.html" aria-current="page">About us</a>
+      <a href="advantages.html">Advantages</a>
+      <a href="platform.html">Platform</a>
+      <a href="contact.html">Contact</a>
         </div>
       </nav>
 
       <div class="lang" id="lang">
-        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Seleccionar idioma">🌐</button>
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
         <ul class="lang-menu" id="langMenu">
-          <li><a href="/es/index.html">Português (PT)</a></li>
-          <li><a href="/es/index.html">English (EN)</a></li>
-          <li><a href="/es/index.html" aria-current="page">Español (ES)</a></li>
-          <li><a href="/es/index.html" dir="rtl">العربية (AR)</a></li>
+          <li>
+            <a href="/en/index.html">English (EN)</a>
+          <a href="/pt/index.html">Português (PT)</a>
+          <a href="/es/index.html">Español (ES)</a>
+          </li>
         </ul>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO: video -->
-    <section class="hero-video-wrap" aria-label="Video de fondo">
+    <!-- HERO com vídeo tela inteira -->
+    <section class="hero-video-wrap">
+      <!-- TRANSIÇÃO: faixa com ticker -->
       <section class="brand-ticker" aria-hidden="true">
         <div class="ticker">
           <ul class="ticker-track">
             <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
             <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
           </ul>
+          <!-- clone para rolagem contínua -->
           <ul class="ticker-track" aria-hidden="true">
+            <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
             <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
             <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
           </ul>
         </div>
       </section>
 
-      <video class="hero-video" autoplay muted playsinline preload="metadata"
-             poster="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4">
-        <source src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4" type="video/mp4">
-        Tu navegador no soporta video HTML5.
+      <video class="hero-video" autoplay muted playsinline preload="metadata" poster="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4">
+        <!-- versão mobile 720p -->
+        <source
+          src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4"
+          type="video/mp4"
+          media="(max-width: 768px)">
+
+        <!-- versão desktop 1080p -->
+        <source
+          src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4"
+          type="video/mp4">
+
+        <!-- fallback simples -->
+        Seu navegador não suporta vídeo HTML5.
       </video>
     </section>
 
-    <section class="brand-band" aria-hidden="true">
+    <!-- FAIXA / MARQUEE: após o vídeo -->
+    <section class="brand-band light" aria-hidden="true">
       <div class="marquee">
-        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
       </div>
     </section>
 
-    <!-- QUIÉNES SOMOS -->
-    <section id="quienes" class="section">
+    <!-- (1) QUEM SOMOS -->
+    <section id="quem-somos" class="section clean">
       <div class="container who-split">
-        <figure class="who-photo"><img src="/assets/socio.jpg" alt="Socio de ShaRui"></figure>
+        <!-- Foto à esquerda -->
+        <figure class="who-photo">
+          <img src="/assets/socio.jpg" alt="Sócio da ShaRui">
+        </figure>
+
+        <!-- Texto à direita -->
         <div class="who-copy">
-          <h2>Quiénes somos</h2>
-          <p><b>Somos una empresa con más de 30 años</b> en comercio internacional. Con base en <b>Guangzhou</b>, participamos en la <b>Feria de Cantón</b> y visitamos fábricas en toda China.</p>
-          <p>Conectamos a tu empresa con proveedores confiables, integrando <b>ingeniería</b>, <b>calidad</b> y <b>finanzas</b> para reducir <b>riesgo</b> y <b>costo total</b> — con presencia dentro de la fábrica.</p>
+          <h2>Sobre nosotros</h2>
+            <p><b>Somos una empresa con más de 30 años de experiencia en comercio internacional. Nuestra sede se encuentra en <b>Cantón</b>, participamos en la <b>Feria de Cantón</b> y visitamos fábricas en toda China.
+<p>Conectamos a su empresa con proveedores de confianza, integrando ingeniería, calidad y finanzas para reducir el riesgo y el costo total, con presencia en fábrica..</p>
         </div>
       </div>
     </section>
 
-    <!-- Galería continua -->
-    <section class="who-gallery" aria-label="Bastidores">
+    <!-- Galeria contínua (abaixo do “Quem somos”) -->
+    <section class="who-gallery">
       <div class="strip">
-        <img src="/assets/qs1.jpg?v=2" alt=""><img src="/assets/qs2.jpg?v=2" alt="">
-        <img src="/assets/qs3.jpg?v=2" alt=""><img src="/assets/qs4.jpg?v=2" alt="">
-        <img src="/assets/qs5.jpg?v=3" alt="Foto 5"><img src="/assets/qs6.jpg?v=3" alt="Foto 6">
-        <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
-        <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
-        <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
+        <!-- sequência principal -->
+        <img src="/assets/qs1.jpg?v=2" alt="">
+        <img src="/assets/qs2.jpg?v=2" alt="">
+        <img src="/assets/qs3.jpg?v=2" alt="">
+        <img src="/assets/qs4.jpg?v=2" alt="">
+        <img src="/assets/qs5.jpg?v=3" alt="Foto 5">
+        <img src="/assets/qs6.jpg?v=3" alt="Foto 6">
+
+        <!-- duplicadas na MESMA ordem para o loop -->
+        <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
       </div>
     </section>
 
+    <!-- FAIXA / MARQUEE: antes da Plataforma -->
     <section class="brand-band" aria-hidden="true">
-      <div class="marquee"><span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span></div>
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
     </section>
 
-    <!-- DIFERENCIALES (radial) -->
-    <section id="diferenciales" class="section diffs-radial">
+    <!-- DIFERENCIAIS – radar com logo central e nós sequenciais -->
+    <section id="diferenciais" class="section diffs-radial">
       <div class="container">
-        <h2>Diferenciales</h2>
-        <p class="lead">Más previsibilidad y control.</p>
+        <h2 class="dif-title">Nuestras diferencias</h2>
+        <p class="dif-sub">MÁS PREVISIBILIDAD Y CONTROL</p>
 
         <div class="radial-stage">
-          <div class="core" aria-hidden="true"><img src="/assets/logo-sharui.jpg" alt="ShaRui"></div>
+          <!-- Núcleo (logo) -->
+          <div class="core" aria-hidden="true">
+            <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company">
+          </div>
 
-          <div class="node right" style="--a:-18deg"><span class="dot"></span><div class="bubble"><b>Inspección con fotos y videos</b><small>Muestreo, pruebas y aprobación/reprobación — sin sorpresas en la entrega.</small></div></div>
-          <div class="node right" style="--a:22deg"><span class="dot"></span><div class="bubble"><b>Ficha técnica PT‑ZH</b><small>Foto/dibujo, materiales, medidas, tolerancias, empaque y etiqueta — acordado y firmado.</small></div></div>
-          <div class="node right" style="--a:73deg"><span class="dot"></span><div class="bubble"><b>Proveedor correcto, lugar correcto</b><small>Con base en Guangzhou y visitas a cualquier fábrica en China.</small></div></div>
-          <div class="node left"  style="--a:110deg"><span class="dot"></span><div class="bubble"><b>Visita a fábrica en hasta 48h</b><small>Con registro visual y reporte técnico.</small></div></div>
-          <div class="node left"  style="--a:162deg"><span class="dot"></span><div class="bubble"><b>Menos riesgo y costo total</b><small>Ingeniería + calidad + finanzas integradas, presencia en planta.</small></div></div>
-          <div class="node left"  style="--a:-160deg"><span class="dot"></span><div class="bubble"><b>Negociación con nativos</b><small>Equipo local chino negocia directamente con la fábrica.</small></div></div>
-          <div class="node left"  style="--a:-110deg"><span class="dot"></span><div class="bubble"><b>Sin pedido mínimo</b><small>Empieza con muestras/pilotos; comparte contenedor cuando convenga.</small></div></div>
-          <div class="node right" style="--a:-80deg"><span class="dot"></span><div class="bubble"><b>Precio en Brasil</b><small>Estimación transparente de impuestos y gastos antes del pedido.</small></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="brand-band" aria-hidden="true">
-      <div class="marquee"><span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span></div>
-    </section>
-
-    <!-- PLATAFORMA DEL CLIENTE -->
-    <section id="plataforma" class="section platform">
-      <div class="container plat-block">
-        <h2>Plataforma del Cliente</h2>
-        <p class="lead">Sigue todo en un solo lugar</p>
-
-        <figure class="shot top"    style="--ph1:url('/assets/plat-diag-1.jpg?v=2')" aria-label="Cartera & documentos"></figure>
-        <figure class="shot bottom" style="--ph2:url('/assets/plat-diag-2.jpg?v=2')" aria-label="Rastreo de la carga"></figure>
-
-        <div class="card c1">
-          <h3>Cartera & documentos</h3>
-          <p>Sigue tus <b>transacciones</b>, <b>documentos</b> y el
-          <b>historial completo de pedidos</b> en una sola cartera — con
-          versiones, comentarios y confirmaciones.</p>
-        </div>
-
-        <div class="card c2">
-          <h3>Rastreo de la carga</h3>
-          <p>Consulta por etapa el estado de tu carga, <b>check‑points</b> previstos/realizados
-          y <b>mapa en tiempo real</b> cuando esté disponible (marítimo, aéreo y carretero).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Faixa antes da IA -->
-    <section class="brand-band" aria-hidden="true">
-      <div class="marquee">
-        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
-      </div>
-    </section>
-
-    <!-- IA -->
-    <section id="ia" class="section ai-chat">
-      <div class="container">
-        <h2 class="ai-title">Somos la primera trading de Brasil con gestión integrada por IA</h2>
-
-        <div class="chat-card" aria-live="polite">
-          <header class="chat-head">
-            <strong class="chat-brand">Sharui Trading &amp; Co.</strong>
-            <span class="dot" aria-hidden="true"></span><span class="status" id="aiStatus">online</span>
-          </header>
-
-          <div class="chat-messages" id="aiChatLog">
-            <div class="msg bot">
-              <div class="bubble">¡Hola! Puedo ayudar con <b>Incoterms</b>, <b>estimación de impuestos</b>, diferencia entre <b>LCL/FCL</b>, <b>ficha técnica PT‑ZH</b> y más. ¿En qué te ayudo?</div>
+          <!-- Nós (cada um tem um ângulo --a e o lado para encaixe do balão) -->
+          <!-- Ângulos em graus: 0° aponta para a direita; positivos no sentido horário -->
+          <div class="node right" style="--a:-18deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Inspección con fotos y videos</b>
+              <small>Muestreo, pruebas y aprobación/reprobación: sin sorpresas en el momento de la entrega.</small>
             </div>
           </div>
 
-          <form class="chat-input" id="aiChatForm" autocomplete="off">
-            <textarea id="aiPrompt" rows="1" placeholder="Haz tu consulta sobre importación"></textarea>
-            <button class="send" type="submit" aria-label="Enviar">➤</button>
-          </form>
+          <div class="node right" style="--a:22deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b> Ficha técnica bilingüe</b>
+              <small> Fotografía/dibujo, materiales, medidas, tolerancias, embalaje y etiqueta: todo acordado y firmado.</small>
+            </div>
+          </div>
 
-          <p class="disclaimer">Respuestas generadas por IA con fines informativos. Confirma decisiones con nuestro equipo.</p>
+          <div class="node right" style="--a:73deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Proveedor adecuado, lugar adecuado</b>
+              <small> Estamos en Ganzhou y visitamos cualquier fábrica en China.</small>
+            </div>
+          </div>
+
+          <div class="node left" style="--a:110deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Visita a la fábrica en un plazo de 48 horas </b>
+              <small>Con registro visual (fotos y videos) e informe.</small>
+            </div>
+          </div>
+
+          <div class="node left" style="--a:162deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Menos riesgo y costo totalt</b>
+              <small>Integración de ingeniería + calidad + finanzas: presencia dentro de la fábrica.</small>
+            </div>
+          </div>
+
+          <div class="node left" style="--a:-160deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Negociando con los nativos</b>
+              <small>El equipo chino local negocia directamente con la fábrica para obtener mejores condiciones.</small>
+            </div>
+          </div>
+
+          <div class="node left" style="--a:-110deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Sin valor mínimo</b>
+              <small>Comience con muestras/pilotos; cuando tenga sentido, comparta contenedores.</small>
+            </div>
+          </div>
+
+          <div class="node right" style="--a:-80deg">
+            <span class="dot"></span>
+            <div class="bubble">
+              <b>Estimación de precio</b>
+              <small>Estimación transparente de impuestos y gastos antes de realizar el pedido.</small>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAIXA / MARQUEE: de Nossos Diferenciais para a Plataforma -->
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
+
+<!-- ===== PLATAFORMA DO CLIENTE (layout simples: texto + foto ao lado) ===== -->
+<section id="plataforma" class="section platform-simple">
+  <div class="container ps-grid">
+    <div class="ps-copy">
+      <h2>Plataforma del cliente</h2>
+      <p class="lead">Realice un seguimiento de todo en un solo lugar: cronograma, documentos, puntos de control y costos estimados antes de realizar el pedido.</p>
+      <div class="ps-points">
+        <article class="ps-item">
+          <h3>Portafolio y documentos</h3>
+          <p>Tus <b>transacciones</b>, <b>documentos</b> e <b>historial de pedidos</b> en una sola billetera, con versiones, comentarios y confirmaciones.</p>
+        </article>
+        <article class="ps-item">
+          <h3>Seguimiento de carga</h3>
+          <p>Estado por etapa, puntos de control planificados/completados y mapa cuando esté disponible (marítimo, aéreo y carretera).</p>
+        </article>
+      </div>
+    </div><!-- /ps-copy -->
+
+    <figure class="ps-photo">
+      <img src="/assets/plat-diag-1.jpg?v=2" alt="Prévia da Plataforma do Cliente">
+    </figure>
+  </div>
+</section>
+
+
+<!-- ===== FAIXA ANIMADA entre Plataforma e IA ===== -->
+<section id="band-plat-ia" aria-hidden="true">
+  <div class="track">
+    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+  </div>
+</section>
+
+<style>
+  /* estilos isolados só para esta faixa */
+  #band-plat-ia{
+    overflow:hidden;
+    padding: 10px 0;
+    background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+    border-block: 1px solid rgba(255,255,255,.12);
+  }
+  #band-plat-ia .track{
+    white-space: nowrap;
+    animation: srband 28s linear infinite;
+  }
+  #band-plat-ia .track span{
+    display:inline-block;
+    padding-left: 100%;
+    font-weight: 800;
+    letter-spacing: .08em;
+    color: #eaf1ff;
+  }
+  @keyframes srband{ to{ transform: translateX(-100%); } }
+</style>
+
     <section id="faq" class="section faq">
       <div class="container">
-        <h2>Preguntas frecuentes</h2>
-        <p class="lead">Del primer pedido al seguimiento en Brasil.</p>
+        <h2 style="text-align:center;margin-bottom:6px">Preguntas frecuentes</h2>
+        <p class="lead" style="text-align:center;margin-bottom:16px">Desde el primer pedido hasta el seguimiento.</p>
 
         <div class="faq-list">
           <details>
             <summary>¿Cómo funciona el contenedor compartido (LCL) con ShaRui?</summary>
-            <div>Trabajamos con <b>LCL (Less than Container Load)</b> para quien no tiene volumen para un contenedor completo.
-              Puedes comenzar con <b>muestras</b> y <b>pilotos</b>; cuando convenga, compartimos contenedor para <b>optimizar flete</b>.
-              En la plataforma ves etapas y costo estimado por m³/tonelada, además de plazos.</div>
+            <div>
+Trabajamos con carga fraccionada (LCL) para quienes no tienen capacidad para un contenedor completo.
+Puede comenzar con muestras y pilotos; cuando sea conveniente, compartiremos el contenedor para optimizar los costos de envío. En la plataforma, puede seguir los pasos y el costo estimado por m³/tonelada, así como los plazos.
+            </div>
           </details>
 
           <details>
-            <summary>¿Existe pedido mínimo?</summary>
-            <div><b>No.</b> Puedes iniciar con muestras y pilotos. Decidimos consolidar y compartir contenedor caso por caso para equilibrar <b>flete</b>, <b>riesgo</b> y <b>plazo</b>.</div>
+            <summary>¿Hay un pedido mínimo?</summary>
+            <div>
+              <b>No. Puede comenzar con muestras y pilotos. La decisión de consolidar cargas y compartir contenedores se toma caso por caso para equilibrar el flete, el riesgo y el plazo.</b>
+            </div>
           </details>
 
           <details>
-            <summary>¿Cuáles son las etapas del proceso hasta la entrega en Brasil?</summary>
-            <div>1) Definición del producto + <b>Ficha técnica PT‑ZH</b> → 2) Cotización/negociación con fábrica → 3) <b>Muestras</b> (si aplica) → 4) Pedido + <b>inspección</b> (fotos y videos) → 5) Embarque (LCL/FCL) → 6) <b>Despacho</b> (con estimación previa de tributos/gastos) → 7) Entrega. Todo queda trazado en la <b>Plataforma</b>.</div>
+            <summary>¿Cuáles son los pasos del proceso, desde el pedido hasta la entrega?</summary>
+            <div>
+1) Definición del producto + ficha técnica ES/ZH →
+2) Cotización/negociación con fábrica →
+3) Muestras (si corresponde) →
+4) Pedido + inspección (fotos y vídeos) →
+5) Envío (LCL/FCL) →
+6) Despacho de aduanas (con estimación previa de impuestos/gastos) →
+7) Entrega.
+Todo el proceso se rastrea en la plataforma (cronograma, documentos, alertas y costes).
+            </div>
           </details>
 
           <details>
-            <summary>¿Qué es la Ficha técnica PT‑ZH?</summary>
-            <div>Documento bilingüe con: <b>foto/dibujo, materiales, medidas, tolerancias, empaque y etiqueta</b>. Sirve como <b>contrato técnico</b> con la fábrica — reduce ruido de traducción, estabiliza costo y facilita la inspección.</div>
+              <summary>¿Qué es una ficha técnica bilingüe y por qué es importante?</summary>
+            <div>
+             Documento bilingüe con: <b>foto/dibujo, materiales, medidas, tolerancias, embalaje y etiqueta</b>.
+Sirve como <b>contrato técnico</b> con la fábrica: reduce el ruido de traducción, estabiliza los costos y facilita la inspección.
+            </div>
           </details>
 
           <details>
-            <summary>¿Anticipan impuestos y gastos (precio en Brasil)?</summary>
-            <div>Sí. Antes del pedido recibes una <b>estimación transparente</b> de II, IPI, PIS/COFINS‑Import., ICMS, AFRMM, tasas portuarias/almacén, despacho, etc. Es <b>estimación</b> (cambio/tablas varían), pero ayuda a decidir con seguridad.</div>
+            <summary>¿Cómo se realiza la inspección? ¿Qué ocurre si no se aprueba?</summary>
+            <div>
+             Realizamos una inspección de muestra con fotos y videos. Si el producto falla, coordinamos la reparación o el reprocesamiento con la fábrica. El objetivo es evitar sorpresas a la llegada. Todo queda registrado en la plataforma.
+            </div>
+          </details>
+
+          <details>
+            <summary>¿Cuánto pagaré? ¿Me adelantan impuestos y gastos?</summary>
+            <div>
+             Sí. Antes de realizar su pedido, recibirá un presupuesto transparente de: II, IPI, PIS/COFINS-Importación, ICMS, AFRMM, estiba, almacenamiento, envío, etc. Es una estimación, ya que los tipos de cambio y las tablas varían, pero le ayudará a tomar una decisión con seguridad.
+            </div>
+          </details>
+
+          <details>
+            <summary>¿Con qué Incoterms trabajan? ¿Qué recomiendan?</summary>
+            <div>
+                Trabajamos con EXW, FOB, CIF y DDP (en algunos casos). En general, FOB ofrece un buen control sobre el envío y el seguro; EXW puede ser una opción conveniente para proveedores sin experiencia en logística. Evaluamos cada opción caso por caso.
+          </details>
+
+          <details>
+            <summary>¿Cuáles son los plazos típicos (producción, tránsito y despacho)?</summary>
+            <div>
+              Varía según la categoría, pero a modo de guía: producción <b>15–45 días</b>, tránsito marítimo <b>30–45+ días</b>, despacho de aduana <b>3–10 días hábiles</b>. Disponemos de <b>48 horas</b> para visitar la fábrica en la región de operación y recibir alertas en la plataforma.
+            </div>
+          </details>
+
+          <details>
+            <summary>¿Cómo se gestionan las certificaciones y estándares?</summary>
+            <div>
+              Validamos los requisitos regulatorios desde la etapa de especificación. Si el producto requiere certificación o registro, coordinamos el alcance y los requisitos de laboratorio antes de realizar el pedido, incluyendo las pruebas, el muestreo y la documentación en el programa.
+            </div>
+          </details>
+
+          <details>
+            <summary>¿Qué puedo rastrear en la Plataforma del Cliente?</summary>
+            <div>
+              <b>Cronología por paso, puntos de control de carga, documentos (factura, conocimiento de embarque, conocimiento de embarque/AWB, informes), costos estimados con memoria de cálculo, alertas y plazos, y acceso por perfil/área con registro de auditoría.
+            </div>
           </details>
         </div>
       </div>
@@ -333,16 +548,22 @@
     <!-- Modal Calendly -->
     <div id="calendly-modal" class="modal" onclick="closeCalendly()">
       <div class="modal-card" onclick="event.stopPropagation()">
-        <div class="modal-head"><strong>Agendar conversación</strong><button class="btn-close" onclick="closeCalendly()">Cerrar</button></div>
+        <div class="modal-head">
+          <strong>Agendar conversa</strong>
+          <button class="btn-close" onclick="closeCalendly()">Fechar</button>
+        </div>
         <div class="modal-body"><iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe></div>
       </div>
     </div>
-  </main>
 
-  <!-- WhatsApp flotante (link dinâmico) -->
-  <a id="whatsFloat" class="whats-float" href="#" target="_blank" rel="noopener" aria-label="Abrir WhatsApp"></a>
+  <!-- WhatsApp flutuante -->
+<a id="whatsFloat"
+   class="whats-float"
+   href="#"
+   target="_blank" rel="noopener"
+   aria-label="Abrir conversa no WhatsApp">
+</a>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-row">
       <div>
@@ -353,62 +574,521 @@
           Postal code: 51150 – Guangzhou, China.
         </address>
       </div>
-      <nav class="foot-social" aria-label="Redes">
+
+      <nav class="foot-social" aria-label="Redes sociais">
         <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
         <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
         <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
-        <a id="whatsFooter" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa" title="WhatsApp"></a>
+        <a id="whatsFooter"
+   href="#"
+   target="_blank" rel="noopener"
+   aria-label="WhatsApp"
+   class="ic wa" title="WhatsApp"></a>
       </nav>
     </div>
   </footer>
 
-  <!-- Chat + scripts pequenos -->
-  <script defer src="/assets/chat.js"></script>
-
+  <!-- Scripts de revelação/digitação (mantidos) -->
   <script>
-  (function(){ const h=document.getElementById('siteHeader'); if(!h) return;
-    const set=()=>document.documentElement.style.setProperty('--header-h',(h.offsetHeight||72)+'px');
-    set(); addEventListener('resize',set); })();
-  </script>
-
-  <!-- WhatsApp builder -->
-  <script>
+  /* Observa quando os elementos entram na tela */
   (function(){
-    const WHATS_NUMBER='5511993381008';
-    const defaultText='Hola ShaRui, vengo del sitio y me gustaría hablar.';
-    const url='https://api.whatsapp.com/send?phone='+WHATS_NUMBER+'&text='+encodeURIComponent(defaultText);
-    ['whatsFloat','whatsFooter'].forEach(id=>{const a=document.getElementById(id); if(a) a.href=url;});
-  })();
-  </script>
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const el = e.target;
+        if(el.classList.contains('reveal')) el.classList.add('visible');
+        if(el.classList.contains('type-target') && !el.classList.contains('done')){
+          typeLine(el, el.dataset.text || el.textContent || '', 18);
+        }
+        io.unobserve(el);
+      });
+    }, { threshold: 0.3 });
 
-  <!-- IA simple (fallback si no hay backend /api/ia) -->
-  <script>
-  (function(){
-    const log=document.getElementById('aiChatLog');
-    const form=document.getElementById('aiChatForm');
-    const ta=document.getElementById('aiPrompt');
-    const stat=document.getElementById('aiStatus');
-    if(!log||!form||!ta) return;
+    document.querySelectorAll('.reveal, .type-target').forEach(el=> io.observe(el));
 
-    function render(role,html){
-      const r=document.createElement('div'); r.className='msg '+(role==='user'?'user':'bot');
-      const b=document.createElement('div'); b.className='bubble'; b.innerHTML=html; r.appendChild(b); log.appendChild(r); log.scrollTop=log.scrollHeight;
+    function typeLine(el, text, speed){
+      el.textContent = '';
+      let i = 0;
+      (function tick(){
+        el.textContent += text.charAt(i++);
+        if(i <= text.length){ setTimeout(tick, speed); }
+        else{ el.classList.add('done'); }
+      })();
     }
-    ta.addEventListener('input',()=>{ ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,160)+'px';});
-    form.addEventListener('submit',async (e)=>{ e.preventDefault(); const q=(ta.value||'').trim(); if(!q) return; render('user',q); ta.value=''; ta.dispatchEvent(new Event('input'));
-      const typing=document.createElement('div'); typing.className='msg bot typing'; typing.innerHTML='<div class="bubble"><span class="dot-anim"></span><span class="dot-anim"></span><span class="dot-anim"></span></div>'; log.appendChild(typing); log.scrollTop=log.scrollHeight;
-      try{
-        stat.textContent='pensando…';
-        const r=await fetch('/api/ia',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:q}]})});
-        stat.textContent='online';
-        if(!r.ok) throw 0; const j=await r.json(); const t=(j.reply||j.output||j.message||'').toString().trim(); if(!t) throw 0;
-        typing.remove(); render('assistant',t);
-      }catch(e){
-        typing.remove();
-        render('assistant','Resumen rápido de Incoterms:<br>• EXW: el comprador retira en fábrica.<br>• FOB: el vendedor entrega a bordo; comprador asume flete/seguro.<br>• CIF: vendedor paga flete y seguro hasta destino.<br>• DDP: entrega en destino con despacho (casos puntuales).<br><br>También puedo estimar <b>precio en Brasil</b> y hablar de <b>LCL/FCL</b>.');
-      }
-    });
   })();
   </script>
+
+  <script>
+    // Dispara animação quando "Quem somos" entra na tela
+    (function () {
+      const section = document.getElementById('quem-somos');
+      if (!section) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const img = section.querySelector('.about-photo.reveal-start');
+            if (img) img.classList.add('reveal-in');
+            section.querySelectorAll('.type-live').forEach((el, idx) => {
+              typeParagraph(el, idx * 300);
+            });
+            io.unobserve(section);
+          }
+        });
+      }, { threshold: 0.45 });
+
+      io.observe(section);
+
+      function typeParagraph(el, delay = 0) {
+        const full = el.textContent.trim();
+        el.textContent = '';
+        let i = 0;
+        setTimeout(function step() {
+          el.textContent += full.charAt(i);
+          i++;
+          if (i <= full.length) {
+            const ch = full.charAt(i - 1);
+            const base = 16;
+            const extra = ch === '.' ? 140 : ch === ',' ? 80 : 0;
+            setTimeout(step, base + extra);
+          }
+        }, delay);
+      }
+    })();
+  </script>
+
+  <script>
+    // Revelação suave ao entrar na tela
+    const ioReveal = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          ioReveal.unobserve(e.target);
+        }
+      });
+    }, {threshold: .2});
+
+    document.querySelectorAll('#quem-somos .reveal').forEach(el => ioReveal.observe(el));
+
+    // Digitação por parágrafo
+    function typeText(el, speed=18){
+      const text = el.dataset.text || el.textContent;
+      el.textContent = '';
+      let i = 0;
+      (function tick(){
+        el.textContent = text.slice(0, i++);
+        if(i <= text.length){ setTimeout(tick, speed); }
+      })();
+    }
+
+    const ioType = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const p = e.target;
+          const extra = p.classList.contains('delay') ? 400 : 120;
+          setTimeout(()=> typeText(p), extra);
+          ioType.unobserve(p);
+        }
+      });
+    }, {threshold: .25});
+
+    document.querySelectorAll('#quem-somos .typewrite').forEach(el => ioType.observe(el));
+  </script>
+
+  <script>
+  /* Ativa o slide-in quando a seção entrar na viewport */
+  (function(){
+    const section = document.getElementById('quem-somos');
+    if(!section) return;
+
+    const items = section.querySelectorAll('.slide-in-right');
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((e)=>{
+        if(!e.isIntersecting) return;
+        const el = e.target;
+        /* respeita o pequeno atraso definido no data-delay */
+        const d = el.getAttribute('data-delay') || '0s';
+        el.style.transitionDelay = d;
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { threshold: 0.25 });
+
+    items.forEach(el => io.observe(el));
+  })();
+  </script>
+
+  <script>
+    (function(){
+      const sec = document.querySelector('#diferenciais.diffs-radial');
+      if(!sec) return;
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            sec.classList.add('play');
+            io.unobserve(sec);
+          }
+        });
+      }, {threshold:.35});
+      io.observe(sec);
+    })();
+  </script>
+
+  <script>
+  /* Animação sequencial: da direita (0°) para a esquerda */
+  (function(){
+    const section = document.querySelector('#diferenciais.diffs-radial');
+    if(!section) return;
+
+    const nodes = Array.from(section.querySelectorAll('.node'))
+      .sort((a,b)=> (a.dataset.step|0) - (b.dataset.step|0));
+
+    // dispara quando a seção entra na tela
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        let i = 0;
+        const tick = ()=> {
+          nodes[i]?.classList.add('on');
+          i++;
+          if(i < nodes.length) setTimeout(tick, 420);
+        };
+        tick();
+        io.unobserve(section);
+      });
+    }, {threshold:.35});
+
+    io.observe(section);
+  })();
+  </script>
+
+  <!-- MODAL: captação para envio de e‑books -->
+  <div id="leads-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="leads-title" onclick="closeLeads()">
+    <div class="modal-card leads" onclick="event.stopPropagation()">
+      <h3 id="leads-title">Receba os materiais por e‑mail</h3>
+      <form id="leads-form" onsubmit="return submitLeads(event)">
+        <div class="form-row">
+          <label>Nome completo</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-row">
+          <label>E‑mail</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="form-row">
+          <label>Telefone (WhatsApp)</label>
+          <input type="tel" name="phone" placeholder="+55 (__) _____‑____" required>
+        </div>
+        <label class="chk">
+          <input type="checkbox" name="consent" required>
+          <span>Aceito receber e‑mails promocionais e comunicações da ShaRui.</span>
+        </label>
+        <div class="form-actions">
+          <button type="button" class="cta" onclick="closeLeads()">Cancelar</button>
+          <button type="submit" class="cta primary">Enviar</button>
+        </div>
+        <p id="leads-msg" class="msg" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    const header = document.getElementById('siteHeader');
+    if(!header) return;
+    function setOffset(){
+      const h = header.offsetHeight || 72;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    setOffset();
+    window.addEventListener('resize', setOffset);
+  })();
+  </script>
+<script>
+(function(){
+  const log   = document.getElementById('aiChatLog');
+  const form  = document.getElementById('aiChatForm');
+  const ta    = document.getElementById('aiPrompt');
+  const stat  = document.getElementById('aiStatus');
+
+  // RESET: garante que versões antigas não fiquem salvas
+  try{ localStorage.removeItem('ai:log:v1'); }catch(e){}
+
+  // Histórico só em memória (zera a cada entrada no site/página)
+  let history = [];
+
+  // Auto-grow do textarea
+  function autogrow(){
+    ta.style.height='auto';
+    ta.style.height = Math.min(ta.scrollHeight, 160) + 'px';
+  }
+  ta.addEventListener('input', autogrow);
+  autogrow();
+
+  // Enter envia / Shift+Enter quebra linha
+  ta.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' && !e.shiftKey){
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  // Enviar
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const q = (ta.value || '').trim();
+    if(!q) return;
+    add({ role:'user', content:q });
+    ta.value=''; autogrow();
+
+    const typingId = showTyping();
+    try{
+      const reply = await askAI(history);
+      hideTyping(typingId);
+      add({ role:'assistant', content: reply });
+    }catch(err){
+      hideTyping(typingId);
+      add({ role:'assistant', content: mockAnswer(q) });
+    }
+  });
+
+  // Renderização das mensagens
+  function render({role, content}){
+    const row = document.createElement('div');
+    row.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.innerHTML = sanitize(content);
+    row.appendChild(b);
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
+  }
+  function add(m){ history.push(m); render(m); }
+
+  // “digitando…”
+  function showTyping(){
+    const row = document.createElement('div');
+    row.className = 'msg bot typing';
+    const b = document.createElement('div'); b.className='bubble';
+    for(let i=0;i<3;i++){ const d=document.createElement('span'); d.className='dot-anim'; b.appendChild(d); }
+    row.appendChild(b);
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
+    return row;
+  }
+  function hideTyping(node){ if(node && node.parentNode){ node.parentNode.removeChild(node); } }
+
+  // Backend (cai no mock se /api/ia não existir)
+  async function askAI(messages){
+    stat.textContent = 'pensando…';
+    const res = await fetch('/api/ia', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ messages: messages.map(m => ({ role:m.role, content:m.content })) })
+    });
+    stat.textContent = 'online';
+    if(!res.ok) throw new Error('no-backend');
+    const data = await res.json();
+    const text = (data.reply || data.output || data.message || '').toString().trim();
+    if(!text) throw new Error('empty-reply');
+    return text;
+  }
+
+  // Mock útil
+  function mockAnswer(q=''){
+    const s = q.toLowerCase();
+    if(s.includes('incoterm') || s.includes('fob') || s.includes('cif') || s.includes('exw')){
+      return `Resumo rápido de Incoterms:
+• EXW: comprador assume retirada e fretes desde a fábrica.
+• FOB: vendedor entrega a bordo; comprador assume frete internacional e seguro.
+• CIF: vendedor paga frete e seguro até o porto de destino.
+• DDP: vendedor entrega desembaraçado no destino (nem sempre viável).
+Se quiser, posso sugerir o melhor para o seu caso.`;
+    }
+    if(s.includes('imposto') || s.includes('tribut') || s.includes('preço no brasil')){
+      return `Estimativa de “Preço no Brasil”:
+1) Valor mercadoria + frete/seguro internacional;
+2) II, IPI, PIS/COFINS-Import., ICMS (varia por NCM/UF);
+3) AFRMM (se marítimo), taxas portuárias/ARMAZÉM, despachante;
+4) Frete interno.
+Na nossa plataforma, você vê a memória de cálculo antes de fechar o pedido.`;
+    }
+    if(s.includes('lcl') || s.includes('fcl') || s.includes('contêiner') || s.includes('container')){
+      return `LCL x FCL:
+• LCL (carga fracionada): bom para volumes menores; custo por m³/ton e prazos um pouco maiores.
+• FCL (contêiner cheio): melhor custo por unidade e menos manuseio.
+Começar em LCL e migrar depois costuma ser uma boa estratégia.`;
+    }
+    return `Entendi. Posso ajudar com:
+• especificação técnica PT‑ZH (ficha/contrato),
+• validação de fábrica (48h),
+• inspeção com fotos e vídeos,
+• timeline e documentos,
+• estimativa de tributos.
+Pode detalhar sua dúvida?`;
+  }
+
+  // Saneamento simples
+  function sanitize(html){
+    const div = document.createElement('div');
+    div.textContent = html;
+    let t = div.innerHTML;
+    t = t.replace(/&lt;(\/?)(b|br|ul|ol|li)&gt;/g, '<$1$2>');
+    return t;
+  }
+
+  // Status visual
+  function updateStatus(){ stat.textContent = navigator.onLine ? 'online' : 'offline'; }
+  updateStatus(); window.addEventListener('online', updateStatus); window.addEventListener('offline', updateStatus);
+})();
+</script>
+
+ <script defer src="/assets/chat.js"></script>
+ <script>
+   
+/* Plataforma: anima as fotos/textos em diagonal ao entrar/sair da viewport */
+(function(){
+  const items = document.querySelectorAll('.plat-diag .reveal-diag');
+  if(!items.length) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+      else                { e.target.classList.remove('in'); } // “sai” ao rolar para cima
+    });
+  }, { threshold:.22, rootMargin:'-8% 0px -8% 0px' });
+
+  items.forEach(el => io.observe(el));
+})();
+</script>
+<script>
+/* Plataforma: anima as fotos/textos em diagonal ao entrar/sair da viewport */
+(function(){
+  const items = document.querySelectorAll('.plat-diag .reveal-diag');
+  if(!items.length) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+      else                { e.target.classList.remove('in'); }
+    });
+  }, { threshold:.22, rootMargin:'-8% 0px -8% 0px' });
+
+  items.forEach(el => io.observe(el));
+})();
+</script>
+<script>
+  (function(){
+    // ======================================================
+    // DEFINA AQUI SEU NÚMERO — APENAS DÍGITOS (DDI+DDD+NÚMERO)
+    // Ex.: (11) 9 9338-1008  =>  5511993381008
+    // ======================================================
+    const WHATS_NUMBER = '5511993381008';
+
+    // Mensagem inicial (pode editar livremente)
+    const defaultText = 'Olá ShaRui, vim pelo site e gostaria de falar.';
+
+    // Monta URL estável (funciona no desktop e no mobile)
+    const base = 'https://api.whatsapp.com/send';
+    const url  = base + '?phone=' + WHATS_NUMBER + '&text=' + encodeURIComponent(defaultText);
+
+    // Preenche todos os destinos de WhatsApp existentes
+    const ids = ['whatsFloat','whatsFooter'];
+    ids.forEach(id => {
+      const a = document.getElementById(id);
+      if (a) a.href = url;
+    });
+
+    // Segurança extra: se existir qualquer <a data-whats="true">, também atualiza
+    document.querySelectorAll('a[data-whats="true"]').forEach(a => a.href = url);
+
+    // Diagnóstico simples no console (pode remover):
+    console.log('[WhatsApp] Link aplicado:', url);
+  })();
+</script>
+<script defer src="/assets/mobile-nav.js"></script>
+<!-- ===== HOTFIX: Plataforma com fotos retas ===== -->
+<style id="plat-retas-override">
+  /* remove qualquer rotação */
+  #plataforma .p-shot{ transform: none !important; }
+
+  /* posições mantendo a leve sobreposição */
+  #plataforma .p-shot.top{
+    left: 0;
+    top: 0;
+  }
+  #plataforma .p-shot.bottom{
+    right: 0;
+    /* ajuste fino da sobreposição (aumente/diminua se quiser mais/menos sobreposição) */
+    top: clamp(110px, 9.6vw, 160px);
+  }
+
+  /* os cartões (textos) continuam por cima; não altera */
+  #plataforma .p-card{ z-index: 6; }
+
+  /* mobile continua empilhado (nada muda) */
+  @media (max-width: 980px){
+    #plataforma .p-shot.top,
+    #plataforma .p-shot.bottom{
+      top: auto;
+    }
+  }
+</style>
+<!-- ===== AJUSTES FINOS — Plataforma ===== -->
+<style id="plat-ajustes-finos">
+  /* 1) Foto de baixo: mais para BAIXO e para a DIREITA */
+  /* (funciona com .shot.bottom ou .p-shot.bottom, conforme o CSS atual) */
+  #plataforma .shot.bottom,
+  #plataforma .p-shot.bottom{
+    top: clamp(160px, 13.5vw, 230px) !important; /* ↓ descer */
+    right: -28px !important;                      /* → empurrar à direita */
+  }
+  /* Garantia: topo permanece fixo no canto, sem rotação */
+  #plataforma .shot.top,
+  #plataforma .p-shot.top{
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+
+  /* 3) Remove qualquer scroll interno na seção da plataforma */
+  #plataforma,
+  #plataforma .container,
+  #plataforma .plat-diag,
+  #plataforma .plat-diag > *{
+    overflow: visible !important;
+    max-height: none !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
+  /* Caso haja wrappers “scroll/scrollable” injetados por CSS/JS */
+  #plataforma .scroll,
+  #plataforma .scrollable,
+  #plataforma [data-scroll]{
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  /* Só por garantia, oculta resquícios de barra de rolagem interna */
+  #plataforma *::-webkit-scrollbar{ display:none !important; }
+  #plataforma{ scrollbar-width: none !important; }
+</style>
+
+<script>
+  // 2) Remove o selo “Ver foto” da 1ª imagem da plataforma (apenas ali)
+  (function(){
+    const fig = document.querySelector('#plataforma .shot.top, #plataforma .p-shot.top');
+    if(!fig) return;
+
+    // Remove qualquer elemento cujo texto seja “ver foto”
+    fig.querySelectorAll('*').forEach(el=>{
+      const t = (el.textContent || '').trim();
+      if(/ver foto/i.test(t)) el.remove();
+    });
+
+    // Remove também elementos típicos de lightbox/selo
+    fig.querySelectorAll('[data-lightbox],[data-view],[aria-label*="ver foto" i]').forEach(el=> el.remove());
+  })();
+</script>
+
 </body>
 </html>
