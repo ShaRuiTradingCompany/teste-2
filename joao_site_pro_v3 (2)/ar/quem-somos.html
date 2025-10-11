@@ -1,1 +1,560 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>من نحن — ShaRui Trading Company</title>
+  <meta name="description" content="نمزج بين النزاهة والالتزام بالمواعيد والتكنولوجيا لخفض المخاطر والتكلفة الإجمالية. مقرّنا في غوانزو ونزور المصانع في جميع أنحاء الصين.">
+
+  <!-- ملفات CSS الأساسية للموقع -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/config.js"></script>
+  <script defer src="/assets/main.js"></script>
+
+  <!-- ===== أنماط محلية لهذه الصفحة ===== -->
+  <style>
+    /* ---------- قسم البطل (50/50) ---------- */
+    #sobre.section{ padding-top: calc(var(--header-h, 72px) + 16px) }
+    .title-row{ display:flex; align-items:center; gap:10px; margin-bottom:8px }
+    .brand-badge{
+      display:inline-flex; flex-direction:column; line-height:1;
+      padding-right:10px; margin-right:10px; border-right:1px solid rgba(255,255,255,.18);
+    }
+    .brand-badge .brand-top{ font-weight:800; letter-spacing:.04em; font-size:clamp(16px,1.6vw,20px) }
+    .brand-badge .brand-sub{ font-weight:700; letter-spacing:.18em; opacity:.85; font-size:clamp(9px,1vw,11px) }
+    .title-row h1{ margin:0 }
+
+    /* ---------- الشعار الدائري مع الأشعة ---------- */
+    .logo-orb{
+      position:relative; display:grid; place-items:center;
+      width:min(520px, 42vw); aspect-ratio:1/1; margin-inline:auto; border-radius:50%;
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22);
+      box-shadow:0 10px 32px rgba(0,0,0,.35), inset 0 0 40px rgba(255,255,255,.06);
+      overflow:hidden;
+    }
+    .logo-orb::before{
+      content:""; position:absolute; inset:-8px; border-radius:50%;
+      background: conic-gradient(#66e0c2, #22b3e5, #7c3aed, #22b3e5, #66e0c2);
+      filter: blur(8px); animation: orbSpin 10s linear infinite;
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
+              mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
+      pointer-events:none;
+    }
+    .logo-orb::after{
+      content:""; position:absolute; inset:12%; border-radius:50%;
+      background: radial-gradient(closest-side, rgba(102,224,194,.22), transparent 70%);
+      mix-blend-mode: screen; animation: orbPulse 3.2s ease-in-out infinite alternate; pointer-events:none;
+    }
+    .logo-orb img{ width:76%; height:76%; object-fit:contain; border-radius:50%; display:block; }
+    @keyframes orbSpin { to { transform: rotate(360deg); } }
+    @keyframes orbPulse { from { transform: scale(.98) } to { transform: scale(1.02) } }
+
+    /* ---------- شريط المقاييس (غير ثابت) ---------- */
+    #stats-band{
+      position:relative; /* ليس مثبتًا */
+      top:auto; z-index:auto;
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
+      border-block:1px solid rgba(255,255,255,.22);
+      padding:14px 0;
+    }
+    #stats-band .metrics{
+      display:flex; align-items:center; flex-wrap:wrap; gap:16px 24px; justify-content:space-between;
+    }
+    #stats-band .metric{ display:flex; align-items:baseline; gap:8px; font-weight:800; letter-spacing:.02em; }
+    #stats-band .metric .num{
+      font-family:'Space Grotesk', Inter, system-ui, sans-serif;
+      font-size: clamp(18px, 3.4vw, 30px); font-weight:800; line-height:1; min-width:34px;
+      text-shadow:0 2px 12px rgba(0,0,0,.25);
+    }
+    #stats-band .metric span.label{ opacity:.95; font-size: clamp(13px, 2vw, 16px) }
+
+    /* ---------- إظهار/كشف مساعد ---------- */
+    .reveal{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease }
+    .reveal.in{ opacity:1; transform:none }
+
+    /* ---------- الشركاء — صورة نصف + نص بجانبها (متناوب) ---------- */
+#socios .partner-row{
+  display:grid;
+  grid-template-columns: 1fr 2fr;       /* الصورة = 1  |  النص = 2  */
+  gap: clamp(14px, 3vw, 28px);
+  align-items: stretch;
+  margin-bottom: clamp(14px, 3vw, 22px);
+}
+
+/* صف متناوب: الصورة على اليمين */
+#socios .partner-row.reverse{ grid-template-columns: 2fr 1fr; }
+
+#socios .partner-row .photo{
+  border-radius:16px; overflow:hidden;
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.14);
+}
+
+#socios .partner-row .photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+  aspect-ratio: 4 / 5;                  /* عمودي */
+  display:block;
+}
+
+#socios .partner-row .info{
+  display:flex; flex-direction:column; justify-content:center;
+}
+#socios .partner-row .info h3{ margin:0 0 6px }
+#socios .partner-row .info .role{ opacity:.9; margin:0 0 10px }
+#socios .partner-row .info .bio{ margin:0 }
+
+/* جوال: تكديس؛ الصورة دائمًا أولًا */
+@media (max-width: 1100px){
+  #socios .partner-row,
+  #socios .partner-row.reverse{ grid-template-columns: 1fr; }
+  #socios .partner-row.reverse .photo{ order:-1; }
+  #socios .partner-row .photo img{ aspect-ratio: 16 / 10; } /* يحافظ على البروز دون زيادة الارتفاع */
+}
+/* ===== الشركاء — صورة أعرض قليلًا (من دون تغيير الارتفاع) ===== */
+/* كان 1fr 2fr؛ الآن 1.15fr 1.85fr */
+#socios .partner-row{
+  display:grid;
+  grid-template-columns: 1.15fr 1.85fr;
+  gap: clamp(14px, 3vw, 28px);
+  align-items: stretch;
+  margin-bottom: clamp(14px, 3vw, 22px);
+}
+
+/* الصف المتناوب (الصورة على الجانب الآخر) */
+#socios .partner-row.reverse{
+  grid-template-columns: 1.85fr 1.15fr;
+}
+
+/* تحافظ الصورة على نفس الارتفاع النسبي عبر aspect-ratio */
+#socios .partner-row .photo{
+  border-radius:16px; overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+}
+#socios .partner-row .photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+  aspect-ratio: 4 / 5; /* يحافظ على “الارتفاع” البصري النسبي */
+  display:block;
+}
+
+/* ===== الرسوم المتحركة (دخول عند النزول / خروج عند الصعود) ===== */
+#socios .partner-row .photo,
+#socios .partner-row .info{
+  opacity:0;
+  will-change: transform, opacity;
+  transition: transform .55s cubic-bezier(.2,.7,.2,1), opacity .55s;
+}
+
+/* كتلة عادية: الصورة من اليسار → اليمين، النص من اليمين → اليسار */
+#socios .partner-row:not(.reverse) .photo{ transform: translateX(-28px); }
+#socios .partner-row:not(.reverse) .info { transform: translateX( 28px); }
+
+/* كتلة “reverse”: معكوسة */
+#socios .partner-row.reverse .photo{ transform: translateX( 28px); }
+#socios .partner-row.reverse .info { transform: translateX(-28px); }
+
+/* عند الظهور على الشاشة */
+#socios .partner-row.in .photo,
+#socios .partner-row.in .info{
+  opacity:1; transform:none;
+}
+
+/* إمكانية الوصول: تقليل الرسوم المتحركة */
+@media (prefers-reduced-motion: reduce){
+  #socios .partner-row .photo,
+  #socios .partner-row .info{
+    transition:none; transform:none; opacity:1;
+  }
+}
+
+
+    /* ---------- الكواليس: شريط مستمر (أعلى) ---------- */
+    #bastidores .who-gallery{
+      position:relative; overflow:hidden; margin-top:8px;
+      height: clamp(180px, 28vh, 320px); /* ↑ ارتفاع أكبر لإبراز الصور */
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      background: rgba(0,0,0,.10);
+    }
+    #bastidores .who-gallery .strip{
+      position:absolute; inset:0 auto 0 0;
+      display:inline-flex; gap:12px; align-items:center; padding:8px 12px;
+      will-change: transform; width:max-content;
+      animation: stripMove 25s linear infinite; /* نفس الاتجاه/السرعة كما في الصفحة الرئيسية */
+    }
+    #bastidores .who-gallery img{
+      height:100%; width:auto; object-fit:cover; border-radius:12px;
+      box-shadow:0 10px 26px rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.15);
+    }
+    @keyframes stripMove{ to{ transform: translateX(-50%); } }
+
+    /* ---------- الكواليس: نص أكبر وأكثر راحة ---------- */
+#bastidores .section-note{
+  font-size: clamp(16px, 1.6vw, 20px);   /* أكبر من الافتراضي */
+  line-height: 1.75;
+  letter-spacing: .2px;
+}
+
+  </style>
+  
+
+  <!-- ===== القائمة العامة (مثل الرئيسية) ===== -->
+  <!-- خط Montserrat المستخدم في القائمة/العلامة -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* رأس شفاف (بدون ضبابية) ومثبت فوق المحتوى كما في الرئيسية */
+    header.site-header{
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      background:transparent !important;
+      -webkit-backdrop-filter:none !important;
+      backdrop-filter:none !important;
+      border:0 !important; box-shadow:none !important;
+    }
+
+    /* نفس العائلة الطباعية لقائمة الرئيسية (فقط في الرأس) */
+    .site-header, .site-header *{
+      font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+    }
+
+    /* شرائح القائمة: إطار أبيض بدون تعبئة */
+    .site-header .menu{ display:flex; gap:14px; align-items:center }
+    .site-header .menu a{
+      display:inline-flex; align-items:center;
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:999px;
+      background:transparent !important;
+      color:#fff !important;
+      text-decoration:none;
+      text-shadow:0 2px 10px rgba(0,0,0,.55);
+      box-shadow:none !important;
+      opacity:1 !important;
+      filter:none !important;
+    }
+    /* التحويم/التركيز: إبراز الإطار فقط (بدون تعبئة) */
+    .site-header .menu a:hover,
+    .site-header .menu a:focus-visible{
+      background:transparent !important;
+      border-color:#fff !important;
+      box-shadow:0 0 0 2px rgba(255,255,255,.32) inset !important;
+      text-decoration:none !important;
+      outline:none;
+    }
+    /* نشط (من نحن): إطار أقوى وبدون تعبئة */
+    .site-header .menu a[aria-current="page"],
+    .site-header .menu a.active{
+      background:transparent !important;
+      border-color:#fff !important;
+      box-shadow:0 0 0 2px rgba(255,255,255,.38) inset !important;
+    }
+
+    /* العلامة التجارية بإطار (كما في الرئيسية) */
+    .site-header .brand-logo{
+      display:inline-flex; flex-direction:column; align-items:flex-start;
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:999px;
+      background:transparent !important;
+      color:#fff; text-decoration:none;
+      text-shadow:0 2px 10px rgba(0,0,0,.55);
+      line-height:1;
+    }
+    .site-header .brand-logo .brand-top{ font-weight:700; letter-spacing:.6px }
+    .site-header .brand-logo .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
+  </style>
+</head>
+
+<body class="page-about">
+  <!-- رأس عام (العلامة واضحة للعودة إلى الرئيسية) -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+        <span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span>
+      </a>
+      <nav class="menu">
+        <a href="/pt/quem-somos.html" aria-current="page">من نحن</a>
+        <a href="/pt/diferenciais.html">مزايا</a>
+        <a href="/pt/plataforma.html">المنصة</a>
+        <a href="/pt/contato.html">اتصل بنا</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="page-about">
+    <!-- (1) من نحن — 50/50 نص + شعار -->
+    <section id="sobre" class="section about-hero">
+      <div class="container hero-wrap">
+        <div class="hero-copy reveal">
+          <div class="title-row">
+            <span class="brand-badge">
+              <span class="brand-top">SHA RUI</span>
+              <span class="brand-sub">TRADING COMPANY</span>
+            </span>
+            <h1>من نحن</h1>
+          </div>
+
+          <p><strong>نحن شركة</strong> تملك أكثر من ثلاثة عقود في التجارة الدولية، اخترنا <b>النزاهة</b> مبدأً يوميًا. التزامنا أن نفعل الصواب — حتى إن كان ذلك يتطلب مزيدًا من الجهد — لخفض <b>مخاطرك</b> وحماية <b>التكلفة الإجمالية</b> والمحافظة على معيار الجودة لديك.</p>
+          <p><strong>القرب يصنع الفارق.</strong> انطلاقًا من <b>غوانزو</b> وحضورنا في أنحاء الصين، نزور المصنع خلال <b>48 ساعة</b> ضمن نطاق عملنا. نحافظ على حضور مباشر داخل المصنع ونوثّق <b>عقودًا ثنائية اللغة (PT‑ZH)</b> متوافقة مع المعايير المعتمدة لدى <b>المحاكم الصينية</b>، لضمان أمان قانوني وتوقّعات واضحة.</p>
+          <p><strong>متصلون وشفافون.</strong> يمكنك متابعة <b>المخطط الزمني</b> و<b>المستندات</b> و<b>نقاط التحقق</b> بمواعيد نهائية واقعية وتواصلٍ نشط وسجلاتٍ بـ<b>الصور والفيديو</b>. </p>
+          <p><strong>التكنولوجيا في خدمة القرار.</strong> نطوّر التطبيق وجمع الأدلة وتحليل التكاليف باستمرار لتقدير <b>السعر الواصل إلى البرازيل</b> قبل الطلب. يمكنك البدء صغيرًا عبر <b>العينات</b> و<b>المشروعات التجريبية</b>؛ وعندما يلزم، نُجري الدمج كشحنة <b>LCL</b> (حاوية مشتركة)، من دون التفريط بـ<b>الأخلاق</b> و<b>الاستدامة العملية</b> و<b>الجدّية</b>.</p>
+
+        </div>
+
+        <figure class="logo-orb reveal" aria-label="شعار ShaRui">
+          <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company" width="1024" height="1024" decoding="async" loading="eager">
+        </figure>
+      </div>
+    </section>
+
+    <!-- (1.1) شريط المقاييس (غير ثابت) -->
+    <section id="stats-band" aria-label="مؤشرات شا روي">
+      <div class="container metrics">
+        <div class="metric">
+          <span class="prefix">أكثر من</span>
+          <span class="num" data-target="1000">0</span>
+          <span class="label">عملاء في قطاعات متعددة</span>
+        </div>
+        <div class="metric">
+          <span class="prefix">أكثر من</span>
+          <span class="num" data-target="30">0</span>
+          <span class="label">أفراد الفريق في غوانزو</span>
+        </div>
+        <div class="metric">
+          <span class="num" data-target="4">0</span>
+          <span class="label">مراكز: الصين، إيطاليا، البرازيل ودبي</span>
+        </div>
+      </div>
+    </section>
+
+  <section id="socios" class="section about-partners">
+  <div class="container">
+    <h2 class="reveal">فريقنا</h2>
+
+    <!-- الكتلة 1 -->
+    <div class="partner-row">
+      <figure class="photo">
+        <img src="/assets/team-socio-1.jpg" alt="Rogério Takeshita — الشريك المدير" loading="lazy" decoding="async" width="760" height="950">
+      </figure>
+      <div class="info">
+        <h3>Rogério Takeshita</h3>
+        <p class="role">الشريك المدير</p>
+        <p>بخبرة في التجارة الدولية والصناعة، يربط بين <b>الهندسة</b> و<b>المالية</b> لخفض <b>المخاطر</b> و<b>التكلفة الإجمالية</b>. وضع هياكل <b>المواصفة الفنية</b> والتحقق من الموردين في الصين والبرازيل.</p>
+        <p>يعمل على إعداد سيناريوهات <b>السعر الواصل إلى البرازيل</b>، و<b>حوكمة</b> المشاريع وقرارات <b>التصنيع/الشراء</b>. يقود <b>العناية الواجبة</b> للموردين، وتخطيط <b>تفتيش العينات</b>، ومواءمة العمل مع فرق العميل.</p>
+      </div>
+    </div>
+
+    <!-- الكتلة 2 (معكوسة) -->
+    <div class="partner-row reverse">
+      <div class="info">
+        <h3>Sandra de Almeida</h3>
+        <p class="role">شريكة — العمليات والامتثال</p>
+        <p>متخصصة في <b>العمليات</b> في الصين مع حضور قوي على <b>أرض المصنع</b>. تقود المفاوضات بلغة الأم، و<b>العقود ثنائية اللغة</b> والجداول الزمنية، مع ضمان <b>المواعيد</b> و<b>معيار الجودة</b> المتفق عليهما.</p>
+        <p>توجّه <b>عمليات التفتيش</b> مع توثيق بـ<b>الصور والفيديو</b>، وتتابع التعديلات مع الإنتاج، وتعتني بـ<b>امتثال المستندات</b> للشحن. تركيزها على <b>التواصل المباشر</b> و<b>التنبؤ بالمواعيد</b> و<b>التنفيذ</b>.</p>
+      </div>
+      <figure class="photo">
+        <img src="/assets/team-socio-2.jpg" alt="Sandra de Almeida — العمليات والامتثال" loading="lazy" decoding="async" width="760" height="950">
+      </figure>
+    </div>
+  </div>
+</section>
+
+    <!-- (3) الكواليس — شريط مستمر (أعلى) -->
+    <section id="bastidores" class="section about-culture">
+      <div class="container">
+        <h2 class="reveal">كواليس</h2>
+
+        <!-- الشريط / WHO-GALLERY -->
+        <section class="who-gallery" aria-label="كواليس شا روي — صور تتمرّر باستمرار">
+          <div class="strip">
+            <!-- التسلسل الرئيسي -->
+            <img src="/assets/qs1.jpg?v=2" alt="">
+            <img src="/assets/qs2.jpg?v=2" alt="">
+            <img src="/assets/qs3.jpg?v=2" alt="">
+            <img src="/assets/qs4.jpg?v=2" alt="">
+            <img src="/assets/qs5.jpg?v=3" alt="الصورة 5">
+            <img src="/assets/qs6.jpg?v=3" alt="الصورة 6">
+            <!-- مكرّرة من أجل حلقة مثالية -->
+            <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
+          </div>
+        </section>
+
+        <!-- نص أسفل الشريط -->
+        <p class="section-note reveal" style="margin-top:10px">
+          نحن <b>30 فردًا في غوانزو</b>. نأخذ <b>التواجد داخل المصنع</b> على محمل الجد — زيارات خلال 48 ساعة ضمن نطاقنا،
+          <b>تفتيشًا بالعيّنة</b> مع صور وفيديو، وفحص <b>التغليف/الملصقات</b>، ومواءمة مباشرة مع الإنتاج.
+          لدينا <b>فريق محلي</b> وفريق ثنائي اللغة (ZH/EN/PT) متكامل مع الهندسة والجودة والمالية، ما يقلل الضوضاء ويمنح <b>توقّعات زمنية</b> أفضل ويخفض <b>التكلفة الإجمالية</b>.
+        </p>
+      </div>
+    </section>
+
+    <!-- (4) الهيكل -->
+    <section id="escritorios" class="section about-offices">
+      <div class="container">
+        <h2 class="reveal">الهيكل</h2>
+
+        <div class="offices-grid">
+          <article class="office-card reveal">
+            <figure><img src="/assets/office-1.jpg" alt="مكتب — غوانزو" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta"><h3>غوانزو، الصين</h3><p>Yayun Avenue, 893 Building 23 Office 1404 – Jinlongcheng
+                                                            Fortune Plaza – Panyu
+                                                            الرمز البريدي: 51150 – غوانزو، الصين</p></div>
+          </article>
+
+          <article class="office-card reveal">
+            <figure><img src="/assets/office-2.jpg" alt="مكتب — غوانزو" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta"><h3>غوانزو، الصين</h3><p>Yayun Avenue, 893 Building 25 Office 602 – Jinlongcheng
+                                                            Fortune Plaza – Panyu
+                                                            الرمز البريدي: 51150 – غوانزو، الصين</p></div>
+          </article>
+
+          <article class="office-card reveal">
+            <figure><img src="/assets/office-3.jpg" alt="نقطة دعم — البرازيل" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta"><h3>البرازيل</h3><p>Av. Chepli Tanus Daher, 609 - Jardim Acapulco
+                                                Londrina - PR, 86045-000.</p></div>
+          </article>
+        </div>
+
+        <!-- نص أسفل البطاقات -->
+        <p class="section-note reveal" style="margin-top:10px">
+          لدينا نقاط خدمة في <b>إيطاليا</b> و<b>دبي</b>، ونزاول العمل عبر <b>مكتبين في الصين</b> (غوانزو)
+          و<b>مكتب واحد في البرازيل</b>. هذا <b>الهيكل</b> و<b>التكوين</b> يمنحاننا استقلالية وسرعة لمتابعة المعارض والموردين،
+          والرد وفق <b>منطقة توقيت</b> العميل والتفاوض، مع الحفاظ على السرعة والتحكم من البداية إلى النهاية.
+        </p>
+      </div>
+    </section>
+
+    <!-- (5) دعوة للإجراء -->
+    <section id="contato" class="section about-cta">
+      <div class="container cta-wrap reveal">
+        <h2>هل نبدأ بتحويل فكرتك إلى واقع؟</h2>
+        <p>أخبرنا بمنتجك والموعد. خلال 48 ساعة نزور المصنع وننسّق الخطوات التالية.</p>
+        <div class="contact-row" style="justify-content:center; margin-top:10px;">
+          <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">التحدث عبر واتساب</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX أصلي -->
+    <dialog id="lightbox">
+      <button class="close" aria-label="إغلاق">×</button>
+      <img src="" alt="" id="lightbox-img">
+    </dialog>
+  </main>
+
+  <!-- تذييل -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+      <address class="corp-address">Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>Fortune Plaza – Panyu<br>الرمز البريدي: 51150 – غوانزو، الصين.</address>
+      <nav class="foot-social">
+        <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig"></a>
+        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk"></a>
+        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt"></a>
+        <a href="https://wa.me/551193381008" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa"></a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===== جافاسكربت محلي لهذه الصفحة ===== -->
+  <script>
+  // كشف عام
+  (function(){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.18});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+  })();
+
+  // لايت بوكس (حواري أصلي)
+  (function(){
+    const dlg = document.getElementById('lightbox');
+    if(!dlg) return;
+    const img = document.getElementById('lightbox-img');
+    const closeBtn = dlg.querySelector('.close');
+    function open(src, alt){ img.src = src; img.alt = alt || ''; dlg.showModal(); }
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('[data-lightbox]');
+      if(a){ e.preventDefault(); open(a.getAttribute('data-lightbox'), a.querySelector('img')?.alt || ''); }
+    });
+    closeBtn.addEventListener('click', ()=> dlg.close());
+    dlg.addEventListener('click', (e)=> { if(e.target === dlg) dlg.close(); });
+  })();
+
+  // Calendly: استخدم النافذة العامة إن وُجدت؛ وإلا افتح الرابط مباشرة
+  document.querySelectorAll('[data-open-calendly]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(typeof window.openCalendly === 'function'){ window.openCalendly(); }
+      else{ window.open('https://calendly.com/', '_blank', 'noopener'); }
+    });
+  });
+
+  // ضبط var(--header-h) للتعويض عن الرأس المثبّت
+  (function(){
+    const header = document.getElementById('siteHeader');
+    if(!header) return;
+    function setOffset(){
+      const h = header.offsetHeight || 72;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    setOffset(); window.addEventListener('resize', setOffset);
+  })();
+
+  // عدٌّ تصاعدي في شريط المقاييس (مرة واحدة)
+  (function(){
+    const band = document.getElementById('stats-band');
+    const nums = band.querySelectorAll('.num');
+    let done = false;
+    function countUp(el, to, dur=1100){
+      const start = performance.now(); const from = 0;
+      function step(t){
+        const p = Math.min(1, (t-start)/dur);
+        const val = Math.round((from + (to-from) * (0.1 + 0.9*p*p)));
+        el.textContent = val.toLocaleString('pt-BR');
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting && !done){
+          nums.forEach(n => countUp(n, parseInt(n.dataset.target,10) || 0));
+          done = true; io.disconnect();
+        }
+      });
+    }, {threshold:.35});
+    io.observe(band);
+  })();
+  </script>
+</body>
+</html>
+<script>
+/* الشركاء: تحريك الدخول/الخروج بحسب الظهور */
+(function(){
+  const rows = document.querySelectorAll('#socios .partner-row');
+  if(!rows.length) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      const el = e.target;
+      if(e.isIntersecting){ el.classList.add('in'); }
+      else{ el.classList.remove('in'); } // يخرج عند التمرير للأعلى
+    });
+  }, { threshold: 0.35 });
+
+  rows.forEach(r => io.observe(r));
+})();
+</script>
 
