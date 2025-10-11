@@ -465,6 +465,21 @@
       <img src="/assets/plat-diag-1.jpg?v=2" alt="Prévia da Plataforma do Cliente">
     </figure>
   </div>
+<style id="plat-title-nudge">
+  /* Desktop: desloca APENAS o título pra direita */
+  @media (min-width: 981px){
+    #plataforma .ps-copy > h2{
+      margin-left: clamp(12px, 1.6vw, 28px); /* ajuste fino aqui */
+      text-align: left;                      /* garante alinhamento à esquerda */
+    }
+  }
+
+  /* Mobile: sem recuo (fica alinhado com o conteúdo) */
+  @media (max-width: 980px){
+    #plataforma .ps-copy > h2{ margin-left: 0; }
+  }
+</style>
+  
 </section>
 
 
