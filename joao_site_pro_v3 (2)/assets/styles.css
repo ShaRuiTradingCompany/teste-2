@@ -1804,3 +1804,30 @@ html, body{ max-width:100%; overflow-x:hidden; }
   .platform-simple .ps-grid{ grid-template-columns: 1fr; }
   .platform-simple .ps-photo{ justify-self:stretch; width:100% }
 }
+<style id="platform-side-by-side">
+  /* Plataforma do Cliente: texto + foto lado a lado (desktop) */
+  #plataforma.section.platform-simple .ps-grid{
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, .9fr); /* texto | foto */
+    gap: clamp(14px, 2.8vw, 28px);
+    align-items: start;
+  }
+  #plataforma .ps-copy{ max-width: 70ch; }
+  #plataforma .ps-photo{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  #plataforma .ps-photo img{
+    width: 100%;
+    max-width: 420px;     /* << tamanho da foto (menor que antes) */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.28);
+  }
+  /* Mobile: empilha (foto abaixo do texto) */
+  @media (max-width: 980px){
+    #plataforma.section.platform-simple .ps-grid{ grid-template-columns: 1fr; }
+    #plataforma .ps-photo{ margin-top: 10px; }
+  }
+</style>
