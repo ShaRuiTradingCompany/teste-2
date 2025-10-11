@@ -3,160 +3,203 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ShaRui Trading Company — Office in Guangzhou, factory visits across China</title>
-  <meta name="description" content="Factory visit within 48h, sample inspection with photos & videos, and landed cost estimate before the order. Bilingual PT‑ZH technical spec. No minimum order.">
+  <title>ShaRui Trading Company — Escritório em Ganzhou, visitamos fábricas em toda a China</title>
+  <meta name="description" content="Visita à fábrica em até 48h, inspeção por amostra com fotos e vídeos e preço estimado antes do pedido. Ficha técnica em português e chinês. Sem valor mínimo.">
 
-  <!-- Fonts -->
+  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Base CSS/JS (mesmos assets da versão PT) -->
+  <!-- CSS/JS base -->
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/video_hero.css?v=3">
   <link rel="stylesheet" href="/assets/mobile-hotfix.css">
   <script src="/assets/config.js"></script>
   <script defer src="/assets/main.js"></script>
 
-  <!-- Ajustes locais -->
+  <!-- Estilos complementares (mantidos) -->
   <style>
     :root{
       --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --accent: #66e0c2;
     }
-    body{ font-family: var(--font-sans); }
+    body{font-family:var(--font-sans)}
 
-    /* HEADER transparente sobre o vídeo */
-    header.site-header.on-video{
-      position:fixed; top:0; left:0; right:0; z-index:1000;
-      background:transparent !important;
-      -webkit-backdrop-filter:none !important;
-      backdrop-filter:none !important;
-      border:0 !important; box-shadow:none !important;
-    }
-    header.site-header.on-video .container.nav-wrap{
-      display:flex; align-items:center; justify-content:space-between; padding:12px 16px;
-    }
-    header.site-header.on-video .menu{ display:flex; gap:14px; align-items:center; }
-    header.site-header.on-video .menu a{
-      display:inline-flex; align-items:center; padding:8px 12px; font-weight:800;
-      border-radius:999px; border:1px solid rgba(255,255,255,.9);
-      background:transparent !important; color:#fff !important; text-decoration:none;
-      text-shadow:0 2px 10px rgba(0,0,0,.55);
-    }
-    header.site-header.on-video .menu a:hover,
-    header.site-header.on-video .menu a:focus-visible{
-      background:rgba(255,255,255,.12) !important; outline:none; text-decoration:none;
-    }
-    header.site-header.on-video .brand .brand-logo{
-      display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;
-      padding:8px 12px; border-radius:999px; text-decoration:none;
-      border:1px solid rgba(255,255,255,.9);
-      color:#fff; background:transparent !important;
-      text-shadow:0 2px 10px rgba(0,0,0,.55);
-    }
-    header.site-header.on-video .brand-logo .brand-top{ font-weight:700; letter-spacing:.6px }
-    header.site-header.on-video .brand-logo .brand-sub{ font-size:12px; opacity:.92; margin-top:-2px; letter-spacing:.8px }
+    /* Header transparente sobre o vídeo (posição fixa) */
+    .site-header{position:fixed; top:0; left:0; right:0; z-index:1000; background:transparent; border:none;}
+    .container.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 16px;}
 
-    /* Esconde o botão/flutuante de menu mobile no DESKTOP */
-    @media (min-width: 980px){
-      .menu-fab, .mobile-only, .nav-toggle, .menu-toggle, .hamburger, .hamb, #menuFab, #navToggle{
-        display:none !important; opacity:0 !important; visibility:hidden !important;
-      }
+    .site-header .menu a, .site-header .brand a, .site-header .lang-toggle{
+      color:#fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55); /* melhora contraste no vídeo */
     }
+    nav .menu{display:flex; gap:16px; align-items:center}
 
-    /* HERO vídeo tela cheia */
-    .hero-video-wrap{ position:relative; height:100vh; min-height:100vh; overflow:hidden; }
-    .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(1.34) contrast(1.08) saturate(1.06); }
-    .hero-overlay{ display:none !important; }
+    /* Marca empilhada */
+    .brand-logo{display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;}
+    .brand-logo .brand-top{display:block; font-weight:700; letter-spacing:.6px}
+    .brand-logo .brand-sub{display:block; font-size:12px; opacity:.92; margin-top:-2px; letter-spacing:.8px; padding-left:0}
 
-    /* Bandas/marquee */
-    .brand-band{ padding:8px 0; background:linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10)); border-block:1px solid rgba(255,255,255,.22); }
-    .brand-band.light{ background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); }
-    .brand-band .marquee{ white-space:nowrap; overflow:hidden; }
-    .brand-band .marquee span{ display:inline-block; padding-left:100%; animation:marq 22s linear infinite; letter-spacing:.1em; color:#eaf1ff; }
-    @keyframes marq{ to{ transform:translateX(-100%);} }
+    /* HERO tela cheia (vídeo) */
+    .hero-video-wrap{position:relative; height:100vh; min-height:100vh; overflow:hidden;}
+    .hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(1.34) contrast(1.08) saturate(1.06);}
+    .hero-overlay{display:none !important;}
 
-    /* WHO (50/50) */
-    .section.clean{ padding: clamp(24px, 6vw, 60px) 0; }
-    .who-split{ display:grid; grid-template-columns: 1.05fr .95fr; gap: clamp(18px, 3vw, 36px); align-items:center; }
-    .who-photo img{ width:100%; height:auto; display:block; border-radius:16px; border:1px solid rgba(255,255,255,.14); box-shadow:0 16px 40px rgba(0,0,0,.35); }
-    @media (max-width: 980px){ .who-split{ grid-template-columns: 1fr; } }
+    /* Faixa logo abaixo do vídeo */
+    .after-hero{min-height:60vh; display:flex; align-items:center; position:relative; background-image:url('/assets/bg-after-hero.jpg'); background-size:cover; background-position:center;}
+    .after-hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));}
+    .after-hero > .container{position:relative; z-index:1;}
+    .hero-box{max-width:1100px; width:100%; margin:0 auto; background:rgba(0,0,0,.26); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:28px 22px;}
+    .hero-title{font-size:34px; margin:0 0 8px; text-align:center; color:#fff;}
+    .hero-sub{font-size:18px; opacity:.95; margin:0 0 14px; text-align:center}
+    .hero-ctas{display:none}
+    .kpi-bar{display:grid; grid-template-columns:repeat(3,minmax(260px,1fr)); gap:14px; margin-top:16px}
+    @media(max-width:1200px){ .kpi-bar{grid-template-columns:repeat(2,minmax(260px,1fr))} }
+    @media(max-width:760px){ .kpi-bar{grid-template-columns:1fr} }
+    .kpi{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:18px; text-align:center}
+    .kpi h4{margin:0 0 6px; font-size:18px}
+    .kpi p{margin:0; opacity:.98; line-height:1.45}
 
-    /* DIFERENCIAIS radial */
-    #differentials.diffs-radial .core{
-      width:min(280px, 36vw); aspect-ratio:1/1; margin:0 auto 12px; border-radius:50%;
-      overflow:hidden; background:#fff; box-shadow:0 10px 32px rgba(0,0,0,.35), inset 0 0 40px rgba(255,255,255,.06);
-      display:grid; place-items:center; border:1px solid rgba(255,255,255,.22);
-    }
-    #differentials.diffs-radial .core img{ width:76%; height:76%; object-fit:cover; border-radius:50%; display:block; }
-    #differentials .radial-stage{ position:relative; max-width:980px; margin:0 auto; }
-    #differentials .node{ position:absolute; transform-origin:center; opacity:0; transition:opacity .35s ease, transform .35s ease; }
-    #differentials.play .node{ opacity:1; }
-    /* posicionamento por ângulo --a (em graus) */
-    #differentials .node{ --R: 280px; left:50%; top:50%; transform: translate(-50%,-50%) rotate(var(--a)) translate(var(--R)) rotate(calc(-1 * var(--a))); }
-    #differentials .node .bubble{
-      background:rgba(0,0,0,.62); color:#eaf1ff; border:1px solid rgba(255,255,255,.16);
-      border-radius:12px; padding:10px 12px; width:min(320px, 46vw); box-shadow:0 10px 26px rgba(0,0,0,.35);
-    }
-    #differentials .node .dot{ width:10px; height:10px; border-radius:50%; background:#22D3EE; display:inline-block; margin-right:8px; }
+    /* Seções com imagem de fundo */
+    .section h2{text-align:center; margin:0 0 6px; letter-spacing:.2px}
+    .section .lead{text-align:center; opacity:.9; margin:0 auto 12px; max-width:900px}
+    .bg-cover{position:relative; background-size:cover; background-position:center; background-attachment:fixed;}
+    .bg-cover::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));}
+    .bg-cover > .container{position:relative; z-index:1;}
+    .bg-quem{background-image:url('/assets/bg-quem.jpg'); min-height:85vh; display:flex; align-items:center;}
+    .bg-diferenciais{background-image:url('/assets/bg-diferenciais.jpg');}
+    .bg-plataforma{background-image:url('/assets/bg-plataforma.jpg');}
+    .bg-ebooks{background-image:url('/assets/bg-ebooks.jpg');}
 
-    /* PLATAFORMA — fotos retas (sem rotação) + cartões */
-    #platform.section{ padding: clamp(24px, 5vw, 48px) 0; }
-    #platform .container{ position:relative; }
-    #platform h2{ text-align:center; margin:0 0 6px; }
-    #platform .lead{ text-align:center; margin:0 0 16px; opacity:.95; }
+    /* Grids/cards (+ ebooks) – mantidos */
+    .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+    @media(max-width:1100px){ .grid4{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:720px){ .grid4{grid-template-columns:1fr} }
+    .grid6{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    @media(max-width:1100px){ .grid6{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:720px){ .grid6{grid-template-columns:1fr} }
+    .card-min{background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:14px}
+    .ebooks-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    @media(max-width:1024px){ .ebooks-grid{grid-template-columns:1fr} }
+    .ebook-tile{display:block; position:relative; min-height:360px; border-radius:14px; overflow:hidden; border:2px solid rgba(255,255,255,.18); background:#0b0e10; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
+    .ebook-tile .ph{position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.9);}
+    .ebook-tile::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.6));}
+    .ebook-tile .label{position:absolute; left:16px; bottom:14px; right:16px; z-index:1; font-weight:700; font-size:19px; color:#fff;}
+    .ebook-tile:hover, .ebook-tile:focus-visible{transform: translateY(-4px) scale(1.015); border-color: rgba(255,255,255,.65); box-shadow:0 10px 26px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.22) inset; outline:none;}
 
-    #platform .shot{
-      position:absolute; border-radius:18px; overflow:hidden;
-      box-shadow:0 22px 60px rgba(0,0,0,.36); border:1px solid rgba(0,0,0,.25);
-      background:#0b0e10 center/cover no-repeat;
-    }
-    #platform .shot.top{ left:0; top:0; width:min(760px, 62vw); height:min(460px, 42vw); background-image:var(--ph1); transform:none; }
-    #platform .shot.bottom{
-      right:-18px; top: clamp(160px, 12.5vw, 230px);
-      width:min(760px, 62vw); height:min(460px, 42vw);
-      background-image:var(--ph2); transform:none;
-    }
-
-    /* Cartões */
-    #platform .card{
-      position:relative; z-index:2; background:rgba(0,0,0,.78); color:#eaf1ff;
-      border:1px solid rgba(255,255,255,.18); border-radius:16px; box-shadow:0 16px 40px rgba(0,0,0,.35);
-      padding:16px; max-width:580px;
-    }
-    #platform .c1{ margin-left: min(52vw, 640px); margin-top: 8px; }
-    #platform .c2{ margin-top: clamp(320px, 32vw, 380px); }
-
-    /* Remove qualquer scroll interno na seção plataforma */
-    #platform, #platform .container, #platform .plat-diag, #platform .plat-diag > *{
-      overflow: visible !important; max-height:none !important; -webkit-overflow-scrolling: auto !important;
-    }
-    #platform *::-webkit-scrollbar{ display:none !important; }
-    #platform{ scrollbar-width: none !important; }
-
-    /* IA (chat) */
-    .ai-chat .chat-card{ background:#0b0e10; border:1px solid rgba(255,255,255,.16); border-radius:12px; max-width:840px; margin:0 auto; overflow:hidden; }
-    .ai-chat .chat-head{ display:flex; align-items:center; gap:8px; padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.12); }
-    .ai-chat .chat-head .dot{ width:8px; height:8px; border-radius:50%; background:#22D3EE; display:inline-block; }
-    .ai-chat .chat-messages{ max-height:420px; overflow:auto; padding:12px; }
-    .ai-chat .msg{ display:flex; margin:8px 0; }
-    .ai-chat .msg.user{ justify-content:flex-end; }
-    .ai-chat .msg .bubble{ background:#11161b; color:#eaf1ff; padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.12); max-width:78%; }
-    .ai-chat .msg.user .bubble{ background:#17335f; }
-    .ai-chat .chat-input{ display:flex; gap:8px; border-top:1px solid rgba(255,255,255,.12); padding:8px; }
-    .ai-chat .chat-input textarea{ flex:1; min-height:42px; max-height:160px; resize:vertical; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#0b0e10; color:#fff; padding:8px 10px; }
-    .ai-chat .chat-input .send{ border-radius:10px; border:1px solid rgba(255,255,255,.35); background:transparent; color:#fff; padding:8px 12px; cursor:pointer; }
-    .ai-chat .disclaimer{ font-size:.9rem; opacity:.85; padding:8px 12px; }
-
-    /* Footer (usa os mesmos ícones de /assets/styles.css) */
+    /* Modal Calendly – mantido */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:2000;}
+    .modal.open{display:flex}
+    .modal-card{background:#0b0e10; border:1px solid rgba(255,255,255,.16); border-radius:12px; width:min(940px,92vw); height:min(80vh,720px); overflow:hidden; display:flex; flex-direction:column;}
+    .modal-head{display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.12)}
+    .modal-body{flex:1; min-height:0}
+    .modal-body iframe{width:100%; height:100%; border:0}
+    .btn-close{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:8px; padding:6px 10px; cursor:pointer}
   </style>
+
+  <!-- AJUSTE 2: Logo redondo (Home) -->
+  <style id="ajuste-logo-redondo-home">
+    /* Núcleo redondo na seção radial da Home (não altera o raio/órbita) */
+    #diferenciais.diffs-radial .core{
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+    }
+    #diferenciais.diffs-radial .core img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; /* preenche o círculo */
+    }
+  </style>
+
+  <!-- FIX: Header sobre o vídeo (transparente + chips + marca com aro) -->
+  <style id="fix-header-home-video">
+    /* Home: header 100% transparente e sem “vidro/blur” */
+    header.site-header.on-video{
+      background: transparent !important;
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      z-index: 1000 !important;
+    }
+
+    /* Texto nítido */
+    header.site-header.on-video .brand a,
+    header.site-header.on-video nav .menu a,
+    header.site-header.on-video .lang .lang-toggle{
+      color: #fff !important;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55) !important;
+      opacity: 1 !important;
+      filter: none !important;
+    }
+
+    /* CHIPS (aros brancos) nos links do menu */
+    header.site-header.on-video nav .menu a{
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px !important;
+      border: 1px solid rgba(255,255,255,.9) !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    header.site-header.on-video nav .menu a:hover,
+    header.site-header.on-video nav .menu a:focus-visible{
+      background: rgba(255,255,255,.12) !important;
+      text-decoration: none !important;
+    }
+
+    /* Botão de idioma (globo) com aro */
+    header.site-header.on-video .lang .lang-toggle{
+      border: 1px solid rgba(255,255,255,.9) !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+    }
+
+    /* ARO também na MARCA (nome da empresa) */
+    header.site-header.on-video .brand .brand-logo{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 8px 12px !important;
+      border: 1px solid rgba(255,255,255,.9) !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      text-decoration: none;
+    }
+  </style>
+
+  <!-- Unificar tipografia: tudo com Montserrat -->
+<style>
+  :root{
+    --font-sans: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  /* Base */
+  html, body, button, input, select, textarea { font-family: var(--font-sans) !important; }
+
+  /* Títulos, marca e elementos que antes usavam Inter/Space Grotesk */
+  h1,h2,h3,h4,h5,h6,
+  .brand a, .brand-top, .brand-sub,
+  .pill-head, .dif-title, .dif-sub,
+  #plataforma h2, #plataforma .lead,
+  .card h3 {
+    font-family: var(--font-sans) !important;
+  }
+</style>
+
 </head>
 
 <body>
-  <!-- HEADER -->
+  <!-- HEADER transparente -->
   <header class="site-header on-video" id="siteHeader">
     <div class="container nav-wrap">
       <div class="brand">
-        <a href="/en/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+        <a href="index.html" class="brand-logo" aria-label="ShaRui Trading Company">
           <span class="brand-top">SHA RUI</span>
           <span class="brand-sub">TRADING COMPANY</span>
         </a>
@@ -164,18 +207,18 @@
 
       <nav>
         <div class="menu">
-          <a href="/en/about.html">About</a>
-          <a href="/en/differentials.html">Differentials</a>
-          <a href="/en/platform.html">Platform</a>
-          <a href="/en/contact.html">Contact</a>
+          <a href="/pt/quem-somos.html">Quem somos</a>
+          <a href="/pt/diferenciais.html">Diferenciais</a>
+          <a href="/pt/plataforma.html">Plataforma</a>
+          <a href="/pt/contato.html">Contato</a>
         </div>
       </nav>
 
       <div class="lang" id="lang">
-        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Select language">🌐</button>
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
         <ul class="lang-menu" id="langMenu">
           <li><a href="/pt/index.html">Português (PT)</a></li>
-          <li><a href="/en/index.html" aria-current="page">English (EN)</a></li>
+          <li><a href="/en/index.html">English (EN)</a></li>
           <li><a href="/es/index.html">Español (ES)</a></li>
           <li><a href="/ar/index.html" dir="rtl">العربية (AR)</a></li>
         </ul>
@@ -184,8 +227,9 @@
   </header>
 
   <main>
-    <!-- HERO com vídeo -->
+    <!-- HERO com vídeo tela inteira -->
     <section class="hero-video-wrap">
+      <!-- TRANSIÇÃO: faixa com ticker -->
       <section class="brand-ticker" aria-hidden="true">
         <div class="ticker">
           <ul class="ticker-track">
@@ -193,6 +237,7 @@
             <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
             <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
           </ul>
+          <!-- clone para rolagem contínua -->
           <ul class="ticker-track" aria-hidden="true">
             <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
             <li>SHARUI TRADING COMPANY</li><li>SHARUI TRADING COMPANY</li>
@@ -202,174 +247,332 @@
       </section>
 
       <video class="hero-video" autoplay muted playsinline preload="metadata" poster="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4">
-        <source src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4" type="video/mp4" media="(max-width: 768px)">
-        <source src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
+        <!-- versão mobile 720p -->
+        <source
+          src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4"
+          type="video/mp4"
+          media="(max-width: 768px)">
+
+        <!-- versão desktop 1080p -->
+        <source
+          src="https://res.cloudinary.com/dqlirwz5x/video/upload/v1758626202/f_mp4%2Cvc_h264%2Cq_auto:good%2Cac_none%2Cw_1920%2Ch_1080%2Cc_fill%2Cg_auto/company-hero.mp4"
+          type="video/mp4">
+
+        <!-- fallback simples -->
+        Seu navegador não suporta vídeo HTML5.
       </video>
     </section>
 
-    <!-- Banda após o vídeo -->
+    <!-- FAIXA / MARQUEE: após o vídeo -->
     <section class="brand-band light" aria-hidden="true">
       <div class="marquee">
         <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
       </div>
     </section>
 
-    <!-- WHO -->
-    <section id="who" class="section clean">
+    <!-- (1) QUEM SOMOS -->
+    <section id="quem-somos" class="section clean">
       <div class="container who-split">
+        <!-- Foto à esquerda -->
         <figure class="who-photo">
-          <img src="/assets/socio.jpg" alt="ShaRui partner">
+          <img src="/assets/socio.jpg" alt="Sócio da ShaRui">
         </figure>
+
+        <!-- Texto à direita -->
         <div class="who-copy">
-          <h2>Who we are</h2>
-          <p><b>We are a company with 30+ years</b> in international trade. Our base is in <b>Guangzhou</b>, we attend the <b>Canton Fair</b> and visit factories all over China.</p>
-          <p>We connect your company to reliable suppliers, integrating engineering, quality and finance to reduce <b>risk</b> and <b>total landed cost</b> — with presence <b>inside the factory</b>.</p>
+          <h2>Quem somos</h2>
+          <p><b>Somos uma empresa com mais de 30 anos de experiência</b> em comércio internacional. Nossa sede é em <b>Guangzhou</b>, participamos da <b>Canton Fair</b> e visitamos fábricas em toda a China.</p>
+          <p>Conectamos sua empresa a fornecedores confiáveis, integrando engenharia, qualidade e finanças para reduzir risco e custo total — com presença dentro da fábrica.</p>
         </div>
       </div>
     </section>
 
-    <!-- Faixa/galeria (se usar no EN também) -->
-    <section class="who-gallery" aria-label="Behind the scenes — scrolling photos">
+    <!-- Galeria contínua (abaixo do “Quem somos”) -->
+    <section class="who-gallery">
       <div class="strip">
-        <img src="/assets/qs1.jpg?v=2" alt=""><img src="/assets/qs2.jpg?v=2" alt="">
-        <img src="/assets/qs3.jpg?v=2" alt=""><img src="/assets/qs4.jpg?v=2" alt="">
-        <img src="/assets/qs5.jpg?v=3" alt="Photo 5"><img src="/assets/qs6.jpg?v=3" alt="Photo 6">
-        <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
-        <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
-        <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true"><img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
+        <!-- sequência principal -->
+        <img src="/assets/qs1.jpg?v=2" alt="">
+        <img src="/assets/qs2.jpg?v=2" alt="">
+        <img src="/assets/qs3.jpg?v=2" alt="">
+        <img src="/assets/qs4.jpg?v=2" alt="">
+        <img src="/assets/qs5.jpg?v=3" alt="Foto 5">
+        <img src="/assets/qs6.jpg?v=3" alt="Foto 6">
+
+        <!-- duplicadas na MESMA ordem para o loop -->
+        <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true">
+        <img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
       </div>
     </section>
 
-    <!-- Banda -->
+    <!-- FAIXA / MARQUEE: antes da Plataforma -->
     <section class="brand-band" aria-hidden="true">
       <div class="marquee">
         <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
       </div>
     </section>
 
-    <!-- DIFFERENTIALS radial -->
-    <section id="differentials" class="section diffs-radial">
+    <!-- DIFERENCIAIS – radar com logo central e nós sequenciais -->
+    <section id="diferenciais" class="section diffs-radial">
       <div class="container">
-        <h2 style="text-align:center;margin:0 0 6px">Our Differentials</h2>
-        <p style="text-align:center;margin:0 0 12px;opacity:.9">MORE PREDICTABILITY & CONTROL</p>
+        <h2 class="dif-title">Nossos Diferenciais</h2>
+        <p class="dif-sub">MAIS PREVISIBILIDADE E CONTROLE</p>
 
         <div class="radial-stage">
-          <div class="core" aria-hidden="true"><img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company"></div>
+          <!-- Núcleo (logo) -->
+          <div class="core" aria-hidden="true">
+            <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company">
+          </div>
 
+          <!-- Nós (cada um tem um ângulo --a e o lado para encaixe do balão) -->
+          <!-- Ângulos em graus: 0° aponta para a direita; positivos no sentido horário -->
           <div class="node right" style="--a:-18deg">
             <span class="dot"></span>
-            <div class="bubble"><b>Inspection with photos & videos</b><br><small>Sampling, tests and pass/fail — no surprises at delivery.</small></div>
+            <div class="bubble">
+              <b>Inspeção com fotos e vídeos</b>
+              <small>Amostragem, testes e aprovação/reprovação — sem surpresa na entrega.</small>
+            </div>
           </div>
 
           <div class="node right" style="--a:22deg">
             <span class="dot"></span>
-            <div class="bubble"><b>Bilingual technical spec (PT–ZH)</b><br><small>Photo/drawing, materials, dimensions, tolerances, packaging & label — all agreed and signed.</small></div>
+            <div class="bubble">
+              <b>Ficha técnica PT‑ZH</b>
+              <small>Foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta — tudo combinado e assinado.</small>
+            </div>
           </div>
 
           <div class="node right" style="--a:73deg">
             <span class="dot"></span>
-            <div class="bubble"><b>The right supplier in the right place</b><br><small>Based in Guangzhou; we visit any factory in China.</small></div>
+            <div class="bubble">
+              <b>Fornecedor certo, lugar certo</b>
+              <small>Estamos em Ganzhou e visitamos qualquer fábrica na China.</small>
+            </div>
           </div>
 
           <div class="node left" style="--a:110deg">
             <span class="dot"></span>
-            <div class="bubble"><b>Factory visit within 48h</b><br><small>With visual records (photos & videos) and a report.</small></div>
+            <div class="bubble">
+              <b>Visita à fábrica em até 48h</b>
+              <small>Com registro visual (fotos e vídeos) e relatório.</small>
+            </div>
           </div>
 
           <div class="node left" style="--a:162deg">
             <span class="dot"></span>
-            <div class="bubble"><b>Lower risk and total cost</b><br><small>Engineering + quality + finance, with presence inside the factory.</small></div>
+            <div class="bubble">
+              <b>Menos risco e custo total</b>
+              <small>Integração engenharia + qualidade + finanças — presença dentro da fábrica.</small>
+            </div>
           </div>
 
           <div class="node left" style="--a:-160deg">
             <span class="dot"></span>
-            <div class="bubble"><b>Local negotiation in Chinese</b><br><small>Native team negotiates directly with the factory for better terms.</small></div>
+            <div class="bubble">
+              <b>Negociação com nativos</b>
+              <small>Equipe local chinesa negocia direto na fábrica por melhores condições.</small>
+            </div>
           </div>
 
           <div class="node left" style="--a:-110deg">
             <span class="dot"></span>
-            <div class="bubble"><b>No minimum order</b><br><small>Start with samples/pilots; when it makes sense, consolidate in shared container.</small></div>
+            <div class="bubble">
+              <b>Sem valor mínimo</b>
+              <small>Comece por amostras/pilotos; quando fizer sentido, compartilhe contêiner.</small>
+            </div>
           </div>
 
           <div class="node right" style="--a:-80deg">
             <span class="dot"></span>
-            <div class="bubble"><b>Landed cost in Brazil — before the order</b><br><small>Transparent estimate of taxes & expenses.</small></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Banda antes da Plataforma -->
-    <section class="brand-band" aria-hidden="true">
-      <div class="marquee">
-        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
-      </div>
-    </section>
-
-    <!-- PLATFORM (fotos retas + cartões) -->
-    <section id="platform" class="section">
-      <div class="container">
-        <h2>Client Platform</h2>
-        <p class="lead">Follow everything in one place</p>
-
-        <figure class="shot top" style="--ph1:url('/assets/plat-diag-1.jpg?v=2')" aria-label="Wallet & documents"></figure>
-        <figure class="shot bottom" style="--ph2:url('/assets/plat-diag-2.jpg?v=2')" aria-label="Shipment tracking"></figure>
-
-        <div class="card c1">
-          <h3>Wallet & documents</h3>
-          <p>Follow your <b>transactions</b>, <b>documents</b> and the <b>complete order history</b> in a single wallet — with versions, comments and confirmations.</p>
-        </div>
-
-        <div class="card c2">
-          <h3>Shipment tracking</h3>
-          <p>See the status of your shipment at each step, <b>checkpoints</b> planned/completed and a <b>live map</b> when available (sea, air and road).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Banda ANTES da IA (pedido seu) -->
-    <section class="brand-band" aria-hidden="true">
-      <div class="marquee">
-        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
-      </div>
-    </section>
-
-    <!-- IA CHAT -->
-    <section id="ai" class="section ai-chat">
-      <div class="container">
-        <h2 style="text-align:center;margin:0 0 12px">We are the first trading company in Brazil with integrated AI management</h2>
-
-        <div class="chat-card" aria-live="polite">
-          <header class="chat-head">
-            <strong class="chat-brand">ShaRui Trading &amp; Co.</strong>
-            <span class="dot" aria-hidden="true"></span>
-            <span class="status" id="aiStatus">online</span>
-          </header>
-
-          <div class="chat-messages" id="aiChatLog">
-            <div class="msg bot">
-              <div class="bubble">
-                Hi! I can help with <b>Incoterms</b>, <b>tax estimate</b>, <b>LCL/FCL</b>, <b>PT–ZH technical specs</b> and more. How can I help you?
-              </div>
+            <div class="bubble">
+              <b>Preço no Brasil</b>
+              <small>Estimativa transparente de impostos e despesas antes do pedido.</small>
             </div>
           </div>
-
-          <form class="chat-input" id="aiChatForm" autocomplete="off">
-            <textarea id="aiPrompt" rows="1" placeholder="Ask anything about importing"></textarea>
-            <button class="send" type="submit" aria-label="Send">➤</button>
-          </form>
-
-          <p class="disclaimer">AI‑generated responses are for guidance. Please confirm decisions with our team.</p>
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- WhatsApp floating (mesma lógica do PT) -->
-  <a id="whatsFloat" class="whats-float" href="#" target="_blank" rel="noopener" aria-label="Open WhatsApp"></a>
+    <!-- FAIXA / MARQUEE: de Nossos Diferenciais para a Plataforma -->
+    <section class="brand-band" aria-hidden="true">
+      <div class="marquee">
+        <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+      </div>
+    </section>
 
-  <!-- Footer -->
+<!-- ===== PLATAFORMA DO CLIENTE (layout simples: texto + foto pequena) ===== -->
+<section id="plataforma" class="section platform-simple">
+  <div class="container ps-grid">
+    <div class="ps-copy">
+      <h2>Plataforma do Cliente</h2>
+      <p class="lead">Acompanhe tudo em um só lugar — timeline, documentos, checkpoints e custos estimados antes do pedido.</p>
+
+      <div class="ps-points">
+        <article class="ps-item">
+          <h3>Carteira &amp; documentos</h3>
+          <p>Suas <b>transações</b>, <b>documentos</b> e <b>histórico de pedidos</b> em uma única carteira — com versões, comentários e confirmações.</p>
+        </article>
+        <article class="ps-item">
+          <h3>Rastreamento da carga</h3>
+          <p>Status por etapa, <b>check‑points</b> previstos/realizados e <b>mapa</b> quando disponível (marítimo, aéreo e rodoviário).</p>
+        </article>
+      </div>
+
+    <figure class="ps-photo">
+      <!-- use uma das imagens que você já tem -->
+      <img src="/assets/plat-diag-1.jpg?v=2" alt="Prévia da Plataforma do Cliente">
+    </figure>
+  </div>
+</section>
+
+
+<!-- ===== FAIXA ANIMADA entre Plataforma e IA ===== -->
+<section id="band-plat-ia" aria-hidden="true">
+  <div class="track">
+    <span>SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • SHARUI TRADING COMPANY • </span>
+  </div>
+</section>
+
+<style>
+  /* estilos isolados só para esta faixa */
+  #band-plat-ia{
+    overflow:hidden;
+    padding: 10px 0;
+    background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+    border-block: 1px solid rgba(255,255,255,.12);
+  }
+  #band-plat-ia .track{
+    white-space: nowrap;
+    animation: srband 28s linear infinite;
+  }
+  #band-plat-ia .track span{
+    display:inline-block;
+    padding-left: 100%;
+    font-weight: 800;
+    letter-spacing: .08em;
+    color: #eaf1ff;
+  }
+  @keyframes srband{ to{ transform: translateX(-100%); } }
+</style>
+
+    <section id="faq" class="section faq">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:6px">Perguntas frequentes</h2>
+        <p class="lead" style="text-align:center;margin-bottom:16px">Do primeiro pedido ao acompanhamento no Brasil.</p>
+
+        <div class="faq-list">
+          <details>
+            <summary>Como funciona o contêiner compartilhado (LCL) com a ShaRui?</summary>
+            <div>
+              Trabalhamos com <b>LCL (Less than Container Load)</b> para quem não tem volume para um contêiner cheio.
+              Você pode começar com <b>amostras</b> e <b>pilotos</b>; quando fizer sentido, compartilhamos o contêiner para
+              <b>otimizar o frete</b>. Na plataforma, você acompanha etapas e custo estimado por m³/tonelada, além de prazos.
+            </div>
+          </details>
+
+          <details>
+            <summary>Existe pedido mínimo?</summary>
+            <div>
+              <b>Não.</b> Você pode iniciar com amostras e pilotos. A decisão de consolidar cargas e compartilhar contêiner
+              é feita caso a caso para equilibrar <b>frete</b>, <b>risco</b> e <b>prazo</b>.
+            </div>
+          </details>
+
+          <details>
+            <summary>Quais são as etapas do processo — do pedido à entrega no Brasil?</summary>
+            <div>
+              1) Definição do produto + <b>Ficha técnica PT‑ZH</b> → 
+              2) Cotação/negociação com fábrica →
+              3) <b>Amostras</b> (se aplicável) →
+              4) Pedido + <b>inspeção</b> (fotos e vídeos) →
+              5) Embarque (LCL/FCL) →
+              6) <b>Desembaraço</b> (com estimativa prévia de tributos/despesas) →
+              7) Entrega.  
+              Tudo é rastreado na <b>Plataforma</b> (linha do tempo, documentos, alertas e custos).
+            </div>
+          </details>
+
+          <details>
+            <summary>O que é a Ficha técnica PT‑ZH e por que é importante?</summary>
+            <div>
+              Documento bilíngue (português e chinês) com: <b>foto/desenho, materiais, medidas, tolerâncias, embalagem e etiqueta</b>.
+              Serve como <b>contrato técnico</b> com a fábrica — reduz ruído de tradução, estabiliza custo e facilita a inspeção.
+            </div>
+          </details>
+
+          <details>
+            <summary>Como é feita a inspeção? O que acontece se houver reprovação?</summary>
+            <div>
+              Fazemos <b>inspeção por amostragem</b> com <b>fotos e vídeos</b>. Se reprovar, alinhamos com a fábrica <b>reparo ou reprocesso</b>.
+              O objetivo é <b>evitar surpresas</b> na chegada ao Brasil. Tudo fica registrado na Plataforma.
+            </div>
+          </details>
+
+          <details>
+            <summary>Quanto vou pagar no Brasil? Vocês antecipam impostos e despesas?</summary>
+            <div>
+              Sim. Antes do pedido você recebe <b>estimativa transparente</b> de: II, IPI, PIS/COFINS‑Importação, ICMS, AFRMM,
+              capatazias, armazenagem, despacho etc. É uma <b>estimativa</b>, pois câmbio e tabelas variam, mas ajuda a decidir com segurança.
+            </div>
+          </details>
+
+          <details>
+            <summary>Quais Incoterms vocês trabalham? O que recomendam?</summary>
+            <div>
+              Trabalhamos com <b>EXW</b>, <b>FOB</b>, <b>CIF</b> e <b>DDP</b> (em alguns casos). Em geral, <b>FOB</b> dá bom controle
+              do frete e seguro; EXW pode fazer sentido em fornecedores sem expertise logística. Avaliamos caso a caso.
+            </div>
+          </details>
+
+          <details>
+            <summary>Quais são os prazos típicos (produção, trânsito e desembaraço)?</summary>
+            <div>
+              Varia por categoria, mas como referência: produção <b>15–45 dias</b>, trânsito marítimo para o Brasil <b>30–45+ dias</b>,
+              desembaraço <b>3–10 dias úteis</b>. Temos <b>48h</b> para visitar fábrica na região de atuação e <b>alertas</b> na plataforma.
+            </div>
+          </details>
+
+          <details>
+            <summary>Como tratam certificações e normas (INMETRO, Anvisa, Anatel etc.)?</summary>
+            <div>
+              Validamos requisitos regulatórios desde a especificação. Se o produto exigir <b>certificação</b>/registro,
+              combinamos escopo e laboratório antes do pedido, incluindo <b>testes</b>, <b>amostras</b> e documentação no cronograma.
+            </div>
+          </details>
+
+          <details>
+            <summary>O que consigo acompanhar na Plataforma do Cliente?</summary>
+            <div>
+              <b>Timeline</b> por etapa, <b>checkpoints</b> de carga, <b>documentos</b> (Invoice, PL, BL/AWB, laudos e relatórios),
+              <b>custos estimados</b> com memória de cálculo, <b>alertas e prazos</b>, e <b>acessos</b> por perfil/área com trilha de auditoria.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Calendly -->
+    <div id="calendly-modal" class="modal" onclick="closeCalendly()">
+      <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-head">
+          <strong>Agendar conversa</strong>
+          <button class="btn-close" onclick="closeCalendly()">Fechar</button>
+        </div>
+        <div class="modal-body"><iframe id="calendly-frame" src="about:blank" title="Calendly"></iframe></div>
+      </div>
+    </div>
+
+  <!-- WhatsApp flutuante -->
+<a id="whatsFloat"
+   class="whats-float"
+   href="#"
+   target="_blank" rel="noopener"
+   aria-label="Abrir conversa no WhatsApp">
+</a>
+
   <footer class="footer">
     <div class="container footer-row">
       <div>
@@ -380,159 +583,521 @@
           Postal code: 51150 – Guangzhou, China.
         </address>
       </div>
-      <nav class="foot-social" aria-label="Social">
+
+      <nav class="foot-social" aria-label="Redes sociais">
         <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig" title="Instagram"></a>
         <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk" title="TikTok"></a>
         <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt" title="YouTube"></a>
-        <a id="whatsFooter" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa" title="WhatsApp"></a>
+        <a id="whatsFooter"
+   href="#"
+   target="_blank" rel="noopener"
+   aria-label="WhatsApp"
+   class="ic wa" title="WhatsApp"></a>
       </nav>
     </div>
   </footer>
 
-  <!-- ====== Scripts locais ====== -->
+  <!-- Scripts de revelação/digitação (mantidos) -->
   <script>
-    // Ajusta --header-h para compensar cabeçalho fixo
-    (function(){
-      const header = document.getElementById('siteHeader');
-      if(!header) return;
-      function setOffset(){ document.documentElement.style.setProperty('--header-h', (header.offsetHeight || 72) + 'px'); }
-      setOffset(); window.addEventListener('resize', setOffset);
-    })();
-  </script>
-
-  <script>
-    // Remove selo "View photo" / "Ver foto" da primeira imagem (se existir)
-    (function(){
-      const fig = document.querySelector('#platform .shot.top');
-      if(!fig) return;
-      fig.querySelectorAll('*').forEach(el=>{
-        const t = (el.textContent || '').trim();
-        if(/view photo|ver foto/i.test(t)) el.remove();
-      });
-      fig.querySelectorAll('[data-lightbox],[data-view],[aria-label*="view" i],[aria-label*="foto" i]').forEach(el=> el.remove());
-    })();
-  </script>
-
-  <!-- Chat IA (usa /api/ia) -->
-  <script>
+  /* Observa quando os elementos entram na tela */
   (function(){
-    const log   = document.getElementById('aiChatLog');
-    const form  = document.getElementById('aiChatForm');
-    const ta    = document.getElementById('aiPrompt');
-    const stat  = document.getElementById('aiStatus');
-    const store = 'ai:log:v1';
-
-    let history = [];
-    try{ history = JSON.parse(localStorage.getItem(store) || '[]'); }catch(e){}
-    history.forEach(m => render(m));
-
-    function autogrow(){ ta.style.height='auto'; ta.style.height = Math.min(ta.scrollHeight, 160) + 'px'; }
-    ta.addEventListener('input', autogrow); autogrow();
-
-    ta.addEventListener('keydown', (e)=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); form.requestSubmit(); } });
-
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const q = (ta.value || '').trim();
-      if(!q) return;
-      add({ role:'user', content:q });
-      ta.value=''; autogrow();
-      const typingId = showTyping();
-      try{
-        const reply = await askAI(history);
-        hideTyping(typingId);
-        add({ role:'assistant', content: reply });
-      }catch(err){
-        hideTyping(typingId);
-        add({ role:'assistant', content: mockAnswer(q) });
-      }
-    });
-
-    function render({role, content}){
-      const row = document.createElement('div');
-      row.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
-      const b = document.createElement('div');
-      b.className = 'bubble';
-      b.innerHTML = sanitize(content);
-      row.appendChild(b);
-      log.appendChild(row);
-      log.scrollTop = log.scrollHeight;
-    }
-    function add(m){
-      history.push(m);
-      localStorage.setItem(store, JSON.stringify(history.slice(-30)));
-      render(m);
-    }
-    function showTyping(){
-      const row = document.createElement('div');
-      row.className = 'msg bot typing';
-      const b = document.createElement('div'); b.className='bubble';
-      for(let i=0;i<3;i++){ const d=document.createElement('span'); d.className='dot-anim'; b.appendChild(d); }
-      row.appendChild(b); log.appendChild(row); log.scrollTop = log.scrollHeight; return row;
-    }
-    function hideTyping(node){ if(node && node.parentNode){ node.parentNode.removeChild(node); } }
-
-    async function askAI(messages){
-      stat.textContent = 'thinking…';
-      const res = await fetch('/api/ia', {
-        method:'POST',
-        headers:{ 'Content-Type':'application/json' },
-        body: JSON.stringify({ messages: messages.map(m => ({ role:m.role, content:m.content })) })
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const el = e.target;
+        if(el.classList.contains('reveal')) el.classList.add('visible');
+        if(el.classList.contains('type-target') && !el.classList.contains('done')){
+          typeLine(el, el.dataset.text || el.textContent || '', 18);
+        }
+        io.unobserve(el);
       });
-      stat.textContent = 'online';
-      if(!res.ok) throw new Error('no-backend');
-      const data = await res.json();
-      const text = (data.reply || data.output || data.message || '').toString().trim();
-      if(!text) throw new Error('empty-reply');
-      return text;
-    }
+    }, { threshold: 0.3 });
 
-    function mockAnswer(q=''){
-      const s = q.toLowerCase();
-      if(s.includes('incoterm') || s.includes('fob') || s.includes('cif') || s.includes('exw')){
-        return `Quick Incoterms summary:
-• EXW: buyer handles pickup and all freight from factory.
-• FOB: seller delivers on board; buyer handles ocean freight & insurance.
-• CIF: seller pays ocean freight & insurance to destination port.
-• DDP: seller delivers customs‑cleared at destination (not always feasible).`;
-      }
-      if(s.includes('tax') || s.includes('landed') || s.includes('price in brazil')){
-        return `Landed cost estimate includes:
-1) goods value + international freight/insurance;
-2) import taxes (II, IPI, PIS/COFINS‑Import, ICMS);
-3) AFRMM (if ocean), port/warehouse/handling, customs broker;
-4) domestic freight.`;
-      }
-      if(s.includes('lcl') || s.includes('fcl') || s.includes('container')){
-        return `LCL vs FCL:
-• LCL: good for small volumes; cost per m³/ton and slightly longer lead times.
-• FCL: better unit cost and less handling. Starting with LCL and migrating later often works well.`;
-      }
-      return `I can help with PT–ZH specs, factory validation (48h), inspection with photos & videos, timeline & documents, and tax estimates. What would you like to know?`;
-    }
+    document.querySelectorAll('.reveal, .type-target').forEach(el=> io.observe(el));
 
-    function sanitize(html){
-      const div = document.createElement('div'); div.textContent = html; let t = div.innerHTML;
-      t = t.replace(/&lt;(\/?)(b|br|ul|ol|li)&gt;/g, '<$1$2>');
-      return t;
+    function typeLine(el, text, speed){
+      el.textContent = '';
+      let i = 0;
+      (function tick(){
+        el.textContent += text.charAt(i++);
+        if(i <= text.length){ setTimeout(tick, speed); }
+        else{ el.classList.add('done'); }
+      })();
     }
-
-    function updateStatus(){ stat.textContent = navigator.onLine ? 'online' : 'offline'; }
-    updateStatus(); window.addEventListener('online', updateStatus); window.addEventListener('offline', updateStatus);
   })();
   </script>
 
-  <!-- WhatsApp helper -->
   <script>
-    (function(){
-      const WHATS_NUMBER = '5511993381008'; // ajuste seu número aqui
-      const defaultText = 'Hello ShaRui, I came from the website and would like to talk.';
-      const url = 'https://api.whatsapp.com/send?phone=' + WHATS_NUMBER + '&text=' + encodeURIComponent(defaultText);
-      ['whatsFloat','whatsFooter'].forEach(id => { const a = document.getElementById(id); if(a) a.href = url; });
-      document.querySelectorAll('a[data-whats="true"]').forEach(a => a.href = url);
+    // Dispara animação quando "Quem somos" entra na tela
+    (function () {
+      const section = document.getElementById('quem-somos');
+      if (!section) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const img = section.querySelector('.about-photo.reveal-start');
+            if (img) img.classList.add('reveal-in');
+            section.querySelectorAll('.type-live').forEach((el, idx) => {
+              typeParagraph(el, idx * 300);
+            });
+            io.unobserve(section);
+          }
+        });
+      }, { threshold: 0.45 });
+
+      io.observe(section);
+
+      function typeParagraph(el, delay = 0) {
+        const full = el.textContent.trim();
+        el.textContent = '';
+        let i = 0;
+        setTimeout(function step() {
+          el.textContent += full.charAt(i);
+          i++;
+          if (i <= full.length) {
+            const ch = full.charAt(i - 1);
+            const base = 16;
+            const extra = ch === '.' ? 140 : ch === ',' ? 80 : 0;
+            setTimeout(step, base + extra);
+          }
+        }, delay);
+      }
     })();
   </script>
 
-  <script defer src="/assets/mobile-nav.js"></script>
+  <script>
+    // Revelação suave ao entrar na tela
+    const ioReveal = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          ioReveal.unobserve(e.target);
+        }
+      });
+    }, {threshold: .2});
+
+    document.querySelectorAll('#quem-somos .reveal').forEach(el => ioReveal.observe(el));
+
+    // Digitação por parágrafo
+    function typeText(el, speed=18){
+      const text = el.dataset.text || el.textContent;
+      el.textContent = '';
+      let i = 0;
+      (function tick(){
+        el.textContent = text.slice(0, i++);
+        if(i <= text.length){ setTimeout(tick, speed); }
+      })();
+    }
+
+    const ioType = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const p = e.target;
+          const extra = p.classList.contains('delay') ? 400 : 120;
+          setTimeout(()=> typeText(p), extra);
+          ioType.unobserve(p);
+        }
+      });
+    }, {threshold: .25});
+
+    document.querySelectorAll('#quem-somos .typewrite').forEach(el => ioType.observe(el));
+  </script>
+
+  <script>
+  /* Ativa o slide-in quando a seção entrar na viewport */
+  (function(){
+    const section = document.getElementById('quem-somos');
+    if(!section) return;
+
+    const items = section.querySelectorAll('.slide-in-right');
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((e)=>{
+        if(!e.isIntersecting) return;
+        const el = e.target;
+        /* respeita o pequeno atraso definido no data-delay */
+        const d = el.getAttribute('data-delay') || '0s';
+        el.style.transitionDelay = d;
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { threshold: 0.25 });
+
+    items.forEach(el => io.observe(el));
+  })();
+  </script>
+
+  <script>
+    (function(){
+      const sec = document.querySelector('#diferenciais.diffs-radial');
+      if(!sec) return;
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            sec.classList.add('play');
+            io.unobserve(sec);
+          }
+        });
+      }, {threshold:.35});
+      io.observe(sec);
+    })();
+  </script>
+
+  <script>
+  /* Animação sequencial: da direita (0°) para a esquerda */
+  (function(){
+    const section = document.querySelector('#diferenciais.diffs-radial');
+    if(!section) return;
+
+    const nodes = Array.from(section.querySelectorAll('.node'))
+      .sort((a,b)=> (a.dataset.step|0) - (b.dataset.step|0));
+
+    // dispara quando a seção entra na tela
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        let i = 0;
+        const tick = ()=> {
+          nodes[i]?.classList.add('on');
+          i++;
+          if(i < nodes.length) setTimeout(tick, 420);
+        };
+        tick();
+        io.unobserve(section);
+      });
+    }, {threshold:.35});
+
+    io.observe(section);
+  })();
+  </script>
+
+  <!-- MODAL: captação para envio de e‑books -->
+  <div id="leads-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="leads-title" onclick="closeLeads()">
+    <div class="modal-card leads" onclick="event.stopPropagation()">
+      <h3 id="leads-title">Receba os materiais por e‑mail</h3>
+      <form id="leads-form" onsubmit="return submitLeads(event)">
+        <div class="form-row">
+          <label>Nome completo</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-row">
+          <label>E‑mail</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="form-row">
+          <label>Telefone (WhatsApp)</label>
+          <input type="tel" name="phone" placeholder="+55 (__) _____‑____" required>
+        </div>
+        <label class="chk">
+          <input type="checkbox" name="consent" required>
+          <span>Aceito receber e‑mails promocionais e comunicações da ShaRui.</span>
+        </label>
+        <div class="form-actions">
+          <button type="button" class="cta" onclick="closeLeads()">Cancelar</button>
+          <button type="submit" class="cta primary">Enviar</button>
+        </div>
+        <p id="leads-msg" class="msg" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    const header = document.getElementById('siteHeader');
+    if(!header) return;
+    function setOffset(){
+      const h = header.offsetHeight || 72;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    setOffset();
+    window.addEventListener('resize', setOffset);
+  })();
+  </script>
+<script>
+(function(){
+  const log   = document.getElementById('aiChatLog');
+  const form  = document.getElementById('aiChatForm');
+  const ta    = document.getElementById('aiPrompt');
+  const stat  = document.getElementById('aiStatus');
+
+  // RESET: garante que versões antigas não fiquem salvas
+  try{ localStorage.removeItem('ai:log:v1'); }catch(e){}
+
+  // Histórico só em memória (zera a cada entrada no site/página)
+  let history = [];
+
+  // Auto-grow do textarea
+  function autogrow(){
+    ta.style.height='auto';
+    ta.style.height = Math.min(ta.scrollHeight, 160) + 'px';
+  }
+  ta.addEventListener('input', autogrow);
+  autogrow();
+
+  // Enter envia / Shift+Enter quebra linha
+  ta.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' && !e.shiftKey){
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  // Enviar
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const q = (ta.value || '').trim();
+    if(!q) return;
+    add({ role:'user', content:q });
+    ta.value=''; autogrow();
+
+    const typingId = showTyping();
+    try{
+      const reply = await askAI(history);
+      hideTyping(typingId);
+      add({ role:'assistant', content: reply });
+    }catch(err){
+      hideTyping(typingId);
+      add({ role:'assistant', content: mockAnswer(q) });
+    }
+  });
+
+  // Renderização das mensagens
+  function render({role, content}){
+    const row = document.createElement('div');
+    row.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.innerHTML = sanitize(content);
+    row.appendChild(b);
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
+  }
+  function add(m){ history.push(m); render(m); }
+
+  // “digitando…”
+  function showTyping(){
+    const row = document.createElement('div');
+    row.className = 'msg bot typing';
+    const b = document.createElement('div'); b.className='bubble';
+    for(let i=0;i<3;i++){ const d=document.createElement('span'); d.className='dot-anim'; b.appendChild(d); }
+    row.appendChild(b);
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
+    return row;
+  }
+  function hideTyping(node){ if(node && node.parentNode){ node.parentNode.removeChild(node); } }
+
+  // Backend (cai no mock se /api/ia não existir)
+  async function askAI(messages){
+    stat.textContent = 'pensando…';
+    const res = await fetch('/api/ia', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ messages: messages.map(m => ({ role:m.role, content:m.content })) })
+    });
+    stat.textContent = 'online';
+    if(!res.ok) throw new Error('no-backend');
+    const data = await res.json();
+    const text = (data.reply || data.output || data.message || '').toString().trim();
+    if(!text) throw new Error('empty-reply');
+    return text;
+  }
+
+  // Mock útil
+  function mockAnswer(q=''){
+    const s = q.toLowerCase();
+    if(s.includes('incoterm') || s.includes('fob') || s.includes('cif') || s.includes('exw')){
+      return `Resumo rápido de Incoterms:
+• EXW: comprador assume retirada e fretes desde a fábrica.
+• FOB: vendedor entrega a bordo; comprador assume frete internacional e seguro.
+• CIF: vendedor paga frete e seguro até o porto de destino.
+• DDP: vendedor entrega desembaraçado no destino (nem sempre viável).
+Se quiser, posso sugerir o melhor para o seu caso.`;
+    }
+    if(s.includes('imposto') || s.includes('tribut') || s.includes('preço no brasil')){
+      return `Estimativa de “Preço no Brasil”:
+1) Valor mercadoria + frete/seguro internacional;
+2) II, IPI, PIS/COFINS-Import., ICMS (varia por NCM/UF);
+3) AFRMM (se marítimo), taxas portuárias/ARMAZÉM, despachante;
+4) Frete interno.
+Na nossa plataforma, você vê a memória de cálculo antes de fechar o pedido.`;
+    }
+    if(s.includes('lcl') || s.includes('fcl') || s.includes('contêiner') || s.includes('container')){
+      return `LCL x FCL:
+• LCL (carga fracionada): bom para volumes menores; custo por m³/ton e prazos um pouco maiores.
+• FCL (contêiner cheio): melhor custo por unidade e menos manuseio.
+Começar em LCL e migrar depois costuma ser uma boa estratégia.`;
+    }
+    return `Entendi. Posso ajudar com:
+• especificação técnica PT‑ZH (ficha/contrato),
+• validação de fábrica (48h),
+• inspeção com fotos e vídeos,
+• timeline e documentos,
+• estimativa de tributos.
+Pode detalhar sua dúvida?`;
+  }
+
+  // Saneamento simples
+  function sanitize(html){
+    const div = document.createElement('div');
+    div.textContent = html;
+    let t = div.innerHTML;
+    t = t.replace(/&lt;(\/?)(b|br|ul|ol|li)&gt;/g, '<$1$2>');
+    return t;
+  }
+
+  // Status visual
+  function updateStatus(){ stat.textContent = navigator.onLine ? 'online' : 'offline'; }
+  updateStatus(); window.addEventListener('online', updateStatus); window.addEventListener('offline', updateStatus);
+})();
+</script>
+
+ <script defer src="/assets/chat.js"></script>
+ <script>
+   
+/* Plataforma: anima as fotos/textos em diagonal ao entrar/sair da viewport */
+(function(){
+  const items = document.querySelectorAll('.plat-diag .reveal-diag');
+  if(!items.length) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+      else                { e.target.classList.remove('in'); } // “sai” ao rolar para cima
+    });
+  }, { threshold:.22, rootMargin:'-8% 0px -8% 0px' });
+
+  items.forEach(el => io.observe(el));
+})();
+</script>
+<script>
+/* Plataforma: anima as fotos/textos em diagonal ao entrar/sair da viewport */
+(function(){
+  const items = document.querySelectorAll('.plat-diag .reveal-diag');
+  if(!items.length) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+      else                { e.target.classList.remove('in'); }
+    });
+  }, { threshold:.22, rootMargin:'-8% 0px -8% 0px' });
+
+  items.forEach(el => io.observe(el));
+})();
+</script>
+<script>
+  (function(){
+    // ======================================================
+    // DEFINA AQUI SEU NÚMERO — APENAS DÍGITOS (DDI+DDD+NÚMERO)
+    // Ex.: (11) 9 9338-1008  =>  5511993381008
+    // ======================================================
+    const WHATS_NUMBER = '5511993381008';
+
+    // Mensagem inicial (pode editar livremente)
+    const defaultText = 'Olá ShaRui, vim pelo site e gostaria de falar.';
+
+    // Monta URL estável (funciona no desktop e no mobile)
+    const base = 'https://api.whatsapp.com/send';
+    const url  = base + '?phone=' + WHATS_NUMBER + '&text=' + encodeURIComponent(defaultText);
+
+    // Preenche todos os destinos de WhatsApp existentes
+    const ids = ['whatsFloat','whatsFooter'];
+    ids.forEach(id => {
+      const a = document.getElementById(id);
+      if (a) a.href = url;
+    });
+
+    // Segurança extra: se existir qualquer <a data-whats="true">, também atualiza
+    document.querySelectorAll('a[data-whats="true"]').forEach(a => a.href = url);
+
+    // Diagnóstico simples no console (pode remover):
+    console.log('[WhatsApp] Link aplicado:', url);
+  })();
+</script>
+<script defer src="/assets/mobile-nav.js"></script>
+<!-- ===== HOTFIX: Plataforma com fotos retas ===== -->
+<style id="plat-retas-override">
+  /* remove qualquer rotação */
+  #plataforma .p-shot{ transform: none !important; }
+
+  /* posições mantendo a leve sobreposição */
+  #plataforma .p-shot.top{
+    left: 0;
+    top: 0;
+  }
+  #plataforma .p-shot.bottom{
+    right: 0;
+    /* ajuste fino da sobreposição (aumente/diminua se quiser mais/menos sobreposição) */
+    top: clamp(110px, 9.6vw, 160px);
+  }
+
+  /* os cartões (textos) continuam por cima; não altera */
+  #plataforma .p-card{ z-index: 6; }
+
+  /* mobile continua empilhado (nada muda) */
+  @media (max-width: 980px){
+    #plataforma .p-shot.top,
+    #plataforma .p-shot.bottom{
+      top: auto;
+    }
+  }
+</style>
+<!-- ===== AJUSTES FINOS — Plataforma ===== -->
+<style id="plat-ajustes-finos">
+  /* 1) Foto de baixo: mais para BAIXO e para a DIREITA */
+  /* (funciona com .shot.bottom ou .p-shot.bottom, conforme o CSS atual) */
+  #plataforma .shot.bottom,
+  #plataforma .p-shot.bottom{
+    top: clamp(160px, 13.5vw, 230px) !important; /* ↓ descer */
+    right: -28px !important;                      /* → empurrar à direita */
+  }
+  /* Garantia: topo permanece fixo no canto, sem rotação */
+  #plataforma .shot.top,
+  #plataforma .p-shot.top{
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+
+  /* 3) Remove qualquer scroll interno na seção da plataforma */
+  #plataforma,
+  #plataforma .container,
+  #plataforma .plat-diag,
+  #plataforma .plat-diag > *{
+    overflow: visible !important;
+    max-height: none !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
+  /* Caso haja wrappers “scroll/scrollable” injetados por CSS/JS */
+  #plataforma .scroll,
+  #plataforma .scrollable,
+  #plataforma [data-scroll]{
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  /* Só por garantia, oculta resquícios de barra de rolagem interna */
+  #plataforma *::-webkit-scrollbar{ display:none !important; }
+  #plataforma{ scrollbar-width: none !important; }
+</style>
+
+<script>
+  // 2) Remove o selo “Ver foto” da 1ª imagem da plataforma (apenas ali)
+  (function(){
+    const fig = document.querySelector('#plataforma .shot.top, #plataforma .p-shot.top');
+    if(!fig) return;
+
+    // Remove qualquer elemento cujo texto seja “ver foto”
+    fig.querySelectorAll('*').forEach(el=>{
+      const t = (el.textContent || '').trim();
+      if(/ver foto/i.test(t)) el.remove();
+    });
+
+    // Remove também elementos típicos de lightbox/selo
+    fig.querySelectorAll('[data-lightbox],[data-view],[aria-label*="ver foto" i]').forEach(el=> el.remove());
+  })();
+</script>
+
 </body>
 </html>
