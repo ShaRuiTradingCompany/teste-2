@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Quiénes somos — ShaRui Trading Company</title>
+  <meta name="description" content="Unimos integridad, cumplimiento de plazos y tecnología para reducir el riesgo y el costo total. Base en Guangzhou y visitas a fábricas en toda China.">
+
+  <!-- CSS base del sitio -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/config.js"></script>
+  <script defer src="/assets/main.js"></script>
+
+  <!-- ===== Estilos locales de esta página ===== -->
+  <style>
+    /* ---------- HÉROE (50/50) ---------- */
+    #sobre.section{ padding-top: calc(var(--header-h, 72px) + 16px) }
+    .title-row{ display:flex; align-items:center; gap:10px; margin-bottom:8px }
+    .brand-badge{
+      display:inline-flex; flex-direction:column; line-height:1;
+      padding-right:10px; margin-right:10px; border-right:1px solid rgba(255,255,255,.18);
+    }
+    .brand-badge .brand-top{ font-weight:800; letter-spacing:.04em; font-size:clamp(16px,1.6vw,20px) }
+    .brand-badge .brand-sub{ font-weight:700; letter-spacing:.18em; opacity:.85; font-size:clamp(9px,1vw,11px) }
+    .title-row h1{ margin:0 }
+
+    /* ---------- LOGO CIRCULAR CON HACES ---------- */
+    .logo-orb{
+      position:relative; display:grid; place-items:center;
+      width:min(520px, 42vw); aspect-ratio:1/1; margin-inline:auto; border-radius:50%;
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.22);
+      box-shadow:0 10px 32px rgba(0,0,0,.35), inset 0 0 40px rgba(255,255,255,.06);
+      overflow:hidden;
+    }
+    .logo-orb::before{
+      content:""; position:absolute; inset:-8px; border-radius:50%;
+      background: conic-gradient(#66e0c2, #22b3e5, #7c3aed, #22b3e5, #66e0c2);
+      filter: blur(8px); animation: orbSpin 10s linear infinite;
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
+              mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
+      pointer-events:none;
+    }
+    .logo-orb::after{
+      content:""; position:absolute; inset:12%; border-radius:50%;
+      background: radial-gradient(closest-side, rgba(102,224,194,.22), transparent 70%);
+      mix-blend-mode: screen; animation: orbPulse 3.2s ease-in-out infinite alternate; pointer-events:none;
+    }
+    .logo-orb img{ width:76%; height:76%; object-fit:contain; border-radius:50%; display:block; }
+    @keyframes orbSpin { to { transform: rotate(360deg); } }
+    @keyframes orbPulse { from { transform: scale(.98) } to { transform: scale(1.02) } }
+
+    /* ---------- FRANJA DE MÉTRICAS (NO FIJA) ---------- */
+    #stats-band{
+      position:relative; /* no es sticky/fixed */
+      top:auto; z-index:auto;
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.10));
+      border-block:1px solid rgba(255,255,255,.22);
+      padding:14px 0;
+    }
+    #stats-band .metrics{
+      display:flex; align-items:center; flex-wrap:wrap; gap:16px 24px; justify-content:space-between;
+    }
+    #stats-band .metric{ display:flex; align-items:baseline; gap:8px; font-weight:800; letter-spacing:.02em; }
+    #stats-band .metric .num{
+      font-family:'Space Grotesk', Inter, system-ui, sans-serif;
+      font-size: clamp(18px, 3.4vw, 30px); font-weight:800; line-height:1; min-width:34px;
+      text-shadow:0 2px 12px rgba(0,0,0,.25);
+    }
+    #stats-band .metric span.label{ opacity:.95; font-size: clamp(13px, 2vw, 16px) }
+
+    /* ---------- Revelado utilitario ---------- */
+    .reveal{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease }
+    .reveal.in{ opacity:1; transform:none }
+
+    /* ---------- SOCIOS — foto mitad + texto al lado (alternado) ---------- */
+#socios .partner-row{
+  display:grid;
+  grid-template-columns: 1fr 2fr;       /* FOTO = 1  |  TEXTO = 2  (mitad del texto) */
+  gap: clamp(14px, 3vw, 28px);
+  align-items: stretch;
+  margin-bottom: clamp(14px, 3vw, 22px);
+}
+
+/* Fila alternada: foto a la derecha */
+#socios .partner-row.reverse{ grid-template-columns: 2fr 1fr; }
+
+#socios .partner-row .photo{
+  border-radius:16px; overflow:hidden;
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.14);
+}
+
+#socios .partner-row .photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+  aspect-ratio: 4 / 5;                  /* retrato */
+  display:block;
+}
+
+#socios .partner-row .info{
+  display:flex; flex-direction:column; justify-content:center;
+}
+#socios .partner-row .info h3{ margin:0 0 6px }
+#socios .partner-row .info .role{ opacity:.9; margin:0 0 10px }
+#socios .partner-row .info .bio{ margin:0 }
+
+/* Móvil: apilar; la foto siempre primero */
+@media (max-width: 1100px){
+  #socios .partner-row,
+  #socios .partner-row.reverse{ grid-template-columns: 1fr; }
+  #socios .partner-row.reverse .photo{ order:-1; }
+  #socios .partner-row .photo img{ aspect-ratio: 16 / 10; } /* mantiene protagonismo sin ser demasiado alta */
+}
+/* ===== SOCIOS — foto un poco más ancha (sin tocar la altura) ===== */
+/* Antes era 1fr 2fr; ahora 1.15fr 1.85fr (un poco más ancha) */
+#socios .partner-row{
+  display:grid;
+  grid-template-columns: 1.15fr 1.85fr;
+  gap: clamp(14px, 3vw, 28px);
+  align-items: stretch;
+  margin-bottom: clamp(14px, 3vw, 22px);
+}
+
+/* Fila alternada (foto al otro lado) */
+#socios .partner-row.reverse{
+  grid-template-columns: 1.85fr 1.15fr;
+}
+
+/* La foto mantiene la misma ALTURA relativa mediante aspect-ratio */
+#socios .partner-row .photo{
+  border-radius:16px; overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+}
+#socios .partner-row .photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+  aspect-ratio: 4 / 5; /* mantiene la “altura” visual proporcional */
+  display:block;
+}
+
+/* ===== Animaciones (entrar al bajar / salir al subir) ===== */
+#socios .partner-row .photo,
+#socios .partner-row .info{
+  opacity:0;
+  will-change: transform, opacity;
+  transition: transform .55s cubic-bezier(.2,.7,.2,1), opacity .55s;
+}
+
+/* Bloque normal: foto entra de IZQ → DER, texto de DER → IZQ */
+#socios .partner-row:not(.reverse) .photo{ transform: translateX(-28px); }
+#socios .partner-row:not(.reverse) .info { transform: translateX( 28px); }
+
+/* Bloque “reverse”: invertido */
+#socios .partner-row.reverse .photo{ transform: translateX( 28px); }
+#socios .partner-row.reverse .info { transform: translateX(-28px); }
+
+/* Cuando está visible en la pantalla */
+#socios .partner-row.in .photo,
+#socios .partner-row.in .info{
+  opacity:1; transform:none;
+}
+
+/* Accesibilidad: reducir animaciones */
+@media (prefers-reduced-motion: reduce){
+  #socios .partner-row .photo,
+  #socios .partner-row .info{
+    transition:none; transform:none; opacity:1;
+  }
+}
+
+
+    /* ---------- ENTRE BASTIDORES: FRANJA CONTINUA (más alta) ---------- */
+    #bastidores .who-gallery{
+      position:relative; overflow:hidden; margin-top:8px;
+      height: clamp(180px, 28vh, 320px); /* ↑ más altura para lucir las fotos */
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      background: rgba(0,0,0,.10);
+    }
+    #bastidores .who-gallery .strip{
+      position:absolute; inset:0 auto 0 0;
+      display:inline-flex; gap:12px; align-items:center; padding:8px 12px;
+      will-change: transform; width:max-content;
+      animation: stripMove 25s linear infinite; /* misma dirección/velocidad que Home */
+    }
+    #bastidores .who-gallery img{
+      height:100%; width:auto; object-fit:cover; border-radius:12px;
+      box-shadow:0 10px 26px rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.15);
+    }
+    @keyframes stripMove{ to{ transform: translateX(-50%); } }
+
+    /* ---------- ENTRE BASTIDORES: texto más grande y cómodo ---------- */
+#bastidores .section-note{
+  font-size: clamp(16px, 1.6vw, 20px);   /* más grande que el estándar */
+  line-height: 1.75;
+  letter-spacing: .2px;
+}
+
+  </style>
+  
+
+  <!-- ===== MENÚ UNIVERSAL (igual al de Home) ===== -->
+  <!-- Fuente Montserrat usada en el menú/marca -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Encabezado transparente (sin vidrio) y superpuesto, como en Home */
+    header.site-header{
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      background:transparent !important;
+      -webkit-backdrop-filter:none !important;
+      backdrop-filter:none !important;
+      border:0 !important; box-shadow:none !important;
+    }
+
+    /* Misma familia tipográfica del menú de Home (solo en el header) */
+    .site-header, .site-header *{
+      font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+    }
+
+    /* Chips del menú: aro blanco, sin relleno */
+    .site-header .menu{ display:flex; gap:14px; align-items:center }
+    .site-header .menu a{
+      display:inline-flex; align-items:center;
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:999px;
+      background:transparent !important;
+      color:#fff !important;
+      text-decoration:none;
+      text-shadow:0 2px 10px rgba(0,0,0,.55);
+      box-shadow:none !important;
+      opacity:1 !important;
+      filter:none !important;
+    }
+    /* Hover/foco: realce solo en el contorno (sin “blanco opaco”) */
+    .site-header .menu a:hover,
+    .site-header .menu a:focus-visible{
+      background:transparent !important;
+      border-color:#fff !important;
+      box-shadow:0 0 0 2px rgba(255,255,255,.32) inset !important;
+      text-decoration:none !important;
+      outline:none;
+    }
+    /* Activo (Quiénes somos): aro reforzado, SIN fondo */
+    .site-header .menu a[aria-current="page"],
+    .site-header .menu a.active{
+      background:transparent !important;
+      border-color:#fff !important;
+      box-shadow:0 0 0 2px rgba(255,255,255,.38) inset !important;
+    }
+
+    /* Marca con aro (igual a Home) */
+    .site-header .brand-logo{
+      display:inline-flex; flex-direction:column; align-items:flex-start;
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:999px;
+      background:transparent !important;
+      color:#fff; text-decoration:none;
+      text-shadow:0 2px 10px rgba(0,0,0,.55);
+      line-height:1;
+    }
+    .site-header .brand-logo .brand-top{ font-weight:700; letter-spacing:.6px }
+    .site-header .brand-logo .brand-sub{ font-size:12px; letter-spacing:.8px; opacity:.92; margin-top:-2px }
+  </style>
+</head>
+
+<body class="page-about">
+  <!-- ENCABEZADO global (marca visible para volver a la home) -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+        <span class="brand-top">SHA RUI</span><span class="brand-sub">TRADING COMPANY</span>
+      </a>
+      <nav class="menu">
+        <a href="/pt/quem-somos.html" aria-current="page">Quiénes somos</a>
+        <a href="/pt/diferenciais.html">Ventajas</a>
+        <a href="/pt/plataforma.html">Plataforma</a>
+        <a href="/pt/contato.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="page-about">
+    <!-- (1) QUIÉNES SOMOS — 50/50 texto + logo -->
+    <section id="sobre" class="section about-hero">
+      <div class="container hero-wrap">
+        <div class="hero-copy reveal">
+          <div class="title-row">
+            <span class="brand-badge">
+              <span class="brand-top">SHA RUI</span>
+              <span class="brand-sub">TRADING COMPANY</span>
+            </span>
+            <h1>Quiénes somos</h1>
+          </div>
+
+          <p><strong>Somos una empresa</strong> con más de tres décadas en comercio internacional que eligió la <b>integridad</b> como principio diario. Nuestro compromiso es hacer lo correcto —aunque implique más trabajo— para reducir su <b>riesgo</b>, cuidar el <b>costo total</b> y defender su estándar de calidad.</p>
+          <p><strong>Estar cerca marca la diferencia.</strong> Con base en <b>Guangzhou</b> y presencia en toda China, visitamos la fábrica en <b>48 h</b> dentro de nuestra región de actuación. Mantenemos presencia directa en planta y formalizamos <b>contratos bilingües (PT‑ZH)</b> alineados con los estándares aceptados por los <b>tribunales chinos</b>, aportando seguridad jurídica y expectativas claras.</p>
+          <p><strong>Conectados y transparentes.</strong> Usted acompaña la <b>cronología</b>, los <b>documentos</b> y los <b>hitos</b> con plazos realistas, comunicación activa y registros en <b>foto y video</b>. </p>
+          <p><strong>Tecnología al servicio de la decisión.</strong> Evolucionamos continuamente la aplicación, la recopilación de evidencias y el análisis de costos para estimar el <b>precio puesto en Brasil</b> antes del pedido. Se puede empezar pequeño, con <b>muestras</b> y <b>pilotos</b>; cuando tiene sentido, consolidamos como <b>LCL</b> (contenedor compartido), sin renunciar a la <b>ética</b>, la <b>sostenibilidad práctica</b> y la <b>seriedad</b>.</p>
+
+        </div>
+
+        <figure class="logo-orb reveal" aria-label="Logotipo de ShaRui">
+          <img src="/assets/logo-sharui.jpg" alt="ShaRui Trading Company" width="1024" height="1024" decoding="async" loading="eager">
+        </figure>
+      </div>
+    </section>
+
+    <!-- (1.1) FRANJA DE MÉTRICAS (NO FIJA) -->
+    <section id="stats-band" aria-label="Indicadores de ShaRui">
+      <div class="container metrics">
+        <div class="metric">
+          <span class="prefix">más de</span>
+          <span class="num" data-target="1000">0</span>
+          <span class="label">clientes en distintos sectores</span>
+        </div>
+        <div class="metric">
+          <span class="prefix">más de</span>
+          <span class="num" data-target="30">0</span>
+          <span class="label">colaboradores en Guangzhou</span>
+        </div>
+        <div class="metric">
+          <span class="num" data-target="4">0</span>
+          <span class="label">bases: China, Italia, Brasil y Dubái</span>
+        </div>
+      </div>
+    </section>
+
+  <section id="socios" class="section about-partners">
+  <div class="container">
+    <h2 class="reveal">Nuestro equipo</h2>
+
+    <!-- Bloque 1 -->
+    <div class="partner-row">
+      <figure class="photo">
+        <img src="/assets/team-socio-1.jpg" alt="Rogério Takeshita — Socio Director" loading="lazy" decoding="async" width="760" height="950">
+      </figure>
+      <div class="info">
+        <h3>Rogério Takeshita</h3>
+        <p class="role">Socio Director</p>
+        <p>Con trayectoria en comercio internacional e industria, conecta la <b>ingeniería</b> con las <b>finanzas</b> para reducir <b>riesgo</b> y <b>costo total</b>. Estructuró procesos de <b>especificación técnica</b> y validación de proveedores en China y Brasil.</p>
+        <p>Actúa en el diseño de escenarios de <b>precio puesto en Brasil</b>, <b>gobernanza</b> de proyectos y decisiones <b>make/buy</b>. Lidera la <b>debida diligencia</b> de proveedores, la planificación de <b>inspecciones por muestreo</b> y la alineación con los equipos del cliente.</p>
+      </div>
+    </div>
+
+    <!-- Bloque 2 (invertido) -->
+    <div class="partner-row reverse">
+      <div class="info">
+        <h3>Sandra de Almeida</h3>
+        <p class="role">Socia — Operaciones y Cumplimiento</p>
+        <p>Especialista en <b>operaciones</b> en China, con fuerte actuación en el <b>piso de fábrica</b>. Conduce negociaciones con nativos, <b>contratos bilingües</b> y cronogramas, garantizando <b>plazos</b> y <b>estándar de calidad</b> acordados.</p>
+        <p>Orienta <b>inspecciones</b> con registro en <b>foto y video</b>, acompaña ajustes con la producción y cuida del <b>cumplimiento documental</b> para el embarque. Enfoque en <b>comunicación directa</b>, <b>previsibilidad</b> y <b>ejecución</b>.</p>
+      </div>
+      <figure class="photo">
+        <img src="/assets/team-socio-2.jpg" alt="Sandra de Almeida — Operaciones y Cumplimiento" loading="lazy" decoding="async" width="760" height="950">
+      </figure>
+    </div>
+  </div>
+</section>
+
+    <!-- (3) ENTRE BASTIDORES — franja continua (más alta) -->
+    <section id="bastidores" class="section about-culture">
+      <div class="container">
+        <h2 class="reveal">Entre bastidores</h2>
+
+        <!-- FRANJA / WHO-GALLERY -->
+        <section class="who-gallery" aria-label="Entre bastidores de ShaRui — fotos en desplazamiento continuo">
+          <div class="strip">
+            <!-- secuencia principal -->
+            <img src="/assets/qs1.jpg?v=2" alt="">
+            <img src="/assets/qs2.jpg?v=2" alt="">
+            <img src="/assets/qs3.jpg?v=2" alt="">
+            <img src="/assets/qs4.jpg?v=2" alt="">
+            <img src="/assets/qs5.jpg?v=3" alt="Foto 5">
+            <img src="/assets/qs6.jpg?v=3" alt="Foto 6">
+            <!-- duplicadas para el loop perfecto -->
+            <img src="/assets/qs1.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs2.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs3.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs4.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs5.jpg?v=2" alt="" aria-hidden="true">
+            <img src="/assets/qs6.jpg?v=2" alt="" aria-hidden="true">
+          </div>
+        </section>
+
+        <!-- Texto bajo la franja -->
+        <p class="section-note reveal" style="margin-top:10px">
+          Somos <b>30 colaboradores en Guangzhou</b>. Tomamos en serio la <b>presencia en fábrica</b> — visitas en 48 h en nuestra región de actuación,
+          <b>inspección por muestreo</b> con fotos y videos, verificación de <b>embalaje/etiquetado</b> y alineación directa con producción.
+          Contamos con <b>colaboradores nativos</b> y equipo bilingüe (ZH/EN/PT) integrado con ingeniería, calidad y finanzas, lo que
+          reduce el ruido, aporta <b>previsibilidad de plazos</b> y disminuye el <b>costo total</b>.
+        </p>
+      </div>
+    </section>
+
+    <!-- (4) ESTRUCTURA -->
+    <section id="escritorios" class="section about-offices">
+      <div class="container">
+        <h2 class="reveal">Estructura</h2>
+
+        <div class="offices-grid">
+          <article class="office-card reveal">
+            <figure><img src="/assets/office-1.jpg" alt="Oficina — Guangzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta"><h3>Guangzhou, China</h3><p>Yayun Avenue, 893 Building 23 Office 1404 – Jinlongcheng
+                                                            Fortune Plaza – Panyu
+                                                            Código postal: 51150 – Guangzhou, China</p></div>
+          </article>
+
+          <article class="office-card reveal">
+            <figure><img src="/assets/office-2.jpg" alt="Oficina — Guangzhou" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta"><h3>Guangzhou, China</h3><p>Yayun Avenue, 893 Building 25 Office 602 – Jinlongcheng
+                                                            Fortune Plaza – Panyu
+                                                            Código postal: 51150 – Guangzhou, China</p></div>
+          </article>
+
+          <article class="office-card reveal">
+            <figure><img src="/assets/office-3.jpg" alt="Punto de apoyo — Brasil" loading="lazy" decoding="async" width="900" height="600"></figure>
+            <div class="meta"><h3>Brasil</h3><p>Av. Chepli Tanus Daher, 609 - Jardim Acapulco
+                                                Londrina - PR, 86045-000.</p></div>
+          </article>
+        </div>
+
+        <!-- Texto bajo las tarjetas -->
+        <p class="section-note reveal" style="margin-top:10px">
+          Tenemos puntos de atención en <b>Italia</b> y en <b>Dubái</b>, y operamos con <b>dos oficinas en China</b> (Guangzhou)
+          y <b>una en Brasil</b>. Esta <b>estructura</b> y <b>composición</b> nos dan autonomía y agilidad para acompañar ferias y proveedores,
+          responder en el <b>huso horario</b> del cliente y negociar, manteniendo velocidad y control de punta a punta.
+        </p>
+      </div>
+    </section>
+
+    <!-- (5) CTA final -->
+    <section id="contato" class="section about-cta">
+      <div class="container cta-wrap reveal">
+        <h2>¿Llevamos tu idea a la realidad?</h2>
+        <p>Cuéntanos tu producto y plazo. En 48 h visitamos la fábrica y alineamos los próximos pasos.</p>
+        <div class="contact-row" style="justify-content:center; margin-top:10px;">
+          <a class="cta primary" href="https://wa.me/551193381008" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX nativo -->
+    <dialog id="lightbox">
+      <button class="close" aria-label="Cerrar">×</button>
+      <img src="" alt="" id="lightbox-img">
+    </dialog>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <strong class="foot-brand">SHARUI TRADING COMPANY</strong>
+      <address class="corp-address">Yayun Avenue, 893 0 Building 23 – Jinlongcheng<br>Fortune Plaza – Panyu<br>Código postal: 51150 – Guangzhou, China.</address>
+      <nav class="foot-social">
+        <a href="https://www.instagram.com/sharui_trading/" target="_blank" rel="noopener" aria-label="Instagram" class="ic ig"></a>
+        <a href="https://www.tiktok.com/@sharui_trading?lang=en" target="_blank" rel="noopener" aria-label="TikTok" class="ic tk"></a>
+        <a href="https://www.youtube.com/@ShaRu%C3%ADTrading" target="_blank" rel="noopener" aria-label="YouTube" class="ic yt"></a>
+        <a href="https://wa.me/551193381008" target="_blank" rel="noopener" aria-label="WhatsApp" class="ic wa"></a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===== JS local de esta página ===== -->
+  <script>
+  // Revelado genérico
+  (function(){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.18});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+  })();
+
+  // Lightbox (diálogo nativo)
+  (function(){
+    const dlg = document.getElementById('lightbox');
+    if(!dlg) return;
+    const img = document.getElementById('lightbox-img');
+    const closeBtn = dlg.querySelector('.close');
+    function open(src, alt){ img.src = src; img.alt = alt || ''; dlg.showModal(); }
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('[data-lightbox]');
+      if(a){ e.preventDefault(); open(a.getAttribute('data-lightbox'), a.querySelector('img')?.alt || ''); }
+    });
+    closeBtn.addEventListener('click', ()=> dlg.close());
+    dlg.addEventListener('click', (e)=> { if(e.target === dlg) dlg.close(); });
+  })();
+
+  // Calendly: usa modal global si existe; si no, abre el enlace directo
+  document.querySelectorAll('[data-open-calendly]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(typeof window.openCalendly === 'function'){ window.openCalendly(); }
+      else{ window.open('https://calendly.com/', '_blank', 'noopener'); }
+    });
+  });
+
+  // Ajusta var(--header-h) para compensar el encabezado fijo
+  (function(){
+    const header = document.getElementById('siteHeader');
+    if(!header) return;
+    function setOffset(){
+      const h = header.offsetHeight || 72;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    setOffset(); window.addEventListener('resize', setOffset);
+  })();
+
+  // Conteo ascendente en la franja de métricas (una vez)
+  (function(){
+    const band = document.getElementById('stats-band');
+    const nums = band.querySelectorAll('.num');
+    let done = false;
+    function countUp(el, to, dur=1100){
+      const start = performance.now(); const from = 0;
+      function step(t){
+        const p = Math.min(1, (t-start)/dur);
+        const val = Math.round((from + (to-from) * (0.1 + 0.9*p*p)));
+        el.textContent = val.toLocaleString('pt-BR');
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting && !done){
+          nums.forEach(n => countUp(n, parseInt(n.dataset.target,10) || 0));
+          done = true; io.disconnect();
+        }
+      });
+    }, {threshold:.35});
+    io.observe(band);
+  })();
+  </script>
+</body>
+</html>
+<script>
+/* Socios: animar entrada/salida según visibilidad */
+(function(){
+  const rows = document.querySelectorAll('#socios .partner-row');
+  if(!rows.length) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      const el = e.target;
+      if(e.isIntersecting){ el.classList.add('in'); }
+      else{ el.classList.remove('in'); } // sale al subir
+    });
+  }, { threshold: 0.35 });
+
+  rows.forEach(r => io.observe(r));
+})();
+</script>
