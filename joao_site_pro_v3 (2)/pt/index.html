@@ -259,7 +259,38 @@
   }
 </style>
 
-  
+  <style id="diffs-mobile-tuning">
+  /* aplica somente em telas menores – desktop intacto */
+  @media (max-width: 980px){
+    #diferenciais.diffs-radial{ position: relative; padding: 16px 0; }
+    #diferenciais.diffs-radial::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+      pointer-events:none; z-index:0;
+    }
+    #diferenciais.diffs-radial > .container,
+    #diferenciais.diffs-radial .radial-stage{ position: relative; z-index: 1; }
+
+    /* reduz um pouco o conjunto radial para caber melhor */
+    #diferenciais.diffs-radial .radial-stage{
+      transform: scale(.90);
+      transform-origin: top center;
+      margin-top: 4px;
+    }
+
+    /* bolhas mais legíveis */
+    #diferenciais.diffs-radial .bubble{
+      background: rgba(5,16,24,.88);
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 6px 20px rgba(0,0,0,.35);
+    }
+  }
+  @media (max-width: 640px){
+    #diferenciais.diffs-radial .radial-stage{ transform: scale(.82); }
+  }
+</style>
+
 </head>
 
 <body>
