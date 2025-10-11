@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plataforma — Página en construcción</title>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Header igual ao da Home (chips brancos) */
+    header.site-header{
+      position:fixed; inset-block-start:0; left:0; right:0; z-index:1000;
+      background:transparent!important; border:0!important; box-shadow:none!important;
+      -webkit-backdrop-filter:none!important; backdrop-filter:none!important;
+    }
+    .site-header, .site-header *{ font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif!important; }
+    .site-header .menu{ display:flex; gap:14px; align-items:center }
+    .site-header .menu a{
+      display:inline-flex; align-items:center; padding:8px 12px;
+      border:1px solid rgba(255,255,255,.9); border-radius:999px;
+      background:transparent!important; color:#fff!important; text-decoration:none;
+      text-shadow:0 2px 10px rgba(0,0,0,.55);
+    }
+    .site-header .menu a[aria-current="page"]{
+      box-shadow:0 0 0 2px rgba(255,255,255,.38) inset!important;
+    }
+    .brand-logo{
+      display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1;
+      padding:8px 12px; border:1px solid rgba(255,255,255,.9); border-radius:999px;
+      color:#fff; text-decoration:none; text-shadow:0 2px 10px rgba(0,0,0,.55);
+    }
+
+    main{ min-height:100vh; display:grid; place-items:center;
+      background:
+        radial-gradient(1200px 600px at 80% -200px, #1f6aa1 0%, transparent 60%),
+        linear-gradient(180deg, #0f2344 0%, #0d2247 40%, #0e2f55 100%); }
+    .ucard{
+      text-align:center; padding:28px 20px; border-radius:16px;
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 12px 30px rgba(0,0,0,.28); width:min(820px,92vw);
+    }
+    .ucard h1{ margin:0 0 10px; font-size:clamp(24px,4vw,36px) }
+    .ucard p{ margin:8px 0 0; font-size:clamp(14px,2.2vw,18px) }
+    .cta-row{ margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <a href="/pt/index.html" class="brand-logo" aria-label="ShaRui Trading Company">
+          <span class="brand-top">SHA RUI</span>
+          <span class="brand-sub">TRADING COMPANY</span>
+        </a>
+      </div>
+      <nav>
+        <div class="menu">
+          <a href="/pt/quem-somos.html">Quem somos</a>
+          <a href="/pt/diferenciais.html">Diferenciais</a>
+          <a href="/pt/plataforma.html" aria-current="page">Plataforma</a>
+          <a href="/pt/contato.html">Contato</a>
+        </div>
+      </nav>
+      <div class="lang" id="lang">
+        <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" title="Selecionar idioma">🌐</button>
+        <ul class="lang-menu" id="langMenu">
+          <li><a href="/pt/index.html">Português (PT)</a></li>
+          <li><a href="/en/index.html">English (EN)</a></li>
+          <li><a href="/es/index.html">Español (ES)</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="ucard">
+      <h1>Página en construcción</h1>
+      <p>Estamos actualizando nuestroo <b>solicitud de cliente</b> para ofrecer una experiencia aún mejor.</p>
+      <div class="cta-row">
+        <a class="cta" href="/pt/index.html#plataforma">Ver vista previa de la plataforma</a>
+        <a class="cta primary" href="/pt/contato.html">Quiero ser notificado</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
